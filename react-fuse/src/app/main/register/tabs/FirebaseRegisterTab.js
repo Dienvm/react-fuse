@@ -32,6 +32,7 @@ function FirebaseRegisterTab(props) {
 	}
 
 	function handleSubmit(model) {
+		console.log('model', model)
 		dispatch(authActions.registerWithFirebase(model));
 	}
 
