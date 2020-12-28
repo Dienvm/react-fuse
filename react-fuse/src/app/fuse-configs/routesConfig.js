@@ -11,14 +11,14 @@ import LogoutConfig from 'app/main/logout/LogoutConfig';
 const routeConfigs = [...pagesConfigs, DashboardConfig, LoginConfig, RegisterConfig, LogoutConfig];
 
 const routes = [
-	...FuseUtils.generateRoutesFromConfigs(routeConfigs),
+	...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin','staff','user']),
 	{
 		path: '/',
 		exact: true,
 		component: () => <Redirect to="/dashboard" />
 	},
 	{
-		component: () => <Redirect to="/pages/errors/error-404" />
+		component: () => <Redirect to="/not-found" />
 	}
 ];
 

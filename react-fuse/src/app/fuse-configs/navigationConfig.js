@@ -1,11 +1,4 @@
-import i18next from 'i18next';
-import ar from './navigation-i18n/ar';
-import en from './navigation-i18n/en';
-import tr from './navigation-i18n/tr';
-
-i18next.addResourceBundle('en', 'navigation', en);
-i18next.addResourceBundle('tr', 'navigation', tr);
-i18next.addResourceBundle('ar', 'navigation', ar);
+import {authRoles} from '../auth'
 
 const navigationConfig = [
 	{
@@ -14,6 +7,7 @@ const navigationConfig = [
 		translate: 'APPLICATIONS',
 		type: 'group',
 		icon: 'apps',
+		auth : authRoles.admin, //['admin']
 		children: [
 			{
 				id: 'dashboards',
@@ -26,13 +20,13 @@ const navigationConfig = [
 						id: 'analytics-dashboard',
 						title: 'Analytics',
 						type: 'item',
-						url: '/dashboards/analytics'
+						url: '/dashboards'
 					},
 					{
 						id: 'project-dashboard',
 						title: 'Project',
 						type: 'item',
-						url: '/dashboards/project'
+						url: '/dashboards'
 					}
 				]
 			},

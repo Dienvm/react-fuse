@@ -9,7 +9,7 @@ import QuickPanelToggleButton from 'app/fuse-layouts/shared-components/quickPane
 import UserMenu from 'app/fuse-layouts/shared-components/UserMenu';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
+// import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
 
 const useStyles = makeStyles(theme => ({
 	separator: {
@@ -55,12 +55,6 @@ function ToolbarLayout1(props) {
 						<FuseSearch />
 
 						<div className={classes.separator} />
-
-						<LanguageSwitcher />
-
-						<div className={classes.separator} />
-
-						<QuickPanelToggleButton />
 					</div>
 
 					{config.navbar.display && config.navbar.position === 'right' && (

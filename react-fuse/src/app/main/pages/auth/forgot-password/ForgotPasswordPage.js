@@ -12,6 +12,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as authActions from 'app/auth/store/actions';
+import history from '@history';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -36,6 +37,9 @@ const ForgotPasswordPage = () => {
 
 		dispatch(authActions.resetPassword(form));
 		resetForm();
+		history.push({
+			pathname: '/login'
+		})
 	}
 
 	return (

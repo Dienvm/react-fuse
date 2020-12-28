@@ -1,8 +1,8 @@
-import DemoContent from '@fuse/core/DemoContent';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import DashboardComponent from './components';
 
 const useStyles = makeStyles(theme => ({
 	layoutRoot: {}
@@ -31,7 +31,7 @@ function DashboardPage(props) {
 				<div className="p-24">
 					<h4>Content</h4>
 					<br />
-					<DemoContent />
+					<DashboardComponent />
 				</div>
 			}
 		/>

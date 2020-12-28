@@ -4,7 +4,7 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import { makeStyles } from '@material-ui/core/styles';
 import AppContext from 'app/AppContext';
-import SettingsPanel from 'app/fuse-layouts/shared-components/SettingsPanel';
+
 import clsx from 'clsx';
 import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,6 @@ import { renderRoutes } from 'react-router-config';
 import FooterLayout1 from './components/FooterLayout1';
 import LeftSideLayout1 from './components/LeftSideLayout1';
 import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1';
-import RightSideLayout1 from './components/RightSideLayout1';
 import ToolbarLayout1 from './components/ToolbarLayout1';
 
 const useStyles = makeStyles(theme => ({
@@ -123,7 +122,6 @@ function Layout1(props) {
 
 									{config.footer.display && config.footer.position === 'below' && <FooterLayout1 />}
 
-									<SettingsPanel />
 								</div>
 
 								{config.navbar.display && config.navbar.position === 'right' && (
@@ -140,9 +138,6 @@ function Layout1(props) {
 							config.footer.style === 'fixed' &&
 							config.footer.position === 'above' && <FooterLayout1 />}
 					</div>
-
-					{config.rightSidePanel.display && <RightSideLayout1 />}
-
 					<FuseMessage />
 				</div>
 			);
@@ -184,7 +179,6 @@ function Layout1(props) {
 									config.footer.position === 'below' &&
 									config.footer.style === 'fixed' && <FooterLayout1 />}
 
-								<SettingsPanel />
 							</div>
 
 							{config.navbar.display && config.navbar.position === 'right' && <NavbarWrapperLayout1 />}
@@ -192,8 +186,6 @@ function Layout1(props) {
 
 						{config.footer.display && config.footer.position === 'above' && <FooterLayout1 />}
 					</div>
-
-					{config.rightSidePanel.display && <RightSideLayout1 />}
 
 					<FuseMessage />
 				</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DemoContent() {
+const DashboardComponent = () => {
 	return (
 		<div>
 			<img
@@ -112,6 +112,6 @@ function DemoContent() {
 			</p>
 		</div>
 	);
-}
+};
 
-export default React.memo(DemoContent);
+export default DashboardComponent;
