@@ -8,7 +8,7 @@ const ForgotPassword2PageConfig = {
 	},
 	routes: [
 		{
-			path: '/pages/auth/forgot-password',
+			path: '/forgot-password',
 			component: React.lazy(() => import('./ForgotPasswordPage'))
 		}
 	]
