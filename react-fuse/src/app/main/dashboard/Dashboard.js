@@ -1,7 +1,6 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import DashboardComponent from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -10,7 +9,6 @@ const useStyles = makeStyles(theme => ({
 
 function DashboardPage(props) {
 	const classes = useStyles(props);
-	const { t } = useTranslation('dashboardPage');
 
 	return (
 		<FusePageSimple
@@ -19,7 +17,7 @@ function DashboardPage(props) {
 			}}
 			header={
 				<div className="p-24">
-					<h4>{t('TITLE')}</h4>
+					<h4>TITLE</h4>
 				</div>
 			}
 			contentToolbar={
