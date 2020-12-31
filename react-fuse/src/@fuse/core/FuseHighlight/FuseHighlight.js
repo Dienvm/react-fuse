@@ -69,10 +69,10 @@ function FuseHighlight(props) {
 }
 
 FuseHighlight.propTypes = {
-	component: PropTypes.node
+	component: PropTypes.node,
 };
 FuseHighlight.defaultProps = {
-	component: 'code'
+	component: 'code',
 };
 
 export default React.memo(FuseHighlight);

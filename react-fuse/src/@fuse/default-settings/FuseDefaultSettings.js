@@ -15,8 +15,8 @@ export const defaultSettings = {
 		main: 'default',
 		navbar: 'mainThemeDark',
 		toolbar: 'mainThemeLight',
-		footer: 'mainThemeDark'
-	}
+		footer: 'mainThemeDark',
+	},
 };
 
 export function getParsedQuerySettings() {
@@ -44,20 +44,20 @@ export const defaultThemeOptions = {
 		fontWeightRegular: 400,
 		fontWeightMedium: 600,
 		useNextVariants: true,
-		suppressDeprecationWarnings: true
-	}
+		suppressDeprecationWarnings: true,
+	},
 };
 
 export const mustHaveThemeOptions = {
 	typography: {
 		htmlFontSize: 10,
 		body1: {
-			fontSize: '1.4rem'
+			fontSize: '1.4rem',
 		},
 		body2: {
-			fontSize: '1.4rem'
-		}
-	}
+			fontSize: '1.4rem',
+		},
+	},
 };
 
 export const defaultThemes = {
@@ -68,13 +68,13 @@ export const defaultThemes = {
 			secondary: {
 				light: lightBlue[400],
 				main: lightBlue[600],
-				dark: lightBlue[700]
+				dark: lightBlue[700],
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
+			danger: 'orange',
+		},
 	},
 	defaultDark: {
 		palette: {
@@ -83,14 +83,14 @@ export const defaultThemes = {
 			secondary: {
 				light: lightBlue[400],
 				main: lightBlue[600],
-				dark: lightBlue[700]
+				dark: lightBlue[700],
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
-	}
+			danger: 'orange',
+		},
+	},
 };
 
 export function extendThemeWithMixins(obj) {
@@ -99,28 +99,28 @@ export function extendThemeWithMixins(obj) {
 		border: (width = 1) => ({
 			borderWidth: width,
 			borderStyle: 'solid',
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		}),
 		borderLeft: (width = 1) => ({
 			borderLeftWidth: width,
 			borderStyle: 'solid',
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		}),
 		borderRight: (width = 1) => ({
 			borderRightWidth: width,
 			borderStyle: 'solid',
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		}),
 		borderTop: (width = 1) => ({
 			borderTopWidth: width,
 			borderStyle: 'solid',
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		}),
 		borderBottom: (width = 1) => ({
 			borderBottomWidth: width,
 			borderStyle: 'solid',
-			borderColor: theme.palette.divider
-		})
+			borderColor: theme.palette.divider,
+		}),
 	};
 }
 
@@ -132,10 +132,10 @@ export function mainThemeVariations(theme) {
 					type: 'dark',
 					background: {
 						paper: '#1E2125',
-						default: '#121212'
-					}
+						default: '#121212',
+					},
 				},
-				...mustHaveThemeOptions
+				...mustHaveThemeOptions,
 			})
 		),
 		mainThemeLight: createMuiTheme(
@@ -144,11 +144,11 @@ export function mainThemeVariations(theme) {
 					type: 'light',
 					background: {
 						paper: '#FFFFFF',
-						default: '#F7F7F7'
-					}
+						default: '#F7F7F7',
+					},
 				},
-				...mustHaveThemeOptions
+				...mustHaveThemeOptions,
 			})
-		)
+		),
 	};
 }

@@ -14,41 +14,41 @@ import 'react-table/react-table.css';
 const filterTypes = [
 	{
 		value: 'contains',
-		title: 'Contains'
+		title: 'Contains',
 	},
 	{
 		value: 'starts-with',
-		title: 'Starts with'
+		title: 'Starts with',
 	},
 	{
 		value: 'ends-with',
-		title: 'Ends with'
+		title: 'Ends with',
 	},
 	{
 		value: 'matches',
-		title: 'Matches'
+		title: 'Matches',
 	},
 	{
 		value: 'greater-than',
-		title: 'Grater than'
+		title: 'Grater than',
 	},
 	{
 		value: 'less-than',
-		title: 'Less than'
-	}
+		title: 'Less than',
+	},
 ];
 
 class FilterComponent extends Component {
 	state = {
 		filterType: 'contains',
 		filterValue: '',
-		filterMenuEl: null
+		filterMenuEl: null,
 	};
 
-	changeFilterType = filterType => {
+	changeFilterType = (filterType) => {
 		const newState = {
 			...this.state,
-			filterType
+			filterType,
 		};
 		// Update local state
 		this.setState(newState);
@@ -57,10 +57,10 @@ class FilterComponent extends Component {
 		this.handleFilterMenuClose();
 	};
 
-	changeFilterValue = event => {
+	changeFilterValue = (event) => {
 		const newState = {
 			...this.state,
-			filterValue: event.target.value
+			filterValue: event.target.value,
 		};
 		// Update local state
 		this.setState(newState);
@@ -68,7 +68,7 @@ class FilterComponent extends Component {
 		this.props.onChange(newState);
 	};
 
-	handleFilterMenuClick = event => {
+	handleFilterMenuClick = (event) => {
 		this.setState({ filterMenuEl: event.currentTarget });
 	};
 
@@ -104,7 +104,7 @@ class FilterComponent extends Component {
 									open={Boolean(filterMenuEl)}
 									onClose={this.handleFilterMenuClose}
 								>
-									{filterTypes.map(filter => (
+									{filterTypes.map((filter) => (
 										<MenuItem
 											key={filter.value}
 											onClick={() => this.changeFilterType(filter.value)}
@@ -157,16 +157,16 @@ const defaultFilterMethod = (filter, row) => {
  * React Table Defaults
  */
 Object.assign(ReactTableDefaults, {
-	PreviousComponent: props => (
+	PreviousComponent: (props) => (
 		<IconButton {...props}>
 			<Icon>chevron_left</Icon>
 		</IconButton>
 	),
-	NextComponent: props => (
+	NextComponent: (props) => (
 		<IconButton {...props}>
 			<Icon>chevron_right</Icon>
 		</IconButton>
 	),
-	FilterComponent: props => <FilterComponent {...props} />,
-	defaultFilterMethod
+	FilterComponent: (props) => <FilterComponent {...props} />,
+	defaultFilterMethod,
 });

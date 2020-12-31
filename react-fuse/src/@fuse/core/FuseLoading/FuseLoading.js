@@ -26,11 +26,11 @@ function FuseLoading(props) {
 }
 
 FuseLoading.propTypes = {
-	delay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
+	delay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };
 
 FuseLoading.defaultProps = {
-	delay: false
+	delay: false,
 };
 
 export default FuseLoading;

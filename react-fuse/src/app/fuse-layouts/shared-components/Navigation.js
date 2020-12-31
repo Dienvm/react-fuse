@@ -18,7 +18,7 @@ function Navigation(props) {
 }
 
 Navigation.defaultProps = {
-	layout: 'vertical'
+	layout: 'vertical',
 };
 
 export default Navigation;

@@ -16,14 +16,14 @@ import clsx from 'clsx';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {},
 	formControl: {
 		margin: '6px 0',
 		width: '100%',
 		'&:last-child': {
-			marginBottom: 0
-		}
+			marginBottom: 0,
+		},
 	},
 	group: {},
 	formGroupTitle: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 		left: 8,
 		fontWeight: 600,
 		padding: '0 4px',
-		backgroundColor: theme.palette.background.paper
+		backgroundColor: theme.palette.background.paper,
 	},
 	formGroup: {
 		position: 'relative',
@@ -41,9 +41,9 @@ const useStyles = makeStyles(theme => ({
 		padding: '12px 12px 0 12px',
 		margin: '24px 0 16px 0',
 		'&:first-of-type': {
-			marginTop: 16
-		}
-	}
+			marginTop: 16,
+		},
+	},
 }));
 
 function FuseSettings(props) {
@@ -87,14 +87,14 @@ function FuseSettings(props) {
 						style={{
 							backgroundColor: val.palette.background.default,
 							color: val.palette.text.primary,
-							border: `1px solid ${val.palette.divider}`
+							border: `1px solid ${val.palette.divider}`,
 						}}
 					>
 						{_.startCase(key)}
 						<div
 							className="flex w-full h-8 block absolute bottom-0 left-0 right-0"
 							style={{
-								borderTop: `1px solid ${val.palette.divider}`
+								borderTop: `1px solid ${val.palette.divider}`,
 							}}
 						>
 							<div className="w-1/4 h-8" style={{ backgroundColor: val.palette.primary.main }} />
@@ -166,7 +166,7 @@ function FuseSettings(props) {
 								onChange={handleChange}
 								row={formControl.options.length < 4}
 							>
-								{formControl.options.map(opt => (
+								{formControl.options.map((opt) => (
 									<FormControlLabel
 										key={opt.value}
 										value={opt.value}

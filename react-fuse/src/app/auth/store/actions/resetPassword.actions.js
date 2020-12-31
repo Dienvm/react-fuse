@@ -10,18 +10,18 @@ export function resetPassword({ email }) {
 		return () => false;
 	}
 
-	return dispatch =>
+	return (dispatch) =>
 		firebaseService.auth
 			.sendPasswordResetEmail(email)
 			.then(() => {
 				return dispatch({
-					type: RESET_PASSWORD_SUCCESS
+					type: RESET_PASSWORD_SUCCESS,
 				});
 			})
-			.catch(error => {
+			.catch((error) => {
 				return dispatch({
 					type: RESET_PASSWORD_ERROR,
-					payload: error.message
+					payload: error.message,
 				});
 			});
 }

@@ -14,31 +14,31 @@ import { useDispatch } from 'react-redux';
 import * as authActions from 'app/auth/store/actions';
 import history from '@history';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		background: `radial-gradient(${darken(theme.palette.primary.dark, 0.5)} 0%, ${theme.palette.primary.dark} 80%)`,
-		color: theme.palette.primary.contrastText
-	}
+		color: theme.palette.primary.contrastText,
+	},
 }));
 
 const ForgotPasswordPage = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const { form, handleChange, resetForm } = useForm({
-		email: ''
+		email: '',
 	});
 
 	const isFormValid = () => {
 		return form.email.length > 0;
 	};
 
-	const handleSubmit = ev => {
+	const handleSubmit = (ev) => {
 		ev.preventDefault();
 
 		dispatch(authActions.resetPassword(form));
 		resetForm();
 		history.push({
-			pathname: '/login'
+			pathname: '/login',
 		});
 	};
 

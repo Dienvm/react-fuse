@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import DashboardComponent from './components';
 
-const useStyles = makeStyles(theme => ({
-	layoutRoot: {}
+const useStyles = makeStyles((theme) => ({
+	layoutRoot: {},
 }));
 
 function DashboardPage(props) {
@@ -13,7 +13,7 @@ function DashboardPage(props) {
 	return (
 		<FusePageSimple
 			classes={{
-				root: classes.layoutRoot
+				root: classes.layoutRoot,
 			}}
 			header={
 				<div className="p-24">

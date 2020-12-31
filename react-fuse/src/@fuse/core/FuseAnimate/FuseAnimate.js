@@ -7,8 +7,8 @@ const FuseAnimate = React.forwardRef((props, ref) => {
 	const children = React.cloneElement(props.children, {
 		style: {
 			...props.children.style,
-			visibility: 'hidden'
-		}
+			visibility: 'hidden',
+		},
 	});
 	return (
 		<VelocityComponent ref={ref} {...props}>
@@ -18,7 +18,7 @@ const FuseAnimate = React.forwardRef((props, ref) => {
 });
 
 FuseAnimate.propTypes = {
-	children: PropTypes.element.isRequired
+	children: PropTypes.element.isRequired,
 };
 
 FuseAnimate.defaultProps = {
@@ -31,7 +31,7 @@ FuseAnimate.defaultProps = {
 	delay: 50,
 	easing: [0.4, 0.0, 0.2, 1],
 	display: null,
-	setRef: undefined
+	setRef: undefined,
 };
 
 export default React.memo(FuseAnimate);

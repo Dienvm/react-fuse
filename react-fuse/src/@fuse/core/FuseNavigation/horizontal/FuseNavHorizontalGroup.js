@@ -18,37 +18,37 @@ import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FuseNavItem from '../FuseNavItem';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		color: theme.palette.text.primary,
 		'&.active, &.active:hover, &.active:focus': {
 			backgroundColor: `${theme.palette.secondary.main}!important`,
 			color: `${theme.palette.secondary.contrastText}!important`,
 			'& .list-item-text-primary': {
-				color: 'inherit'
+				color: 'inherit',
 			},
 			'& .list-item-icon': {
-				color: 'inherit'
-			}
+				color: 'inherit',
+			},
 		},
 		'& .list-item-text': {
-			padding: '0 0 0 16px'
+			padding: '0 0 0 16px',
 		},
 		'&.level-0': {
 			height: 44,
 			borderRadius: 4,
 			'&:hover': {
-				background: 'transparent'
-			}
-		}
+				background: 'transparent',
+			},
+		},
 	},
 	children: {},
 	popper: {
-		zIndex: 999
+		zIndex: 999,
 	},
 	popperClose: {
-		pointerEvents: 'none'
-	}
+		pointerEvents: 'none',
+	},
 }));
 
 function FuseNavHorizontalGroup(props) {
@@ -60,7 +60,7 @@ function FuseNavHorizontalGroup(props) {
 	const theme = useTheme();
 	const { t } = useTranslation('navigation');
 
-	const handleToggle = useDebounce(open => {
+	const handleToggle = useDebounce((open) => {
 		setOpened(open);
 	}, 150);
 
@@ -153,7 +153,7 @@ function FuseNavHorizontalGroup(props) {
 								ref={ref}
 								style={{
 									...style,
-									zIndex: 999 + nestedLevel
+									zIndex: 999 + nestedLevel,
 								}}
 								data-placement={placement}
 								className={clsx(classes.popper, { [classes.popperClose]: !opened })}
@@ -172,7 +172,7 @@ function FuseNavHorizontalGroup(props) {
 													'px-0'
 												)}
 											>
-												{item.children.map(_item => (
+												{item.children.map((_item) => (
 													<FuseNavItem
 														key={_item.id}
 														type={`horizontal-${_item.type}`}
@@ -199,8 +199,8 @@ FuseNavHorizontalGroup.propTypes = {
 	item: PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		title: PropTypes.string,
-		children: PropTypes.array
-	})
+		children: PropTypes.array,
+	}),
 };
 
 FuseNavHorizontalGroup.defaultProps = {};

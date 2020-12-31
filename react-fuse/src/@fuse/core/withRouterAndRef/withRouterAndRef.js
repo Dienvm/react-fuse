@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-const withRouterAndRef = WrappedComponent => {
+const withRouterAndRef = (WrappedComponent) => {
 	class InnerComponentWithRef extends React.Component {
 		render() {
 			const { forwardRef, ...rest } = this.props;

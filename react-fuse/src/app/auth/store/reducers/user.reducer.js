@@ -6,12 +6,12 @@ const initialState = {
 		displayName: '',
 		photoURL: '',
 		email: '',
-		shortcuts: []
+		shortcuts: [],
 		// displayName: 'John Doe',
 		// photoURL: 'assets/images/avatars/Velazquez.jpg',
 		// email: 'johndoe@withinpixels.com',
 		// shortcuts: ['calendar', 'mail', 'contacts', 'todo']
-	}
+	},
 };
 
 const user = (state = initialState, action) => {
@@ -19,12 +19,12 @@ const user = (state = initialState, action) => {
 		case Actions.SET_USER_DATA: {
 			return {
 				...initialState,
-				...action.payload
+				...action.payload,
 			};
 		}
 		case Actions.REMOVE_USER_DATA: {
 			return {
-				...initialState
+				...initialState,
 			};
 		}
 		case Actions.USER_LOGGED_OUT: {

@@ -2,11 +2,11 @@ import auth from 'app/auth/store/reducers';
 import { combineReducers } from 'redux';
 import fuse from './fuse';
 
-const createReducer = asyncReducers =>
+const createReducer = (asyncReducers) =>
 	combineReducers({
 		auth,
 		fuse,
-		...asyncReducers
+		...asyncReducers,
 	});
 
 export default createReducer;

@@ -4,9 +4,9 @@ import { useCallback, useState } from 'react';
 function useForm(initialState, onSubmit) {
 	const [form, setForm] = useState(initialState);
 
-	const handleChange = useCallback(event => {
+	const handleChange = useCallback((event) => {
 		event.persist();
-		setForm(_form =>
+		setForm((_form) =>
 			_.setIn(
 				{ ..._form },
 				event.target.name,
@@ -22,11 +22,11 @@ function useForm(initialState, onSubmit) {
 	}, [form, initialState]);
 
 	const setInForm = useCallback((name, value) => {
-		setForm(_form => _.setIn(_form, name, value));
+		setForm((_form) => _.setIn(_form, name, value));
 	}, []);
 
 	const handleSubmit = useCallback(
-		event => {
+		(event) => {
 			if (event) {
 				event.preventDefault();
 			}
@@ -43,7 +43,7 @@ function useForm(initialState, onSubmit) {
 		handleSubmit,
 		resetForm,
 		setForm,
-		setInForm
+		setInForm,
 	};
 }
 

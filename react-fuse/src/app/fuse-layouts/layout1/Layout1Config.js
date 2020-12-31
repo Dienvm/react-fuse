@@ -6,24 +6,24 @@ const config = {
 		navbar: {
 			display: true,
 			folded: false,
-			position: 'left'
+			position: 'left',
 		},
 		toolbar: {
 			display: true,
 			style: 'fixed',
-			position: 'below'
+			position: 'below',
 		},
 		footer: {
 			display: true,
 			style: 'fixed',
-			position: 'below'
+			position: 'below',
 		},
 		leftSidePanel: {
-			display: true
+			display: true,
 		},
 		rightSidePanel: {
-			display: false
-		}
+			display: false,
+		},
 	},
 	form: {
 		mode: {
@@ -32,13 +32,13 @@ const config = {
 			options: [
 				{
 					name: 'Boxed',
-					value: 'boxed'
+					value: 'boxed',
 				},
 				{
 					name: 'Full Width',
-					value: 'fullwidth'
-				}
-			]
+					value: 'fullwidth',
+				},
+			],
 		},
 		scroll: {
 			title: 'Scrollable Area',
@@ -46,13 +46,13 @@ const config = {
 			options: [
 				{
 					name: 'Body',
-					value: 'body'
+					value: 'body',
 				},
 				{
 					name: 'Content',
-					value: 'content'
-				}
-			]
+					value: 'content',
+				},
+			],
 		},
 		navbar: {
 			type: 'group',
@@ -60,11 +60,11 @@ const config = {
 			children: {
 				display: {
 					title: 'Display',
-					type: 'switch'
+					type: 'switch',
 				},
 				folded: {
 					title: 'Folded',
-					type: 'switch'
+					type: 'switch',
 				},
 				position: {
 					title: 'Position',
@@ -72,15 +72,15 @@ const config = {
 					options: [
 						{
 							name: 'Left',
-							value: 'left'
+							value: 'left',
 						},
 						{
 							name: 'Right',
-							value: 'right'
-						}
-					]
-				}
-			}
+							value: 'right',
+						},
+					],
+				},
+			},
 		},
 		toolbar: {
 			type: 'group',
@@ -88,7 +88,7 @@ const config = {
 			children: {
 				display: {
 					title: 'Display',
-					type: 'switch'
+					type: 'switch',
 				},
 				style: {
 					title: 'Style',
@@ -96,13 +96,13 @@ const config = {
 					options: [
 						{
 							name: 'Fixed',
-							value: 'fixed'
+							value: 'fixed',
 						},
 						{
 							name: 'Static',
-							value: 'static'
-						}
-					]
+							value: 'static',
+						},
+					],
 				},
 				position: {
 					title: 'Position',
@@ -110,15 +110,15 @@ const config = {
 					options: [
 						{
 							name: 'Above',
-							value: 'above'
+							value: 'above',
 						},
 						{
 							name: 'Below',
-							value: 'below'
-						}
-					]
-				}
-			}
+							value: 'below',
+						},
+					],
+				},
+			},
 		},
 		footer: {
 			type: 'group',
@@ -126,7 +126,7 @@ const config = {
 			children: {
 				display: {
 					title: 'Display',
-					type: 'switch'
+					type: 'switch',
 				},
 				style: {
 					title: 'Style',
@@ -134,13 +134,13 @@ const config = {
 					options: [
 						{
 							name: 'Fixed',
-							value: 'fixed'
+							value: 'fixed',
 						},
 						{
 							name: 'Static',
-							value: 'static'
-						}
-					]
+							value: 'static',
+						},
+					],
 				},
 				position: {
 					title: 'Position',
@@ -148,17 +148,17 @@ const config = {
 					options: [
 						{
 							name: 'Above',
-							value: 'above'
+							value: 'above',
 						},
 						{
 							name: 'Below',
-							value: 'below'
-						}
-					]
-				}
-			}
-		}
-	}
+							value: 'below',
+						},
+					],
+				},
+			},
+		},
+	},
 };
 
 export default config;

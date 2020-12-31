@@ -17,11 +17,11 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as authActions from 'app/auth/store/actions';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		background: `radial-gradient(${darken(theme.palette.primary.dark, 0.5)} 0%, ${theme.palette.primary.dark} 80%)`,
-		color: theme.palette.primary.contrastText
-	}
+		color: theme.palette.primary.contrastText,
+	},
 }));
 
 const RegisterPage = () => {
@@ -33,7 +33,7 @@ const RegisterPage = () => {
 		email: '',
 		password: '',
 		passwordConfirm: '',
-		acceptTermsConditions: false
+		acceptTermsConditions: false,
 	});
 
 	const isFormValid = () => {
@@ -46,7 +46,7 @@ const RegisterPage = () => {
 		);
 	};
 
-	const handleSubmit = ev => {
+	const handleSubmit = (ev) => {
 		ev.preventDefault();
 
 		dispatch(authActions.registerWithFirebase(form));

@@ -12,7 +12,7 @@ const fuseReducers = combineReducers({
 	navbar,
 	message,
 	dialog,
-	routes
+	routes,
 });
 
 export default fuseReducers;

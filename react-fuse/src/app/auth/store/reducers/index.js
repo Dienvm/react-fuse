@@ -6,7 +6,7 @@ import user from './user.reducer';
 const authReducers = combineReducers({
 	user,
 	login,
-	register
+	register,
 });
 
 export default authReducers;

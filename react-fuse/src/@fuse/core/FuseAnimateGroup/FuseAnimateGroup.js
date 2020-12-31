@@ -10,7 +10,7 @@ const enterAnimationDefaults = {
 	duration: 200,
 	display: null,
 	visibility: 'visible',
-	delay: 0
+	delay: 0,
 };
 
 const leaveAnimationDefaults = {
@@ -18,7 +18,7 @@ const leaveAnimationDefaults = {
 	duration: 200,
 	display: null,
 	visibility: 'visible',
-	delay: 0
+	delay: 0,
 };
 
 function FuseAnimateGroup(props) {
@@ -26,7 +26,7 @@ function FuseAnimateGroup(props) {
 		{},
 		{
 			enter: enterAnimationDefaults,
-			leave: leaveAnimationDefaults
+			leave: leaveAnimationDefaults,
 		},
 		props
 	);
@@ -35,7 +35,7 @@ function FuseAnimateGroup(props) {
 }
 
 FuseAnimateGroup.propTypes = {
-	children: PropTypes.any
+	children: PropTypes.any,
 };
 
 FuseAnimateGroup.defaultProps = {
@@ -44,11 +44,11 @@ FuseAnimateGroup.defaultProps = {
 	easing: [0.4, 0.0, 0.2, 1],
 	runOnMount: true,
 	enterHideStyle: {
-		visibility: 'visible'
+		visibility: 'visible',
 	},
 	enterShowStyle: {
-		visibility: 'hidden'
-	}
+		visibility: 'hidden',
+	},
 };
 
 export default React.memo(FuseAnimateGroup);

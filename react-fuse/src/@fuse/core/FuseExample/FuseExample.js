@@ -10,11 +10,11 @@ import DemoFrame from './DemoFrame';
 
 const propTypes = {
 	raw: PropTypes.object,
-	currentTabIndex: PropTypes.number
+	currentTabIndex: PropTypes.number,
 };
 
 const defaultProps = {
-	currentTabIndex: 0
+	currentTabIndex: 0,
 };
 
 function FuseExample(props) {
@@ -31,7 +31,7 @@ function FuseExample(props) {
 				<Tabs
 					classes={{
 						root: 'border-b-1',
-						flexContainer: 'justify-end'
+						flexContainer: 'justify-end',
 					}}
 					value={currentTab}
 					onChange={handleChange}

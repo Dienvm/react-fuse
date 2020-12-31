@@ -21,12 +21,12 @@ const handlerNameByEvent = {
 	'ps-y-reach-start': 'onYReachStart',
 	'ps-y-reach-end': 'onYReachEnd',
 	'ps-x-reach-start': 'onXReachStart',
-	'ps-x-reach-end': 'onXReachEnd'
+	'ps-x-reach-end': 'onXReachEnd',
 };
 Object.freeze(handlerNameByEvent);
 
-const useStyles = makeStyles(theme => ({
-	root: {}
+const useStyles = makeStyles((theme) => ({
+	root: {},
 }));
 
 const FuseScrollbars = React.forwardRef((props, ref) => {
@@ -37,7 +37,7 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
 	const { customScrollbars } = props;
 
 	const hookUpEvents = useCallback(() => {
-		Object.keys(handlerNameByEvent).forEach(key => {
+		Object.keys(handlerNameByEvent).forEach((key) => {
 			const callback = props[handlerNameByEvent[key]];
 			if (callback) {
 				const handler = () => callback(ref.current);
@@ -46,7 +46,7 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
 			}
 		});
 		// eslint-disable-next-line
-    }, [ref]);
+	}, [ref]);
 
 	const unHookUpEvents = useCallback(() => {
 		handlerByEvent.current.forEach((value, key) => {
@@ -138,7 +138,7 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
 				props.customScrollbars && (props.enable || true) && !isMobile
 					? {
 							position: 'relative',
-							overflow: 'hidden'
+							overflow: 'hidden',
 					  }
 					: {}
 			}
@@ -151,7 +151,7 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
 
 function mapStateToProps({ fuse }) {
 	return {
-		customScrollbars: fuse.settings.current.customScrollbars
+		customScrollbars: fuse.settings.current.customScrollbars,
 	};
 }
 
@@ -167,7 +167,7 @@ FuseScrollbars.propTypes = {
 	onXReachStart: PropTypes.func,
 	onXReachEnd: PropTypes.func,
 	scrollToTopOnRouteChange: PropTypes.bool,
-	scrollToTopOnChildChange: PropTypes.bool
+	scrollToTopOnChildChange: PropTypes.bool,
 };
 
 FuseScrollbars.defaultProps = {
@@ -176,7 +176,7 @@ FuseScrollbars.defaultProps = {
 	scrollToTopOnChildChange: false,
 	scrollToTopOnRouteChange: false,
 	option: {
-		wheelPropagation: true
+		wheelPropagation: true,
 	},
 	ref: undefined,
 	onScrollY: undefined,
@@ -188,7 +188,7 @@ FuseScrollbars.defaultProps = {
 	onYReachStart: undefined,
 	onYReachEnd: undefined,
 	onXReachStart: undefined,
-	onXReachEnd: undefined
+	onXReachEnd: undefined,
 };
 
 export default connect(mapStateToProps, null, null, { forwardRef: true })(withRouterAndRef(FuseScrollbars));

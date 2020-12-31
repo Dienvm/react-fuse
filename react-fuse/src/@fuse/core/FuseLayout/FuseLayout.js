@@ -12,39 +12,39 @@ import { bindActionCreators } from 'redux';
 import * as Velocity from 'velocity-animate';
 import { defaults as Chartjs2Defaults } from 'react-chartjs-2';
 
-const styles = theme => ({
+const styles = (theme) => ({
 	'@global': {
 		'code:not([class*="language-"])': {
 			color: theme.palette.secondary.dark,
 			backgroundColor: theme.palette.type === 'light' ? 'rgba(255, 255, 255, .9)' : 'rgba(0, 0, 0, .9)',
 			padding: '2px 3px',
 			borderRadius: 2,
-			lineHeight: 1.7
+			lineHeight: 1.7,
 		},
 		'table.simple tbody tr td': {
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		},
 		'table.simple thead tr th': {
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		},
 		'a:not([role=button])': {
 			color: theme.palette.secondary.main,
 			textDecoration: 'none',
 			'&:hover': {
-				textDecoration: 'underline'
-			}
+				textDecoration: 'underline',
+			},
 		},
 		'[class^="border-"]': {
-			borderColor: theme.palette.divider
+			borderColor: theme.palette.divider,
 		},
 		'[class*="border-"]': {
-			borderColor: theme.palette.divider
-		}
+			borderColor: theme.palette.divider,
+		},
 	},
 	root: {
 		backgroundColor: theme.palette.background.default,
-		color: theme.palette.text.primary
-	}
+		color: theme.palette.text.primary,
+	},
 });
 
 class FuseLayout extends Component {
@@ -54,7 +54,7 @@ class FuseLayout extends Component {
 
 		this.state = {
 			awaitRender: false,
-			routes
+			routes,
 		};
 	}
 
@@ -95,7 +95,7 @@ class FuseLayout extends Component {
 
 		return {
 			awaitRender: !_.isEqual(props.settings, newSettings),
-			pathname
+			pathname,
 		};
 	}
 
@@ -113,7 +113,7 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
 		{
 			setSettings: Actions.setSettings,
-			resetSettings: Actions.resetSettings
+			resetSettings: Actions.resetSettings,
 		},
 		dispatch
 	);
@@ -122,7 +122,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps({ fuse }) {
 	return {
 		defaultSettings: fuse.settings.defaults,
-		settings: fuse.settings.current
+		settings: fuse.settings.current,
 	};
 }
 

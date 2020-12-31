@@ -22,16 +22,16 @@ const useStyles = makeStyles({
 	root: {
 		'&.horizontal': {},
 		'&.vertical': {
-			flexDirection: 'column'
-		}
+			flexDirection: 'column',
+		},
 	},
 	item: {
 		textDecoration: 'none!important',
-		color: 'inherit'
+		color: 'inherit',
 	},
 	addIcon: {
-		color: amber[600]
-	}
+		color: amber[600],
+	},
 });
 
 function FuseShortcuts(props) {
@@ -45,7 +45,7 @@ function FuseShortcuts(props) {
 	const [searchText, setSearchText] = useState('');
 	const [searchResults, setSearchResults] = useState(null);
 	const [navigation, setNavigation] = useState(null);
-	const shortcutItems = shortcuts ? shortcuts.map(id => FuseUtils.findById(navigationData, id)) : [];
+	const shortcutItems = shortcuts ? shortcuts.map((id) => FuseUtils.findById(navigationData, id)) : [];
 
 	useEffect(() => {
 		function flattenNavigation() {
@@ -69,7 +69,9 @@ function FuseShortcuts(props) {
 		setSearchText(newSearchText);
 
 		if (newSearchText.length !== 0 && navigation) {
-			setSearchResults(navigation.filter(item => item.title.toLowerCase().includes(newSearchText.toLowerCase())));
+			setSearchResults(
+				navigation.filter((item) => item.title.toLowerCase().includes(newSearchText.toLowerCase()))
+			);
 			return;
 		}
 		setSearchResults(null);
@@ -77,7 +79,7 @@ function FuseShortcuts(props) {
 
 	function toggleInShortcuts(id) {
 		let newShortcuts = [...shortcuts];
-		newShortcuts = newShortcuts.includes(id) ? newShortcuts.filter(_id => id !== _id) : [...newShortcuts, id];
+		newShortcuts = newShortcuts.includes(id) ? newShortcuts.filter((_id) => id !== _id) : [...newShortcuts, id];
 		dispatch(UserActions.updateUserShortcuts(newShortcuts));
 	}
 
@@ -94,7 +96,7 @@ function FuseShortcuts(props) {
 					</ListItemIcon>
 					<ListItemText primary={item.title} />
 					<IconButton
-						onClick={ev => {
+						onClick={(ev) => {
 							ev.preventDefault();
 							ev.stopPropagation();
 							onToggle(item.id);
@@ -119,12 +121,12 @@ function FuseShortcuts(props) {
 		>
 			<FuseAnimateGroup
 				enter={{
-					animation: 'transition.expandIn'
+					animation: 'transition.expandIn',
 				}}
 				className={clsx('flex flex-1', props.variant === 'vertical' && 'flex-col')}
 			>
 				{shortcutItems.map(
-					item =>
+					(item) =>
 						item && (
 							<Link to={item.url} key={item.id} className={classes.item} role="button">
 								<Tooltip
@@ -164,7 +166,7 @@ function FuseShortcuts(props) {
 				open={Boolean(addMenu)}
 				onClose={addMenuClose}
 				classes={{
-					paper: 'mt-48'
+					paper: 'mt-48',
 				}}
 				onEntered={() => {
 					searchInputRef.current.focus();
@@ -182,7 +184,7 @@ function FuseShortcuts(props) {
 						className=""
 						fullWidth
 						inputProps={{
-							'aria-label': 'Search'
+							'aria-label': 'Search',
 						}}
 					/>
 				</div>
@@ -191,7 +193,7 @@ function FuseShortcuts(props) {
 
 				{searchText.length !== 0 &&
 					searchResults &&
-					searchResults.map(item => (
+					searchResults.map((item) => (
 						<ShortcutMenuItem key={item.id} item={item} onToggle={() => toggleInShortcuts(item.id)} />
 					))}
 
@@ -203,7 +205,7 @@ function FuseShortcuts(props) {
 
 				{searchText.length === 0 &&
 					shortcutItems.map(
-						item =>
+						(item) =>
 							item && (
 								<ShortcutMenuItem
 									key={item.id}
@@ -219,7 +221,7 @@ function FuseShortcuts(props) {
 
 FuseShortcuts.propTypes = {};
 FuseShortcuts.defaultProps = {
-	variant: 'horizontal'
+	variant: 'horizontal',
 };
 
 export default React.memo(FuseShortcuts);

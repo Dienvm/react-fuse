@@ -10,15 +10,15 @@ import Tooltip from '@material-ui/core/Tooltip';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	paper: {
 		display: 'flex',
-		width: 56
+		width: 56,
 	},
 	root: {
 		transition: theme.transitions.create(['transform', 'width', 'min-width'], {
 			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.shorter
+			duration: theme.transitions.duration.shorter,
 		}),
 		paddingBottom: 64,
 		position: 'relative',
@@ -26,53 +26,53 @@ const useStyles = makeStyles(theme => ({
 		'&.left': {
 			'& $buttonWrapper': {
 				left: 0,
-				right: 'auto'
+				right: 'auto',
 			},
 			'& $buttonIcon': {
-				transform: 'rotate(0deg)'
-			}
+				transform: 'rotate(0deg)',
+			},
 		},
 		'&.right': {
 			'& $buttonWrapper': {
 				right: 0,
-				left: 'auto'
+				left: 'auto',
 			},
 			'& $buttonIcon': {
-				transform: 'rotate(-180deg)'
-			}
+				transform: 'rotate(-180deg)',
+			},
 		},
 		'&.closed': {
 			[theme.breakpoints.up('lg')]: {
-				width: 0
+				width: 0,
 			},
 			'&.left': {
 				'& $buttonWrapper': {
-					justifyContent: 'start'
+					justifyContent: 'start',
 				},
 				'& $button': {
 					borderBottomLeftRadius: 0,
 					borderTopLeftRadius: 0,
-					paddingLeft: 4
+					paddingLeft: 4,
 				},
 				'& $buttonIcon': {
-					transform: 'rotate(-180deg)'
-				}
+					transform: 'rotate(-180deg)',
+				},
 			},
 			'&.right': {
 				'& $buttonWrapper': {
-					justifyContent: 'flex-end'
+					justifyContent: 'flex-end',
 				},
 				'& $button': {
 					borderBottomRightRadius: 0,
 					borderTopRightRadius: 0,
-					paddingRight: 4
+					paddingRight: 4,
 				},
 				'& $buttonIcon': {
-					transform: 'rotate(0deg)'
-				}
+					transform: 'rotate(0deg)',
+				},
 			},
 			'& $buttonWrapper': {
-				width: 'auto'
+				width: 'auto',
 			},
 			'& $button': {
 				backgroundColor: theme.palette.background.paper,
@@ -81,28 +81,28 @@ const useStyles = makeStyles(theme => ({
 					['background-color', 'border-radius', 'width', 'min-width', 'padding'],
 					{
 						easing: theme.transitions.easing.easeInOut,
-						duration: theme.transitions.duration.shorter
+						duration: theme.transitions.duration.shorter,
 					}
 				),
 				width: 24,
 				'&:hover': {
 					width: 52,
 					paddingLeft: 8,
-					paddingRight: 8
-				}
+					paddingRight: 8,
+				},
 			},
 			'& $content': {
-				opacity: 0
-			}
-		}
+				opacity: 0,
+			},
+		},
 	},
 	content: {
 		overflow: 'hidden',
 		opacity: 1,
 		transition: theme.transitions.create(['opacity'], {
 			easing: theme.transitions.easing.easeInOut,
-			duration: theme.transitions.duration.short
-		})
+			duration: theme.transitions.duration.short,
+		}),
 	},
 	buttonWrapper: {
 		position: 'absolute',
@@ -113,18 +113,18 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'center',
 		padding: '12px 0',
 		width: '100%',
-		minWidth: 56
+		minWidth: 56,
 	},
 	button: {
 		padding: 8,
 		width: 40,
-		height: 40
+		height: 40,
 	},
 	buttonIcon: {
 		transition: theme.transitions.create(['transform'], {
 			easing: theme.transitions.easing.easeInOut,
-			duration: theme.transitions.duration.short
-		})
+			duration: theme.transitions.duration.short,
+		}),
 	},
 	mobileButton: {
 		height: 40,
@@ -137,18 +137,18 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.background.paper,
 		transition: theme.transitions.create(['background-color', 'border-radius', 'width', 'min-width', 'padding'], {
 			easing: theme.transitions.easing.easeInOut,
-			duration: theme.transitions.duration.shorter
+			duration: theme.transitions.duration.shorter,
 		}),
 		'&:hover': {
 			width: 52,
 			paddingLeft: 8,
-			paddingRight: 8
+			paddingRight: 8,
 		},
 		'&.left': {
 			borderBottomLeftRadius: 0,
 			borderTopLeftRadius: 0,
 			paddingLeft: 4,
-			left: 0
+			left: 0,
 		},
 
 		'&.right': {
@@ -157,10 +157,10 @@ const useStyles = makeStyles(theme => ({
 			paddingRight: 4,
 			right: 0,
 			'& $buttonIcon': {
-				transform: 'rotate(-180deg)'
-			}
-		}
-	}
+				transform: 'rotate(-180deg)',
+			},
+		},
+	},
 }));
 
 function FuseSidePanel(props) {
@@ -204,7 +204,7 @@ function FuseSidePanel(props) {
 			<Hidden lgUp>
 				<Drawer
 					classes={{
-						paper: clsx(classes.paper, props.className)
+						paper: clsx(classes.paper, props.className),
 					}}
 					anchor={props.position}
 					open={mobileOpen}
@@ -232,7 +232,7 @@ function FuseSidePanel(props) {
 FuseSidePanel.propTypes = {};
 FuseSidePanel.defaultProps = {
 	position: 'left',
-	opened: true
+	opened: true,
 };
 
 export default React.memo(FuseSidePanel);

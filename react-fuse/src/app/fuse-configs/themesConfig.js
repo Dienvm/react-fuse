@@ -9,17 +9,17 @@ const themesConfig = {
 			secondary: {
 				light: skyBlue[100],
 				main: skyBlue[500],
-				dark: skyBlue[900]
+				dark: skyBlue[900],
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
+				default: '#F7F7F7',
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
+			danger: 'orange',
+		},
 	},
 	legacy: {
 		palette: {
@@ -28,17 +28,17 @@ const themesConfig = {
 			secondary: {
 				light: lightBlue[400],
 				main: lightBlue[600],
-				dark: lightBlue[700]
+				dark: lightBlue[700],
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
+				default: '#F7F7F7',
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
+			danger: 'orange',
+		},
 	},
 	sunset: {
 		palette: {
@@ -46,23 +46,23 @@ const themesConfig = {
 			primary: {
 				light: '#FF908B',
 				main: '#D0605E',
-				dark: '#9B3134'
+				dark: '#9B3134',
 			},
 			secondary: {
 				light: '#C76A1D',
 				main: '#FF994C',
 				dark: '#FFCA7B',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
+				default: '#F7F7F7',
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
+			danger: 'orange',
+		},
 	},
 	greeny: {
 		palette: {
@@ -70,23 +70,23 @@ const themesConfig = {
 			primary: {
 				light: '#6CABD4',
 				main: '#387CA3',
-				dark: '#005074'
+				dark: '#005074',
 			},
 			secondary: {
 				light: '#89F6CF',
 				main: '#55C39E',
 				dark: '#159270',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
+				default: '#F7F7F7',
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
+			danger: 'orange',
+		},
 	},
 	beach: {
 		palette: {
@@ -95,19 +95,19 @@ const themesConfig = {
 				light: '#C4D8DD',
 				main: '#93A7AB',
 				dark: '#65787C',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			secondary: {
 				light: '#FFB281',
 				main: '#F18153',
 				dark: '#BA5228',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
-			}
-		}
+				default: '#F7F7F7',
+			},
+		},
 	},
 	tech: {
 		palette: {
@@ -116,18 +116,18 @@ const themesConfig = {
 				light: '#87EFFF',
 				main: '#4DBCE9',
 				dark: '#008CB7',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			secondary: {
 				light: '#FFFF83',
 				main: '#D1E751',
-				dark: '#9DB516'
+				dark: '#9DB516',
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
-			}
-		}
+				default: '#F7F7F7',
+			},
+		},
 	},
 	sweetHues: {
 		palette: {
@@ -136,18 +136,18 @@ const themesConfig = {
 				light: '#D5C1EB',
 				main: '#A391B9',
 				dark: '#746389',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			secondary: {
 				light: '#90AFD4',
 				main: '#6080A3',
-				dark: '#325474'
+				dark: '#325474',
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
-			}
-		}
+				default: '#F7F7F7',
+			},
+		},
 	},
 	defaultDark: {
 		palette: {
@@ -156,17 +156,17 @@ const themesConfig = {
 			secondary: {
 				light: skyBlue[100],
 				main: skyBlue[500],
-				dark: skyBlue[900]
+				dark: skyBlue[900],
 			},
 			background: {
 				paper: '#1E2125',
-				default: '#121212'
+				default: '#121212',
 			},
-			error: red
+			error: red,
 		},
 		status: {
-			danger: 'orange'
-		}
+			danger: 'orange',
+		},
 	},
 	deepOcean: {
 		palette: {
@@ -174,19 +174,19 @@ const themesConfig = {
 			primary: {
 				light: '#8F53E7',
 				main: '#5A24B4',
-				dark: '#1E0083'
+				dark: '#1E0083',
 			},
 			secondary: {
 				light: '#FF61FF',
 				main: '#FE00E9',
 				dark: '#C600B6',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			background: {
 				paper: '#1E2125',
-				default: '#121212'
-			}
-		}
+				default: '#121212',
+			},
+		},
 	},
 	slate: {
 		palette: {
@@ -194,20 +194,20 @@ const themesConfig = {
 			primary: {
 				light: '#86FFF7',
 				main: '#4ECDC4',
-				dark: '#009B94'
+				dark: '#009B94',
 			},
 			secondary: {
 				light: '#FF9D99',
 				main: '#FF6B6B',
 				dark: '#C73840',
-				contrastText: '#FFF'
+				contrastText: '#FFF',
 			},
 			background: {
 				paper: '#1E2125',
-				default: '#121212'
-			}
-		}
-	}
+				default: '#121212',
+			},
+		},
+	},
 };
 
 export default themesConfig;

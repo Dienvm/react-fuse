@@ -14,7 +14,7 @@ import LeftSideLayout1 from './components/LeftSideLayout1';
 import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1';
 import ToolbarLayout1 from './components/ToolbarLayout1';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		position: 'relative',
 		display: 'flex',
@@ -27,37 +27,37 @@ const useStyles = makeStyles(theme => ({
 		'&.boxed': {
 			maxWidth: 1280,
 			margin: '0 auto',
-			boxShadow: theme.shadows[3]
+			boxShadow: theme.shadows[3],
 		},
 		'&.scroll-body': {
 			'& $wrapper': {
 				height: 'auto',
 				flex: '0 0 auto',
-				overflow: 'auto'
+				overflow: 'auto',
 			},
 			'& $contentWrapper': {},
-			'& $content': {}
+			'& $content': {},
 		},
 		'&.scroll-content': {
 			'& $wrapper': {},
 			'& $contentWrapper': {},
-			'& $content': {}
+			'& $content': {},
 		},
 		'& .navigation': {
 			'& .list-subheader-text, & .list-item-text, & .item-badge, & .arrow-icon': {
 				transition: theme.transitions.create('opacity', {
 					duration: theme.transitions.duration.shortest,
-					easing: theme.transitions.easing.easeInOut
-				})
-			}
-		}
+					easing: theme.transitions.easing.easeInOut,
+				}),
+			},
+		},
 	},
 	wrapper: {
 		display: 'flex',
 		position: 'relative',
 		width: '100%',
 		height: '100%',
-		flex: '1 1 auto'
+		flex: '1 1 auto',
 	},
 	contentWrapper: {
 		display: 'flex',
@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
 		position: 'relative',
 		zIndex: 3,
 		overflow: 'hidden',
-		flex: '1 1 auto'
+		flex: '1 1 auto',
 	},
 	content: {
 		position: 'relative',
@@ -75,8 +75,8 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'column',
 		width: '100%',
 		'-webkit-overflow-scrolling': 'touch',
-		zIndex: 2
-	}
+		zIndex: 2,
+	},
 }));
 
 function Layout1(props) {
@@ -121,7 +121,6 @@ function Layout1(props) {
 									</div>
 
 									{config.footer.display && config.footer.position === 'below' && <FooterLayout1 />}
-
 								</div>
 
 								{config.navbar.display && config.navbar.position === 'right' && (
@@ -178,7 +177,6 @@ function Layout1(props) {
 								{config.footer.display &&
 									config.footer.position === 'below' &&
 									config.footer.style === 'fixed' && <FooterLayout1 />}
-
 							</div>
 
 							{config.navbar.display && config.navbar.position === 'right' && <NavbarWrapperLayout1 />}

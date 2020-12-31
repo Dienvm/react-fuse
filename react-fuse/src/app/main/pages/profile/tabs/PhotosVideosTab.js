@@ -13,7 +13,7 @@ function PhotosVideosTab() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get('/api/profile/photos-videos').then(res => {
+		axios.get('/api/profile/photos-videos').then((res) => {
 			setData(res.data);
 		});
 	}, []);
@@ -27,10 +27,10 @@ function PhotosVideosTab() {
 			<div className="flex flex-col flex-1 md:ltr:pr-32 md:rtl:pl-32">
 				<FuseAnimateGroup
 					enter={{
-						animation: 'transition.slideUpBigIn'
+						animation: 'transition.slideUpBigIn',
 					}}
 				>
-					{data.map(period => (
+					{data.map((period) => (
 						<div key={period.id} className="mb-48">
 							<ListSubheader component="div" className="flex items-center px-0 mb-24">
 								<Typography variant="h6">{period.name}</Typography>
@@ -40,11 +40,11 @@ function PhotosVideosTab() {
 							</ListSubheader>
 
 							<GridList className="" spacing={8} cols={0}>
-								{period.media.map(media => (
+								{period.media.map((media) => (
 									<GridListTile
 										classes={{
 											root: 'w-full sm:w-1/2 md:w-1/4',
-											tile: 'rounded-8'
+											tile: 'rounded-8',
 										}}
 										key={media.preview}
 									>

@@ -10,7 +10,7 @@ const headerHeight = 120;
 const toolbarHeight = 64;
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -18,11 +18,11 @@ const useStyles = makeStyles(theme => ({
 		position: 'relative',
 		flex: '1 0 auto',
 		height: 'auto',
-		backgroundColor: theme.palette.background.default
+		backgroundColor: theme.palette.background.default,
 	},
 	innerScroll: {
 		flex: '1 1 auto',
-		height: '100%'
+		height: '100%',
 	},
 	wrapper: {
 		display: 'flex',
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 		maxWidth: '100%',
 		minWidth: 0,
 		height: '100%',
-		backgroundColor: theme.palette.background.default
+		backgroundColor: theme.palette.background.default,
 	},
 	header: {
 		height: headerHeight,
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 		background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
 		color: theme.palette.primary.contrastText,
 		backgroundSize: 'cover',
-		backgroundColor: theme.palette.primary.dark
+		backgroundColor: theme.palette.primary.dark,
 	},
 	topBg: {
 		position: 'absolute',
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 		right: 0,
 		top: 0,
 		height: headerHeight,
-		pointerEvents: 'none'
+		pointerEvents: 'none',
 	},
 	/* contentCardWrapper            : {
          display : 'flex ',
@@ -77,16 +77,16 @@ const useStyles = makeStyles(theme => ({
 		flex: '1 1 auto',
 		overflow: 'auto',
 		'-webkit-overflow-scrolling': 'touch',
-		zIndex: 9999
+		zIndex: 9999,
 	},
 	toolbar: {
 		height: toolbarHeight,
 		minHeight: toolbarHeight,
 		display: 'flex',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	content: {
-		flex: '1 0 auto'
+		flex: '1 0 auto',
 	},
 	sidebarWrapper: {
 		overflow: 'hidden',
@@ -94,9 +94,9 @@ const useStyles = makeStyles(theme => ({
 		position: 'absolute',
 		'&.permanent': {
 			[theme.breakpoints.up('lg')]: {
-				position: 'relative'
-			}
-		}
+				position: 'relative',
+			},
+		},
 	},
 	sidebar: {
 		position: 'absolute',
@@ -104,40 +104,40 @@ const useStyles = makeStyles(theme => ({
 			[theme.breakpoints.up('lg')]: {
 				backgroundColor: theme.palette.background.default,
 				color: theme.palette.text.primary,
-				position: 'relative'
-			}
+				position: 'relative',
+			},
 		},
 		width: drawerWidth,
-		height: '100%'
+		height: '100%',
 	},
 	leftSidebar: {
 		[theme.breakpoints.up('lg')]: {
 			borderRight: `1px solid ${theme.palette.divider}`,
-			borderLeft: 0
-		}
+			borderLeft: 0,
+		},
 	},
 	rightSidebar: {
 		[theme.breakpoints.up('lg')]: {
 			borderLeft: `1px solid ${theme.palette.divider}`,
-			borderRight: 0
-		}
+			borderRight: 0,
+		},
 	},
 	sidebarHeader: {
 		height: headerHeight,
 		minHeight: headerHeight,
 		backgroundColor: theme.palette.primary.dark,
-		color: theme.palette.primary.contrastText
+		color: theme.palette.primary.contrastText,
 	},
 	sidebarHeaderInnerSidebar: {
 		backgroundColor: 'transparent',
 		color: 'inherit',
 		height: 'auto',
-		minHeight: 'auto'
+		minHeight: 'auto',
 	},
 	sidebarContent: {},
 	backdrop: {
-		position: 'absolute'
-	}
+		position: 'absolute',
+	},
 }));
 
 const FusePageSimple = React.forwardRef((props, ref) => {
@@ -154,7 +154,7 @@ const FusePageSimple = React.forwardRef((props, ref) => {
 		},
 		toggleRightSidebar: () => {
 			rightSidebarRef.current.toggleSidebar();
-		}
+		},
 	}));
 
 	return (
@@ -227,7 +227,7 @@ FusePageSimple.propTypes = {
 	content: PropTypes.node,
 	contentToolbar: PropTypes.node,
 	sidebarInner: PropTypes.bool,
-	innerScroll: PropTypes.bool
+	innerScroll: PropTypes.bool,
 };
 
 FusePageSimple.defaultProps = {};

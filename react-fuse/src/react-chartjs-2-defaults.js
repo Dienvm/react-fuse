@@ -50,5 +50,5 @@ Chart.pluginService.register({
 				});
 			}
 		});
-	}
+	},
 });

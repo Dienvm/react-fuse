@@ -8,7 +8,7 @@ const DashboardComponent = () => {
 				alt="beach"
 				style={{
 					maxWidth: '640px',
-					width: '100%'
+					width: '100%',
 				}}
 			/>
 			<h1 className="py-16">Early Sunrise</h1>

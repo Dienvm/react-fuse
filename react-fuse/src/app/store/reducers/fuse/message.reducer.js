@@ -5,12 +5,12 @@ const initialState = {
 	options: {
 		anchorOrigin: {
 			vertical: 'top',
-			horizontal: 'center'
+			horizontal: 'center',
 		},
 		autoHideDuration: 6000,
 		message: 'Hi',
-		variant: null
-	}
+		variant: null,
+	},
 };
 
 const message = (state = initialState, action) => {
@@ -20,14 +20,14 @@ const message = (state = initialState, action) => {
 				state: true,
 				options: {
 					...initialState.options,
-					...action.options
-				}
+					...action.options,
+				},
 			};
 		}
 		case Actions.HIDE_MESSAGE: {
 			return {
 				...state,
-				state: null
+				state: null,
 			};
 		}
 		default: {

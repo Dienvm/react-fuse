@@ -19,7 +19,7 @@ import store from './store';
 const jss = create({
 	...jssPreset(),
 	plugins: [...jssPreset().plugins, jssExtend(), rtl()],
-	insertionPoint: document.getElementById('jss-insertion-point')
+	insertionPoint: document.getElementById('jss-insertion-point'),
 });
 
 const generateClassName = createGenerateClassName();
@@ -28,7 +28,7 @@ const App = () => {
 	return (
 		<AppContext.Provider
 			value={{
-				routes
+				routes,
 			}}
 		>
 			<StylesProvider jss={jss} generateClassName={generateClassName}>

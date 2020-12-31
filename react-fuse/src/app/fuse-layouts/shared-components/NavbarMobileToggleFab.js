@@ -7,13 +7,13 @@ import clsx from 'clsx';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	buttonIcon: {
 		fontSize: 18,
 		transition: theme.transitions.create(['transform'], {
 			easing: theme.transitions.easing.easeInOut,
-			duration: theme.transitions.duration.short
-		})
+			duration: theme.transitions.duration.short,
+		}),
 	},
 	mobileButton: {
 		height: 40,
@@ -26,18 +26,18 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.background.paper,
 		transition: theme.transitions.create(['background-color', 'border-radius', 'width', 'min-width', 'padding'], {
 			easing: theme.transitions.easing.easeInOut,
-			duration: theme.transitions.duration.shorter
+			duration: theme.transitions.duration.shorter,
 		}),
 		'&:hover': {
 			width: 52,
 			paddingLeft: 8,
-			paddingRight: 8
+			paddingRight: 8,
 		},
 		'&.left': {
 			borderBottomLeftRadius: 0,
 			borderTopLeftRadius: 0,
 			paddingLeft: 4,
-			left: 0
+			left: 0,
 		},
 
 		'&.right': {
@@ -46,10 +46,10 @@ const useStyles = makeStyles(theme => ({
 			paddingRight: 4,
 			right: 0,
 			'& $buttonIcon': {
-				transform: 'rotate(-180deg)'
-			}
-		}
-	}
+				transform: 'rotate(-180deg)',
+			},
+		},
+	},
 }));
 
 function NavbarMobileToggleFab(props) {
@@ -62,7 +62,7 @@ function NavbarMobileToggleFab(props) {
 		<Tooltip title="Show Navigation" placement={config.navbar.position === 'left' ? 'right' : 'left'}>
 			<Fab
 				className={clsx(classes.mobileButton, config.navbar.position, props.className)}
-				onClick={ev => dispatch(Actions.navbarToggleMobile())}
+				onClick={(ev) => dispatch(Actions.navbarToggleMobile())}
 				disableRipple
 			>
 				<Icon className={classes.buttonIcon} color="action">

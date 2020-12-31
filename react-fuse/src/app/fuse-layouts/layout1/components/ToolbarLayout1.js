@@ -10,12 +10,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	separator: {
 		width: 1,
 		height: 64,
-		backgroundColor: theme.palette.divider
-	}
+		backgroundColor: theme.palette.divider,
+	},
 }));
 
 function ToolbarLayout1(props) {

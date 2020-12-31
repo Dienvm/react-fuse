@@ -3,8 +3,8 @@ import * as Actions from 'app/store/actions/fuse';
 const initialState = {
 	state: false,
 	options: {
-		children: 'Hi'
-	}
+		children: 'Hi',
+	},
 };
 
 const dialog = (state = initialState, action) => {
@@ -15,14 +15,14 @@ const dialog = (state = initialState, action) => {
 				state: true,
 				options: {
 					...state.options,
-					...action.options
-				}
+					...action.options,
+				},
 			};
 		}
 		case Actions.CLOSE_DIALOG: {
 			return {
 				...state,
-				state: false
+				state: false,
 			};
 		}
 		default: {

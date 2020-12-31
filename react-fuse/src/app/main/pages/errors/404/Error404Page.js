@@ -30,7 +30,7 @@ function Error404Page() {
 						disableUnderline
 						fullWidth
 						inputProps={{
-							'aria-label': 'Search'
+							'aria-label': 'Search',
 						}}
 					/>
 				</Paper>

@@ -11,7 +11,7 @@ _.mixin({
 	// Immutable Set for setting state
 	setIn: (state, name, value) => {
 		return _.setWith(_.clone(state), name, value, _.clone);
-	}
+	},
 });
 
 export default _;

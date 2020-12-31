@@ -11,7 +11,7 @@ const headerHeight = 200;
 const toolbarHeight = 64;
 const headerContentHeight = headerHeight - toolbarHeight;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexDirection: 'row',
@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
 		position: 'relative',
 		flex: '1 0 auto',
 		height: 'auto',
-		backgroundColor: theme.palette.background.default
+		backgroundColor: theme.palette.background.default,
 	},
 	innerScroll: {
 		flex: '1 1 auto',
-		height: '100%'
+		height: '100%',
 	},
 	topBg: {
 		position: 'absolute',
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 		height: headerHeight,
 		background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
 		backgroundSize: 'cover',
-		pointerEvents: 'none'
+		pointerEvents: 'none',
 	},
 	contentWrapper: {
 		display: 'flex',
@@ -45,18 +45,18 @@ const useStyles = makeStyles(theme => ({
 		minWidth: 0,
 		minHeight: 0,
 		[theme.breakpoints.down('xs')]: {
-			padding: '0 1.6rem'
-		}
+			padding: '0 1.6rem',
+		},
 	},
 	header: {
 		height: headerContentHeight,
 		minHeight: headerContentHeight,
 		maxHeight: headerContentHeight,
 		display: 'flex',
-		color: theme.palette.primary.contrastText
+		color: theme.palette.primary.contrastText,
 	},
 	headerSidebarToggleButton: {
-		color: theme.palette.primary.contrastText
+		color: theme.palette.primary.contrastText,
 	},
 	contentCard: {
 		display: 'flex',
@@ -65,20 +65,20 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: theme.shadows[1],
 		minHeight: 0,
-		borderRadius: '8px 8px 0 0'
+		borderRadius: '8px 8px 0 0',
 	},
 	toolbar: {
 		height: toolbarHeight,
 		minHeight: toolbarHeight,
 		display: 'flex',
 		alignItems: 'center',
-		borderBottom: `1px solid ${theme.palette.divider}`
+		borderBottom: `1px solid ${theme.palette.divider}`,
 	},
 	content: {
 		flex: '1 1 auto',
 		height: '100%',
 		overflow: 'auto',
-		'-webkit-overflow-scrolling': 'touch'
+		'-webkit-overflow-scrolling': 'touch',
 	},
 	sidebarWrapper: {
 		position: 'absolute',
@@ -88,9 +88,9 @@ const useStyles = makeStyles(theme => ({
 		'&.permanent': {
 			[theme.breakpoints.up('lg')]: {
 				zIndex: 1,
-				position: 'relative'
-			}
-		}
+				position: 'relative',
+			},
+		},
 	},
 	sidebar: {
 		position: 'absolute',
@@ -99,11 +99,11 @@ const useStyles = makeStyles(theme => ({
 				backgroundColor: 'transparent',
 				position: 'relative',
 				border: 'none',
-				overflow: 'hidden'
-			}
+				overflow: 'hidden',
+			},
 		},
 		width: drawerWidth,
-		height: '100%'
+		height: '100%',
 	},
 	leftSidebar: {},
 	rightSidebar: {},
@@ -114,9 +114,9 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.primary.dark,
 		'&.permanent': {
 			[theme.breakpoints.up('lg')]: {
-				backgroundColor: 'transparent'
-			}
-		}
+				backgroundColor: 'transparent',
+			},
+		},
 	},
 	sidebarContent: {
 		display: 'flex',
@@ -126,12 +126,12 @@ const useStyles = makeStyles(theme => ({
 		color: theme.palette.text.primary,
 		[theme.breakpoints.up('lg')]: {
 			overflow: 'auto',
-			'-webkit-overflow-scrolling': 'touch'
-		}
+			'-webkit-overflow-scrolling': 'touch',
+		},
 	},
 	backdrop: {
-		position: 'absolute'
-	}
+		position: 'absolute',
+	},
 }));
 
 const FusePageCarded = React.forwardRef((props, ref) => {
@@ -149,7 +149,7 @@ const FusePageCarded = React.forwardRef((props, ref) => {
 		},
 		toggleRightSidebar: () => {
 			rightSidebarRef.current.toggleSidebar();
-		}
+		},
 	}));
 
 	return (
@@ -225,7 +225,7 @@ FusePageCarded.propTypes = {
 	header: PropTypes.node,
 	content: PropTypes.node,
 	contentToolbar: PropTypes.node,
-	innerScroll: PropTypes.bool
+	innerScroll: PropTypes.bool,
 };
 
 FusePageCarded.defaultProps = {};

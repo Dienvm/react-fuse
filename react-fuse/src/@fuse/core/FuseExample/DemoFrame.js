@@ -3,7 +3,7 @@ import {
 	jssPreset,
 	StylesProvider,
 	ThemeProvider,
-	withStyles
+	withStyles,
 } from '@material-ui/core/styles';
 import { create } from 'jss';
 import jssExtend from 'jss-plugin-extend';
@@ -11,26 +11,26 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Frame from 'react-frame-component';
 
-const styles = theme => ({
+const styles = (theme) => ({
 	root: {
 		backgroundColor: theme.palette.background.default,
 		flexGrow: 1,
 		height: 400,
 		border: 'none',
-		boxShadow: theme.shadows[1]
-	}
+		boxShadow: theme.shadows[1],
+	},
 });
 
 const generateClassName = createGenerateClassName({
-	productionPrefix: 'iframe-'
+	productionPrefix: 'iframe-',
 });
 
 class DemoFrame extends React.Component {
 	state = {
-		ready: false
+		ready: false,
 	};
 
-	handleRef = ref => {
+	handleRef = (ref) => {
 		this.contentDocument = ref ? ref.node.contentDocument : null;
 	};
 
@@ -40,10 +40,10 @@ class DemoFrame extends React.Component {
 			jss: create({
 				...jssPreset(),
 				plugins: [...jssPreset().plugins, jssExtend()],
-				insertionPoint: this.contentDocument.querySelector('#jss-demo-insertion-point')
+				insertionPoint: this.contentDocument.querySelector('#jss-demo-insertion-point'),
 			}),
 			sheetsManager: new Map(),
-			container: this.contentDocument.body
+			container: this.contentDocument.body,
 		});
 	};
 
@@ -60,7 +60,7 @@ class DemoFrame extends React.Component {
                     font-size: 62.5%;
                     font-family: Muli, Roboto, Helvetica Neue, Arial, sans-serif;
                     }
-                `
+                `,
 				}}
 			/>
 			<noscript id="jss-demo-insertion-point" />
@@ -86,7 +86,7 @@ class DemoFrame extends React.Component {
 					>
 						<ThemeProvider theme={theme}>
 							{React.cloneElement(children, {
-								container: this.state.container
+								container: this.state.container,
 							})}
 						</ThemeProvider>
 					</StylesProvider>
@@ -99,7 +99,7 @@ class DemoFrame extends React.Component {
 DemoFrame.propTypes = {
 	children: PropTypes.node.isRequired,
 	classes: PropTypes.object.isRequired,
-	theme: PropTypes.object.isRequired
+	theme: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(DemoFrame);

@@ -31,7 +31,7 @@ class EventEmitter {
 	emit(eventName, ...args) {
 		this._getEventListByName(eventName).forEach(
 			// eslint-disable-next-line func-names
-			function(fn) {
+			function (fn) {
 				fn.apply(this, args);
 			}.bind(this)
 		);
@@ -50,7 +50,7 @@ class FuseUtils {
 
 		searchText = searchText.toLowerCase();
 
-		return mainArr.filter(itemObj => this.searchInObj(itemObj, searchText));
+		return mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
 	}
 
 	static searchInObj(itemObj, searchText) {
@@ -84,7 +84,7 @@ class FuseUtils {
 	}
 
 	static searchInArray(arr, searchText) {
-		arr.forEach(value => {
+		arr.forEach((value) => {
 			if (typeof value === 'string') {
 				if (this.searchInString(value, searchText)) {
 					return true;
@@ -137,7 +137,7 @@ class FuseUtils {
 	static setRoutes(config, defaultAuth) {
 		let routes = [...config.routes];
 
-		routes = routes.map(route => {
+		routes = routes.map((route) => {
 			let auth = config.auth || config.auth === null ? config.auth : defaultAuth || null;
 			auth = route.auth || route.auth === null ? route.auth : auth;
 			const settings = _.merge({}, config.settings, route.settings);
@@ -145,7 +145,7 @@ class FuseUtils {
 			return {
 				...route,
 				settings,
-				auth
+				auth,
 			};
 		});
 
@@ -154,7 +154,7 @@ class FuseUtils {
 
 	static generateRoutesFromConfigs(configs, defaultAuth) {
 		let allRoutes = [];
-		configs.forEach(config => {
+		configs.forEach((config) => {
 			allRoutes = [...allRoutes, ...this.setRoutes(config, defaultAuth)];
 		});
 		return allRoutes;
@@ -193,7 +193,7 @@ class FuseUtils {
 					type: navItem.type,
 					icon: navItem.icon || false,
 					url: navItem.url,
-					auth: navItem.auth || null
+					auth: navItem.auth || null,
 				});
 			}
 
@@ -224,7 +224,7 @@ class FuseUtils {
 			'yellow',
 			'amber',
 			'orange',
-			'deepOrange'
+			'deepOrange',
 		];
 		const randomColor = mainColors[Math.floor(Math.random() * mainColors.length)];
 		return colors[randomColor][hue];
@@ -245,14 +245,14 @@ class FuseUtils {
 	static EventEmitter = EventEmitter;
 
 	static updateNavItem(nav, id, item) {
-		return nav.map(_item => {
+		return nav.map((_item) => {
 			if (_item.id === id) {
 				return _.merge({}, _item, item);
 			}
 
 			if (_item.children) {
 				return _.merge({}, _item, {
-					children: this.updateNavItem(_item.children, id, item)
+					children: this.updateNavItem(_item.children, id, item),
 				});
 			}
 
@@ -262,20 +262,20 @@ class FuseUtils {
 
 	static removeNavItem(nav, id) {
 		return nav
-			.map(_item => {
+			.map((_item) => {
 				if (_item.id === id) {
 					return null;
 				}
 
 				if (_item.children) {
 					return _.merge({}, _.omit(_item, ['children']), {
-						children: this.removeNavItem(_item.children, id)
+						children: this.removeNavItem(_item.children, id),
 					});
 				}
 
 				return _.merge({}, _item);
 			})
-			.filter(s => s);
+			.filter((s) => s);
 	}
 
 	static prependNavItem(nav, item, parentId) {
@@ -283,17 +283,17 @@ class FuseUtils {
 			return [item, ...nav];
 		}
 
-		return nav.map(_item => {
+		return nav.map((_item) => {
 			if (_item.id === parentId && _item.children) {
 				return {
 					_item,
-					children: [item, ..._item.children]
+					children: [item, ..._item.children],
 				};
 			}
 
 			if (_item.children) {
 				return _.merge({}, _item, {
-					children: this.prependNavItem(_item.children, item, parentId)
+					children: this.prependNavItem(_item.children, item, parentId),
 				});
 			}
 
@@ -306,17 +306,17 @@ class FuseUtils {
 			return [...nav, item];
 		}
 
-		return nav.map(_item => {
+		return nav.map((_item) => {
 			if (_item.id === parentId && _item.children) {
 				return {
 					_item,
-					children: [..._item.children, item]
+					children: [..._item.children, item],
 				};
 			}
 
 			if (_item.children) {
 				return _.merge({}, _item, {
-					children: this.appendNavItem(_item.children, item, parentId)
+					children: this.appendNavItem(_item.children, item, parentId),
 				});
 			}
 
@@ -349,7 +349,7 @@ class FuseUtils {
             Check if user role is array,
             */
 		if (userRole && Array.isArray(userRole)) {
-			return authArr.some(r => userRole.indexOf(r) >= 0);
+			return authArr.some((r) => userRole.indexOf(r) >= 0);
 		}
 
 		/*

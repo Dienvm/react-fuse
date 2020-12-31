@@ -11,7 +11,7 @@ function FuseCountdown(props) {
 		days: 0,
 		hours: 0,
 		minutes: 0,
-		seconds: 0
+		seconds: 0,
 	});
 	const intervalRef = useRef();
 
@@ -34,7 +34,7 @@ function FuseCountdown(props) {
 			days: timeLeft.asDays().toFixed(0),
 			hours: timeLeft.hours(),
 			minutes: timeLeft.minutes(),
-			seconds: timeLeft.seconds()
+			seconds: timeLeft.seconds(),
 		});
 	}, [complete, endDate]);
 
@@ -85,11 +85,11 @@ function FuseCountdown(props) {
 
 FuseCountdown.propTypes = {
 	endDate: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-	onComplete: PropTypes.func
+	onComplete: PropTypes.func,
 };
 
 FuseCountdown.defaultProps = {
-	endDate: moment().add(15, 'days')
+	endDate: moment().add(15, 'days'),
 };
 
 export default React.memo(FuseCountdown);

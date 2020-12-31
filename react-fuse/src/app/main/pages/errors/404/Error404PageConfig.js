@@ -3,15 +3,15 @@ import React from 'react';
 const Error404PageConfig = {
 	settings: {
 		layout: {
-			config: {}
-		}
+			config: {},
+		},
 	},
 	routes: [
 		{
 			path: '/not-found',
-			component: React.lazy(() => import('./Error404Page'))
-		}
-	]
+			component: React.lazy(() => import('./Error404Page')),
+		},
+	],
 };
 
 export default Error404PageConfig;

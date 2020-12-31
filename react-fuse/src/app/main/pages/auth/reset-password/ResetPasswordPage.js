@@ -11,14 +11,14 @@ import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${darken(
 			theme.palette.primary.dark,
 			0.5
 		)} 100%)`,
-		color: theme.palette.primary.contrastText
-	}
+		color: theme.palette.primary.contrastText,
+	},
 }));
 
 function ResetPasswordPage() {
@@ -28,7 +28,7 @@ function ResetPasswordPage() {
 		name: '',
 		email: '',
 		password: '',
-		passwordConfirm: ''
+		passwordConfirm: '',
 	});
 
 	function isFormValid() {

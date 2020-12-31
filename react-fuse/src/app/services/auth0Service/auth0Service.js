@@ -25,9 +25,9 @@ class Auth0Service {
 				audience: `https://${AUTH_CONFIG.domain}/api/v2/`,
 				params: {
 					scope:
-						'openid profile email user_metadata app_metadata picture update:current_user_metadata create:current_user_metadata read:current_user'
-				}
-			}
+						'openid profile email user_metadata app_metadata picture update:current_user_metadata create:current_user_metadata read:current_user',
+				},
+			},
 		});
 		this.handleAuthentication();
 		success(true);
@@ -51,7 +51,7 @@ class Auth0Service {
 		}
 
 		return this.lock.show({
-			initialScreen: 'signUp'
+			initialScreen: 'signUp',
 		});
 	};
 
@@ -63,21 +63,21 @@ class Auth0Service {
 		// Add a callback for Lock's `authenticated` event
 		this.lock.on('authenticated', this.setSession);
 		// Add a callback for Lock's `authorization_error` event
-		this.lock.on('authorization_error', err => {
+		this.lock.on('authorization_error', (err) => {
 			console.warn(`Error: ${err.error}. Check the console for further details.`);
 		});
 
 		return true;
 	};
 
-	onAuthenticated = callback => {
+	onAuthenticated = (callback) => {
 		if (!this.lock) {
 			return false;
 		}
 		return this.lock.on('authenticated', callback);
 	};
 
-	setSession = authResult => {
+	setSession = (authResult) => {
 		if (authResult && authResult.accessToken && authResult.idToken) {
 			// Set the time that the access token will expire at
 			const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
@@ -122,13 +122,13 @@ class Auth0Service {
 				.get(auth0UserUrl, {
 					headers: {
 						'Content-Type': 'application/json',
-						Authorization: `Bearer ${this.getAccessToken()}`
-					}
+						Authorization: `Bearer ${this.getAccessToken()}`,
+					},
 				})
-				.then(response => {
+				.then((response) => {
 					resolve(response.data);
 				})
-				.catch(error => {
+				.catch((error) => {
 					// handle error
 					console.warn('Cannot retrieve user data', error);
 					reject(error);
@@ -136,7 +136,7 @@ class Auth0Service {
 		});
 	};
 
-	updateUserData = userMetadata => {
+	updateUserData = (userMetadata) => {
 		const tokenData = this.getTokenData();
 		const { sub: userId } = tokenData;
 
@@ -146,8 +146,8 @@ class Auth0Service {
 		return axios.patch(auth0UserUrl, dataObj, {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${this.getAccessToken()}`
-			}
+				Authorization: `Bearer ${this.getAccessToken()}`,
+			},
 		});
 	};
 

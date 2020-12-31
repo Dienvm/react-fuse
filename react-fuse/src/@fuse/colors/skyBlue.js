@@ -12,7 +12,7 @@ const skyBlue = {
 	A100: '#ffffff',
 	A200: '#ffffff',
 	A400: '#d7f3ff',
-	A700: '#beecff'
+	A700: '#beecff',
 };
 
 export default skyBlue;

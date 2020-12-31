@@ -3,15 +3,15 @@ import React from 'react';
 const ForgotPassword2PageConfig = {
 	settings: {
 		layout: {
-			config: {}
-		}
+			config: {},
+		},
 	},
 	routes: [
 		{
 			path: '/forgot-password',
-			component: React.lazy(() => import('./ForgotPasswordPage'))
-		}
-	]
+			component: React.lazy(() => import('./ForgotPasswordPage')),
+		},
+	],
 };
 
 export default ForgotPassword2PageConfig;

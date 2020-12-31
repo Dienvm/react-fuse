@@ -2,7 +2,7 @@ import * as Actions from '../../actions/fuse';
 
 const initialState = {
 	foldedOpen: false,
-	mobileOpen: false
+	mobileOpen: false,
 };
 
 const navbar = (state = initialState, action) => {
@@ -10,37 +10,37 @@ const navbar = (state = initialState, action) => {
 		case Actions.TOGGLE_FOLDED_NAVBAR: {
 			return {
 				...state,
-				foldedOpen: !state.foldedOpen
+				foldedOpen: !state.foldedOpen,
 			};
 		}
 		case Actions.OPEN_FOLDED_NAVBAR: {
 			return {
 				...state,
-				foldedOpen: true
+				foldedOpen: true,
 			};
 		}
 		case Actions.CLOSE_FOLDED_NAVBAR: {
 			return {
 				...state,
-				foldedOpen: false
+				foldedOpen: false,
 			};
 		}
 		case Actions.TOGGLE_MOBILE_NAVBAR: {
 			return {
 				...state,
-				mobileOpen: !state.mobileOpen
+				mobileOpen: !state.mobileOpen,
 			};
 		}
 		case Actions.OPEN_MOBILE_NAVBAR: {
 			return {
 				...state,
-				mobileOpen: true
+				mobileOpen: true,
 			};
 		}
 		case Actions.CLOSE_MOBILE_NAVBAR: {
 			return {
 				...state,
-				mobileOpen: false
+				mobileOpen: false,
 			};
 		}
 		default: {

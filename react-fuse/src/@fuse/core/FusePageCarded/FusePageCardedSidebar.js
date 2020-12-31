@@ -9,7 +9,7 @@ function FusePageCardedSidebar(props, ref) {
 	const { classes } = props;
 
 	useImperativeHandle(ref, () => ({
-		toggleSidebar: handleToggleDrawer
+		toggleSidebar: handleToggleDrawer,
 	}));
 
 	const handleToggleDrawer = () => {
@@ -23,23 +23,23 @@ function FusePageCardedSidebar(props, ref) {
 					variant="temporary"
 					anchor={props.position}
 					open={isOpen}
-					onClose={ev => handleToggleDrawer()}
+					onClose={(ev) => handleToggleDrawer()}
 					classes={{
 						root: clsx(classes.sidebarWrapper, props.variant),
 						paper: clsx(
 							classes.sidebar,
 							props.variant,
 							props.position === 'left' ? classes.leftSidebar : classes.rightSidebar
-						)
+						),
 					}}
 					ModalProps={{
-						keepMounted: true // Better open performance on mobile.
+						keepMounted: true, // Better open performance on mobile.
 					}}
 					container={props.rootRef.current}
 					BackdropProps={{
 						classes: {
-							root: classes.backdrop
-						}
+							root: classes.backdrop,
+						},
 					}}
 					style={{ position: 'absolute' }}
 				>
@@ -57,7 +57,7 @@ function FusePageCardedSidebar(props, ref) {
 								classes.sidebar,
 								props.variant,
 								props.position === 'left' ? classes.leftSidebar : classes.rightSidebar
-							)
+							),
 						}}
 					>
 						<FusePageCardedSidebarContent {...props} />

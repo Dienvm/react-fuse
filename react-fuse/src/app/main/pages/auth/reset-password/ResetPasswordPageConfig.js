@@ -3,15 +3,15 @@ import React from 'react';
 const ResetPasswordPageConfig = {
 	settings: {
 		layout: {
-			config: {}
-		}
+			config: {},
+		},
 	},
 	routes: [
 		{
 			path: '/reset-password',
-			component: React.lazy(() => import('./ResetPasswordPage'))
-		}
-	]
+			component: React.lazy(() => import('./ResetPasswordPage')),
+		},
+	],
 };
 
 export default ResetPasswordPageConfig;

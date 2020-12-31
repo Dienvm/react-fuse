@@ -17,7 +17,7 @@ function UserMenu(props) {
 
 	const [userMenu, setUserMenu] = useState(null);
 
-	const userMenuClick = event => {
+	const userMenuClick = (event) => {
 		setUserMenu(event.currentTarget);
 	};
 
@@ -54,14 +54,14 @@ function UserMenu(props) {
 				onClose={userMenuClose}
 				anchorOrigin={{
 					vertical: 'bottom',
-					horizontal: 'center'
+					horizontal: 'center',
 				}}
 				transformOrigin={{
 					vertical: 'top',
-					horizontal: 'center'
+					horizontal: 'center',
 				}}
 				classes={{
-					paper: 'py-8'
+					paper: 'py-8',
 				}}
 			>
 				{!user.role || user.role.length === 0 ? (

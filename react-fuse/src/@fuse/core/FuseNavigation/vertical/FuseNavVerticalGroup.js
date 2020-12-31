@@ -11,17 +11,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FuseNavItem from '../FuseNavItem';
 
-const useStyles = makeStyles(theme => ({
-	item: props => ({
+const useStyles = makeStyles((theme) => ({
+	item: (props) => ({
 		height: 40,
 		width: 'calc(100% - 16px)',
 		borderRadius: '0 20px 20px 0',
 		paddingRight: 12,
 		paddingLeft: props.itemPadding > 80 ? 80 : props.itemPadding,
 		'&.active > .list-subheader-text': {
-			fontWeight: 700
-		}
-	})
+			fontWeight: 700,
+		},
+	}),
 }));
 
 function FuseNavVerticalGroup(props) {
@@ -29,7 +29,7 @@ function FuseNavVerticalGroup(props) {
 	const dispatch = useDispatch();
 	const { item, nestedLevel } = props;
 	const classes = useStyles({
-		itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24
+		itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24,
 	});
 	const { t } = useTranslation('navigation');
 
@@ -42,7 +42,7 @@ function FuseNavVerticalGroup(props) {
 			<ListSubheader
 				disableSticky
 				className={clsx(classes.item, 'list-subheader flex items-center', !item.url && 'cursor-default')}
-				onClick={ev => dispatch(Actions.navbarCloseMobile())}
+				onClick={(ev) => dispatch(Actions.navbarCloseMobile())}
 				component={item.url ? NavLinkAdapter : 'li'}
 				to={item.url}
 				role="button"
@@ -54,7 +54,7 @@ function FuseNavVerticalGroup(props) {
 
 			{item.children && (
 				<>
-					{item.children.map(_item => (
+					{item.children.map((_item) => (
 						<FuseNavItem
 							key={_item.id}
 							type={`vertical-${_item.type}`}
@@ -72,8 +72,8 @@ FuseNavVerticalGroup.propTypes = {
 	item: PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		title: PropTypes.string,
-		children: PropTypes.array
-	})
+		children: PropTypes.array,
+	}),
 };
 
 FuseNavVerticalGroup.defaultProps = {};

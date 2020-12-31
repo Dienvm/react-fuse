@@ -22,11 +22,11 @@ import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		background: `radial-gradient(${darken(theme.palette.primary.dark, 0.5)} 0%, ${theme.palette.primary.dark} 80%)`,
-		color: theme.palette.primary.contrastText
-	}
+		color: theme.palette.primary.contrastText,
+	},
 }));
 
 const LoginPage = () => {
@@ -39,13 +39,13 @@ const LoginPage = () => {
 	const { form, handleChange } = useForm({
 		email: '',
 		password: '',
-		remember: true
+		remember: true,
 	});
 
 	useEffect(() => {
 		if (login.error && (login.error.username || login.error.password)) {
 			formRef.current.updateInputsWithError({
-				...login.error
+				...login.error,
 			});
 			disableButton();
 		}
@@ -59,7 +59,7 @@ const LoginPage = () => {
 		setIsFormValid(true);
 	};
 
-	const handleSubmit = model => {
+	const handleSubmit = (model) => {
 		dispatch(authActions.submitLoginWithFireBase(model));
 	};
 
@@ -95,10 +95,10 @@ const LoginPage = () => {
 									name="username"
 									label="Email"
 									validations={{
-										minLength: 4
+										minLength: 4,
 									}}
 									validationErrors={{
-										minLength: 'Min character length is 4'
+										minLength: 'Min character length is 4',
 									}}
 									InputProps={{
 										endAdornment: (
@@ -107,7 +107,7 @@ const LoginPage = () => {
 													email
 												</Icon>
 											</InputAdornment>
-										)
+										),
 									}}
 									variant="outlined"
 									required
@@ -119,10 +119,10 @@ const LoginPage = () => {
 									name="password"
 									label="Password"
 									validations={{
-										minLength: 4
+										minLength: 4,
 									}}
 									validationErrors={{
-										minLength: 'Min character length is 4'
+										minLength: 'Min character length is 4',
 									}}
 									InputProps={{
 										endAdornment: (
@@ -131,7 +131,7 @@ const LoginPage = () => {
 													vpn_key
 												</Icon>
 											</InputAdornment>
-										)
+										),
 									}}
 									variant="outlined"
 									required

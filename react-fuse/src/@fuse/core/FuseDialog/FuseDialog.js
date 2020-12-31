@@ -11,7 +11,7 @@ function FuseDialog(props) {
 	return (
 		<Dialog
 			open={state}
-			onClose={ev => dispatch(Actions.closeDialog())}
+			onClose={(ev) => dispatch(Actions.closeDialog())}
 			aria-labelledby="fuse-dialog-title"
 			{...options}
 		/>

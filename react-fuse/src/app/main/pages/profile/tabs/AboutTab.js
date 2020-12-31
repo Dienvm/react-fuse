@@ -19,7 +19,7 @@ function AboutTab() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get('/api/profile/about').then(res => {
+		axios.get('/api/profile/about').then((res) => {
 			setData(res.data);
 		});
 	}, []);
@@ -35,7 +35,7 @@ function AboutTab() {
 			<div className="flex flex-col flex-1 md:ltr:pr-32 md:rtl:pl-32">
 				<FuseAnimateGroup
 					enter={{
-						animation: 'transition.slideUpBigIn'
+						animation: 'transition.slideUpBigIn',
 					}}
 				>
 					<Card className="w-full mb-16">
@@ -61,7 +61,7 @@ function AboutTab() {
 							<div className="mb-24">
 								<Typography className="font-bold mb-4 text-15">Locations</Typography>
 
-								{general.locations.map(location => (
+								{general.locations.map((location) => (
 									<div className="flex items-center" key={location}>
 										<Typography>{location}</Typography>
 										<Icon className="text-16 mx-4" color="action">
@@ -102,7 +102,7 @@ function AboutTab() {
 								<Typography className="font-bold mb-4 text-15">Jobs</Typography>
 								<table className="">
 									<tbody>
-										{work.jobs.map(job => (
+										{work.jobs.map((job) => (
 											<tr key={job.company}>
 												<td>
 													<Typography>{job.company}</Typography>
@@ -136,7 +136,7 @@ function AboutTab() {
 							<div className="mb-24">
 								<Typography className="font-bold mb-4 text-15">Tel.</Typography>
 
-								{contact.tel.map(tel => (
+								{contact.tel.map((tel) => (
 									<div className="flex items-center" key={tel}>
 										<Typography>{tel}</Typography>
 									</div>
@@ -146,7 +146,7 @@ function AboutTab() {
 							<div className="mb-24">
 								<Typography className="font-bold mb-4 text-15">Website</Typography>
 
-								{contact.websites.map(website => (
+								{contact.websites.map((website) => (
 									<div className="flex items-center" key={website}>
 										<Typography>{website}</Typography>
 									</div>
@@ -156,7 +156,7 @@ function AboutTab() {
 							<div className="mb-24">
 								<Typography className="font-bold mb-4 text-15">Emails</Typography>
 
-								{contact.emails.map(email => (
+								{contact.emails.map((email) => (
 									<div className="flex items-center" key={email}>
 										<Typography>{email}</Typography>
 									</div>
@@ -170,7 +170,7 @@ function AboutTab() {
 			<div className="flex flex-col md:w-320">
 				<FuseAnimateGroup
 					enter={{
-						animation: 'transition.slideUpBigIn'
+						animation: 'transition.slideUpBigIn',
 					}}
 				>
 					<Card className="w-full mb-16">
@@ -185,7 +185,7 @@ function AboutTab() {
 							</Toolbar>
 						</AppBar>
 						<CardContent className="flex flex-wrap p-8">
-							{friends.map(friend => (
+							{friends.map((friend) => (
 								<img
 									key={friend.id}
 									className="w-64 m-4 rounded-4 block"
@@ -209,7 +209,7 @@ function AboutTab() {
 						</AppBar>
 						<CardContent className="p-0">
 							<List className="p-0">
-								{groups.map(group => (
+								{groups.map((group) => (
 									<ListItem key={group.id} className="px-8">
 										<Avatar className="mx-8" alt={group.name}>
 											{group.name[0]}

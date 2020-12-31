@@ -7,36 +7,36 @@ export const CLOSE_MOBILE_NAVBAR = '[NAVBAR] CLOSE MOBILE';
 
 export function navbarToggleFolded() {
 	return {
-		type: TOGGLE_FOLDED_NAVBAR
+		type: TOGGLE_FOLDED_NAVBAR,
 	};
 }
 
 export function navbarOpenFolded() {
 	return {
-		type: OPEN_FOLDED_NAVBAR
+		type: OPEN_FOLDED_NAVBAR,
 	};
 }
 
 export function navbarCloseFolded() {
 	return {
-		type: CLOSE_FOLDED_NAVBAR
+		type: CLOSE_FOLDED_NAVBAR,
 	};
 }
 
 export function navbarToggleMobile() {
 	return {
-		type: TOGGLE_MOBILE_NAVBAR
+		type: TOGGLE_MOBILE_NAVBAR,
 	};
 }
 
 export function navbarOpenMobile() {
 	return {
-		type: OPEN_MOBILE_NAVBAR
+		type: OPEN_MOBILE_NAVBAR,
 	};
 }
 
 export function navbarCloseMobile() {
 	return {
-		type: CLOSE_MOBILE_NAVBAR
+		type: CLOSE_MOBILE_NAVBAR,
 	};
 }

@@ -10,21 +10,21 @@ import NavbarLayout1 from './NavbarLayout1';
 
 const navbarWidth = 280;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	wrapper: {
 		display: 'flex',
 		flexDirection: 'column',
 		zIndex: 4,
 		[theme.breakpoints.up('lg')]: {
 			width: navbarWidth,
-			minWidth: navbarWidth
-		}
+			minWidth: navbarWidth,
+		},
 	},
 	wrapperFolded: {
 		[theme.breakpoints.up('lg')]: {
 			width: 64,
-			minWidth: 64
-		}
+			minWidth: 64,
+		},
 	},
 	navbar: {
 		display: 'flex',
@@ -37,47 +37,47 @@ const useStyles = makeStyles(theme => ({
 		zIndex: 4,
 		transition: theme.transitions.create(['width', 'min-width'], {
 			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.shorter
+			duration: theme.transitions.duration.shorter,
 		}),
-		boxShadow: theme.shadows[3]
+		boxShadow: theme.shadows[3],
 	},
 	left: {
-		left: 0
+		left: 0,
 	},
 	right: {
-		right: 0
+		right: 0,
 	},
 	folded: {
 		position: 'absolute',
 		width: 64,
 		minWidth: 64,
 		top: 0,
-		bottom: 0
+		bottom: 0,
 	},
 	foldedAndOpened: {
 		width: navbarWidth,
-		minWidth: navbarWidth
+		minWidth: navbarWidth,
 	},
 	navbarContent: {
-		flex: '1 1 auto'
+		flex: '1 1 auto',
 	},
 	foldedAndClosed: {
 		'& $navbarContent': {
 			'& .logo-icon': {
 				width: 32,
-				height: 32
+				height: 32,
 			},
 			'& .logo-text': {
-				opacity: 0
+				opacity: 0,
 			},
 			'& .react-badge': {
-				opacity: 0
+				opacity: 0,
 			},
 			'& .list-item-text, & .arrow-icon, & .item-badge': {
-				opacity: 0
+				opacity: 0,
 			},
 			'& .list-subheader .list-subheader-text': {
-				opacity: 0
+				opacity: 0,
 			},
 			'& .list-subheader:before': {
 				content: '""',
@@ -85,21 +85,21 @@ const useStyles = makeStyles(theme => ({
 				position: 'absolute',
 				minWidth: 16,
 				borderTop: '2px solid',
-				opacity: 0.2
+				opacity: 0.2,
 			},
 			'& .collapse-children': {
-				display: 'none'
+				display: 'none',
 			},
 			'& .user': {
 				'& .username, & .email': {
-					opacity: 0
+					opacity: 0,
 				},
 				'& .avatar': {
 					width: 40,
 					height: 40,
 					top: 32,
-					padding: 0
-				}
+					padding: 0,
+				},
 			},
 			'& .list-item.active': {
 				marginLeft: 12,
@@ -110,11 +110,11 @@ const useStyles = makeStyles(theme => ({
 					borderRadius: 0,
 					marginLeft: 0,
 					paddingLeft: 24,
-					width: '100%'
-				}
-			}
-		}
-	}
+					width: '100%',
+				},
+			},
+		},
+	},
 }));
 
 function NavbarWrapperLayout1(props) {
@@ -156,11 +156,11 @@ function NavbarWrapperLayout1(props) {
 							variant="temporary"
 							open={navbar.mobileOpen}
 							classes={{
-								paper: classes.navbar
+								paper: classes.navbar,
 							}}
 							onClose={() => dispatch(Actions.navbarCloseMobile())}
 							ModalProps={{
-								keepMounted: true // Better open performance on mobile.
+								keepMounted: true, // Better open performance on mobile.
 							}}
 						>
 							<NavbarLayout1 className={classes.navbarContent} />

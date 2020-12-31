@@ -12,7 +12,7 @@ const fuseDark = {
 	A100: '#5b9aff',
 	A200: '#287bff',
 	A400: '#005ef4',
-	A700: '#0054da'
+	A700: '#0054da',
 };
 
 export default fuseDark;

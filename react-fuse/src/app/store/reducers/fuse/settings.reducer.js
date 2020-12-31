@@ -5,7 +5,7 @@ import {
 	extendThemeWithMixins,
 	getParsedQuerySettings,
 	mainThemeVariations,
-	mustHaveThemeOptions
+	mustHaveThemeOptions,
 } from '@fuse/default-settings';
 import _ from '@lodash';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -23,7 +23,7 @@ const initialState = {
 	defaults: _.merge({}, initialSettings),
 	current: _.merge({}, initialSettings),
 	themes: initialThemes,
-	...getThemeOptions(initialThemes, initialSettings)
+	...getThemeOptions(initialThemes, initialSettings),
 };
 
 const settings = (state = initialState, action) => {
@@ -38,7 +38,7 @@ const settings = (state = initialState, action) => {
 				...state,
 				current,
 				themes,
-				...getThemeOptions(themes, current)
+				...getThemeOptions(themes, current),
 			};
 		}
 		case Actions.SET_INITIAL_SETTINGS: {
@@ -59,20 +59,20 @@ const settings = (state = initialState, action) => {
 				defaults: _.merge({}, defaults),
 				current: _.merge({}, defaults),
 				themes,
-				...getThemeOptions(themes, defaults)
+				...getThemeOptions(themes, defaults),
 			};
 		}
 		case Actions.RESET_DEFAULT_SETTINGS: {
 			const themes = {
 				...state.themes,
-				...updateMainThemeVariations(state.defaults.theme.main, state.themes)
+				...updateMainThemeVariations(state.defaults.theme.main, state.themes),
 			};
 			return {
 				...state,
 				defaults: _.merge({}, state.defaults),
 				current: _.merge({}, state.defaults),
 				themes,
-				...getThemeOptions(themes, state.defaults)
+				...getThemeOptions(themes, state.defaults),
 			};
 		}
 		default: {
@@ -91,7 +91,7 @@ function getInitialSettings() {
 		FuseSettingsConfig.layout && FuseSettingsConfig.layout.style ? FuseSettingsConfig.layout.style : 'layout1';
 	const layout = {
 		style: defaultLayoutStyle,
-		config: FuseLayoutConfigs[defaultLayoutStyle].defaults
+		config: FuseLayoutConfigs[defaultLayoutStyle].defaults,
 	};
 	return _.merge({}, defaultSettings, { layout }, FuseSettingsConfig, getParsedQuerySettings());
 }
@@ -110,9 +110,9 @@ function getInitialThemes() {
 				[key]: createMuiTheme(
 					_.merge({}, muiTheme, {
 						mixins: extendThemeWithMixins(muiTheme),
-						direction
+						direction,
 					})
-				)
+				),
 			};
 		})
 	);
@@ -121,15 +121,15 @@ function getInitialThemes() {
 		...themes,
 		...mainThemeVariations({
 			...themesObjRaw[initialSettings.theme.main],
-			direction
-		})
+			direction,
+		}),
 	};
 }
 
 function updateMainThemeVariations(mainTheme, themes) {
 	return mainThemeVariations({
 		...themesObjRaw[mainTheme],
-		direction: themes[mainTheme].direction
+		direction: themes[mainTheme].direction,
 	});
 }
 
@@ -139,7 +139,7 @@ function getThemeOptions(_themes, _settings) {
 		navbarTheme: _themes[_settings.theme.navbar],
 		toolbarTheme: _themes[_settings.theme.toolbar],
 		footerTheme: _themes[_settings.theme.footer],
-		...updateMainThemeVariations(_settings.theme.main, _themes)
+		...updateMainThemeVariations(_settings.theme.main, _themes),
 	};
 }
 

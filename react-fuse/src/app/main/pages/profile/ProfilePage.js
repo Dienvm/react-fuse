@@ -11,15 +11,15 @@ import AboutTab from './tabs/AboutTab';
 import PhotosVideosTab from './tabs/PhotosVideosTab';
 import TimelineTab from './tabs/TimelineTab';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	layoutHeader: {
 		height: 320,
 		minHeight: 320,
 		[theme.breakpoints.down('md')]: {
 			height: 240,
-			minHeight: 240
-		}
-	}
+			minHeight: 240,
+		},
+	},
 }));
 
 function ProfilePage() {
@@ -34,7 +34,7 @@ function ProfilePage() {
 		<FusePageSimple
 			classes={{
 				header: classes.layoutHeader,
-				toolbar: 'px-16 sm:px-24'
+				toolbar: 'px-16 sm:px-24',
 			}}
 			header={
 				<div className="p-24 flex flex-1 flex-col items-center justify-center md:flex-row md:items-end">
@@ -68,24 +68,24 @@ function ProfilePage() {
 					variant="scrollable"
 					scrollButtons="off"
 					classes={{
-						root: 'h-64 w-full border-b-1'
+						root: 'h-64 w-full border-b-1',
 					}}
 				>
 					<Tab
 						classes={{
-							root: 'h-64'
+							root: 'h-64',
 						}}
 						label="Timeline"
 					/>
 					<Tab
 						classes={{
-							root: 'h-64'
+							root: 'h-64',
 						}}
 						label="About"
 					/>
 					<Tab
 						classes={{
-							root: 'h-64'
+							root: 'h-64',
 						}}
 						label="Photos & Videos"
 					/>

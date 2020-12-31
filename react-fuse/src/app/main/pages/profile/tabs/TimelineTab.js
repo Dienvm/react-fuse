@@ -23,7 +23,7 @@ function TimelineTab() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get('/api/profile/timeline').then(res => {
+		axios.get('/api/profile/timeline').then((res) => {
 			setData(res.data);
 		});
 	}, []);
@@ -37,7 +37,7 @@ function TimelineTab() {
 			<div className="flex flex-col flex-1 md:ltr:pr-32 md:rtl:pl-32">
 				<FuseAnimateGroup
 					enter={{
-						animation: 'transition.slideUpBigIn'
+						animation: 'transition.slideUpBigIn',
 					}}
 				>
 					<div>
@@ -80,7 +80,7 @@ function TimelineTab() {
 						<Divider className="my-32" />
 					</div>
 
-					{data.posts.map(post => (
+					{data.posts.map((post) => (
 						<Card key={post.id} className="mb-32 overflow-hidden">
 							<CardHeader
 								avatar={<Avatar aria-label="Recipe" src={post.user.avatar} />}
@@ -163,7 +163,7 @@ function TimelineTab() {
 										</div>
 
 										<List>
-											{post.comments.map(comment => (
+											{post.comments.map((comment) => (
 												<div key={comment.id}>
 													<ListItem className="px-0 -mx-8">
 														<Avatar
@@ -233,7 +233,7 @@ function TimelineTab() {
 			<div className="flex flex-col md:w-320">
 				<FuseAnimateGroup
 					enter={{
-						animation: 'transition.slideUpBigIn'
+						animation: 'transition.slideUpBigIn',
 					}}
 				>
 					<Card className="w-full">
@@ -249,7 +249,7 @@ function TimelineTab() {
 						</AppBar>
 						<CardContent className="p-0">
 							<List>
-								{data.activities.map(activity => (
+								{data.activities.map((activity) => (
 									<ListItem key={activity.id} className="px-12">
 										<Avatar className="mx-4" alt={activity.user.name} src={activity.user.avatar} />
 										<ListItemText

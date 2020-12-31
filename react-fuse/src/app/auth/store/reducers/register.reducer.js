@@ -4,8 +4,8 @@ const initialState = {
 	success: false,
 	error: {
 		username: null,
-		password: null
-	}
+		password: null,
+	},
 };
 
 const register = (state = initialState, action) => {
@@ -13,13 +13,13 @@ const register = (state = initialState, action) => {
 		case Actions.REGISTER_SUCCESS: {
 			return {
 				...initialState,
-				success: true
+				success: true,
 			};
 		}
 		case Actions.REGISTER_ERROR: {
 			return {
 				success: false,
-				error: action.payload
+				error: action.payload,
 			};
 		}
 		default: {

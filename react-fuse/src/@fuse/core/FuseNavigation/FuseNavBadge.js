@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		padding: '0 7px',
 		fontSize: 11,
@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		alignItems: 'center',
 		backgroundColor: theme.palette.secondary.main,
-		color: theme.palette.secondary.contrastText
-	}
+		color: theme.palette.secondary.contrastText,
+	},
 }));
 
 function FuseNavBadge(props) {
@@ -27,7 +27,7 @@ function FuseNavBadge(props) {
 			className={clsx(classes.root, className, 'item-badge')}
 			style={{
 				backgroundColor: badge.bg,
-				color: badge.fg
+				color: badge.fg,
 			}}
 		>
 			{badge.title}
@@ -39,8 +39,8 @@ FuseNavBadge.propTypes = {
 	badge: PropTypes.shape({
 		title: PropTypes.node,
 		bg: PropTypes.string,
-		fg: PropTypes.string
-	})
+		fg: PropTypes.string,
+	}),
 };
 FuseNavBadge.defaultProps = {};
 

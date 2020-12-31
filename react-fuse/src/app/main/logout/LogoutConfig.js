@@ -10,9 +10,9 @@ const LogoutConfig = {
 			component: () => {
 				store.dispatch(logoutUser());
 				return 'Logging out..';
-			}
-		}
-	]
+			},
+		},
+	],
 };
 
 export default LogoutConfig;

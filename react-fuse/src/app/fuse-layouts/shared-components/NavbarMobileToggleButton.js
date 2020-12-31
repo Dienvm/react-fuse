@@ -10,7 +10,7 @@ function NavbarMobileToggleButton(props) {
 	return (
 		<IconButton
 			className={props.className}
-			onClick={ev => dispatch(Actions.navbarToggleMobile())}
+			onClick={(ev) => dispatch(Actions.navbarToggleMobile())}
 			color="inherit"
 			disableRipple
 		>
@@ -20,7 +20,7 @@ function NavbarMobileToggleButton(props) {
 }
 
 NavbarMobileToggleButton.defaultProps = {
-	children: <Icon>menu</Icon>
+	children: <Icon>menu</Icon>,
 };
 
 export default NavbarMobileToggleButton;

@@ -10,31 +10,31 @@ import clsx from 'clsx';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {},
 	success: {
 		backgroundColor: green[600],
-		color: '#FFFFFF'
+		color: '#FFFFFF',
 	},
 	error: {
 		backgroundColor: theme.palette.error.dark,
-		color: theme.palette.getContrastText(theme.palette.error.dark)
+		color: theme.palette.getContrastText(theme.palette.error.dark),
 	},
 	info: {
 		backgroundColor: blue[600],
-		color: '#FFFFFF'
+		color: '#FFFFFF',
 	},
 	warning: {
 		backgroundColor: amber[600],
-		color: '#FFFFFF'
-	}
+		color: '#FFFFFF',
+	},
 }));
 
 const variantIcon = {
 	success: 'check_circle',
 	warning: 'warning',
 	error: 'error_outline',
-	info: 'info'
+	info: 'info',
 };
 
 function FuseMessage(props) {
@@ -50,14 +50,14 @@ function FuseMessage(props) {
 			open={state}
 			onClose={() => dispatch(Actions.hideMessage())}
 			classes={{
-				root: classes.root
+				root: classes.root,
 			}}
 			ContentProps={{
 				variant: 'body2',
 				headlineMapping: {
 					body1: 'div',
-					body2: 'div'
-				}
+					body2: 'div',
+				},
 			}}
 		>
 			<SnackbarContent
@@ -76,7 +76,7 @@ function FuseMessage(props) {
 						onClick={() => dispatch(Actions.hideMessage())}
 					>
 						<Icon>close</Icon>
-					</IconButton>
+					</IconButton>,
 				]}
 			/>
 		</Snackbar>

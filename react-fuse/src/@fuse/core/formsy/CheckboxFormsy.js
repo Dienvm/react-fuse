@@ -20,7 +20,7 @@ function CheckboxFormsy(props) {
 		'inputProps',
 		'inputRef',
 		'onChange',
-		'variant'
+		'variant',
 	]);
 
 	// An error message is returned only if the component is invalid

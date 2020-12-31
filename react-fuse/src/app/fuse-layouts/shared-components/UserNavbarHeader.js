@@ -6,16 +6,16 @@ import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		'&.user': {
 			'& .username, & .email': {
 				transition: theme.transitions.create('opacity', {
 					duration: theme.transitions.duration.shortest,
-					easing: theme.transitions.easing.easeInOut
-				})
-			}
-		}
+					easing: theme.transitions.easing.easeInOut,
+				}),
+			},
+		},
 	},
 	avatar: {
 		width: 72,
@@ -29,12 +29,12 @@ const useStyles = makeStyles(theme => ({
 		transform: 'translateX(-50%)',
 		transition: theme.transitions.create('all', {
 			duration: theme.transitions.duration.shortest,
-			easing: theme.transitions.easing.easeInOut
+			easing: theme.transitions.easing.easeInOut,
 		}),
 		'& > img': {
-			borderRadius: '50%'
-		}
-	}
+			borderRadius: '50%',
+		},
+	},
 }));
 
 function UserNavbarHeader(props) {

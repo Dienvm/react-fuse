@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FuseNavBadge from '../FuseNavBadge';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		minHeight: 48,
 		'&.active': {
@@ -21,19 +21,19 @@ const useStyles = makeStyles(theme => ({
 			color: `${theme.palette.secondary.contrastText}!important`,
 			pointerEvents: 'none',
 			'& .list-item-text-primary': {
-				color: 'inherit'
+				color: 'inherit',
 			},
 			'& .list-item-icon': {
-				color: 'inherit'
-			}
+				color: 'inherit',
+			},
 		},
 		'& .list-item-icon': {},
 		'& .list-item-text': {
-			padding: '0 0 0 16px'
+			padding: '0 0 0 16px',
 		},
 		color: theme.palette.text.primary,
-		textDecoration: 'none!important'
-	}
+		textDecoration: 'none!important',
+	},
 }));
 
 function FuseNavHorizontalItem(props) {
@@ -55,7 +55,7 @@ function FuseNavHorizontalItem(props) {
 			to={item.url}
 			activeClassName="active"
 			className={clsx('list-item', classes.root)}
-			onClick={ev => dispatch(Actions.navbarCloseMobile())}
+			onClick={(ev) => dispatch(Actions.navbarCloseMobile())}
 			exact={item.exact}
 		>
 			{item.icon && (
@@ -80,8 +80,8 @@ FuseNavHorizontalItem.propTypes = {
 		id: PropTypes.string.isRequired,
 		title: PropTypes.string,
 		icon: PropTypes.string,
-		url: PropTypes.string
-	})
+		url: PropTypes.string,
+	}),
 };
 
 FuseNavHorizontalItem.defaultProps = {};

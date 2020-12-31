@@ -15,14 +15,14 @@ import { withRouter } from 'react-router-dom';
 import FuseNavBadge from '../FuseNavBadge';
 import FuseNavItem from '../FuseNavItem';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		padding: 0,
 		'&.open': {
-			backgroundColor: theme.palette.type === 'dark' ? 'rgba(255,255,255,.015)' : 'rgba(0,0,0,.04)'
-		}
+			backgroundColor: theme.palette.type === 'dark' ? 'rgba(255,255,255,.015)' : 'rgba(0,0,0,.04)',
+		},
 	},
-	item: props => ({
+	item: (props) => ({
 		height: 40,
 		width: 'calc(100% - 16px)',
 		borderRadius: '0 20px 20px 0',
@@ -30,12 +30,12 @@ const useStyles = makeStyles(theme => ({
 		paddingLeft: props.itemPadding > 80 ? 80 : props.itemPadding,
 		color: theme.palette.text.primary,
 		'&.active > .list-item-text > span': {
-			fontWeight: 600
+			fontWeight: 600,
 		},
 		'& .list-item-icon': {
-			marginRight: 16
-		}
-	})
+			marginRight: 16,
+		},
+	}),
 }));
 
 function needsToBeOpened(location, item) {
@@ -67,7 +67,7 @@ function FuseNavVerticalCollapse(props) {
 	const [open, setOpen] = useState(() => needsToBeOpened(props.location, props.item));
 	const { item, nestedLevel } = props;
 	const classes = useStyles({
-		itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24
+		itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24,
 	});
 	const { t } = useTranslation('navigation');
 
@@ -112,7 +112,7 @@ function FuseNavVerticalCollapse(props) {
 				<IconButton
 					disableRipple
 					className="w-40 h-40 -mx-12 p-0 focus:bg-transparent hover:bg-transparent"
-					onClick={ev => ev.preventDefault()}
+					onClick={(ev) => ev.preventDefault()}
 				>
 					<Icon className="text-16 arrow-icon" color="inherit">
 						{open ? 'expand_less' : 'expand_more'}
@@ -122,7 +122,7 @@ function FuseNavVerticalCollapse(props) {
 
 			{item.children && (
 				<Collapse in={open} className="collapse-children">
-					{item.children.map(_item => (
+					{item.children.map((_item) => (
 						<FuseNavItem
 							key={_item.id}
 							type={`vertical-${_item.type}`}
@@ -141,8 +141,8 @@ FuseNavVerticalCollapse.propTypes = {
 		id: PropTypes.string.isRequired,
 		title: PropTypes.string,
 		icon: PropTypes.string,
-		children: PropTypes.array
-	})
+		children: PropTypes.array,
+	}),
 };
 FuseNavVerticalCollapse.defaultProps = {};
 

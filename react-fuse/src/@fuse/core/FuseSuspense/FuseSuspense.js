@@ -10,13 +10,13 @@ import React from 'react';
 }
 
 FuseSuspense.propTypes = {
-	loadingProps: PropTypes.object
+	loadingProps: PropTypes.object,
 };
 
 FuseSuspense.defaultProps = {
 	loadingProps: {
-		delay: 0
-	}
+		delay: 0,
+	},
 };
 
 export default FuseSuspense;

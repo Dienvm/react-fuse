@@ -13,8 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FuseNavBadge from '../FuseNavBadge';
 
-const useStyles = makeStyles(theme => ({
-	item: props => ({
+const useStyles = makeStyles((theme) => ({
+	item: (props) => ({
 		height: 40,
 		width: 'calc(100% - 16px)',
 		borderRadius: '0 20px 20px 0',
@@ -26,20 +26,20 @@ const useStyles = makeStyles(theme => ({
 			pointerEvents: 'none',
 			transition: 'border-radius .15s cubic-bezier(0.4,0.0,0.2,1)',
 			'& .list-item-text-primary': {
-				color: 'inherit'
+				color: 'inherit',
 			},
 			'& .list-item-icon': {
-				color: 'inherit'
-			}
+				color: 'inherit',
+			},
 		},
 		'& .list-item-icon': {
-			marginRight: 16
+			marginRight: 16,
 		},
 		'& .list-item-text': {},
 		color: theme.palette.text.primary,
 		cursor: 'pointer',
-		textDecoration: 'none!important'
-	})
+		textDecoration: 'none!important',
+	}),
 }));
 
 function FuseNavVerticalItem(props) {
@@ -47,7 +47,7 @@ function FuseNavVerticalItem(props) {
 	const userRole = useSelector(({ auth }) => auth.user.role);
 	const { item, nestedLevel } = props;
 	const classes = useStyles({
-		itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24
+		itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24,
 	});
 	const { t } = useTranslation('navigation');
 
@@ -62,7 +62,7 @@ function FuseNavVerticalItem(props) {
 			to={item.url}
 			activeClassName="active"
 			className={clsx(classes.item, 'list-item')}
-			onClick={ev => dispatch(Actions.navbarCloseMobile())}
+			onClick={(ev) => dispatch(Actions.navbarCloseMobile())}
 			exact={item.exact}
 		>
 			{item.icon && (
@@ -87,8 +87,8 @@ FuseNavVerticalItem.propTypes = {
 		id: PropTypes.string.isRequired,
 		title: PropTypes.string,
 		icon: PropTypes.string,
-		url: PropTypes.string
-	})
+		url: PropTypes.string,
+	}),
 };
 
 FuseNavVerticalItem.defaultProps = {};

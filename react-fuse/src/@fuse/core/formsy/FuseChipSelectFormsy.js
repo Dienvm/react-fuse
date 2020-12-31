@@ -27,7 +27,7 @@ function FuseChipSelectFormsy(props) {
 		'variant',
 		'isMulti',
 		'options',
-		'errorMessage'
+		'errorMessage',
 	]);
 
 	// An error message is returned only if the component is invalid
@@ -36,7 +36,7 @@ function FuseChipSelectFormsy(props) {
 
 	function changeValue(val, selectedOptions) {
 		if (props.multiple) {
-			props.setValue(selectedOptions.map(option => option.value));
+			props.setValue(selectedOptions.map((option) => option.value));
 		} else {
 			props.setValue(val);
 		}

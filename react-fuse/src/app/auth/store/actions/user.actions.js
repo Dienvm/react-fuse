@@ -25,8 +25,8 @@ export function setUserDataAuth0(tokenData) {
 			settings:
 				tokenData.user_metadata && tokenData.user_metadata.settings ? tokenData.user_metadata.settings : {},
 			shortcuts:
-				tokenData.user_metadata && tokenData.user_metadata.shortcuts ? tokenData.user_metadata.shortcuts : []
-		}
+				tokenData.user_metadata && tokenData.user_metadata.shortcuts ? tokenData.user_metadata.shortcuts : [],
+		},
 	};
 
 	return setUserData(user);
@@ -71,8 +71,8 @@ export function createUserSettingsFirebase(authUser) {
 			data: {
 				displayName: authUser.displayName,
 				email: authUser.email,
-				settings: { ...fuseDefaultSettings }
-			}
+				settings: { ...fuseDefaultSettings },
+			},
 		});
 		currentUser.updateProfile(user.data);
 
@@ -85,7 +85,7 @@ export function createUserSettingsFirebase(authUser) {
  * Set User Data
  */
 export function setUserData(user) {
-	return dispatch => {
+	return (dispatch) => {
 		/*
         You can redirect the logged-in user to a specific route depending on his role
          */
@@ -104,7 +104,7 @@ export function setUserData(user) {
          */
 		dispatch({
 			type: SET_USER_DATA,
-			payload: user
+			payload: user,
 		});
 	};
 }
@@ -133,8 +133,8 @@ export function updateUserShortcuts(shortcuts) {
 			...user,
 			data: {
 				...user.data,
-				shortcuts
-			}
+				shortcuts,
+			},
 		};
 
 		updateUserData(newUser, dispatch);
@@ -148,7 +148,7 @@ export function updateUserShortcuts(shortcuts) {
  */
 export function removeUserData() {
 	return {
-		type: REMOVE_USER_DATA
+		type: REMOVE_USER_DATA,
 	};
 }
 
@@ -165,7 +165,7 @@ export function logoutUser() {
 		}
 
 		history.push({
-			pathname: '/login'
+			pathname: '/login',
 		});
 
 		switch (user.from) {
@@ -185,7 +185,7 @@ export function logoutUser() {
 		dispatch(FuseActions.setInitialSettings());
 
 		return dispatch({
-			type: USER_LOGGED_OUT
+			type: USER_LOGGED_OUT,
 		});
 	};
 }
@@ -206,7 +206,7 @@ function updateUserData(user, dispatch) {
 				.then(() => {
 					dispatch(MessageActions.showMessage({ message: 'User data saved to firebase' }));
 				})
-				.catch(error => {
+				.catch((error) => {
 					dispatch(MessageActions.showMessage({ message: error.message }));
 				});
 			break;
@@ -215,12 +215,12 @@ function updateUserData(user, dispatch) {
 			auth0Service
 				.updateUserData({
 					settings: user.data.settings,
-					shortcuts: user.data.shortcuts
+					shortcuts: user.data.shortcuts,
 				})
 				.then(() => {
 					dispatch(MessageActions.showMessage({ message: 'User data saved to auth0' }));
 				})
-				.catch(error => {
+				.catch((error) => {
 					dispatch(MessageActions.showMessage({ message: error.message }));
 				});
 			break;
@@ -231,7 +231,7 @@ function updateUserData(user, dispatch) {
 				.then(() => {
 					dispatch(MessageActions.showMessage({ message: 'User data saved with api' }));
 				})
-				.catch(error => {
+				.catch((error) => {
 					dispatch(MessageActions.showMessage({ message: error.message }));
 				});
 			break;

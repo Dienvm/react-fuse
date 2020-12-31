@@ -24,7 +24,7 @@ class FirebaseService {
 		success(true);
 	}
 
-	getUserData = userId => {
+	getUserData = (userId) => {
 		if (!firebase.apps.length) {
 			return false;
 		}
@@ -32,21 +32,21 @@ class FirebaseService {
 			this.db
 				.ref(`users/${userId}`)
 				.once('value')
-				.then(snapshot => {
+				.then((snapshot) => {
 					const user = snapshot.val();
 					resolve(user);
 				});
 		});
 	};
 
-	updateUserData = user => {
+	updateUserData = (user) => {
 		if (!firebase.apps.length) {
 			return false;
 		}
 		return this.db.ref(`users/${user.uid}`).set(user);
 	};
 
-	onAuthStateChanged = callback => {
+	onAuthStateChanged = (callback) => {
 		if (!this.auth) {
 			return;
 		}

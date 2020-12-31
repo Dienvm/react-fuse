@@ -6,20 +6,20 @@ export const RESET_NAVIGATION = '[NAVIGATION] RESET NAVIGATION';
 
 export function getNavigation() {
 	return {
-		type: GET_NAVIGATION
+		type: GET_NAVIGATION,
 	};
 }
 
 export function setNavigation(navigation) {
 	return {
 		type: SET_NAVIGATION,
-		navigation
+		navigation,
 	};
 }
 
 export function resetNavigation() {
 	return {
-		type: RESET_NAVIGATION
+		type: RESET_NAVIGATION,
 	};
 }
 
@@ -28,7 +28,7 @@ export function appendNavigationItem(item, parentId) {
 		const { navigation } = getState().fuse;
 		return dispatch({
 			type: SET_NAVIGATION,
-			navigation: FuseUtils.appendNavItem(navigation, item, parentId)
+			navigation: FuseUtils.appendNavItem(navigation, item, parentId),
 		});
 	};
 }
@@ -38,7 +38,7 @@ export function prependNavigationItem(item, parentId) {
 		const { navigation } = getState().fuse;
 		return dispatch({
 			type: SET_NAVIGATION,
-			navigation: FuseUtils.prependNavItem(navigation, item, parentId)
+			navigation: FuseUtils.prependNavItem(navigation, item, parentId),
 		});
 	};
 }
@@ -48,7 +48,7 @@ export function updateNavigationItem(id, item) {
 		const { navigation } = getState().fuse;
 		return dispatch({
 			type: SET_NAVIGATION,
-			navigation: FuseUtils.updateNavItem(navigation, id, item)
+			navigation: FuseUtils.updateNavItem(navigation, id, item),
 		});
 	};
 }
@@ -58,7 +58,7 @@ export function removeNavigationItem(id) {
 		const { navigation } = getState().fuse;
 		return dispatch({
 			type: SET_NAVIGATION,
-			navigation: FuseUtils.removeNavItem(navigation, id)
+			navigation: FuseUtils.removeNavItem(navigation, id),
 		});
 	};
 }

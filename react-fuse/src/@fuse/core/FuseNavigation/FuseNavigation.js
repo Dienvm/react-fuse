@@ -28,37 +28,37 @@ registerComponent('horizontal-link', FuseNavHorizontalLink);
 registerComponent('vertical-divider', () => <Divider className="my-16" />);
 registerComponent('horizontal-divider', () => <Divider className="my-16" />);
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	navigation: {
 		'& .list-item': {
 			'&:hover': {
-				backgroundColor: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0,0,0,.04)'
+				backgroundColor: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0,0,0,.04)',
 			},
 			'&:focus:not(.active)': {
-				backgroundColor: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0,0,0,.05)'
-			}
-		}
+				backgroundColor: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0,0,0,.05)',
+			},
+		},
 	},
 	verticalNavigation: {
 		'&.active-square-list': {
 			'& .list-item, & .active.list-item': {
 				width: '100%',
-				borderRadius: '0'
-			}
+				borderRadius: '0',
+			},
 		},
 		'&.dense': {
 			'& .list-item': {
 				paddingTop: 0,
 				paddingBottom: 0,
-				height: 32
-			}
-		}
+				height: 32,
+			},
+		},
 	},
 	horizontalNavigation: {
 		'&.active-square-list': {
 			'& .list-item': {
-				borderRadius: '0'
-			}
+				borderRadius: '0',
+			},
 		},
 		'& .list-item': {
 			padding: '8px 12px 8px 12px',
@@ -66,12 +66,12 @@ const useStyles = makeStyles(theme => ({
 			minHeight: 40,
 			'&.level-0': {
 				height: 44,
-				minHeight: 44
+				minHeight: 44,
 			},
 			'& .list-item-text': {
-				padding: '0 0 0 8px'
-			}
-		}
+				padding: '0 0 0 8px',
+			},
+		},
 	},
 	'@global': {
 		'.popper-navigation-list': {
@@ -80,20 +80,20 @@ const useStyles = makeStyles(theme => ({
 				height: 40,
 				minHeight: 40,
 				'& .list-item-text': {
-					padding: '0 0 0 8px'
-				}
+					padding: '0 0 0 8px',
+				},
 			},
 			'&.dense': {
 				'& .list-item': {
 					minHeight: 32,
 					height: 32,
 					'& .list-item-text': {
-						padding: '0 0 0 8px'
-					}
-				}
-			}
-		}
-	}
+						padding: '0 0 0 8px',
+					},
+				},
+			},
+		},
+	},
 }));
 
 function FuseNavigation(props) {
@@ -111,7 +111,7 @@ function FuseNavigation(props) {
 				className
 			)}
 		>
-			{navigation.map(_item => (
+			{navigation.map((_item) => (
 				<FuseNavItem key={_item.id} type={`vertical-${_item.type}`} item={_item} nestedLevel={0} />
 			))}
 		</List>
@@ -128,7 +128,7 @@ function FuseNavigation(props) {
 				className
 			)}
 		>
-			{navigation.map(_item => (
+			{navigation.map((_item) => (
 				<FuseNavItem
 					key={_item.id}
 					type={`horizontal-${_item.type}`}
@@ -156,11 +156,11 @@ function FuseNavigation(props) {
 }
 
 FuseNavigation.propTypes = {
-	navigation: PropTypes.array.isRequired
+	navigation: PropTypes.array.isRequired,
 };
 
 FuseNavigation.defaultProps = {
-	layout: 'vertical'
+	layout: 'vertical',
 };
 
 export default React.memo(FuseNavigation);

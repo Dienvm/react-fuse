@@ -30,14 +30,14 @@ function renderInputComponent(inputProps) {
 					<TextField
 						fullWidth
 						InputProps={{
-							inputRef: node => {
+							inputRef: (node) => {
 								ref(node);
 								inputRef(node);
 							},
 							classes: {
 								input: clsx(classes.input, 'py-0 px-16 h-48 ltr:pr-48 rtl:pl-48'),
-								notchedOutline: 'rounded-8'
-							}
+								notchedOutline: 'rounded-8',
+							},
 						}}
 						variant="outlined"
 						{...other}
@@ -55,13 +55,13 @@ function renderInputComponent(inputProps) {
 					fullWidth
 					InputProps={{
 						disableUnderline: true,
-						inputRef: node => {
+						inputRef: (node) => {
 							ref(node);
 							inputRef(node);
 						},
 						classes: {
-							input: clsx(classes.input, 'py-0 px-16 h-64')
-						}
+							input: clsx(classes.input, 'py-0 px-16 h-64'),
+						},
 					}}
 					variant="standard"
 					{...other}
@@ -108,7 +108,7 @@ function getSuggestions(value, data) {
 
 	return inputLength === 0
 		? []
-		: data.filter(suggestion => {
+		: data.filter((suggestion) => {
 				const keep = count < 10 && match(suggestion.title, inputValue).length > 0;
 
 				if (keep) {
@@ -123,35 +123,35 @@ function getSuggestionValue(suggestion) {
 	return suggestion.title;
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {},
 	container: {
-		position: 'relative'
+		position: 'relative',
 	},
 	suggestionsContainerOpen: {
 		position: 'absolute',
 		zIndex: 1,
 		marginTop: theme.spacing(),
 		left: 0,
-		right: 0
+		right: 0,
 	},
 	suggestion: {
-		display: 'block'
+		display: 'block',
 	},
 	suggestionsList: {
 		margin: 0,
 		padding: 0,
-		listStyleType: 'none'
+		listStyleType: 'none',
 	},
 	input: {
 		transition: theme.transitions.create(['background-color'], {
 			easing: theme.transitions.easing.easeInOut,
-			duration: theme.transitions.duration.short
+			duration: theme.transitions.duration.short,
 		}),
 		'&:focus': {
-			backgroundColor: theme.palette.background.paper
-		}
-	}
+			backgroundColor: theme.palette.background.paper,
+		},
+	},
 }));
 
 const initialState = {
@@ -159,7 +159,7 @@ const initialState = {
 	search: false,
 	navigation: null,
 	suggestions: [],
-	noSuggestions: false
+	noSuggestions: false,
 };
 
 function reducer(state, action) {
@@ -167,26 +167,26 @@ function reducer(state, action) {
 		case 'open': {
 			return {
 				...state,
-				opened: true
+				opened: true,
 			};
 		}
 		case 'close': {
 			return {
 				...state,
 				opened: false,
-				searchText: ''
+				searchText: '',
 			};
 		}
 		case 'setSearchText': {
 			return {
 				...state,
-				searchText: action.value
+				searchText: action.value,
 			};
 		}
 		case 'setNavigation': {
 			return {
 				...state,
-				navigation: action.value
+				navigation: action.value,
 			};
 		}
 		case 'updateSuggestions': {
@@ -197,14 +197,14 @@ function reducer(state, action) {
 			return {
 				...state,
 				suggestions,
-				noSuggestions
+				noSuggestions,
 			};
 		}
 		case 'clearSuggestions': {
 			return {
 				...state,
 				suggestions: [],
-				noSuggestions: false
+				noSuggestions: false,
 			};
 		}
 		case 'decrement': {
@@ -233,7 +233,7 @@ function FuseSearch(props) {
 		function setNavigation() {
 			dispatch({
 				type: 'setNavigation',
-				value: FuseUtils.getFlatNavigation(navigation).filter(item => itemAuthAllowed(item))
+				value: FuseUtils.getFlatNavigation(navigation).filter((item) => itemAuthAllowed(item)),
 			});
 		}
 
@@ -259,7 +259,7 @@ function FuseSearch(props) {
 	function handleSuggestionsFetchRequested({ value }) {
 		dispatch({
 			type: 'updateSuggestions',
-			value
+			value,
 		});
 	}
 
@@ -275,14 +275,14 @@ function FuseSearch(props) {
 
 	function handleSuggestionsClearRequested() {
 		dispatch({
-			type: 'clearSuggestions'
+			type: 'clearSuggestions',
 		});
 	}
 
 	function handleChange(event) {
 		dispatch({
 			type: 'setSearchText',
-			value: event.target.value
+			value: event.target.value,
 		});
 	}
 
@@ -298,7 +298,7 @@ function FuseSearch(props) {
 		onSuggestionsClearRequested: handleSuggestionsClearRequested,
 		onSuggestionSelected: handleSuggestionSelected,
 		getSuggestionValue,
-		renderSuggestion
+		renderSuggestion,
 	};
 
 	switch (props.variant) {
@@ -315,16 +315,16 @@ function FuseSearch(props) {
 							onChange: handleChange,
 							onFocus: showSearch,
 							InputLabelProps: {
-								shrink: true
+								shrink: true,
 							},
-							autoFocus: false
+							autoFocus: false,
 						}}
 						theme={{
 							container: 'flex flex-1 w-full',
 							suggestionsList: classes.suggestionsList,
-							suggestion: classes.suggestion
+							suggestion: classes.suggestion,
 						}}
-						renderSuggestionsContainer={options => (
+						renderSuggestionsContainer={(options) => (
 							<Popper
 								anchorEl={popperNode.current}
 								open={Boolean(options.children) || state.noSuggestions}
@@ -371,16 +371,16 @@ function FuseSearch(props) {
 											value: state.searchText,
 											onChange: handleChange,
 											InputLabelProps: {
-												shrink: true
+												shrink: true,
 											},
-											autoFocus: true
+											autoFocus: true,
 										}}
 										theme={{
 											container: 'flex flex-1 w-full',
 											suggestionsList: classes.suggestionsList,
-											suggestion: classes.suggestion
+											suggestion: classes.suggestion,
 										}}
-										renderSuggestionsContainer={options => (
+										renderSuggestionsContainer={(options) => (
 											<Popper
 												anchorEl={popperNode.current}
 												open={Boolean(options.children) || state.noSuggestions}
@@ -395,7 +395,7 @@ function FuseSearch(props) {
 														style={{
 															width: popperNode.current
 																? popperNode.current.clientWidth
-																: null
+																: null,
 														}}
 													>
 														{options.children}
@@ -432,7 +432,7 @@ FuseSearch.defaultProps = {
 			<Icon>search</Icon>
 		</IconButton>
 	),
-	variant: 'full' // basic, full
+	variant: 'full', // basic, full
 };
 
 export default withRouter(React.memo(FuseSearch));

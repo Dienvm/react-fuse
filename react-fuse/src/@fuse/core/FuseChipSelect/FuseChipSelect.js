@@ -10,43 +10,43 @@ import React from 'react';
 import Select from 'react-select';
 import Creatable from 'react-select/creatable';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		'& .fuse-chip-select__input': {
-			color: theme.palette.text.primary
+			color: theme.palette.text.primary,
 		},
 		'&.standard': {
 			'& $placeholder': {},
 			'& $valueContainer': {
-				paddingTop: 4
-			}
+				paddingTop: 4,
+			},
 		},
 		'&.filled': {
 			'& $placeholder': {
-				left: 12
+				left: 12,
 			},
 			'& $valueContainer': {
 				paddingTop: 24,
-				paddingLeft: 12
+				paddingLeft: 12,
 			},
 			'& $chip': {
-				border: '1px solid rgba(0, 0, 0, 0.12)'
-			}
+				border: '1px solid rgba(0, 0, 0, 0.12)',
+			},
 		},
 		'&.outlined': {
 			'& $placeholder': {
-				left: 12
+				left: 12,
 			},
 			'& $valueContainer': {
 				paddingLeft: 12,
-				paddingTop: 12
-			}
-		}
+				paddingTop: 12,
+			},
+		},
 	},
 	input: {
 		display: 'flex',
 		padding: 0,
-		height: 'auto'
+		height: 'auto',
 	},
 	valueContainer: {
 		display: 'flex',
@@ -55,39 +55,39 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		paddingBottom: 4,
 		paddingTop: 12,
-		minHeight: 40
+		minHeight: 40,
 	},
 	chip: {
-		margin: '4px 4px 4px 0'
+		margin: '4px 4px 4px 0',
 	},
 	chipFocused: {
 		backgroundColor: emphasize(
 			theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700],
 			0.08
-		)
+		),
 	},
 	noOptionsMessage: {
-		padding: `${theme.spacing()}px ${theme.spacing(2)}px`
+		padding: `${theme.spacing()}px ${theme.spacing(2)}px`,
 	},
 	singleValue: {
-		fontSize: 16
+		fontSize: 16,
 	},
 	placeholder: {
 		position: 'absolute',
 		left: 0,
 		fontSize: 16,
-		margin: 0
+		margin: 0,
 	},
 	paper: {
 		position: 'absolute',
 		zIndex: 2,
 		marginTop: theme.spacing(),
 		left: 0,
-		right: 0
+		right: 0,
 	},
 	divider: {
-		height: theme.spacing(2)
-	}
+		height: theme.spacing(2),
+	},
 }));
 
 function NoOptionsMessage(props) {
@@ -118,8 +118,8 @@ function Control(props) {
 					className: classes.input,
 					inputRef: props.innerRef,
 					children: props.children,
-					...props.innerProps
-				}
+					...props.innerProps,
+				},
 			}}
 			{...props.selectProps.textFieldProps}
 		/>
@@ -133,7 +133,7 @@ function Option(props) {
 			selected={props.isFocused}
 			component="div"
 			style={{
-				fontWeight: props.isSelected ? 600 : 400
+				fontWeight: props.isSelected ? 600 : 400,
 			}}
 			{...props.innerProps}
 		>
@@ -178,11 +178,11 @@ function MultiValue(props) {
 			className={clsx(
 				classes.chip,
 				{
-					[classes.chipFocused]: props.isFocused
+					[classes.chipFocused]: props.isFocused,
 				},
 				props.data.class
 			)}
-			onDelete={event => {
+			onDelete={(event) => {
 				props.removeProps.onClick();
 				props.removeProps.onMouseDown(event);
 			}}
@@ -208,11 +208,11 @@ const components = {
 	Option,
 	Placeholder,
 	SingleValue,
-	ValueContainer
+	ValueContainer,
 };
 
 function FuseChipSelect(props) {
-	const handleOnChange = value => {
+	const handleOnChange = (value) => {
 		if (value === null) {
 			value = [];
 		}
