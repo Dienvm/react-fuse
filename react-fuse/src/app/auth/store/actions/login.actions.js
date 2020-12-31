@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import firebaseService from 'app/services/firebaseService';
 import jwtService from 'app/services/jwtService';
 import * as Actions from 'app/store/actions';
@@ -5,8 +6,10 @@ import * as UserActions from './user.actions';
 
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_GOOGLE_ERROR = 'LOGIN_GOOGLE_ERROR';
+export const LOGIN_GOOGLE_SUCCESS = 'LOGIN_GOOGLE_SUCCESS';
 
-export function submitLogin({ email, password }) {
+export const submitLogin = ({ email, password }) => {
 	return dispatch =>
 		jwtService
 			.signInWithEmailAndPassword(email, password)
@@ -23,9 +26,9 @@ export function submitLogin({ email, password }) {
 					payload: error
 				});
 			});
-}
+};
 
-export function submitLoginWithFireBase({ username, password }) {
+export const submitLoginWithFireBase = ({ username, password }) => {
 	if (!firebaseService.auth) {
 		console.warn("Firebase Service didn't initialize, check your configuration");
 
@@ -65,4 +68,28 @@ export function submitLoginWithFireBase({ username, password }) {
 					payload: response
 				});
 			});
-}
+};
+
+export const submitLoginWithGoogle = () => {
+	if (!firebaseService.auth) {
+		console.warn("Firebase Service didn't initialize, check your configuration");
+
+		return () => false;
+	}
+	const provider = new firebase.auth.GoogleAuthProvider();
+
+	return dispatch =>
+		firebaseService.auth
+			.signInWithPopup(provider)
+			.then(() => {
+				return dispatch({
+					type: LOGIN_SUCCESS
+				});
+			})
+			.catch(error => {
+				return dispatch({
+					type: LOGIN_ERROR,
+					payload: error.message
+				});
+			});
+};

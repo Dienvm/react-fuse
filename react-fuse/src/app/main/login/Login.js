@@ -53,15 +53,22 @@ const LoginPage = () => {
 
 	const disableButton = () => {
 		setIsFormValid(false);
-	}
+	};
 
 	const enableButton = () => {
 		setIsFormValid(true);
-	}
+	};
 
-	const handleSubmit = (model) => {
+	const handleSubmit = model => {
 		dispatch(authActions.submitLoginWithFireBase(model));
-	}
+	};
+
+	const handleLoginWithGoogle = () => dispatch(authActions.submitLoginWithGoogle());
+
+	const handleLoginWithFacebook = () => {
+		// TODO
+		// dispatch(authActions.submitLoginWithFacebook);
+	};
 
 	return (
 		<div className={clsx(classes.root, 'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32')}>
@@ -172,11 +179,18 @@ const LoginPage = () => {
 								color="secondary"
 								size="small"
 								className="normal-case w-192 mb-8"
+								onClick={handleLoginWithGoogle}
 							>
 								Log in with Google
 							</Button>
 
-							<Button variant="contained" color="primary" size="small" className="normal-case w-192">
+							<Button
+								variant="contained"
+								color="primary"
+								size="small"
+								className="normal-case w-192"
+								onClick={handleLoginWithFacebook}
+							>
 								Log in with Facebook
 							</Button>
 
@@ -192,6 +206,6 @@ const LoginPage = () => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default LoginPage;

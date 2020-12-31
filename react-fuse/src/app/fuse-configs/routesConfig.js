@@ -11,7 +11,7 @@ import LogoutConfig from 'app/main/logout/LogoutConfig';
 const routeConfigs = [...pagesConfigs, DashboardConfig, LoginConfig, RegisterConfig, LogoutConfig];
 
 const routes = [
-	...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin','staff','user']),
+	...FuseUtils.generateRoutesFromConfigs(routeConfigs),
 	{
 		path: '/',
 		exact: true,

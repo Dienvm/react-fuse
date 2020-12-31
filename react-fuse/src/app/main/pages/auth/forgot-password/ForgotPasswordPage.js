@@ -30,17 +30,17 @@ const ForgotPasswordPage = () => {
 
 	const isFormValid = () => {
 		return form.email.length > 0;
-	}
+	};
 
-	const handleSubmit = (ev) => {
+	const handleSubmit = ev => {
 		ev.preventDefault();
 
 		dispatch(authActions.resetPassword(form));
 		resetForm();
 		history.push({
 			pathname: '/login'
-		})
-	}
+		});
+	};
 
 	return (
 		<div className={clsx(classes.root, 'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32')}>
@@ -98,6 +98,6 @@ const ForgotPasswordPage = () => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ForgotPasswordPage;

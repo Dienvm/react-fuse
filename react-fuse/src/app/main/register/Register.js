@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const RegisterPage = () =>  {
+const RegisterPage = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ const RegisterPage = () =>  {
 		acceptTermsConditions: false
 	});
 
-	const isFormValid = () =>  {
+	const isFormValid = () => {
 		return (
 			form.email.length > 0 &&
 			form.password.length > 0 &&
@@ -44,14 +44,14 @@ const RegisterPage = () =>  {
 			form.password === form.passwordConfirm &&
 			form.acceptTermsConditions
 		);
-	}
+	};
 
-	const handleSubmit = (ev) => {
+	const handleSubmit = ev => {
 		ev.preventDefault();
 
 		dispatch(authActions.registerWithFirebase(form));
 		resetForm();
-	}
+	};
 
 	return (
 		<div className={clsx(classes.root, 'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32')}>
@@ -157,6 +157,6 @@ const RegisterPage = () =>  {
 			</div>
 		</div>
 	);
-}
+};
 
 export default RegisterPage;
