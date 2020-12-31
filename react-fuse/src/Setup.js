@@ -10,10 +10,3 @@ const globalCustom = global;
 globalCustom.renderer = renderer;
 globalCustom.shallow = shallow;
 globalCustom.mount = mount;
-globalCustom.toJson = toJson;
-/* Wait all async finish */
-globalCustom.flushPromises = () => {
-	return new Promise((resolve) => setImmediate(resolve));
-};
-
-jest.mock('i18next');

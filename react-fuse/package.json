@@ -89,6 +89,7 @@
     "@yarnpkg/pnpify": "^2.0.0-rc.17",
     "babel-eslint": "10.0.3",
     "cross-env": "7.0.0",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
@@ -104,6 +105,7 @@
     "prettier": "^2.2.1",
     "promise": "8.0.3",
     "purgecss": "1.4.2",
+    "redux-mock-store": "^1.5.4",
     "source-map-explorer": "2.1.2",
     "tailwindcss": "1.2.0",
     "tailwindcss-dir": "4.0.0"
