@@ -1,18 +1,27 @@
-import axios from 'axios';
+import firebaseService from 'app/services/firebaseService';
 
 export const GET_PRODUCTS = 'GET PRODUCTS';
 export const SET_PRODUCTS_SEARCH_TEXT = 'SET PRODUCTS SEARCH TEXT';
 
 export const getProducts = () => {
-	const request = axios.get('/api/e-commerce-app/products');
+	const request = firebaseService.firestore.collection('products').get();
 
 	return (dispatch) =>
-		request.then((response) =>
-			dispatch({
+		request.then((docs) => {
+			const result = [];
+			docs.forEach((doc) => {
+				const data = {
+					...doc.data(),
+					id: doc.id,
+				};
+				result.push(data);
+			});
+
+			return dispatch({
 				type: GET_PRODUCTS,
-				payload: response.data,
-			})
-		);
+				payload: result,
+			});
+		});
 };
 
 export const setProductsSearchText = (event) => {

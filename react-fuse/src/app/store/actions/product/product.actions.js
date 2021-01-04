@@ -1,5 +1,6 @@
 import FuseUtils from '@fuse/utils';
 import { showMessage } from 'app/store/actions/fuse';
+import firebaseService from 'app/services/firebaseService';
 import axios from 'axios';
 
 export const GET_PRODUCT = 'GET PRODUCT';
@@ -32,6 +33,7 @@ export const saveProduct = (data) => {
 };
 
 export const newProduct = () => {
+	console.log('run to newProduct')
 	const data = {
 		id: FuseUtils.generateGUID(),
 		name: '',

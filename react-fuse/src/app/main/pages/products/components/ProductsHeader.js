@@ -54,6 +54,7 @@ const ProductsHeader = (props) => {
 					className="whitespace-no-wrap normal-case"
 					variant="contained"
 					color="secondary"
+					params={{ productId: 'new' }}
 				>
 					<span className="hidden sm:flex">Add New Product</span>
 					<span className="flex sm:hidden">New</span>

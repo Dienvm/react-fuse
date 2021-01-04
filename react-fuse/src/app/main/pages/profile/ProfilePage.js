@@ -13,7 +13,6 @@ import * as userActions from 'app/auth/store/actions';
 const ProfilePage = () => {
 	const dispatch = useDispatch();
 	const user = useSelector(({ auth }) => auth.user);
-	console.log('user ===>', user);
 
 	const [data, setData] = useState(user.data);
 	const [isFormValid, setIsFormValid] = useState(false);
