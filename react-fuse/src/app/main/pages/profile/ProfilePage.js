@@ -8,10 +8,12 @@ import { TextFieldFormsy } from '@fuse/core/formsy';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from 'app/auth/store/actions';
+// import * as authActions from 'app/auth/store/actions';
 
 const ProfilePage = () => {
 	const dispatch = useDispatch();
 	const user = useSelector(({ auth }) => auth.user);
+	console.log('user ===>', user);
 
 	const [data, setData] = useState(user.data);
 	const [isFormValid, setIsFormValid] = useState(false);
@@ -25,7 +27,7 @@ const ProfilePage = () => {
 		setIsFormValid(true);
 	};
 
-	const handleSubmit = model => {
+	const handleSubmit = (model) => {
 		const userData = { ...user.data, ...model };
 		user.data = userData;
 
@@ -51,10 +53,10 @@ const ProfilePage = () => {
 								name="displayName"
 								label="Display name"
 								validations={{
-									minLength: 4
+									minLength: 4,
 								}}
 								validationErrors={{
-									minLength: 'Min character length is 4'
+									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
 								value={data.displayName || ''}
@@ -67,11 +69,11 @@ const ProfilePage = () => {
 								label="Email"
 								validations={{
 									isEmail: true,
-									maxLength: 50
+									maxLength: 50,
 								}}
 								validationErrors={{
 									isEmail: 'You have to type valid email',
-									maxLength: 'You can not type in more than 50 characters'
+									maxLength: 'You can not type in more than 50 characters',
 								}}
 								variant="outlined"
 								value={data.email || ''}
@@ -84,11 +86,11 @@ const ProfilePage = () => {
 								label="Phone number"
 								validations={{
 									isNumeric: true,
-									maxLength: 10
+									maxLength: 10,
 								}}
 								validationErrors={{
 									isNumeric: 'You have to type valid phone number',
-									maxLength: 'You can not type in more than 10 numbers'
+									maxLength: 'You can not type in more than 10 numbers',
 								}}
 								variant="outlined"
 								value={data.phoneNumber || ''}
@@ -100,10 +102,10 @@ const ProfilePage = () => {
 								name="state"
 								label="State"
 								validations={{
-									minLength: 4
+									minLength: 4,
 								}}
 								validationErrors={{
-									minLength: 'Min character length is 4'
+									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
 								value={data.state || ''}
@@ -115,10 +117,10 @@ const ProfilePage = () => {
 								name="city"
 								label="City"
 								validations={{
-									minLength: 4
+									minLength: 4,
 								}}
 								validationErrors={{
-									minLength: 'Min character length is 4'
+									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
 								value={data.city || ''}
@@ -130,10 +132,10 @@ const ProfilePage = () => {
 								name="country"
 								label="Country"
 								validations={{
-									minLength: 4
+									minLength: 4,
 								}}
 								validationErrors={{
-									minLength: 'Min character length is 4'
+									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
 								value={data.country || ''}
@@ -146,11 +148,11 @@ const ProfilePage = () => {
 								label="Post code"
 								validations={{
 									isNumeric: true,
-									maxLength: 5
+									maxLength: 5,
 								}}
 								validationErrors={{
 									isNumeric: 'You have to type valid phone number',
-									maxLength: 'You can not type in more than 5 numbers'
+									maxLength: 'You can not type in more than 5 numbers',
 								}}
 								variant="outlined"
 								value={data.postcode || ''}

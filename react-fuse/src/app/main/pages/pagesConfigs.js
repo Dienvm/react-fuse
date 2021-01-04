@@ -3,9 +3,10 @@ import ResetPasswordPageConfig from './auth/reset-password/ResetPasswordPageConf
 import Error404PageConfig from './errors/404/Error404PageConfig';
 import Error500PageConfig from './errors/500/Error500PageConfig';
 import ProfilePageConfig from './profile/ProfilePageConfig';
-import ProductsConfig from './products/ProductsConfig';
 import OrdersConfig from './orders/OrdersConfig';
 import UsersConfig from './users/UsersConfig';
+import ProductsConfig from './products/ProductsConfig';
+import ProductConfig from './product/ProductConfig';
 
 const pagesConfigs = [
 	ResetPasswordPageConfig,
@@ -14,6 +15,7 @@ const pagesConfigs = [
 	Error500PageConfig,
 	ProfilePageConfig,
 	ProductsConfig,
+	ProductConfig,
 	OrdersConfig,
 	UsersConfig,
 ];
