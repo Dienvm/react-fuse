@@ -36,6 +36,7 @@ export function setUserDataAuth0(tokenData) {
  * Set user data from Firebase data
  */
 export function setUserDataFirebase(user, authUser) {
+	console.log('setUserDataFirebase ===>');
 	if (
 		user &&
 		user.data &&
@@ -56,6 +57,7 @@ export function setUserDataFirebase(user, authUser) {
  * Create User Settings with Firebase data
  */
 export function createUserSettingsFirebase(authUser) {
+	console.log('createUserSettingsFirebase ===>');
 	return (dispatch, getState) => {
 		const guestUser = getState().auth.user;
 		const fuseDefaultSettings = getState().fuse.settings.defaults;
@@ -85,6 +87,7 @@ export function createUserSettingsFirebase(authUser) {
  * Set User Data
  */
 export function setUserData(user) {
+	console.log('setUserData', user);
 	return (dispatch) => {
 		/*
         You can redirect the logged-in user to a specific route depending on his role
