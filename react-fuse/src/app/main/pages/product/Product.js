@@ -7,7 +7,6 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import { useForm } from '@fuse/hooks';
 import FuseUtils from '@fuse/utils';
-import _ from '@lodash';
 import { orange } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import withReducer from 'app/store/withReducer';
@@ -78,17 +77,11 @@ const Product = (props) => {
 	}, [form, productData.data, setForm]);
 
 	const handleChipChange = (value, name) => {
-		setForm(
-			_.set(
-				{ ...form },
-				name,
-				value.map((item) => item.value)
-			)
-		);
+		setForm({ ...form, [name]: value.map((item) => item.value) });
 	};
 
 	const setFeaturedImage = (id) => {
-		setForm(_.set({ ...form }, 'featuredImageId', id));
+		setForm({ ...form, featuredImageId: id });
 	};
 
 	const handleUploadChange = (e) => {
@@ -100,16 +93,18 @@ const Product = (props) => {
 		reader.readAsBinaryString(file);
 
 		reader.onload = () => {
-			setForm(
-				_.set({ ...form }, `images`, [
+			setForm({
+				...form,
+				images: [
 					{
 						id: FuseUtils.generateGUID(),
 						url: `data:${file.type};base64,${btoa(reader.result)}`,
 						type: 'image',
 					},
 					...form.images,
-				])
-			);
+				],
+			});
+			console.log('form', form);
 		};
 
 		reader.onerror = () => {

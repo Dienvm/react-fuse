@@ -147,7 +147,7 @@ const ProductsTable = (props) => {
 											{n.images.length > 0 && n.featuredImageId ? (
 												<img
 													className="w-full block rounded"
-													src={_.find(n.images, { id: n.featuredImageId }).url}
+													src={n.image.find((image) => image.id === n.featuredImageId).url}
 													alt={n.name}
 												/>
 											) : (
