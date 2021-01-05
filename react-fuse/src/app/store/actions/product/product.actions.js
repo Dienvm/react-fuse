@@ -1,25 +1,24 @@
 import FuseUtils from '@fuse/utils';
 import { showMessage } from 'app/store/actions/fuse';
 import firebaseService from 'app/services/firebaseService';
-import axios from 'axios';
 
 export const GET_PRODUCT = 'GET PRODUCT';
 export const SAVE_PRODUCT = 'SAVE PRODUCT';
 
-export const getProduct = (params) => {
-	const request = axios.get('/api/e-commerce-app/product', { params });
+export const getProduct = (productId) => {
+	const request = firebaseService.firestore.collection('products').doc(productId).get();
 
 	return (dispatch) =>
-		request.then((response) =>
+		request.then((doc) =>
 			dispatch({
 				type: GET_PRODUCT,
-				payload: response.data,
+				payload: doc.exists ? { ...doc.data(), id: doc.id } : {},
 			})
 		);
 };
 
 export const saveProduct = (data) => {
-	const request = axios.post('/api/e-commerce-app/product/save', data);
+	const request = firebaseService.firestore.collection('products').add(data);
 
 	return (dispatch) =>
 		request.then((response) => {
@@ -33,7 +32,6 @@ export const saveProduct = (data) => {
 };
 
 export const newProduct = () => {
-	console.log('run to newProduct')
 	const data = {
 		id: FuseUtils.generateGUID(),
 		name: '',

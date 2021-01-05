@@ -64,7 +64,7 @@ const ProductsTable = (props) => {
 	};
 
 	const handleClick = (item) => {
-		props.history.push(`/apps/e-commerce/products/${item.id}/${item.handle}`);
+		props.history.push(`/product/${item.id}/${item.handle}`);
 	};
 
 	const handleCheck = (event, id) => {

@@ -14,7 +14,7 @@ const ProductsConfig = {
 	auth: authRoles.admin,
 	routes: [
 		{
-			path: '/add-product',
+			path: '/product/:productId/:productHandle?',
 			component: React.lazy(() => import('./Product')),
 		},
 	],

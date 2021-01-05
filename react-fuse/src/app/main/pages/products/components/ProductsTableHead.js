@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import clsx from 'clsx';
+
 import Checkbox from '@material-ui/core/Checkbox';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,8 +15,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
-import clsx from 'clsx';
-import React, { useState } from 'react';
 
 const rows = [
 	{
@@ -127,6 +128,7 @@ const ProductsTableHead = (props) => {
 						</div>
 					)}
 				</TableCell>
+
 				{rows.map((row) => {
 					return (
 						<TableCell
@@ -152,7 +154,7 @@ const ProductsTableHead = (props) => {
 							)}
 						</TableCell>
 					);
-				}, this)}
+				})}
 			</TableRow>
 		</TableHead>
 	);
