@@ -11,7 +11,7 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as Actions from 'app/store/actions';
+import * as ProductActions from 'app/store/actions/product';
 import ProductsTableHead from './ProductsTableHead';
 
 const ProductsTable = (props) => {
@@ -29,7 +29,7 @@ const ProductsTable = (props) => {
 	});
 
 	useEffect(() => {
-		dispatch(Actions.getProducts());
+		dispatch(ProductActions.getProducts());
 	}, [dispatch]);
 
 	useEffect(() => {
@@ -92,6 +92,10 @@ const ProductsTable = (props) => {
 		setRowsPerPage(event.target.value);
 	};
 
+	const handleRemoveProducts = () => {
+		dispatch(ProductActions.removeProducts(selected))
+	};
+
 	return (
 		<div className="w-full flex flex-col">
 			<FuseScrollbars className="flex-grow overflow-x-auto">
@@ -102,6 +106,7 @@ const ProductsTable = (props) => {
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
 						rowCount={data.length}
+						handleRemoveProducts={handleRemoveProducts}
 					/>
 
 					<TableBody>

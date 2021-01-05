@@ -67,12 +67,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const ProductsTableHead = (props) => {
-	const classes = useStyles(props);
+const ProductsTableHead = ({ numSelected, order, onSelectAllClick, onRequestSort, rowCount, handleRemoveProducts }) => {
+	const classes = useStyles();
 	const [selectedProductsMenu, setSelectedProductsMenu] = useState(null);
 
 	const createSortHandler = (property) => (event) => {
-		props.onRequestSort(event, property);
+		onRequestSort(event, property);
 	};
 
 	const openSelectedProductsMenu = (event) => {
@@ -83,16 +83,21 @@ const ProductsTableHead = (props) => {
 		setSelectedProductsMenu(null);
 	};
 
+	const onRemoveProducts = () => {
+		closeSelectedProductsMenu();
+		handleRemoveProducts();
+	};
+
 	return (
 		<TableHead>
 			<TableRow className="h-64">
 				<TableCell padding="none" className="relative w-64 text-center">
 					<Checkbox
-						indeterminate={props.numSelected > 0 && props.numSelected < props.rowCount}
-						checked={props.numSelected === props.rowCount}
-						onChange={props.onSelectAllClick}
+						indeterminate={numSelected > 0 && numSelected < rowCount}
+						checked={numSelected === rowCount}
+						onChange={onSelectAllClick}
 					/>
-					{props.numSelected > 0 && (
+					{numSelected > 0 && (
 						<div
 							className={clsx(
 								'flex items-center justify-center absolute w-64 top-0 ltr:left-0 rtl:right-0 mx-56 h-64 z-10',
@@ -113,11 +118,7 @@ const ProductsTableHead = (props) => {
 								onClose={closeSelectedProductsMenu}
 							>
 								<MenuList>
-									<MenuItem
-										onClick={() => {
-											closeSelectedProductsMenu();
-										}}
-									>
+									<MenuItem onClick={onRemoveProducts}>
 										<ListItemIcon className="min-w-40">
 											<Icon>delete</Icon>
 										</ListItemIcon>
@@ -135,7 +136,7 @@ const ProductsTableHead = (props) => {
 							key={row.id}
 							align={row.align}
 							padding={row.disablePadding ? 'none' : 'default'}
-							sortDirection={props.order.id === row.id ? props.order.direction : false}
+							sortDirection={order.id === row.id ? order.direction : false}
 						>
 							{row.sort && (
 								<Tooltip
@@ -144,8 +145,8 @@ const ProductsTableHead = (props) => {
 									enterDelay={300}
 								>
 									<TableSortLabel
-										active={props.order.id === row.id}
-										direction={props.order.direction}
+										active={order.id === row.id}
+										direction={order.direction}
 										onClick={createSortHandler(row.id)}
 									>
 										{row.label}

@@ -104,7 +104,6 @@ const Product = (props) => {
 					...form.images,
 				],
 			});
-			console.log('form', form);
 		};
 
 		reader.onerror = () => {
