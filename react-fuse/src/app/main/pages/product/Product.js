@@ -83,7 +83,7 @@ const Product = (props) => {
 				pathname: '/products',
 			});
 		}
-	}, [productData]);
+	}, [productData, props.history]);
 
 	const handleChipChange = (value, name) => {
 		setForm({ ...form, [name]: value.map((item) => item.value) });
@@ -151,6 +151,7 @@ const Product = (props) => {
 						handleUploadChange={handleUploadChange}
 						setFeaturedImage={setFeaturedImage}
 						classes={classes}
+						loadingImage={loadingImage}
 					/>
 				)
 			}

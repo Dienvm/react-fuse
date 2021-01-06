@@ -41,9 +41,9 @@ export const removeProducts = (productIds) => {
 	};
 };
 
-export const setProductsSearchText = (event) => {
+export const setProductsSearchText = (value) => {
 	return {
 		type: SET_PRODUCTS_SEARCH_TEXT,
-		searchText: event.target.value,
+		searchText: value,
 	};
 };

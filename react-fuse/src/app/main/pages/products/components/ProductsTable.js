@@ -43,7 +43,7 @@ const ProductsTable = (props) => {
 
 	useEffect(() => {
 		if (products.type === ProductActions.REMOVE_PRODUCTS) dispatch(ProductActions.getProducts());
-	}, [products]);
+	}, [products, dispatch]);
 
 	const handleRequestSort = (event, property) => {
 		const id = property;

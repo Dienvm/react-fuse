@@ -15,6 +15,10 @@ const ProductsHeader = (props) => {
 	const dispatch = useDispatch();
 	const searchText = useSelector(({ product }) => product.products.searchText);
 
+	const handleSearchProduct = (event) => {
+		dispatch(ProductActions.setProductsSearchText(event.target.value));
+	};
+
 	return (
 		<div className="flex flex-1 w-full items-center justify-between">
 			<div className="flex items-center">
@@ -42,7 +46,7 @@ const ProductsHeader = (props) => {
 							inputProps={{
 								'aria-label': 'Search',
 							}}
-							onChange={(ev) => dispatch(ProductActions.setProductsSearchText(ev))}
+							onChange={handleSearchProduct}
 						/>
 					</Paper>
 				</FuseAnimate>

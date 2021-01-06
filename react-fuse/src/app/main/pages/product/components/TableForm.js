@@ -75,6 +75,7 @@ const TableForm = ({ form, handleChange, handleChipChange, handleUploadChange, s
 					isMulti
 				/>
 			</div>
+
 			{/* Images */}
 			<div>
 				<div className="flex justify-center sm:justify-start flex-wrap -mx-8">
@@ -115,6 +116,7 @@ const TableForm = ({ form, handleChange, handleChipChange, handleUploadChange, s
 					))}
 				</div>
 			</div>
+
 			{/* pricing */}
 			<div>
 				<TextField

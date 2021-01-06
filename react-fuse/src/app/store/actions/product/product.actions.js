@@ -1,4 +1,3 @@
-import FuseUtils from '@fuse/utils';
 import { showMessage } from 'app/store/actions/fuse';
 import firebaseService from 'app/services/firebaseService';
 
@@ -47,7 +46,6 @@ export const updateProduct = (productId, data) => {
 
 export const newProduct = () => {
 	const data = {
-		// id: FuseUtils.generateGUID(),
 		name: '',
 		handle: '',
 		description: '',
