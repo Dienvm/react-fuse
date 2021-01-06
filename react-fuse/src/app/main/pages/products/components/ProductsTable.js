@@ -16,11 +16,11 @@ import ProductsTableHead from './ProductsTableHead';
 
 const ProductsTable = (props) => {
 	const dispatch = useDispatch();
-	const products = useSelector(({ product }) => product.products.data);
+	const products = useSelector(({ product }) => product.products);
 	const searchText = useSelector(({ product }) => product.products.searchText);
 
 	const [selected, setSelected] = useState([]);
-	const [data, setData] = useState(products);
+	const [data, setData] = useState(products.data);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [order, setOrder] = useState({
@@ -34,12 +34,16 @@ const ProductsTable = (props) => {
 
 	useEffect(() => {
 		if (searchText.length !== 0) {
-			setData(products.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
+			setData(products.data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
 			setPage(0);
 		} else {
-			setData(products);
+			setData(products.data);
 		}
 	}, [products, searchText]);
+
+	useEffect(() => {
+		if (products.type === ProductActions.REMOVE_PRODUCTS) dispatch(ProductActions.getProducts());
+	}, [products]);
 
 	const handleRequestSort = (event, property) => {
 		const id = property;
@@ -93,7 +97,7 @@ const ProductsTable = (props) => {
 	};
 
 	const handleRemoveProducts = () => {
-		dispatch(ProductActions.removeProducts(selected))
+		dispatch(ProductActions.removeProducts(selected));
 	};
 
 	return (

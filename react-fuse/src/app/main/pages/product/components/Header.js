@@ -8,11 +8,19 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import * as ProductActions from 'app/store/actions';
 
-const Header = ({ form, productData }) => {
+const Header = ({ form, productData, productId }) => {
 	const dispatch = useDispatch();
 
 	const canBeSubmitted = () => {
 		return form && form.name.length > 0 && productData.data === form;
+	};
+
+	const handleSaveProduct = () => {
+		if (productId === 'new') {
+			dispatch(ProductActions.saveProduct(form));
+		} else {
+			dispatch(ProductActions.updateProduct(productId, form));
+		}
 	};
 
 	return (
@@ -65,7 +73,7 @@ const Header = ({ form, productData }) => {
 					variant="contained"
 					color="secondary"
 					// disabled={!canBeSubmitted()}
-					onClick={() => dispatch(ProductActions.saveProduct(form))}
+					onClick={handleSaveProduct}
 				>
 					Save
 				</Button>

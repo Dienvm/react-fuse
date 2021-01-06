@@ -4,6 +4,7 @@ import firebaseService from 'app/services/firebaseService';
 
 export const GET_PRODUCT = 'GET PRODUCT';
 export const SAVE_PRODUCT = 'SAVE PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE PRODUCT';
 
 export const getProduct = (productId) => {
 	const request = firebaseService.firestore.collection('products').doc(productId).get();
@@ -31,9 +32,22 @@ export const saveProduct = (data) => {
 		});
 };
 
+export const updateProduct = (productId, data) => {
+	const docRef = firebaseService.firestore.collection('products').doc(productId).update(data);
+
+	return (dispatch) =>
+		docRef.then((response) => {
+			dispatch(showMessage({ message: 'Product Updated' }));
+
+			return dispatch({
+				type: UPDATE_PRODUCT,
+			});
+		});
+};
+
 export const newProduct = () => {
 	const data = {
-		id: FuseUtils.generateGUID(),
+		// id: FuseUtils.generateGUID(),
 		name: '',
 		handle: '',
 		description: '',

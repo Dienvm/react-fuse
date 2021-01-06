@@ -16,6 +16,14 @@ const productReducer = (state = initialState, action) => {
 			return {
 				...state,
 				data: action.payload,
+				type: action.type,
+			};
+		}
+		case ProductActions.UPDATE_PRODUCT: {
+			return {
+				...state,
+				data: action.payload,
+				type: action.type,
 			};
 		}
 		default: {

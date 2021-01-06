@@ -57,11 +57,10 @@ const Product = (props) => {
 	const classes = useStyles(props);
 	const { form, handleChange, setForm } = useForm(null);
 	const [loadingImage, setLoadingImage] = useState(false);
+	const { productId } = props.match.params;
 
 	useEffect(() => {
 		const updateProductState = () => {
-			const { productId } = props.match.params;
-
 			if (productId === 'new') {
 				dispatch(ProductActions.newProduct());
 			} else {
@@ -70,13 +69,21 @@ const Product = (props) => {
 		};
 
 		updateProductState();
-	}, [dispatch, props.match.params]);
+	}, [dispatch, productId]);
 
 	useEffect(() => {
 		if ((productData.data && !form) || (productData.data && form && productData.data.id !== form.id)) {
 			setForm(productData.data);
 		}
 	}, [form, productData.data, setForm]);
+
+	useEffect(() => {
+		if (productData.type === ProductActions.SAVE_PRODUCT || productData.type === ProductActions.UPDATE_PRODUCT) {
+			props.history.push({
+				pathname: '/products',
+			});
+		}
+	}, [productData]);
 
 	const handleChipChange = (value, name) => {
 		setForm({ ...form, [name]: value.map((item) => item.value) });
@@ -124,12 +131,7 @@ const Product = (props) => {
 		);
 	};
 
-	if (
-		!productData.data ||
-		(productData.data &&
-			props.match.params.productId !== productData.data.id &&
-			props.match.params.productId !== 'new')
-	) {
+	if (!productData.data || (productData.data && productId !== productData.data.id && productId !== 'new')) {
 		return <FuseLoading />;
 	}
 
@@ -139,7 +141,7 @@ const Product = (props) => {
 				toolbar: 'p-0',
 				header: 'min-h-72 h-72 sm:h-136 sm:min-h-136',
 			}}
-			header={form && <Header form={form} productData={productData} />}
+			header={form && <Header form={form} productData={productData} productId={productId} />}
 			content={
 				form && (
 					<TableForm

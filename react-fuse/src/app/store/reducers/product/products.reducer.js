@@ -16,7 +16,7 @@ const productsReducer = (state = initialState, action) => {
 		case ProductActions.REMOVE_PRODUCTS: {
 			return {
 				...state,
-				// data: action.payload,
+				type: action.type,
 			};
 		}
 		case ProductActions.SET_PRODUCTS_SEARCH_TEXT: {
