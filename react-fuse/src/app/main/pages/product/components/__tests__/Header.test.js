@@ -1,26 +1,26 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import history from '@history';
-import FuseLayout from '@fuse/core/FuseLayout';
-import FuseTheme from '@fuse/core/FuseTheme';
-
-const Component = () => <div>test</div>;
+import Header from '../Header';
 
 describe('Login page', () => {
 	const mockStore = configureStore();
 	const store = mockStore({});
+	const historyMock = {
+		push: jest.fn(),
+		location: {},
+		listen: jest.fn(),
+		createBrowserHistory: jest.fn(),
+	};
 
 	it('should render correctly', () => {
 		const tree = renderer
 			.create(
 				<Provider store={store}>
-					<Router history={history}>
-						<FuseTheme>
-							<FuseLayout />
-						</FuseTheme>
-						{/* <Component /> */}
+					<Router history={historyMock}>
+						<Header />
 					</Router>
 				</Provider>
 			)

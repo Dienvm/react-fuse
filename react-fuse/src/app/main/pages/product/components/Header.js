@@ -8,11 +8,13 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import * as ProductActions from 'app/store/actions';
 
+import _ from 'lodash'
+
 const Header = ({ form, productData, productId }) => {
 	const dispatch = useDispatch();
 
 	const canBeSubmitted = () => {
-		return form && form.name.length > 0 && productData.data === form;
+		return form && form.name.length > 0 && _.isEqual(productData.data, form);
 	};
 
 	const handleSaveProduct = () => {
@@ -72,7 +74,7 @@ const Header = ({ form, productData, productId }) => {
 					className="whitespace-no-wrap normal-case"
 					variant="contained"
 					color="secondary"
-					// disabled={!canBeSubmitted()}
+					disabled={!canBeSubmitted()}
 					onClick={handleSaveProduct}
 				>
 					Save
