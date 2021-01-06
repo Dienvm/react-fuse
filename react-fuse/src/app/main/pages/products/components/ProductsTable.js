@@ -152,7 +152,7 @@ const ProductsTable = (props) => {
 											{n.images.length > 0 && n.featuredImageId ? (
 												<img
 													className="w-full block rounded"
-													src={n.image.find((image) => image.id === n.featuredImageId).url}
+													src={n.images.find((image) => image.id === n.featuredImageId).url}
 													alt={n.name}
 												/>
 											) : (

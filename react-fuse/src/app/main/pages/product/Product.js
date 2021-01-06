@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ProductActions from 'app/store/actions';
 import reducer from 'app/store/reducers';
@@ -11,6 +11,7 @@ import { orange } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import withReducer from 'app/store/withReducer';
 
+import firebaseService from 'app/services/firebaseService';
 import TableForm from './components/TableForm';
 import Header from './components/Header';
 
@@ -55,6 +56,7 @@ const Product = (props) => {
 
 	const classes = useStyles(props);
 	const { form, handleChange, setForm } = useForm(null);
+	const [loadingImage, setLoadingImage] = useState(false);
 
 	useEffect(() => {
 		const updateProductState = () => {
@@ -86,29 +88,40 @@ const Product = (props) => {
 
 	const handleUploadChange = (e) => {
 		const file = e.target.files[0];
+
 		if (!file) {
 			return;
 		}
-		const reader = new FileReader();
-		reader.readAsBinaryString(file);
 
-		reader.onload = () => {
-			setForm({
-				...form,
-				images: [
-					{
-						id: FuseUtils.generateGUID(),
-						url: `data:${file.type};base64,${btoa(reader.result)}`,
-						type: 'image',
-					},
-					...form.images,
-				],
-			});
-		};
-
-		reader.onerror = () => {
-			console.log('error on load image');
-		};
+		const uploadTask = firebaseService.storage.ref(`products/${file.name}`).put(file);
+		uploadTask.on(
+			'state_changed',
+			(snapShot) => {
+				setLoadingImage(true);
+			},
+			(err) => {
+				setLoadingImage(false);
+			},
+			() => {
+				firebaseService.storage
+					.ref('products')
+					.child(file.name)
+					.getDownloadURL()
+					.then((fireBaseUrl) => {
+						setForm({
+							...form,
+							images: [
+								{
+									id: FuseUtils.generateGUID(),
+									url: fireBaseUrl,
+									type: 'image',
+								},
+								...form.images,
+							],
+						});
+					});
+			}
+		);
 	};
 
 	if (

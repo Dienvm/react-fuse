@@ -1031,5 +1031,5 @@ module.exports = {
 		transitionDuration: ['responsive']
 	},
 	corePlugins: {},
-	plugins: [require('tailwindcss-dir')()]
+	plugins: [require('tailwindcss-dir')()],
 };

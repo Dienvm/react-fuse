@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
+import 'firebase/storage';
 import config from './firebaseServiceConfig';
 
 class FirebaseService {
@@ -23,6 +24,7 @@ class FirebaseService {
 		this.db = firebase.database();
 		this.auth = firebase.auth();
 		this.firestore = firebase.firestore();
+		this.storage = firebase.storage();
 		success(true);
 	}
 
