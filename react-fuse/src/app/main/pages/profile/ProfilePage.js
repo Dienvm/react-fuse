@@ -4,17 +4,19 @@ import Button from '@material-ui/core/Button';
 
 import React, { useState, useRef } from 'react';
 import Formsy from 'formsy-react';
-import { TextFieldFormsy } from '@fuse/core/formsy';
+import { FileFormsy, TextFieldFormsy } from '@fuse/core/formsy';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from 'app/auth/store/actions';
-// import * as authActions from 'app/auth/store/actions';
+
+import reducer from 'app/auth/store/reducers';
+import withReducer from 'app/store/withReducer';
 
 const ProfilePage = () => {
 	const dispatch = useDispatch();
 	const user = useSelector(({ auth }) => auth.user);
 
-	const [data, setData] = useState(user.data);
+	const { photoURL, displayName, email, phoneNumber, state, city, country, postcode } = user.data || {};
 	const [isFormValid, setIsFormValid] = useState(false);
 	const formRef = useRef(null);
 
@@ -30,7 +32,7 @@ const ProfilePage = () => {
 		const userData = { ...user.data, ...model };
 		user.data = userData;
 
-		dispatch(userActions.setUserData(user));
+		dispatch(userActions.updateUserInfo(user));
 	};
 
 	return (
@@ -46,6 +48,7 @@ const ProfilePage = () => {
 							ref={formRef}
 							className="flex flex-col justify-center w-full"
 						>
+							<FileFormsy name="photoURL" label="Files" value={photoURL || ''} required />
 							<TextFieldFormsy
 								className="mb-16"
 								type="text"
@@ -58,7 +61,7 @@ const ProfilePage = () => {
 									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
-								value={data.displayName || ''}
+								value={displayName || ''}
 								required
 							/>
 							<TextFieldFormsy
@@ -75,7 +78,7 @@ const ProfilePage = () => {
 									maxLength: 'You can not type in more than 50 characters',
 								}}
 								variant="outlined"
-								value={data.email || ''}
+								value={email || ''}
 								required
 							/>
 							<TextFieldFormsy
@@ -92,7 +95,7 @@ const ProfilePage = () => {
 									maxLength: 'You can not type in more than 10 numbers',
 								}}
 								variant="outlined"
-								value={data.phoneNumber || ''}
+								value={phoneNumber || ''}
 								required
 							/>
 							<TextFieldFormsy
@@ -107,7 +110,7 @@ const ProfilePage = () => {
 									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
-								value={data.state || ''}
+								value={state || ''}
 								required
 							/>
 							<TextFieldFormsy
@@ -122,7 +125,7 @@ const ProfilePage = () => {
 									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
-								value={data.city || ''}
+								value={city || ''}
 								required
 							/>
 							<TextFieldFormsy
@@ -137,7 +140,7 @@ const ProfilePage = () => {
 									minLength: 'Min character length is 4',
 								}}
 								variant="outlined"
-								value={data.country || ''}
+								value={country || ''}
 								required
 							/>
 							<TextFieldFormsy
@@ -154,7 +157,7 @@ const ProfilePage = () => {
 									maxLength: 'You can not type in more than 5 numbers',
 								}}
 								variant="outlined"
-								value={data.postcode || ''}
+								value={postcode || ''}
 								required
 							/>
 
@@ -176,4 +179,4 @@ const ProfilePage = () => {
 	);
 };
 
-export default ProfilePage;
+export default withReducer('Profile', reducer)(ProfilePage);

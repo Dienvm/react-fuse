@@ -7,9 +7,9 @@ import * as MessageActions from 'app/store/actions/fuse/message.actions';
 import * as FuseActions from 'app/store/actions/fuse';
 import firebase from 'firebase/app';
 
-export const SET_USER_DATA = '[USER] SET DATA';
-export const REMOVE_USER_DATA = '[USER] REMOVE DATA';
-export const USER_LOGGED_OUT = '[USER] LOGGED OUT';
+export const SET_USER_DATA = 'SET DATA';
+export const REMOVE_USER_DATA = 'REMOVE DATA';
+export const USER_LOGGED_OUT = 'LOGGED OUT';
 
 /**
  * Set user data from Auth0 token data
@@ -87,25 +87,34 @@ export function createUserSettingsFirebase(authUser) {
 export function setUserData(user) {
 	return (dispatch) => {
 		/*
-        You can redirect the logged-in user to a specific route depending on his role
-         */
+			You can redirect the logged-in user to a specific route depending on his role
+		*/
 
 		// history.location.state = {
-		//     redirectUrl: user.redirectUrl // for example 'apps/academy'
+		//	redirectUrl: user.redirectUrl // for example 'apps/academy'
 		// }
 
-		/*
-        Set User Settings
-         */
+		/* Set User Settings */
 		// dispatch(FuseActions.setDefaultSettings(user.data.settings));
 
 		/*
-        Set User Data
-         */
+			Set User Data
+		*/
 		dispatch({
 			type: SET_USER_DATA,
 			payload: user,
 		});
+	};
+}
+
+export function updateUserInfo(data) {
+	return (dispatch, getState) => {
+		const oldUser = getState().auth.user;
+		const user = { ...oldUser, ...data };
+
+		updateUserData(user, dispatch);
+
+		return dispatch(setUserData(user));
 	};
 }
 

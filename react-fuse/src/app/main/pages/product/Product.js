@@ -115,6 +115,7 @@ const Product = (props) => {
 					.child(file.name)
 					.getDownloadURL()
 					.then((fireBaseUrl) => {
+						setLoadingImage(false);
 						setForm({
 							...form,
 							images: [

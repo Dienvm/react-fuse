@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import { withFormsy } from 'formsy-react';
 import React from 'react';
 
-function SelectFormsy(props) {
+const SelectFormsy = (props) => {
 	const importedProps = _.pick(props, [
 		'autoWidth',
 		'children',
@@ -34,7 +34,7 @@ function SelectFormsy(props) {
 	const errorMessage = props.getErrorMessage();
 	const value = props.getValue();
 
-	function input() {
+	const input = () => {
 		switch (importedProps.variant) {
 			case 'outlined':
 				return <OutlinedInput labelWidth={props.label.length * 8} id={props.name} />;
@@ -43,14 +43,14 @@ function SelectFormsy(props) {
 			default:
 				return <Input id={props.name} />;
 		}
-	}
+	};
 
-	function changeValue(event) {
+	const changeValue = (event) => {
 		props.setValue(event.target.value);
 		if (props.onChange) {
 			props.onChange(event);
 		}
-	}
+	};
 
 	return (
 		<FormControl error={Boolean(errorMessage)} className={props.className} variant={importedProps.variant}>
@@ -59,6 +59,6 @@ function SelectFormsy(props) {
 			{Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}
 		</FormControl>
 	);
-}
+};
 
 export default React.memo(withFormsy(SelectFormsy));

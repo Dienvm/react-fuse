@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import * as ProductActions from 'app/store/actions';
 
-import _ from 'lodash'
+import _ from 'lodash';
 
 const Header = ({ form, productData, productId }) => {
 	const dispatch = useDispatch();

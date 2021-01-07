@@ -1,16 +1,12 @@
 import * as Actions from '../actions';
 
 const initialState = {
-	role: [], // guest
+	role: [],
 	data: {
 		displayName: '',
 		photoURL: '',
 		email: '',
 		shortcuts: [],
-		// displayName: 'John Doe',
-		// photoURL: 'assets/images/avatars/Velazquez.jpg',
-		// email: 'johndoe@withinpixels.com',
-		// shortcuts: ['calendar', 'mail', 'contacts', 'todo']
 	},
 };
 
@@ -20,6 +16,7 @@ const user = (state = initialState, action) => {
 			return {
 				...initialState,
 				...action.payload,
+				type: action.type,
 			};
 		}
 		case Actions.REMOVE_USER_DATA: {

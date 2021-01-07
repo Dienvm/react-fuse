@@ -5,8 +5,17 @@ import Icon from '@material-ui/core/Icon';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
+import FuseLoading from '@fuse/core/FuseLoading';
 
-const TableForm = ({ form, handleChange, handleChipChange, handleUploadChange, setFeaturedImage, classes }) => {
+const TableForm = ({
+	form,
+	handleChange,
+	handleChipChange,
+	handleUploadChange,
+	setFeaturedImage,
+	classes,
+	loadingImage,
+}) => {
 	return (
 		<div className="p-16 sm:p-24 max-w-2xl">
 			{/* Common information */}
@@ -114,6 +123,11 @@ const TableForm = ({ form, handleChange, handleChipChange, handleUploadChange, s
 							<img className="max-w-none w-auto h-full" src={media.url} alt="product" />
 						</div>
 					))}
+					{loadingImage && (
+						<div className="flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5">
+							<FuseLoading />
+						</div>
+					)}
 				</div>
 			</div>
 
