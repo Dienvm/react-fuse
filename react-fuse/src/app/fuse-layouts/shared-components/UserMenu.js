@@ -31,7 +31,7 @@ function UserMenu(props) {
 				{user.data.photoURL ? (
 					<Avatar className="" alt="user photo" src={user.data.photoURL} />
 				) : (
-					<Avatar className="">{user.data.displayName[0]}</Avatar>
+					<Avatar className="">{user.data.displayName && user.data.displayName[0]}</Avatar>
 				)}
 
 				<div className="hidden md:flex flex-col mx-12 items-start">
