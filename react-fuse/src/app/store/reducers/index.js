@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import fuse from './fuse';
 import product from './product';
 import order from './order';
+import user from './user/user.reducer';
 
 const createReducer = (asyncReducers) =>
 	combineReducers({
@@ -10,6 +11,7 @@ const createReducer = (asyncReducers) =>
 		fuse,
 		product,
 		order,
+		user,
 		...asyncReducers,
 	});
 

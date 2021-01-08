@@ -1,25 +1,21 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
-import Checkbox from '@material-ui/core/Checkbox';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+import { Checkbox, Icon, Table, TableBody, TableCell, TablePagination, TableRow } from '@material-ui/core';
+import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as ordersActions from 'app/store/actions';
-import OrdersTableHead from './OrdersTableHead';
+import * as UserActions from 'app/store/actions';
+import UserTableHead from './UserTableHead';
 
-const OrdersTable = (props) => {
+const ProductsTable = (props) => {
 	const dispatch = useDispatch();
-	const ordersData = useSelector(({ order }) => order.orders.data);
-	const searchText = useSelector(({ order }) => order.orders.searchText);
+	const users = useSelector(({ user }) => user);
+	console.log('users', users);
+	const searchText = useSelector(({ user }) => user.searchText);
 
 	const [selected, setSelected] = useState([]);
-	const [data, setData] = useState(ordersData);
+	const [data, setData] = useState(users.data);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [order, setOrder] = useState({
@@ -28,17 +24,21 @@ const OrdersTable = (props) => {
 	});
 
 	useEffect(() => {
-		dispatch(ordersActions.getOrders());
+		dispatch(UserActions.getUsers());
 	}, [dispatch]);
 
 	useEffect(() => {
 		if (searchText.length !== 0) {
-			setData(FuseUtils.filterArrayByString(ordersData, searchText));
+			setData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
 			setPage(0);
 		} else {
-			setData(ordersData);
+			setData(data);
 		}
-	}, [ordersData, searchText]);
+	}, [data, searchText]);
+
+	useEffect(() => {
+		if (users.type === UserActions.REMOVE_USERS) dispatch(UserActions.getUsers());
+	}, [users, dispatch]);
 
 	const handleRequestSort = (event, property) => {
 		const id = property;
@@ -63,7 +63,7 @@ const OrdersTable = (props) => {
 	};
 
 	const handleClick = (item) => {
-		props.history.push(`/order/${item.id}`);
+		props.history.push(`/user/${item.id}/${item.handle}`);
 	};
 
 	const handleCheck = (event, id) => {
@@ -91,40 +91,31 @@ const OrdersTable = (props) => {
 		setRowsPerPage(event.target.value);
 	};
 
-	const handleRemoveOrder = () => {
-		dispatch(ordersActions.removeOrders(selected));
+	const handleRemoveProducts = () => {
+		dispatch(UserActions.removeUsers(selected));
 	};
 
 	return (
 		<div className="w-full flex flex-col">
 			<FuseScrollbars className="flex-grow overflow-x-auto">
 				<Table className="min-w-xl" aria-labelledby="tableTitle">
-					<OrdersTableHead
+					<UserTableHead
 						numSelected={selected.length}
 						order={order}
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
-						rowCount={data.length}
-						handleRemoveOrder={handleRemoveOrder}
+						rowCount={Object.keys(data).length}
+						handleRemoveProducts={handleRemoveProducts}
 					/>
 
 					<TableBody>
 						{_.orderBy(
-							data,
+							Object.keys(data),
 							[
 								(o) => {
 									switch (order.id) {
-										case 'id': {
-											return parseInt(o.id, 10);
-										}
-										case 'customer': {
-											return o.customer.firstName;
-										}
-										case 'payment': {
-											return o.payment.method;
-										}
-										case 'status': {
-											return o.status[0].name;
+										case 'name': {
+											return o.name[0];
 										}
 										default: {
 											return o[order.id];
@@ -148,39 +139,62 @@ const OrdersTable = (props) => {
 										selected={isSelected}
 										onClick={(event) => handleClick(n)}
 									>
-										<TableCell className="w-64 text-center" padding="none">
+										{/* <TableCell className="w-64 text-center" padding="none">
 											<Checkbox
 												checked={isSelected}
 												onClick={(event) => event.stopPropagation()}
 												onChange={(event) => handleCheck(event, n.id)}
 											/>
 										</TableCell>
+
+										<TableCell className="w-52" component="th" scope="row" padding="none">
+											{n.images.length > 0 && n.featuredImageId ? (
+												<img
+													className="w-full block rounded"
+													src={n.images.find((image) => image.id === n.featuredImageId).url}
+													alt={n.name}
+												/>
+											) : (
+												<img
+													className="w-full block rounded"
+													src="assets/images/ecommerce/product-image-placeholder.png"
+													alt={n.name}
+												/>
+											)}
+										</TableCell>
+
 										<TableCell component="th" scope="row">
-											{n.orderId}
+											{n.name}
 										</TableCell>
 
 										<TableCell className="truncate" component="th" scope="row">
-											{`${n.customer.firstName} ${n.customer.lastName}`}
+											{n.categories.join(', ')}
 										</TableCell>
 
 										<TableCell component="th" scope="row" align="right">
 											<span>$</span>
-											{n.total}
+											{n.priceTaxIncl}
 										</TableCell>
 
-										<TableCell component="th" scope="row">
-											{n.payment.method}
+										<TableCell component="th" scope="row" align="right">
+											{n.quantity}
+											<i
+												className={clsx(
+													'inline-block w-8 h-8 rounded mx-8',
+													n.quantity <= 5 && 'bg-red',
+													n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
+													n.quantity > 25 && 'bg-green'
+												)}
+											/>
 										</TableCell>
 
-										<TableCell component="th" scope="row">
-											<div className={`inline text-12 p-4 rounded truncate', ${n.status.color}`}>
-												{n.status.name}
-											</div>
-										</TableCell>
-
-										<TableCell component="th" scope="row">
-											{n.date}
-										</TableCell>
+										<TableCell component="th" scope="row" align="right">
+											{n.active ? (
+												<Icon className="text-green text-20">check_circle</Icon>
+											) : (
+												<Icon className="text-red text-20">remove_circle</Icon>
+											)}
+										</TableCell> */}
 									</TableRow>
 								);
 							})}
@@ -191,7 +205,7 @@ const OrdersTable = (props) => {
 			<TablePagination
 				className="overflow-hidden"
 				component="div"
-				count={data.length}
+				count={Object.keys(data).length}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				backIconButtonProps={{
@@ -207,4 +221,4 @@ const OrdersTable = (props) => {
 	);
 };
 
-export default withRouter(OrdersTable);
+export default withRouter(ProductsTable);
