@@ -63,7 +63,7 @@ const OrdersTable = (props) => {
 	};
 
 	const handleClick = (item) => {
-		props.history.push(`/orders/${item.id}`);
+		props.history.push(`/order/${item.id}`);
 	};
 
 	const handleCheck = (event, id) => {
@@ -180,6 +180,7 @@ const OrdersTable = (props) => {
 								);
 							})}
 					</TableBody>
+				
 				</Table>
 			</FuseScrollbars>
 

@@ -10,7 +10,7 @@ const OrdersConfig = {
 	auth: authRoles.admin,
 	routes: [
 		{
-			path: '/orders:orderId',
+			path: '/order/:orderId',
 			component: React.lazy(() => import('./Order')),
 		},
 	],
