@@ -91,6 +91,10 @@ const OrdersTable = (props) => {
 		setRowsPerPage(event.target.value);
 	};
 
+	const handleRemoveOrder = () => {
+		dispatch(ordersActions.removeOrders(selected));
+	};
+
 	return (
 		<div className="w-full flex flex-col">
 			<FuseScrollbars className="flex-grow overflow-x-auto">
@@ -180,7 +184,6 @@ const OrdersTable = (props) => {
 								);
 							})}
 					</TableBody>
-				
 				</Table>
 			</FuseScrollbars>
 

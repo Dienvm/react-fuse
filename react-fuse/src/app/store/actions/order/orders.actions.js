@@ -1,6 +1,7 @@
 import firebaseService from 'app/services/firebaseService';
 
 export const GET_ORDERS = 'GET ORDERS';
+export const REMOVE_ORDERS = 'REMOVE ORDERS';
 export const SET_ORDERS_SEARCH_TEXT = 'SET ORDERS SEARCH TEXT';
 
 export const getOrders = () => {
@@ -22,6 +23,22 @@ export const getOrders = () => {
 				payload: result,
 			});
 		});
+};
+
+export const removeOrders = (orderIds) => {
+	const batch = firebaseService.firestore.batch();
+
+	// eslint-disable-next-line no-plusplus
+	for (let index = 0; index < orderIds.length; index++) {
+		const element = orderIds[index];
+		const ref = firebaseService.firestore.collection('orders').doc(element);
+		batch.delete(ref);
+	}
+
+	batch.commit();
+	return {
+		type: REMOVE_ORDERS,
+	};
 };
 
 export const setOrdersSearchText = (event) => {

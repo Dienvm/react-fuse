@@ -82,6 +82,11 @@ const OrdersTableHead = (props) => {
 		setSelectedOrdersMenu(null);
 	};
 
+	const onRemoveOrders = () => {
+		props.handleRemoveOrder();
+		closeSelectedOrdersMenu();
+	};
+
 	return (
 		<TableHead>
 			<TableRow className="h-64">
@@ -112,11 +117,7 @@ const OrdersTableHead = (props) => {
 								onClose={closeSelectedOrdersMenu}
 							>
 								<MenuList>
-									<MenuItem
-										onClick={() => {
-											closeSelectedOrdersMenu();
-										}}
-									>
+									<MenuItem onClick={onRemoveOrders}>
 										<ListItemIcon className="min-w-40">
 											<Icon>delete</Icon>
 										</ListItemIcon>
@@ -152,7 +153,7 @@ const OrdersTableHead = (props) => {
 							)}
 						</TableCell>
 					);
-				}, this)}
+				})}
 			</TableRow>
 		</TableHead>
 	);

@@ -18,7 +18,6 @@ export const getOrder = (orderId) => {
 };
 
 export const saveOrder = (data) => {
-	console.log('data', data);
 	const request = firebaseService.firestore.collection('orders').add(data);
 
 	return (dispatch) =>

@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 import * as ProductActions from 'app/store/actions';
 
-const ProductsHeader = (props) => {
+const ProductsHeader = () => {
 	const dispatch = useDispatch();
 	const searchText = useSelector(({ product }) => product.products.searchText);
 
