@@ -1,6 +1,8 @@
+import { convertObjectToArray } from 'app/helpers/convertObjectToArray';
 import firebaseService from 'app/services/firebaseService';
 
 export const GET_USERS = 'GET USERS';
+export const GET_USER = 'GET USER';
 export const SET_USERS_SEARCH_TEXT = 'SET USERS SEARCH TEXT';
 export const REMOVE_USERS = 'REMOVE USERS';
 
@@ -13,6 +15,20 @@ export const getUsers = () => {
 
 			return dispatch({
 				type: GET_USERS,
+				payload: convertObjectToArray(users),
+			});
+		});
+};
+
+export const getUser = (userId) => {
+	const request = firebaseService.db.ref(`/users/${userId}`).once('value');
+
+	return (dispatch) =>
+		request.then((snapshot) => {
+			const users = snapshot.val();
+
+			return dispatch({
+				type: GET_USER,
 				payload: users,
 			});
 		});

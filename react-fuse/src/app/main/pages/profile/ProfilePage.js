@@ -2,21 +2,29 @@ import FuseAnimate from '@fuse/core/FuseAnimate';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import Button from '@material-ui/core/Button';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Formsy from 'formsy-react';
 import { FileFormsy, TextFieldFormsy } from '@fuse/core/formsy';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from 'app/auth/store/actions';
+import * as Actions from 'app/store/actions';
+import { useParams } from 'react-router-dom';
 
 import reducer from 'app/auth/store/reducers';
 import withReducer from 'app/store/withReducer';
 
 const ProfilePage = () => {
 	const dispatch = useDispatch();
-	const user = useSelector(({ auth }) => auth.user);
+	const { userId } = useParams();
 
-	const { photoURL, displayName, email, phoneNumber, state, city, country, postcode } = user.data || {};
+	useEffect(() => {
+		dispatch(Actions.getUser(userId));
+	}, []);
+
+	const currentUser = useSelector(({ user }) => user.user);
+
+	const { photoURL, displayName, email, phoneNumber, state, city, country, postcode } = currentUser.data || {};
 	const [isFormValid, setIsFormValid] = useState(false);
 	const formRef = useRef(null);
 
@@ -29,10 +37,9 @@ const ProfilePage = () => {
 	};
 
 	const handleSubmit = (model) => {
-		const userData = { ...user.data, ...model };
-		user.data = userData;
-
-		dispatch(userActions.updateUserInfo(user));
+		const cloneUser = { ...currentUser };
+		cloneUser.data = { ...cloneUser.data, ...model };
+		dispatch(userActions.updateUserInfo(cloneUser));
 	};
 
 	return (

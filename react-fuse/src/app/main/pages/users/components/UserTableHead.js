@@ -22,7 +22,7 @@ const rows = [
 	{
 		id: 'image',
 		align: 'left',
-		disablePadding: false,
+		disablePadding: true,
 		label: 'Avatar',
 		sort: true,
 	},
@@ -31,6 +31,13 @@ const rows = [
 		align: 'left',
 		disablePadding: false,
 		label: 'User name',
+		sort: true,
+	},
+	{
+		id: 'role',
+		align: 'left',
+		disablePadding: false,
+		label: 'Role',
 		sort: true,
 	},
 	{
@@ -52,13 +59,6 @@ const rows = [
 		align: 'left',
 		disablePadding: false,
 		label: 'Active',
-		sort: true,
-	},
-	{
-		id: 'actions',
-		align: 'left',
-		disablePadding: false,
-		label: 'Actions',
 		sort: true,
 	},
 ];

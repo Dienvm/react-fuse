@@ -14,7 +14,7 @@ export const USER_LOGGED_OUT = 'LOGGED OUT';
 /**
  * Set user data from Auth0 token data
  */
-export function setUserDataAuth0(tokenData) {
+export const setUserDataAuth0 = (tokenData) => {
 	const user = {
 		role: ['admin'],
 		from: 'auth0',
@@ -30,12 +30,12 @@ export function setUserDataAuth0(tokenData) {
 	};
 
 	return setUserData(user);
-}
+};
 
 /**
  * Set user data from Firebase data
  */
-export function setUserDataFirebase(user, authUser) {
+export const setUserDataFirebase = (user, authUser) => {
 	if (
 		user &&
 		user.data &&
@@ -50,12 +50,12 @@ export function setUserDataFirebase(user, authUser) {
 
 	// Create missing user settings
 	return createUserSettingsFirebase(authUser);
-}
+};
 
 /**
  * Create User Settings with Firebase data
  */
-export function createUserSettingsFirebase(authUser) {
+export const createUserSettingsFirebase = (authUser) => {
 	return (dispatch, getState) => {
 		const guestUser = getState().auth.user;
 		const fuseDefaultSettings = getState().fuse.settings.defaults;
@@ -79,12 +79,12 @@ export function createUserSettingsFirebase(authUser) {
 		updateUserData(user, dispatch);
 		return dispatch(setUserData(user));
 	};
-}
+};
 
 /**
  * Set User Data
  */
-export function setUserData(user) {
+export const setUserData = (user) => {
 	return (dispatch) => {
 		/*
 			You can redirect the logged-in user to a specific route depending on his role
@@ -105,9 +105,9 @@ export function setUserData(user) {
 			payload: user,
 		});
 	};
-}
+};
 
-export function updateUserInfo(data) {
+export const updateUserInfo = (data) => {
 	return (dispatch, getState) => {
 		const oldUser = getState().auth.user;
 		const user = { ...oldUser, ...data };
@@ -116,12 +116,12 @@ export function updateUserInfo(data) {
 
 		return dispatch(setUserData(user));
 	};
-}
+};
 
 /**
  * Update User Settings
  */
-export function updateUserSettings(settings) {
+export const updateUserSettings = (settings) => {
 	return (dispatch, getState) => {
 		const oldUser = getState().auth.user;
 		const user = _.merge({}, oldUser, { data: { settings } });
@@ -130,12 +130,12 @@ export function updateUserSettings(settings) {
 
 		return dispatch(setUserData(user));
 	};
-}
+};
 
 /**
  * Update User Shortcuts
  */
-export function updateUserShortcuts(shortcuts) {
+export const updateUserShortcuts = (shortcuts) => {
 	return (dispatch, getState) => {
 		const { user } = getState().auth;
 		const newUser = {
@@ -150,21 +150,21 @@ export function updateUserShortcuts(shortcuts) {
 
 		return dispatch(setUserData(newUser));
 	};
-}
+};
 
 /**
  * Remove User Data
  */
-export function removeUserData() {
+export const removeUserData = () => {
 	return {
 		type: REMOVE_USER_DATA,
 	};
-}
+};
 
 /**
  * Logout
  */
-export function logoutUser() {
+export const logoutUser = () => {
 	return (dispatch, getState) => {
 		const { user } = getState().auth;
 
@@ -197,12 +197,12 @@ export function logoutUser() {
 			type: USER_LOGGED_OUT,
 		});
 	};
-}
+};
 
 /**
  * Update User Data
  */
-function updateUserData(user, dispatch) {
+const updateUserData = (user, dispatch) => {
 	if (!user.role || user.role.length === 0) {
 		// is guest
 		return;
@@ -246,4 +246,4 @@ function updateUserData(user, dispatch) {
 			break;
 		}
 	}
-}
+};

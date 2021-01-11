@@ -44,7 +44,6 @@ class FirebaseService {
 	};
 
 	updateUserData = (user) => {
-		console.log('updateUserData - user', user);
 		if (!firebase.apps.length) {
 			return false;
 		}

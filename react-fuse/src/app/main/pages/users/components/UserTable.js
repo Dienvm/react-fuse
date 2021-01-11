@@ -8,11 +8,10 @@ import { withRouter } from 'react-router-dom';
 import * as UserActions from 'app/store/actions';
 import UserTableHead from './UserTableHead';
 
-const ProductsTable = (props) => {
+const UsersTable = (props) => {
 	const dispatch = useDispatch();
-	const users = useSelector(({ user }) => user);
-	console.log('users', users);
-	const searchText = useSelector(({ user }) => user.searchText);
+	const users = useSelector(({ user }) => user.users);
+	const searchText = useSelector(({ user }) => user.users.searchText);
 
 	const [selected, setSelected] = useState([]);
 	const [data, setData] = useState(users.data);
@@ -22,6 +21,10 @@ const ProductsTable = (props) => {
 		direction: 'asc',
 		id: null,
 	});
+
+	useEffect(() => {
+		if (users.data.length > 0) setData(users.data);
+	}, [users.data]);
 
 	useEffect(() => {
 		dispatch(UserActions.getUsers());
@@ -63,7 +66,7 @@ const ProductsTable = (props) => {
 	};
 
 	const handleClick = (item) => {
-		props.history.push(`/user/${item.id}/${item.handle}`);
+		props.history.push(`/profile/${item.id}`);
 	};
 
 	const handleCheck = (event, id) => {
@@ -104,13 +107,13 @@ const ProductsTable = (props) => {
 						order={order}
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
-						rowCount={Object.keys(data).length}
+						rowCount={data.length}
 						handleRemoveProducts={handleRemoveProducts}
 					/>
 
 					<TableBody>
 						{_.orderBy(
-							Object.keys(data),
+							data,
 							[
 								(o) => {
 									switch (order.id) {
@@ -128,6 +131,7 @@ const ProductsTable = (props) => {
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((n) => {
 								const isSelected = selected.indexOf(n.id) !== -1;
+								const userInfo = n.data;
 								return (
 									<TableRow
 										className="h-64 cursor-pointer"
@@ -139,7 +143,7 @@ const ProductsTable = (props) => {
 										selected={isSelected}
 										onClick={(event) => handleClick(n)}
 									>
-										{/* <TableCell className="w-64 text-center" padding="none">
+										<TableCell className="w-64 text-center" padding="none">
 											<Checkbox
 												checked={isSelected}
 												onClick={(event) => event.stopPropagation()}
@@ -148,10 +152,10 @@ const ProductsTable = (props) => {
 										</TableCell>
 
 										<TableCell className="w-52" component="th" scope="row" padding="none">
-											{n.images.length > 0 && n.featuredImageId ? (
+											{userInfo.photoURL ? (
 												<img
 													className="w-full block rounded"
-													src={n.images.find((image) => image.id === n.featuredImageId).url}
+													src={userInfo.photoURL}
 													alt={n.name}
 												/>
 											) : (
@@ -164,37 +168,28 @@ const ProductsTable = (props) => {
 										</TableCell>
 
 										<TableCell component="th" scope="row">
-											{n.name}
+											{userInfo.displayName}
+										</TableCell>
+
+										<TableCell component="th" scope="row">
+											{n.role.join(',')}
 										</TableCell>
 
 										<TableCell className="truncate" component="th" scope="row">
-											{n.categories.join(', ')}
+											{userInfo.email}
 										</TableCell>
 
-										<TableCell component="th" scope="row" align="right">
-											<span>$</span>
-											{n.priceTaxIncl}
+										<TableCell component="th" scope="row">
+											{userInfo.phoneNumber}
 										</TableCell>
 
-										<TableCell component="th" scope="row" align="right">
-											{n.quantity}
-											<i
-												className={clsx(
-													'inline-block w-8 h-8 rounded mx-8',
-													n.quantity <= 5 && 'bg-red',
-													n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
-													n.quantity > 25 && 'bg-green'
-												)}
-											/>
-										</TableCell>
-
-										<TableCell component="th" scope="row" align="right">
+										<TableCell component="th" scope="row">
 											{n.active ? (
 												<Icon className="text-green text-20">check_circle</Icon>
 											) : (
 												<Icon className="text-red text-20">remove_circle</Icon>
 											)}
-										</TableCell> */}
+										</TableCell>
 									</TableRow>
 								);
 							})}
@@ -205,7 +200,7 @@ const ProductsTable = (props) => {
 			<TablePagination
 				className="overflow-hidden"
 				component="div"
-				count={Object.keys(data).length}
+				count={data.length}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				backIconButtonProps={{
@@ -221,4 +216,4 @@ const ProductsTable = (props) => {
 	);
 };
 
-export default withRouter(ProductsTable);
+export default withRouter(UsersTable);
