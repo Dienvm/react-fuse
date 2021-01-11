@@ -116,8 +116,8 @@ const UsersTable = (props) => {
 							[
 								(o) => {
 									switch (order.id) {
-										case 'name': {
-											return o.name[0];
+										case 'displayName': {
+											return o.displayName;
 										}
 										default: {
 											return o[order.id];
@@ -128,9 +128,9 @@ const UsersTable = (props) => {
 							[order.direction]
 						)
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((n) => {
-								const isSelected = selected.indexOf(n.id) !== -1;
-								const userInfo = n.data;
+							.map((userInfo) => {
+								const isSelected = selected.indexOf(userInfo.id) !== -1;
+								// const userInfo = n.data;
 								return (
 									<TableRow
 										className="h-64 cursor-pointer"
@@ -138,15 +138,15 @@ const UsersTable = (props) => {
 										role="checkbox"
 										aria-checked={isSelected}
 										tabIndex={-1}
-										key={n.id}
+										key={userInfo.id}
 										selected={isSelected}
-										onClick={(event) => handleClick(n)}
+										onClick={(event) => handleClick(userInfo)}
 									>
 										<TableCell className="w-64 text-center" padding="none">
 											<Checkbox
 												checked={isSelected}
 												onClick={(event) => event.stopPropagation()}
-												onChange={(event) => handleCheck(event, n.id)}
+												onChange={(event) => handleCheck(event, userInfo.id)}
 											/>
 										</TableCell>
 
@@ -155,13 +155,13 @@ const UsersTable = (props) => {
 												<img
 													className="w-full block rounded"
 													src={userInfo.photoURL}
-													alt={n.name}
+													alt={userInfo.displayName}
 												/>
 											) : (
 												<img
 													className="w-full block rounded"
 													src="assets/images/ecommerce/product-image-placeholder.png"
-													alt={n.name}
+													alt={userInfo.displayName}
 												/>
 											)}
 										</TableCell>
@@ -171,7 +171,7 @@ const UsersTable = (props) => {
 										</TableCell>
 
 										<TableCell component="th" scope="row">
-											{n.role.join(',')}
+											{userInfo.role.join(',')}
 										</TableCell>
 
 										<TableCell className="truncate" component="th" scope="row">
@@ -183,7 +183,7 @@ const UsersTable = (props) => {
 										</TableCell>
 
 										<TableCell component="th" scope="row">
-											{n.active ? (
+											{userInfo.active ? (
 												<Icon className="text-green text-20">check_circle</Icon>
 											) : (
 												<Icon className="text-red text-20">remove_circle</Icon>

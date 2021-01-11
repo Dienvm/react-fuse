@@ -40,7 +40,7 @@ export const removeUsers = (userIds) => {
 	// eslint-disable-next-line no-plusplus
 	for (let index = 0; index < userIds.length; index++) {
 		const element = userIds[index];
-		const ref = firebaseService.firestore.collection('products').doc(element);
+		const ref = firebaseService.firestore.collection('users').doc(element);
 		batch.delete(ref);
 	}
 

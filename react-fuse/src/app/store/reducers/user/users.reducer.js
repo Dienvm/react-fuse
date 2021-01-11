@@ -8,9 +8,21 @@ const initialState = {
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UserActions.GET_USERS: {
+			const result = [];
+			action.payload.map((user) => {
+				const data = {
+					...user.data,
+					id: user.uid,
+					role: user.role,
+				};
+
+				result.push(data);
+				return result;
+			});
+
 			return {
 				...state,
-				data: action.payload,
+				data: result,
 			};
 		}
 		case UserActions.REMOVE_USERS: {
