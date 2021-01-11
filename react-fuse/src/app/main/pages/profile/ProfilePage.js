@@ -20,7 +20,7 @@ const ProfilePage = () => {
 
 	useEffect(() => {
 		dispatch(Actions.getUser(userId));
-	}, []);
+	}, [dispatch, userId]);
 
 	const currentUser = useSelector(({ user }) => user.user);
 
