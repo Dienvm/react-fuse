@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { Router } from 'react-router-dom';
 
+import ProductsHeader from '../ProductsHeader';
 import history from '@history';
-import Products from '../Products';
 
 const mockStore = configureStore();
 const store = mockStore({});
@@ -14,12 +14,13 @@ describe('Products', () => {
 		const tree = renderer
 			.create(
 				<Provider store={store}>
-					<Router history={history}>
-						<Products />
-					</Router>
+					{/* <Router history={history}> */}
+					{/* </Router> */}
+					<ProductsHeader />
 				</Provider>
 			)
 			.toJSON();
-		expect(wrapper).toMatchSnapshot();
+		// const wrapper = mount(<Products />)
+		expect(tree).toMatchSnapshot();
 	});
 });
