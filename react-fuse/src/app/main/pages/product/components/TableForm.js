@@ -16,7 +16,6 @@ const TableForm = ({
 	classes,
 	loadingImage,
 }) => {
-	console.log('form', form);
 	return (
 		<div className="p-16 sm:p-24 max-w-2xl">
 			{/* Common information */}
