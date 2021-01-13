@@ -37,7 +37,7 @@ describe('Products', () => {
 			.create(
 				<Provider store={store}>
 					<Router history={history}>
-						<ProductsHeader {...props} />
+						<ProductsHeader />
 					</Router>
 				</Provider>
 			)

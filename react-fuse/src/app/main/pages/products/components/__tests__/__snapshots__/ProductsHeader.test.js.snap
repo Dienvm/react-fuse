@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products should render correctly 1`] = `
+<div
+  className="flex flex-1 w-full items-center justify-between"
+>
+  <div
+    className="flex items-center"
+  >
+    <span
+      aria-hidden={true}
+      className="material-icons MuiIcon-root text-32"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      burst_mode
+    </span>
+    <h6
+      className="MuiTypography-root hidden sm:flex mx-0 sm:mx-12 MuiTypography-h6"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      Products
+    </h6>
+  </div>
+  <div
+    className="flex flex-1 items-center justify-center px-12"
+  >
+    <div
+      className="MuiPaper-root flex items-center w-full max-w-512 px-8 py-4 rounded-8 MuiPaper-elevation1 MuiPaper-rounded"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      <span
+        aria-hidden={true}
+        className="material-icons MuiIcon-root MuiIcon-colorAction"
+      >
+        search
+      </span>
+      <div
+        className="MuiInputBase-root MuiInput-root flex flex-1 mx-8 MuiInputBase-fullWidth MuiInput-fullWidth"
+        onClick={[Function]}
+      >
+        <input
+          aria-label="Search"
+          className="MuiInputBase-input MuiInput-input"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Search"
+          type="text"
+          value={
+            Object {
+              "product": Object {
+                "products": Object {
+                  "searchText": "test",
+                },
+              },
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <a
+    aria-disabled={false}
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
+    href="/product/new"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    style={
+      Object {
+        "visibility": "hidden",
+      }
+    }
+    tabIndex={0}
+  >
+    <span
+      className="MuiButton-label"
+    >
+      <span
+        className="hidden sm:flex"
+      >
+        Add New Product
+      </span>
+      <span
+        className="flex sm:hidden"
+      >
+        New
+      </span>
+    </span>
+  </a>
+</div>
+`;
