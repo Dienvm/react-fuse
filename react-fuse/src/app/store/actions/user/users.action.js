@@ -1,10 +1,12 @@
 import { convertObjectToArray } from 'app/helpers/convertObjectToArray';
 import firebaseService from 'app/services/firebaseService';
+import { showMessage } from 'app/store/actions/fuse';
 
 export const GET_USERS = 'GET USERS';
 export const GET_USER = 'GET USER';
 export const SET_USERS_SEARCH_TEXT = 'SET USERS SEARCH TEXT';
 export const REMOVE_USERS = 'REMOVE USERS';
+export const SAVE_USER = 'SAVE USER';
 
 export const getUsers = () => {
 	const request = firebaseService.db.ref('users').once('value');
@@ -55,4 +57,20 @@ export const setUsersSearchText = (value) => {
 		type: SET_USERS_SEARCH_TEXT,
 		searchText: value,
 	};
+};
+
+export const saveUser = (data) => {
+	const request = firebaseService.db.ref('users').set(data);
+
+	return (dispatch) =>
+		request.then((snapshot) => {
+			const users = snapshot.val();
+			console.log('users', users)
+			dispatch(showMessage({ message: 'User Saved' }));
+
+			return dispatch({
+				type: SAVE_USER,
+				payload: users,
+			});
+		});
 };

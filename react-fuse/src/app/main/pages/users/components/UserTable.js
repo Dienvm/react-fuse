@@ -159,8 +159,8 @@ const UsersTable = (props) => {
 												/>
 											) : (
 												<img
-													className="w-full block rounded"
-													src="assets/images/ecommerce/product-image-placeholder.png"
+													className="w-full block rounded circle"
+													src="assets/images/avatars/profile.jpg"
 													alt={userInfo.displayName}
 												/>
 											)}

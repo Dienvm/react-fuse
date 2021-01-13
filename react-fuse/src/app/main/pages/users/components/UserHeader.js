@@ -54,7 +54,7 @@ const UserHeader = () => {
 			<FuseAnimate animation="transition.slideRightIn" delay={300}>
 				<Button
 					component={Link}
-					to="user/new"
+					to="/profile/new"
 					className="whitespace-no-wrap normal-case"
 					variant="contained"
 					color="secondary"

@@ -116,7 +116,7 @@ class Auth extends Component {
 
 							resolve();
 
-							this.props.showMessage({ message: 'Logged in with Firebase' });
+							// this.props.showMessage({ message: 'Logged in with Firebase' });
 						},
 						(error) => {
 							resolve();

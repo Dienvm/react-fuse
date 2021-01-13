@@ -39,7 +39,12 @@ const ProfilePage = () => {
 	const handleSubmit = (model) => {
 		const cloneUser = { ...currentUser };
 		cloneUser.data = { ...cloneUser.data, ...model };
-		dispatch(userActions.updateUserInfo(cloneUser));
+
+		if (userId === 'new') {
+			dispatch(userActions.registerWithFirebase(cloneUser));
+		} else {
+			dispatch(userActions.updateUserInfo(cloneUser));
+		}
 	};
 
 	return (
@@ -47,7 +52,7 @@ const ProfilePage = () => {
 			content={
 				<FuseAnimate animation="transition.expandIn">
 					<div className="p-16 sm:p-24">
-						<h2 className="mb-32 text-center">Update profile</h2>
+						<h2 className="mb-32 text-center">{userId === 'new' ? 'Create new user' : 'Update profile'}</h2>
 						<Formsy
 							onValidSubmit={handleSubmit}
 							onValid={enableButton}
@@ -176,7 +181,7 @@ const ProfilePage = () => {
 								aria-label="Update"
 								disabled={!isFormValid}
 							>
-								Update
+								{userId === 'new' ? 'Add' : 'Update'}
 							</Button>
 						</Formsy>
 					</div>
