@@ -1,4 +1,4 @@
-const PRODUCTS = [
+export const PRODUCTS = [
 	{
 		active: true,
 		categories: ['candy'],
@@ -30,5 +30,3 @@ const PRODUCTS = [
 		width: '1',
 	},
 ];
-
-export default PRODUCTS;

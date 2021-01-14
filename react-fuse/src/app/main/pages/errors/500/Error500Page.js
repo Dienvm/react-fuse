@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Error500Page() {
+const Error500Page = () => {
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-16">
 			<div className="max-w-512 text-center">
@@ -25,12 +25,12 @@ function Error500Page() {
 					</Typography>
 				</FuseAnimate>
 
-				<Link className="font-medium" to="/apps/dashboards/project">
+				<Link className="font-medium" to="/dashboards">
 					Report this problem
 				</Link>
 			</div>
 		</div>
 	);
-}
+};
 
 export default Error500Page;

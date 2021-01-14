@@ -4,8 +4,6 @@ import * as Actions from 'app/store/actions';
 
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_GOOGLE_ERROR = 'LOGIN_GOOGLE_ERROR';
-export const LOGIN_GOOGLE_SUCCESS = 'LOGIN_GOOGLE_SUCCESS';
 
 export const submitLoginWithFireBase = ({ username, password }) => {
 	if (!firebaseService.auth) {

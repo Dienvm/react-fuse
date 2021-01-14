@@ -1,8 +1,6 @@
 import history from '@history';
 import _ from '@lodash';
-import auth0Service from 'app/services/auth0Service';
 import firebaseService from 'app/services/firebaseService';
-import jwtService from 'app/services/jwtService';
 import * as MessageActions from 'app/store/actions/fuse/message.actions';
 import * as FuseActions from 'app/store/actions/fuse';
 import firebase from 'firebase/app';
@@ -10,27 +8,6 @@ import firebase from 'firebase/app';
 export const SET_USER_DATA = 'SET DATA';
 export const REMOVE_USER_DATA = 'REMOVE DATA';
 export const USER_LOGGED_OUT = 'LOGGED OUT';
-
-/**
- * Set user data from Auth0 token data
- */
-export const setUserDataAuth0 = (tokenData) => {
-	const user = {
-		role: ['admin'],
-		from: 'auth0',
-		data: {
-			displayName: tokenData.username,
-			photoURL: tokenData.picture,
-			email: tokenData.email,
-			settings:
-				tokenData.user_metadata && tokenData.user_metadata.settings ? tokenData.user_metadata.settings : {},
-			shortcuts:
-				tokenData.user_metadata && tokenData.user_metadata.shortcuts ? tokenData.user_metadata.shortcuts : [],
-		},
-	};
-
-	return setUserData(user);
-};
 
 /**
  * Set user data from Firebase data
@@ -58,7 +35,6 @@ export const setUserDataFirebase = (user, authUser) => {
 export const createUserSettingsFirebase = (authUser) => {
 	return (dispatch, getState) => {
 		const guestUser = getState().auth.user;
-		const fuseDefaultSettings = getState().fuse.settings.defaults;
 		const { currentUser } = firebase.auth();
 
 		/**
@@ -71,7 +47,6 @@ export const createUserSettingsFirebase = (authUser) => {
 			data: {
 				displayName: authUser.displayName,
 				email: authUser.email,
-				settings: { ...fuseDefaultSettings },
 			},
 		});
 		currentUser.updateProfile(user.data);
@@ -177,19 +152,7 @@ export const logoutUser = () => {
 			pathname: '/login',
 		});
 
-		switch (user.from) {
-			case 'firebase': {
-				firebaseService.signOut();
-				break;
-			}
-			case 'auth0': {
-				auth0Service.logout();
-				break;
-			}
-			default: {
-				jwtService.logout();
-			}
-		}
+		if (user.from === 'firebase') firebaseService.signOut();
 
 		dispatch(FuseActions.setInitialSettings());
 
@@ -208,42 +171,14 @@ const updateUserData = (user, dispatch) => {
 		return;
 	}
 
-	switch (user.from) {
-		case 'firebase': {
-			firebaseService
-				.updateUserData(user)
-				.then(() => {
-					dispatch(MessageActions.showMessage({ message: 'User data saved to firebase' }));
-				})
-				.catch((error) => {
-					dispatch(MessageActions.showMessage({ message: error.message }));
-				});
-			break;
-		}
-		case 'auth0': {
-			auth0Service
-				.updateUserData({
-					settings: user.data.settings,
-					shortcuts: user.data.shortcuts,
-				})
-				.then(() => {
-					dispatch(MessageActions.showMessage({ message: 'User data saved to auth0' }));
-				})
-				.catch((error) => {
-					dispatch(MessageActions.showMessage({ message: error.message }));
-				});
-			break;
-		}
-		default: {
-			jwtService
-				.updateUserData(user)
-				.then(() => {
-					dispatch(MessageActions.showMessage({ message: 'User data saved with api' }));
-				})
-				.catch((error) => {
-					dispatch(MessageActions.showMessage({ message: error.message }));
-				});
-			break;
-		}
+	if (user.from) {
+		firebaseService
+			.updateUserData(user)
+			.then(() => {
+				dispatch(MessageActions.showMessage({ message: 'User data saved to firebase' }));
+			})
+			.catch((error) => {
+				dispatch(MessageActions.showMessage({ message: error.message }));
+			});
 	}
 };

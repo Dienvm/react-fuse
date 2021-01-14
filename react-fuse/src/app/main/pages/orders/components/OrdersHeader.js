@@ -13,7 +13,7 @@ const OrdersHeader = () => {
 		<div className="flex flex-1 w-full items-center justify-between">
 			<div className="flex items-center">
 				<FuseAnimate animation="transition.expandIn" delay={300}>
-					<Icon className="text-32">shopping_basket</Icon>
+					<Icon className="text-32">add_shopping_cart</Icon>
 				</FuseAnimate>
 
 				<FuseAnimate animation="transition.slideLeftIn" delay={300}>

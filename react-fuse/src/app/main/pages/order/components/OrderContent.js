@@ -1,4 +1,5 @@
 import { Avatar, Icon, Typography } from '@material-ui/core';
+import { TABLE_HEAD } from 'app/constants';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -19,10 +20,9 @@ const OrderContent = ({ order }) => (
 						<table className="simple">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Phone</th>
-									<th>Company</th>
+									{TABLE_HEAD.CUSTOMER_ORDER.map((title) => (
+										<th>{title}</th>
+									))}
 								</tr>
 							</thead>
 							<tbody>
@@ -67,8 +67,9 @@ const OrderContent = ({ order }) => (
 					<table className="simple">
 						<thead>
 							<tr>
-								<th>Status</th>
-								<th>Updated On</th>
+								{TABLE_HEAD.ORDER_STATUS.map((title) => (
+									<th>{title}</th>
+								))}
 							</tr>
 						</thead>
 						<tbody>
@@ -97,10 +98,9 @@ const OrderContent = ({ order }) => (
 					<table className="simple">
 						<thead>
 							<tr>
-								<th>TransactionID</th>
-								<th>Payment Method</th>
-								<th>Amount</th>
-								<th>Date</th>
+								{TABLE_HEAD.ORDER_PAYMENT.map((title) => (
+									<th>{title}</th>
+								))}
 							</tr>
 						</thead>
 						<tbody>
@@ -135,11 +135,9 @@ const OrderContent = ({ order }) => (
 					<table className="simple">
 						<thead>
 							<tr>
-								<th>Tracking Code</th>
-								<th>Carrier</th>
-								<th>Weight</th>
-								<th>Fee</th>
-								<th>Date</th>
+								{TABLE_HEAD.ORDER_SHIPPING.map((title) => (
+									<th>{title}</th>
+								))}
 							</tr>
 						</thead>
 						<tbody>
@@ -173,18 +171,16 @@ const OrderContent = ({ order }) => (
 			<table className="simple">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Image</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Quantity</th>
+						{TABLE_HEAD.ORDER_PRODUCTS.map((title) => (
+							<th>{title}</th>
+						))}
 					</tr>
 				</thead>
 				<tbody>
 					{order.products.map((product) => (
 						<tr key={product.id}>
 							<td className="w-64">{product.id}</td>
-							<td className="w-80">
+							<td className="w-180">
 								<img className="product-image" src={product.image} alt="product" />
 							</td>
 							<td>

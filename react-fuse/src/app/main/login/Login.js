@@ -9,18 +9,20 @@ import { useForm } from '@fuse/hooks';
 import FuseAnimate from '@fuse/core/FuseAnimate';
 import { TextFieldFormsy } from '@fuse/core/formsy';
 
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Checkbox from '@material-ui/core/Checkbox';
-import Divider from '@material-ui/core/Divider';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {
+	Button,
+	Card,
+	CardContent,
+	Checkbox,
+	Divider,
+	FormControl,
+	FormControlLabel,
+	Typography,
+	InputAdornment,
+	Icon,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
-import Typography from '@material-ui/core/Typography';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles((theme) => ({
 	root: {

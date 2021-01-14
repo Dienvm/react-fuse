@@ -1,12 +1,8 @@
 import FuseAnimate from '@fuse/core/FuseAnimate';
 import { useForm } from '@fuse/hooks';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { Button, Card, CardContent, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router-dom';

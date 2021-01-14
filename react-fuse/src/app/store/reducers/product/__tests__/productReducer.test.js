@@ -1,4 +1,4 @@
-import PRODUCTS from 'app/constants/stubDb';
+import PRODUCTS from 'app/constants';
 import reducer from '../product.reducer';
 import * as ProductActions from '../../../actions';
 

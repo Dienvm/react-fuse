@@ -1,4 +1,4 @@
-import { convertObjectToArray } from 'app/helpers/convertObjectToArray';
+import { convertObjectToArray } from 'app/helpers';
 import firebaseService from 'app/services/firebaseService';
 import { showMessage } from 'app/store/actions/fuse';
 

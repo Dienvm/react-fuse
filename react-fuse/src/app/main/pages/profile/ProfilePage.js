@@ -27,7 +27,7 @@ const ProfilePage = () => {
 
 	useEffect(() => {
 		if (Actions.SAVE_USER === userType) history.push('/users');
-	}, [userType]);
+	}, [userType, history]);
 
 	const currentUser = useSelector(({ user }) => user.user);
 
@@ -63,7 +63,7 @@ const ProfilePage = () => {
 						<Formsy
 							onValidSubmit={handleSubmit}
 							onValid={enableButton}
-							// onInvalid={disableButton}
+							onInvalid={disableButton}
 							ref={formRef}
 							className="flex flex-col justify-center w-full"
 						>
@@ -186,7 +186,7 @@ const ProfilePage = () => {
 								color="primary"
 								className="mx-auto normal-case mt-16"
 								aria-label="Update"
-								// disabled={!isFormValid}
+								disabled={!isFormValid}
 							>
 								{userId === 'new' ? 'Add' : 'Update'}
 							</Button>
