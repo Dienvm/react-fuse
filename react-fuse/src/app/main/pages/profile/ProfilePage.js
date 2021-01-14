@@ -13,14 +13,21 @@ import { useParams } from 'react-router-dom';
 
 import reducer from 'app/auth/store/reducers';
 import withReducer from 'app/store/withReducer';
+import { useHistory } from 'react-router';
 
 const ProfilePage = () => {
 	const dispatch = useDispatch();
+	const userType = useSelector(({ user }) => user.user.type);
 	const { userId } = useParams();
+	const history = useHistory();
 
 	useEffect(() => {
 		dispatch(Actions.getUser(userId));
 	}, [dispatch, userId]);
+
+	useEffect(() => {
+		if (Actions.SAVE_USER === userType) history.push('/users');
+	}, [userType]);
 
 	const currentUser = useSelector(({ user }) => user.user);
 
@@ -41,7 +48,7 @@ const ProfilePage = () => {
 		cloneUser.data = { ...cloneUser.data, ...model };
 
 		if (userId === 'new') {
-			dispatch(userActions.registerWithFirebase(cloneUser));
+			dispatch(Actions.saveUser(cloneUser));
 		} else {
 			dispatch(userActions.updateUserInfo(cloneUser));
 		}
@@ -56,11 +63,11 @@ const ProfilePage = () => {
 						<Formsy
 							onValidSubmit={handleSubmit}
 							onValid={enableButton}
-							onInvalid={disableButton}
+							// onInvalid={disableButton}
 							ref={formRef}
 							className="flex flex-col justify-center w-full"
 						>
-							<FileFormsy name="photoURL" label="Files" value={photoURL || ''} required />
+							<FileFormsy name="photoURL" label="Files" value={photoURL || ''} />
 							<TextFieldFormsy
 								className="mb-16"
 								type="text"
@@ -179,7 +186,7 @@ const ProfilePage = () => {
 								color="primary"
 								className="mx-auto normal-case mt-16"
 								aria-label="Update"
-								disabled={!isFormValid}
+								// disabled={!isFormValid}
 							>
 								{userId === 'new' ? 'Add' : 'Update'}
 							</Button>

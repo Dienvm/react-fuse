@@ -60,17 +60,20 @@ export const setUsersSearchText = (value) => {
 };
 
 export const saveUser = (data) => {
-	const request = firebaseService.db.ref('users').set(data);
+	const userKey = firebaseService.db.ref().push().key;
+	const request = firebaseService.db.ref(`users/${userKey}`).set({
+		...data,
+		from: 'firebase',
+		role: ['guess'],
+		uid: userKey,
+	});
 
 	return (dispatch) =>
-		request.then((snapshot) => {
-			const users = snapshot.val();
-			console.log('users', users)
+		request.then(() => {
 			dispatch(showMessage({ message: 'User Saved' }));
 
 			return dispatch({
 				type: SAVE_USER,
-				payload: users,
 			});
 		});
 };

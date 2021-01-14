@@ -13,7 +13,7 @@ const usersReducer = (state = initialState, action) => {
 		case UserActions.SAVE_USER: {
 			return {
 				...state,
-				...action.payload,
+				type: action.type,
 			};
 		}
 		default: {

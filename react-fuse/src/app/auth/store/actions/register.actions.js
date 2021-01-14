@@ -29,7 +29,6 @@ export function submitRegister({ displayName, password, email }) {
 }
 
 export function registerWithFirebase(model) {
-	console.log('model', model);
 	if (!firebaseService.auth) {
 		console.warn("Firebase Service didn't initialize, check your configuration");
 
