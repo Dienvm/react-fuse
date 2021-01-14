@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ProductActions from 'app/store/actions';
 import reducer from 'app/store/reducers';
@@ -85,13 +85,19 @@ const Product = (props) => {
 		}
 	}, [productData, props.history]);
 
-	const handleChipChange = (value, name) => {
-		setForm({ ...form, [name]: value.map((item) => item.value) });
-	};
+	const handleChipChange = useCallback(
+		(value, name) => {
+			setForm({ ...form, [name]: value.map((item) => item.value) });
+		},
+		[setForm]
+	);
 
-	const setFeaturedImage = (id) => {
-		setForm({ ...form, featuredImageId: id });
-	};
+	const setFeaturedImage = useCallback(
+		(id) => {
+			setForm({ ...form, featuredImageId: id });
+		},
+		[setForm]
+	);
 
 	const handleUploadChange = (e) => {
 		const file = e.target.files[0];
