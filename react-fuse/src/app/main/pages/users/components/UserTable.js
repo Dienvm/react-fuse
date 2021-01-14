@@ -93,7 +93,7 @@ const UsersTable = (props) => {
 		setRowsPerPage(event.target.value);
 	};
 
-	const handleRemoveProducts = () => {
+	const handleRemoveUsers = () => {
 		dispatch(UserActions.removeUsers(selected));
 	};
 
@@ -107,7 +107,7 @@ const UsersTable = (props) => {
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
 						rowCount={data.length}
-						handleRemoveProducts={handleRemoveProducts}
+						handleRemoveUsers={handleRemoveUsers}
 					/>
 
 					<TableBody>
@@ -130,7 +130,6 @@ const UsersTable = (props) => {
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((userInfo) => {
 								const isSelected = selected.indexOf(userInfo.id) !== -1;
-								// const userInfo = n.data;
 								return (
 									<TableRow
 										className="h-64 cursor-pointer"
