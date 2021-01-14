@@ -1,4 +1,7 @@
-import { FuseAnimate, FusePageCarded, Button } from '@fuse/core';
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import FusePageCarded from '@fuse/core/FusePageCarded';
+import Button from '@material-ui/core/Button';
+
 import React, { useState, useRef, useEffect } from 'react';
 import Formsy from 'formsy-react';
 import { FileFormsy, TextFieldFormsy } from '@fuse/core/formsy';

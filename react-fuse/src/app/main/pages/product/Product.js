@@ -89,14 +89,14 @@ const Product = (props) => {
 		(value, name) => {
 			setForm({ ...form, [name]: value.map((item) => item.value) });
 		},
-		[setForm]
+		[setForm, form]
 	);
 
 	const setFeaturedImage = useCallback(
 		(id) => {
 			setForm({ ...form, featuredImageId: id });
 		},
-		[setForm]
+		[setForm, form]
 	);
 
 	const handleUploadChange = (e) => {

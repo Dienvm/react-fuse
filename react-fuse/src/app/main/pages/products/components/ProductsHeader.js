@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { FuseAnimate, Button, Icon, Input, Paper, Typography } from '@fuse/core';
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { Button, Icon, Input, Paper, Typography } from '@material-ui/core';
 
 import * as ProductActions from 'app/store/actions';
 
