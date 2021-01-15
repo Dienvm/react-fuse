@@ -1,23 +1,23 @@
-import * as OrderActions from '../../actions';
+import * as OrderActions from '../../actions'
 
-const initialState = null;
+const initialState = null
 
 const orderReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case OrderActions.GET_ORDER: {
-			return {
-				...action.payload,
-			};
-		}
-		case OrderActions.SAVE_ORDER: {
-			return {
-				...action.payload,
-			};
-		}
-		default: {
-			return state;
-		}
-	}
-};
+  switch (action.type) {
+    case OrderActions.GET_ORDER: {
+      return {
+        ...action.payload,
+      }
+    }
+    case OrderActions.SAVE_ORDER: {
+      return {
+        ...action.payload,
+      }
+    }
+    default: {
+      return state
+    }
+  }
+}
 
-export default orderReducer;
+export default orderReducer

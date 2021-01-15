@@ -1,2 +1,2 @@
-export * from './stubDb';
-export * from './tableHead';
+export * from './stubDb'
+export * from './tableHead'

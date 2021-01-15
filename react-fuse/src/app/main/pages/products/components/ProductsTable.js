@@ -1,223 +1,246 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import _ from '@lodash';
-import { Checkbox, Icon, Table, TableBody, TableCell, TablePagination, TableRow } from '@material-ui/core';
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as ProductActions from 'app/store/actions/product';
-import ProductsTableHead from './ProductsTableHead';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import _ from '@lodash'
+import {
+  Checkbox,
+  Icon,
+  Table,
+  TableBody,
+  TableCell,
+  TablePagination,
+  TableRow,
+} from '@material-ui/core'
+import clsx from 'clsx'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import * as ProductActions from 'app/store/actions/product'
+import ProductsTableHead from './ProductsTableHead'
 
 const ProductsTable = (props) => {
-	const dispatch = useDispatch();
-	const products = useSelector(({ product }) => product.products);
-	const searchText = useSelector(({ product }) => product.products.searchText);
+  const dispatch = useDispatch()
+  const products = useSelector(({product}) => product.products)
+  const searchText = useSelector(({product}) => product.products.searchText)
 
-	const [selected, setSelected] = useState([]);
-	const [data, setData] = useState(products.data);
-	const [page, setPage] = useState(0);
-	const [rowsPerPage, setRowsPerPage] = useState(10);
-	const [order, setOrder] = useState({
-		direction: 'asc',
-		id: null,
-	});
+  const [selected, setSelected] = useState([])
+  const [data, setData] = useState(products.data)
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [order, setOrder] = useState({
+    direction: 'asc',
+    id: null,
+  })
 
-	useEffect(() => {
-		dispatch(ProductActions.getProducts());
-	}, [dispatch]);
+  useEffect(() => {
+    dispatch(ProductActions.getProducts())
+  }, [dispatch])
 
-	useEffect(() => {
-		if (searchText.length !== 0) {
-			setData(products.data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
-			setPage(0);
-		} else {
-			setData(products.data);
-		}
-	}, [products, searchText]);
+  useEffect(() => {
+    if (searchText.length !== 0) {
+      setData(
+        products.data.filter((item) =>
+          item.name.toLowerCase().includes(searchText.toLowerCase()),
+        ),
+      )
+      setPage(0)
+    } else {
+      setData(products.data)
+    }
+  }, [products, searchText])
 
-	useEffect(() => {
-		if (products.type === ProductActions.REMOVE_PRODUCTS) dispatch(ProductActions.getProducts());
-	}, [products, dispatch]);
+  useEffect(() => {
+    if (products.type === ProductActions.REMOVE_PRODUCTS)
+      dispatch(ProductActions.getProducts())
+  }, [products, dispatch])
 
-	const handleRequestSort = (event, property) => {
-		const id = property;
-		let direction = 'desc';
+  const handleRequestSort = (event, property) => {
+    const id = property
+    let direction = 'desc'
 
-		if (order.id === property && order.direction === 'desc') {
-			direction = 'asc';
-		}
+    if (order.id === property && order.direction === 'desc') {
+      direction = 'asc'
+    }
 
-		setOrder({
-			direction,
-			id,
-		});
-	};
+    setOrder({
+      direction,
+      id,
+    })
+  }
 
-	const handleSelectAllClick = (event) => {
-		if (event.target.checked) {
-			setSelected(data.map((n) => n.id));
-			return;
-		}
-		setSelected([]);
-	};
+  const handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      setSelected(data.map((n) => n.id))
+      return
+    }
+    setSelected([])
+  }
 
-	const handleClick = (item) => {
-		props.history.push(`/product/${item.id}/${item.handle}`);
-	};
+  const handleClick = (item) => {
+    props.history.push(`/product/${item.id}/${item.handle}`)
+  }
 
-	const handleCheck = (event, id) => {
-		const selectedIndex = selected.indexOf(id);
-		let newSelected = [];
+  const handleCheck = (event, id) => {
+    const selectedIndex = selected.indexOf(id)
+    let newSelected = []
 
-		if (selectedIndex === -1) {
-			newSelected = newSelected.concat(selected, id);
-		} else if (selectedIndex === 0) {
-			newSelected = newSelected.concat(selected.slice(1));
-		} else if (selectedIndex === selected.length - 1) {
-			newSelected = newSelected.concat(selected.slice(0, -1));
-		} else if (selectedIndex > 0) {
-			newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-		}
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, id)
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1))
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1))
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      )
+    }
 
-		setSelected(newSelected);
-	};
+    setSelected(newSelected)
+  }
 
-	const handleChangePage = (event, value) => {
-		setPage(value);
-	};
+  const handleChangePage = (event, value) => {
+    setPage(value)
+  }
 
-	const handleChangeRowsPerPage = (event) => {
-		setRowsPerPage(event.target.value);
-	};
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(event.target.value)
+  }
 
-	const handleRemoveProducts = () => {
-		dispatch(ProductActions.removeProducts(selected));
-	};
+  const handleRemoveProducts = () => {
+    dispatch(ProductActions.removeProducts(selected))
+  }
 
-	return (
-		<div className="w-full flex flex-col">
-			<FuseScrollbars className="flex-grow overflow-x-auto">
-				<Table className="min-w-xl" aria-labelledby="tableTitle">
-					<ProductsTableHead
-						numSelected={selected.length}
-						order={order}
-						onSelectAllClick={handleSelectAllClick}
-						onRequestSort={handleRequestSort}
-						rowCount={data.length}
-						handleRemoveProducts={handleRemoveProducts}
-					/>
+  return (
+    <div className="w-full flex flex-col">
+      <FuseScrollbars className="flex-grow overflow-x-auto">
+        <Table className="min-w-xl" aria-labelledby="tableTitle">
+          <ProductsTableHead
+            numSelected={selected.length}
+            order={order}
+            onSelectAllClick={handleSelectAllClick}
+            onRequestSort={handleRequestSort}
+            rowCount={data.length}
+            handleRemoveProducts={handleRemoveProducts}
+          />
 
-					<TableBody>
-						{_.orderBy(
-							data,
-							[
-								(o) => {
-									switch (order.id) {
-										case 'categories': {
-											return o.categories[0];
-										}
-										default: {
-											return o[order.id];
-										}
-									}
-								},
-							],
-							[order.direction]
-						)
-							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((n) => {
-								const isSelected = selected.indexOf(n.id) !== -1;
-								return (
-									<TableRow
-										className="h-64 cursor-pointer"
-										hover
-										role="checkbox"
-										aria-checked={isSelected}
-										tabIndex={-1}
-										key={n.id}
-										selected={isSelected}
-										onClick={(event) => handleClick(n)}
-									>
-										<TableCell className="w-64 text-center" padding="none">
-											<Checkbox
-												checked={isSelected}
-												onClick={(event) => event.stopPropagation()}
-												onChange={(event) => handleCheck(event, n.id)}
-											/>
-										</TableCell>
+          <TableBody>
+            {_.orderBy(
+              data,
+              [
+                (o) => {
+                  switch (order.id) {
+                    case 'categories': {
+                      return o.categories[0]
+                    }
+                    default: {
+                      return o[order.id]
+                    }
+                  }
+                },
+              ],
+              [order.direction],
+            )
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((n) => {
+                const isSelected = selected.indexOf(n.id) !== -1
+                return (
+                  <TableRow
+                    className="h-64 cursor-pointer"
+                    hover
+                    role="checkbox"
+                    aria-checked={isSelected}
+                    tabIndex={-1}
+                    key={n.id}
+                    selected={isSelected}
+                    onClick={(event) => handleClick(n)}>
+                    <TableCell className="w-64 text-center" padding="none">
+                      <Checkbox
+                        checked={isSelected}
+                        onClick={(event) => event.stopPropagation()}
+                        onChange={(event) => handleCheck(event, n.id)}
+                      />
+                    </TableCell>
 
-										<TableCell className="w-52" component="th" scope="row" padding="none">
-											{n.images.length > 0 && n.featuredImageId ? (
-												<img
-													className="w-full block rounded"
-													src={n.images.find((image) => image.id === n.featuredImageId).url}
-													alt={n.name}
-												/>
-											) : (
-												<img
-													className="w-full block rounded"
-													src="assets/images/ecommerce/product-image-placeholder.png"
-													alt={n.name}
-												/>
-											)}
-										</TableCell>
+                    <TableCell
+                      className="w-52"
+                      component="th"
+                      scope="row"
+                      padding="none">
+                      {n.images.length > 0 && n.featuredImageId ? (
+                        <img
+                          className="w-full block rounded"
+                          src={
+                            n.images.find(
+                              (image) => image.id === n.featuredImageId,
+                            ).url
+                          }
+                          alt={n.name}
+                        />
+                      ) : (
+                        <img
+                          className="w-full block rounded"
+                          src="assets/images/ecommerce/product-image-placeholder.png"
+                          alt={n.name}
+                        />
+                      )}
+                    </TableCell>
 
-										<TableCell component="th" scope="row">
-											{n.name}
-										</TableCell>
+                    <TableCell component="th" scope="row">
+                      {n.name}
+                    </TableCell>
 
-										<TableCell className="truncate" component="th" scope="row">
-											{n.categories.join(', ')}
-										</TableCell>
+                    <TableCell className="truncate" component="th" scope="row">
+                      {n.categories.join(', ')}
+                    </TableCell>
 
-										<TableCell component="th" scope="row" align="right">
-											<span>$</span>
-											{n.priceTaxIncl}
-										</TableCell>
+                    <TableCell component="th" scope="row" align="right">
+                      <span>$</span>
+                      {n.priceTaxIncl}
+                    </TableCell>
 
-										<TableCell component="th" scope="row" align="right">
-											{n.quantity}
-											<i
-												className={clsx(
-													'inline-block w-8 h-8 rounded mx-8',
-													n.quantity <= 5 && 'bg-red',
-													n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
-													n.quantity > 25 && 'bg-green'
-												)}
-											/>
-										</TableCell>
+                    <TableCell component="th" scope="row" align="right">
+                      {n.quantity}
+                      <i
+                        className={clsx(
+                          'inline-block w-8 h-8 rounded mx-8',
+                          n.quantity <= 5 && 'bg-red',
+                          n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
+                          n.quantity > 25 && 'bg-green',
+                        )}
+                      />
+                    </TableCell>
 
-										<TableCell component="th" scope="row" align="right">
-											{n.active ? (
-												<Icon className="text-green text-20">check_circle</Icon>
-											) : (
-												<Icon className="text-red text-20">remove_circle</Icon>
-											)}
-										</TableCell>
-									</TableRow>
-								);
-							})}
-					</TableBody>
-				</Table>
-			</FuseScrollbars>
+                    <TableCell component="th" scope="row" align="right">
+                      {n.active ? (
+                        <Icon className="text-green text-20">check_circle</Icon>
+                      ) : (
+                        <Icon className="text-red text-20">remove_circle</Icon>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+          </TableBody>
+        </Table>
+      </FuseScrollbars>
 
-			<TablePagination
-				className="overflow-hidden"
-				component="div"
-				count={data.length}
-				rowsPerPage={rowsPerPage}
-				page={page}
-				backIconButtonProps={{
-					'aria-label': 'Previous Page',
-				}}
-				nextIconButtonProps={{
-					'aria-label': 'Next Page',
-				}}
-				onChangePage={handleChangePage}
-				onChangeRowsPerPage={handleChangeRowsPerPage}
-			/>
-		</div>
-	);
-};
+      <TablePagination
+        className="overflow-hidden"
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        backIconButtonProps={{
+          'aria-label': 'Previous Page',
+        }}
+        nextIconButtonProps={{
+          'aria-label': 'Next Page',
+        }}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+    </div>
+  )
+}
 
-export default withRouter(ProductsTable);
+export default withRouter(ProductsTable)

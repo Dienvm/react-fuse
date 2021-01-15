@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import order from './order.reducer';
-import orders from './orders.reducer';
+import {combineReducers} from 'redux'
+import order from './order.reducer'
+import orders from './orders.reducer'
 
 const orderReducer = combineReducers({
-	orders,
-	order,
-});
+  orders,
+  order,
+})
 
-export default orderReducer;
+export default orderReducer

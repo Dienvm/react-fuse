@@ -1,6 +1,7 @@
 {
-    printWidth: 120,
-    singleQuote: true,
-    tabWidth: 4,
-    useTabs: true
+  bracketSpacing: false,
+  jsxBracketSameLine: true,
+  singleQuote: true,
+  trailingComma: 'all',
+  semi: false,
 }
