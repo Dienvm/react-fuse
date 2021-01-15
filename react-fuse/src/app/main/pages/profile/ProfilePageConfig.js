@@ -1,3 +1,4 @@
+import { ROUTES } from 'app/constants'
 import React from 'react'
 
 const ProfilePageConfig = {
@@ -8,7 +9,7 @@ const ProfilePageConfig = {
   },
   routes: [
     {
-      path: '/profile/:userId',
+      path: ROUTES.profile,
       component: React.lazy(() => import('./ProfilePage')),
     },
   ],

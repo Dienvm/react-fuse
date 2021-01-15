@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Popover from '@material-ui/core/Popover'
 import Typography from '@material-ui/core/Typography'
 import * as authActions from 'app/auth/store/actions'
+import { ROUTES } from 'app/constants'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -68,13 +69,13 @@ function UserMenu(props) {
       >
         {!user.role || user.role.length === 0 ? (
           <>
-            <MenuItem component={Link} to="/login" role="button">
+            <MenuItem component={Link} to={ROUTES.login} role="button">
               <ListItemIcon className="min-w-40">
                 <Icon>lock</Icon>
               </ListItemIcon>
               <ListItemText primary="Login" />
             </MenuItem>
-            <MenuItem component={Link} to="/register" role="button">
+            <MenuItem component={Link} to={ROUTES.register} role="button">
               <ListItemIcon className="min-w-40">
                 <Icon>person_add</Icon>
               </ListItemIcon>
@@ -85,7 +86,7 @@ function UserMenu(props) {
           <>
             <MenuItem
               component={Link}
-              to={`/profile/${user.uid}`}
+              to={`${ROUTES.profile}/${user.uid}`}
               onClick={userMenuClose}
               role="button"
             >

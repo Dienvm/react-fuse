@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as authActions from 'app/auth/store/actions'
 import history from '@history'
+import { ROUTES } from 'app/constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +44,7 @@ const ForgotPasswordPage = () => {
     dispatch(authActions.resetPassword(form))
     resetForm()
     history.push({
-      pathname: '/login',
+      pathname: ROUTES.login,
     })
   }
 
@@ -98,7 +99,7 @@ const ForgotPasswordPage = () => {
               </form>
 
               <div className="flex flex-col items-center justify-center pt-32 pb-24">
-                <Link className="font-medium" to="/login">
+                <Link className="font-medium" to={ROUTES.login}>
                   Go back to login
                 </Link>
               </div>

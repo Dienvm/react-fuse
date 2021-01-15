@@ -1,5 +1,6 @@
 import React from 'react'
 import { authRoles } from 'app/auth'
+import { ROUTES } from 'app/constants'
 
 const LoginConfig = {
   settings: {
@@ -26,7 +27,7 @@ const LoginConfig = {
   auth: authRoles.onlyGuest,
   routes: [
     {
-      path: '/login',
+      path: ROUTES.login,
       component: React.lazy(() => import('./Login')),
     },
   ],

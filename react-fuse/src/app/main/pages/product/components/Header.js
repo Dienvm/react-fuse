@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import * as ProductActions from 'app/store/actions'
 
 import _ from 'lodash'
+import { ROUTES } from 'app/constants'
 
 const Header = ({ form, productData, productId }) => {
   const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Header = ({ form, productData, productId }) => {
             className="normal-case flex items-center sm:mb-12"
             component={Link}
             role="button"
-            to="/products"
+            to={ROUTES.products}
             color="inherit"
           >
             <Icon className="text-20">arrow_back</Icon>

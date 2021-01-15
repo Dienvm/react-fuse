@@ -1,5 +1,6 @@
 import React from 'react'
 import { authRoles } from 'app/auth'
+import { ROUTES } from 'app/constants'
 
 /**
  * Lazy load Products
@@ -14,7 +15,7 @@ const ProductsConfig = {
   auth: authRoles.admin,
   routes: [
     {
-      path: '/product/:productId/:productHandle?',
+      path: ROUTES.product,
       component: React.lazy(() => import('./Product')),
     },
   ],

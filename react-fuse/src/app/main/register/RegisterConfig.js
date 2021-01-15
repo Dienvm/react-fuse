@@ -1,5 +1,6 @@
 import React from 'react'
 import { authRoles } from 'app/auth'
+import { ROUTES } from 'app/constants'
 
 const RegisterConfig = {
   settings: {
@@ -26,7 +27,7 @@ const RegisterConfig = {
   auth: authRoles.onlyGuest,
   routes: [
     {
-      path: '/register',
+      path: ROUTES.register,
       component: React.lazy(() => import('./Register')),
     },
   ],

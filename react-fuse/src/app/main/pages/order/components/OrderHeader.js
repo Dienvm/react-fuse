@@ -1,5 +1,6 @@
 import FuseAnimate from '@fuse/core/FuseAnimate'
 import { Icon, Typography } from '@material-ui/core'
+import { ROUTES } from 'app/constants'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +12,7 @@ const OrderHeader = ({ order }) => (
           className="normal-case flex items-center sm:mb-12"
           component={Link}
           role="button"
-          to="/apps/e-commerce/orders"
+          to={ROUTES.orders}
           color="inherit"
         >
           <Icon className="text-20">arrow_back</Icon>

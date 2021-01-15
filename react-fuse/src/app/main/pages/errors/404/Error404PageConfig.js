@@ -1,3 +1,4 @@
+import { ROUTES } from 'app/constants'
 import React from 'react'
 
 const Error404PageConfig = {
@@ -8,7 +9,7 @@ const Error404PageConfig = {
   },
   routes: [
     {
-      path: '/not-found',
+      path: ROUTES.error404,
       component: React.lazy(() => import('./Error404Page')),
     },
   ],

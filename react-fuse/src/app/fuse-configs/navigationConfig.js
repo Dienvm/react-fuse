@@ -1,3 +1,4 @@
+import { ROUTES } from 'app/constants'
 import { authRoles } from '../auth'
 
 const navigationConfig = [
@@ -7,7 +8,7 @@ const navigationConfig = [
     type: 'item',
     icon: 'dashboard',
     auth: authRoles.admin,
-    url: '/dashboard',
+    url: ROUTES.dashboard,
   },
   {
     id: 'products',
@@ -15,7 +16,7 @@ const navigationConfig = [
     type: 'item',
     icon: 'burst_mode',
     auth: authRoles.admin,
-    url: '/products',
+    url: ROUTES.products,
   },
   {
     id: 'user',
@@ -23,7 +24,7 @@ const navigationConfig = [
     type: 'item',
     icon: 'account_circle',
     auth: authRoles.admin,
-    url: '/users',
+    url: ROUTES.users,
   },
   {
     id: 'order',
@@ -31,7 +32,7 @@ const navigationConfig = [
     type: 'item',
     icon: 'add_shopping_cart',
     auth: authRoles.admin,
-    url: '/orders',
+    url: ROUTES.orders,
   },
 ]
 

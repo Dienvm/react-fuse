@@ -1,5 +1,6 @@
 import React from 'react'
 import { authRoles } from 'app/auth'
+import { ROUTES } from 'app/constants'
 
 const OrdersConfig = {
   settings: {
@@ -10,7 +11,7 @@ const OrdersConfig = {
   auth: authRoles.admin,
   routes: [
     {
-      path: '/orders',
+      path: ROUTES.orders,
       component: React.lazy(() => import('./Orders')),
     },
   ],

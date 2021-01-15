@@ -16,6 +16,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as authActions from 'app/auth/store/actions'
+import { ROUTES } from 'app/constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -159,7 +160,7 @@ const RegisterPage = () => {
 
               <div className="flex flex-col items-center justify-center pt-32 pb-24">
                 <span className="font-medium">Already have an account?</span>
-                <Link className="font-medium" to="/login">
+                <Link className="font-medium" to={ROUTES.login}>
                   Login
                 </Link>
               </div>

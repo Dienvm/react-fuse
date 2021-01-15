@@ -14,6 +14,7 @@ import withReducer from 'app/store/withReducer'
 import firebaseService from 'app/services/firebaseService'
 import TableForm from './components/TableForm'
 import Header from './components/Header'
+import { ROUTES } from 'app/constants'
 
 const useStyles = makeStyles((theme) => ({
   productImageFeaturedStar: {
@@ -86,7 +87,7 @@ const Product = (props) => {
       productData.type === ProductActions.UPDATE_PRODUCT
     ) {
       props.history.push({
-        pathname: '/products',
+        pathname: ROUTES.products,
       })
     }
   }, [productData, props.history])

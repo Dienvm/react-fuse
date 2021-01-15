@@ -23,6 +23,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { darken } from '@material-ui/core/styles/colorManipulator'
+import { ROUTES } from 'app/constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -211,7 +212,7 @@ const LoginPage = () => {
 
               <div className="flex flex-col items-center justify-center pt-32 pb-24">
                 <span className="font-medium">Don't have an account?</span>
-                <Link className="font-medium" to="/register">
+                <Link className="font-medium" to={ROUTES.register}>
                   Create an account
                 </Link>
               </div>

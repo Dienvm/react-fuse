@@ -1,5 +1,6 @@
 import FuseUtils from '@fuse/utils'
 import AppContext from 'app/AppContext'
+import { ROUTES } from 'app/constants'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { matchRoutes } from 'react-router-config'
@@ -55,7 +56,7 @@ class FuseAuthorization extends Component {
         */
     if (!userRole || userRole.length === 0) {
       history.push({
-        pathname: '/login',
+        pathname: ROUTES.login,
         state: { redirectUrl: pathname },
       })
     } else {

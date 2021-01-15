@@ -1,3 +1,4 @@
+import { ROUTES } from 'app/constants'
 import React from 'react'
 import { authRoles } from '../../auth'
 
@@ -14,7 +15,7 @@ const DashboardConfig = {
   auth: authRoles.admin, // ['admin']
   routes: [
     {
-      path: '/dashboard',
+      path: ROUTES.dashboard,
       component: React.lazy(() => import('./Dashboard')),
     },
   ],

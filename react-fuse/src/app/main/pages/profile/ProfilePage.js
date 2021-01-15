@@ -14,6 +14,7 @@ import { useParams } from 'react-router-dom'
 import reducer from 'app/auth/store/reducers'
 import withReducer from 'app/store/withReducer'
 import { useHistory } from 'react-router'
+import { ROUTES } from 'app/constants'
 
 const ProfilePage = () => {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ const ProfilePage = () => {
   }, [dispatch, userId])
 
   useEffect(() => {
-    if (Actions.SAVE_USER === userType) history.push('/users')
+    if (Actions.SAVE_USER === userType) history.push(ROUTES.user)
   }, [userType, history])
 
   const currentUser = useSelector(({ user }) => user.user)

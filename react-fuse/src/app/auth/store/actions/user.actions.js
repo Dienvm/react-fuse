@@ -4,6 +4,7 @@ import firebaseService from 'app/services/firebaseService'
 import * as MessageActions from 'app/store/actions/fuse/message.actions'
 import * as FuseActions from 'app/store/actions/fuse'
 import firebase from 'firebase/app'
+import { ROUTES } from 'app/constants'
 
 export const SET_USER_DATA = 'SET DATA'
 export const REMOVE_USER_DATA = 'REMOVE DATA'
@@ -149,7 +150,7 @@ export const logoutUser = () => {
     }
 
     history.push({
-      pathname: '/login',
+      pathname: ROUTES.login,
     })
 
     if (user.from === 'firebase') firebaseService.signOut()

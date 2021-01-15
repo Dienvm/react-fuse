@@ -1,5 +1,6 @@
 import React from 'react'
 import { authRoles } from 'app/auth'
+import { ROUTES } from 'app/constants'
 
 /**
  * Lazy load Users
@@ -14,7 +15,7 @@ const UsersConfig = {
   auth: authRoles.admin,
   routes: [
     {
-      path: '/users',
+      path: ROUTES.user,
       component: React.lazy(() => import('./Users')),
     },
   ],
