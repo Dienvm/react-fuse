@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Error404PageConfig = {
   settings: {
@@ -12,6 +12,6 @@ const Error404PageConfig = {
       component: React.lazy(() => import('./Error404Page')),
     },
   ],
-};
+}
 
-export default Error404PageConfig;
+export default Error404PageConfig

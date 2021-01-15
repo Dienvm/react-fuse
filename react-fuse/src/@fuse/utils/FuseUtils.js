@@ -1,125 +1,125 @@
 // eslint-disable-next-line max-classes-per-file
-import _ from '@lodash';
-import * as colors from '@material-ui/core/colors';
+import _ from '@lodash'
+import * as colors from '@material-ui/core/colors'
 
 class EventEmitter {
   constructor() {
-    this.events = {};
+    this.events = {}
   }
 
   _getEventListByName(eventName) {
     if (typeof this.events[eventName] === 'undefined') {
-      this.events[eventName] = new Set();
+      this.events[eventName] = new Set()
     }
-    return this.events[eventName];
+    return this.events[eventName]
   }
 
   on(eventName, fn) {
-    this._getEventListByName(eventName).add(fn);
+    this._getEventListByName(eventName).add(fn)
   }
 
   once(eventName, fn) {
-    const self = this;
+    const self = this
 
     const onceFn = (...args) => {
-      self.removeListener(eventName, onceFn);
-      fn.apply(self, args);
-    };
-    this.on(eventName, onceFn);
+      self.removeListener(eventName, onceFn)
+      fn.apply(self, args)
+    }
+    this.on(eventName, onceFn)
   }
 
   emit(eventName, ...args) {
     this._getEventListByName(eventName).forEach(
       // eslint-disable-next-line func-names
       function (fn) {
-        fn.apply(this, args);
+        fn.apply(this, args)
       }.bind(this)
-    );
+    )
   }
 
   removeListener(eventName, fn) {
-    this._getEventListByName(eventName).delete(fn);
+    this._getEventListByName(eventName).delete(fn)
   }
 }
 
 class FuseUtils {
   static filterArrayByString(mainArr, searchText) {
     if (searchText === '') {
-      return mainArr;
+      return mainArr
     }
 
-    searchText = searchText.toLowerCase();
+    searchText = searchText.toLowerCase()
 
-    return mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
+    return mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText))
   }
 
   static searchInObj(itemObj, searchText) {
     if (!itemObj) {
-      return false;
+      return false
     }
 
-    const propArray = Object.keys(itemObj);
+    const propArray = Object.keys(itemObj)
 
     for (let i = 0; i < propArray.length; i += 1) {
-      const prop = propArray[i];
-      const value = itemObj[prop];
+      const prop = propArray[i]
+      const value = itemObj[prop]
 
       if (typeof value === 'string') {
         if (this.searchInString(value, searchText)) {
-          return true;
+          return true
         }
       } else if (Array.isArray(value)) {
         if (this.searchInArray(value, searchText)) {
-          return true;
+          return true
         }
       }
 
       if (typeof value === 'object') {
         if (this.searchInObj(value, searchText)) {
-          return true;
+          return true
         }
       }
     }
-    return false;
+    return false
   }
 
   static searchInArray(arr, searchText) {
     arr.forEach((value) => {
       if (typeof value === 'string') {
         if (this.searchInString(value, searchText)) {
-          return true;
+          return true
         }
       }
 
       if (typeof value === 'object') {
         if (this.searchInObj(value, searchText)) {
-          return true;
+          return true
         }
       }
-      return false;
-    });
-    return false;
+      return false
+    })
+    return false
   }
 
   static searchInString(value, searchText) {
-    return value.toLowerCase().includes(searchText);
+    return value.toLowerCase().includes(searchText)
   }
 
   static generateGUID() {
     function S4() {
       return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
-        .substring(1);
+        .substring(1)
     }
 
-    return S4() + S4();
+    return S4() + S4()
   }
 
   static toggleInArray(item, array) {
     if (array.indexOf(item) === -1) {
-      array.push(item);
+      array.push(item)
     } else {
-      array.splice(array.indexOf(item), 1);
+      array.splice(array.indexOf(item), 1)
     }
   }
 
@@ -131,61 +131,61 @@ class FuseUtils {
       .replace(/\W+/g, '') // Remove all non-word chars
       .replace(/--+/g, '-') // Replace multiple - with single -
       .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, ''); // Trim - from end of text
+      .replace(/-+$/, '') // Trim - from end of text
   }
 
   static setRoutes(config, defaultAuth) {
-    let routes = [...config.routes];
+    let routes = [...config.routes]
 
     routes = routes.map((route) => {
       let auth =
-        config.auth || config.auth === null ? config.auth : defaultAuth || null;
-      auth = route.auth || route.auth === null ? route.auth : auth;
-      const settings = _.merge({}, config.settings, route.settings);
+        config.auth || config.auth === null ? config.auth : defaultAuth || null
+      auth = route.auth || route.auth === null ? route.auth : auth
+      const settings = _.merge({}, config.settings, route.settings)
 
       return {
         ...route,
         settings,
         auth,
-      };
-    });
+      }
+    })
 
-    return [...routes];
+    return [...routes]
   }
 
   static generateRoutesFromConfigs(configs, defaultAuth) {
-    let allRoutes = [];
+    let allRoutes = []
     configs.forEach((config) => {
-      allRoutes = [...allRoutes, ...this.setRoutes(config, defaultAuth)];
-    });
-    return allRoutes;
+      allRoutes = [...allRoutes, ...this.setRoutes(config, defaultAuth)]
+    })
+    return allRoutes
   }
 
   static findById(obj, id) {
-    let i;
-    let childObj;
-    let result;
+    let i
+    let childObj
+    let result
 
     if (id === obj.id) {
-      return obj;
+      return obj
     }
 
     for (i = 0; i < Object.keys(obj).length; i += 1) {
-      childObj = obj[Object.keys(obj)[i]];
+      childObj = obj[Object.keys(obj)[i]]
 
       if (typeof childObj === 'object') {
-        result = this.findById(childObj, id);
+        result = this.findById(childObj, id)
         if (result) {
-          return result;
+          return result
         }
       }
     }
-    return false;
+    return false
   }
 
   static getFlatNavigation(navigationItems, flatNavigation = []) {
     for (let i = 0; i < navigationItems.length; i += 1) {
-      const navItem = navigationItems[i];
+      const navItem = navigationItems[i]
 
       if (navItem.type === 'item') {
         flatNavigation.push({
@@ -195,20 +195,20 @@ class FuseUtils {
           icon: navItem.icon || false,
           url: navItem.url,
           auth: navItem.auth || null,
-        });
+        })
       }
 
       if (navItem.type === 'collapse' || navItem.type === 'group') {
         if (navItem.children) {
-          this.getFlatNavigation(navItem.children, flatNavigation);
+          this.getFlatNavigation(navItem.children, flatNavigation)
         }
       }
     }
-    return flatNavigation;
+    return flatNavigation
   }
 
   static randomMatColor(hue) {
-    hue = hue || '400';
+    hue = hue || '400'
     const mainColors = [
       'red',
       'pink',
@@ -226,10 +226,10 @@ class FuseUtils {
       'amber',
       'orange',
       'deepOrange',
-    ];
+    ]
     const randomColor =
-      mainColors[Math.floor(Math.random() * mainColors.length)];
-    return colors[randomColor][hue];
+      mainColors[Math.floor(Math.random() * mainColors.length)]
+    return colors[randomColor][hue]
   }
 
   static difference(object, base) {
@@ -239,53 +239,53 @@ class FuseUtils {
           result[key] =
             _.isObject(value) && _.isObject(_base[key])
               ? changes(value, _base[key])
-              : value;
+              : value
         }
-      });
+      })
     }
 
-    return changes(object, base);
+    return changes(object, base)
   }
 
-  static EventEmitter = EventEmitter;
+  static EventEmitter = EventEmitter
 
   static updateNavItem(nav, id, item) {
     return nav.map((_item) => {
       if (_item.id === id) {
-        return _.merge({}, _item, item);
+        return _.merge({}, _item, item)
       }
 
       if (_item.children) {
         return _.merge({}, _item, {
           children: this.updateNavItem(_item.children, id, item),
-        });
+        })
       }
 
-      return _.merge({}, _item);
-    });
+      return _.merge({}, _item)
+    })
   }
 
   static removeNavItem(nav, id) {
     return nav
       .map((_item) => {
         if (_item.id === id) {
-          return null;
+          return null
         }
 
         if (_item.children) {
           return _.merge({}, _.omit(_item, ['children']), {
             children: this.removeNavItem(_item.children, id),
-          });
+          })
         }
 
-        return _.merge({}, _item);
+        return _.merge({}, _item)
       })
-      .filter((s) => s);
+      .filter((s) => s)
   }
 
   static prependNavItem(nav, item, parentId) {
     if (!parentId) {
-      return [item, ...nav];
+      return [item, ...nav]
     }
 
     return nav.map((_item) => {
@@ -293,22 +293,22 @@ class FuseUtils {
         return {
           _item,
           children: [item, ..._item.children],
-        };
+        }
       }
 
       if (_item.children) {
         return _.merge({}, _item, {
           children: this.prependNavItem(_item.children, item, parentId),
-        });
+        })
       }
 
-      return _.merge({}, _item);
-    });
+      return _.merge({}, _item)
+    })
   }
 
   static appendNavItem(nav, item, parentId) {
     if (!parentId) {
-      return [...nav, item];
+      return [...nav, item]
     }
 
     return nav.map((_item) => {
@@ -316,17 +316,17 @@ class FuseUtils {
         return {
           _item,
           children: [..._item.children, item],
-        };
+        }
       }
 
       if (_item.children) {
         return _.merge({}, _item, {
           children: this.appendNavItem(_item.children, item, parentId),
-        });
+        })
       }
 
-      return _.merge({}, _item);
-    });
+      return _.merge({}, _item)
+    })
   }
 
   static hasPermission(authArr, userRole) {
@@ -336,7 +336,7 @@ class FuseUtils {
      */
     if (authArr === null || authArr === undefined) {
       // console.info("auth is null || undefined:", authArr);
-      return true;
+      return true
     }
     if (authArr.length === 0) {
       /**
@@ -344,7 +344,7 @@ class FuseUtils {
        * allow only user role is guest (null or empty[])
        */
       // console.info("auth is empty[]:", authArr);
-      return !userRole || userRole.length === 0;
+      return !userRole || userRole.length === 0
     }
     /**
      * Check if user has grants
@@ -354,14 +354,14 @@ class FuseUtils {
             Check if user role is array,
             */
     if (userRole && Array.isArray(userRole)) {
-      return authArr.some((r) => userRole.indexOf(r) >= 0);
+      return authArr.some((r) => userRole.indexOf(r) >= 0)
     }
 
     /*
             Check if user role is string,
             */
-    return authArr.includes(userRole);
+    return authArr.includes(userRole)
   }
 }
 
-export default FuseUtils;
+export default FuseUtils

@@ -1,7 +1,7 @@
-import React from 'react';
-import FusePageCarded from '@fuse/core/FusePageCarded';
-import ProductsHeader from './components/ProductsHeader';
-import ProductsTable from './components/ProductsTable';
+import React from 'react'
+import FusePageCarded from '@fuse/core/FusePageCarded'
+import ProductsHeader from './components/ProductsHeader'
+import ProductsTable from './components/ProductsTable'
 
 const ProductsPage = () => (
   <FusePageCarded
@@ -13,6 +13,6 @@ const ProductsPage = () => (
     content={<ProductsTable />}
     innerScroll
   />
-);
+)
 
-export default ProductsPage;
+export default ProductsPage

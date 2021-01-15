@@ -1,35 +1,35 @@
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import FusePageCarded from '@fuse/core/FusePageCarded';
-import Button from '@material-ui/core/Button';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import FusePageCarded from '@fuse/core/FusePageCarded'
+import Button from '@material-ui/core/Button'
 
-import React, { useState, useRef, useEffect } from 'react';
-import Formsy from 'formsy-react';
-import { FileFormsy, TextFieldFormsy } from '@fuse/core/formsy';
+import React, { useState, useRef, useEffect } from 'react'
+import Formsy from 'formsy-react'
+import { FileFormsy, TextFieldFormsy } from '@fuse/core/formsy'
 
-import { useDispatch, useSelector } from 'react-redux';
-import * as userActions from 'app/auth/store/actions';
-import * as Actions from 'app/store/actions';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import * as userActions from 'app/auth/store/actions'
+import * as Actions from 'app/store/actions'
+import { useParams } from 'react-router-dom'
 
-import reducer from 'app/auth/store/reducers';
-import withReducer from 'app/store/withReducer';
-import { useHistory } from 'react-router';
+import reducer from 'app/auth/store/reducers'
+import withReducer from 'app/store/withReducer'
+import { useHistory } from 'react-router'
 
 const ProfilePage = () => {
-  const dispatch = useDispatch();
-  const userType = useSelector(({ user }) => user.user.type);
-  const { userId } = useParams();
-  const history = useHistory();
+  const dispatch = useDispatch()
+  const userType = useSelector(({ user }) => user.user.type)
+  const { userId } = useParams()
+  const history = useHistory()
 
   useEffect(() => {
-    dispatch(Actions.getUser(userId));
-  }, [dispatch, userId]);
+    dispatch(Actions.getUser(userId))
+  }, [dispatch, userId])
 
   useEffect(() => {
-    if (Actions.SAVE_USER === userType) history.push('/users');
-  }, [userType, history]);
+    if (Actions.SAVE_USER === userType) history.push('/users')
+  }, [userType, history])
 
-  const currentUser = useSelector(({ user }) => user.user);
+  const currentUser = useSelector(({ user }) => user.user)
 
   const {
     photoURL,
@@ -40,28 +40,28 @@ const ProfilePage = () => {
     city,
     country,
     postcode,
-  } = currentUser.data || {};
-  const [isFormValid, setIsFormValid] = useState(false);
-  const formRef = useRef(null);
+  } = currentUser.data || {}
+  const [isFormValid, setIsFormValid] = useState(false)
+  const formRef = useRef(null)
 
   const disableButton = () => {
-    setIsFormValid(false);
-  };
+    setIsFormValid(false)
+  }
 
   const enableButton = () => {
-    setIsFormValid(true);
-  };
+    setIsFormValid(true)
+  }
 
   const handleSubmit = (model) => {
-    const cloneUser = { ...currentUser };
-    cloneUser.data = { ...cloneUser.data, ...model };
+    const cloneUser = { ...currentUser }
+    cloneUser.data = { ...cloneUser.data, ...model }
 
     if (userId === 'new') {
-      dispatch(Actions.saveUser(cloneUser));
+      dispatch(Actions.saveUser(cloneUser))
     } else {
-      dispatch(userActions.updateUserInfo(cloneUser));
+      dispatch(userActions.updateUserInfo(cloneUser))
     }
-  };
+  }
 
   return (
     <FusePageCarded
@@ -210,7 +210,7 @@ const ProfilePage = () => {
         </FuseAnimate>
       }
     />
-  );
-};
+  )
+}
 
-export default withReducer('Profile', reducer)(ProfilePage);
+export default withReducer('Profile', reducer)(ProfilePage)

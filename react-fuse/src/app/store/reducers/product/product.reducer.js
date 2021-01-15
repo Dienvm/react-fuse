@@ -1,8 +1,8 @@
-import * as ProductActions from '../../actions';
+import * as ProductActions from '../../actions'
 
 const initialState = {
   data: null,
-};
+}
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -10,26 +10,26 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
-      };
+      }
     }
     case ProductActions.SAVE_PRODUCT: {
       return {
         ...state,
         data: action.payload,
         type: action.type,
-      };
+      }
     }
     case ProductActions.UPDATE_PRODUCT: {
       return {
         ...state,
         data: action.payload,
         type: action.type,
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default productReducer;
+export default productReducer

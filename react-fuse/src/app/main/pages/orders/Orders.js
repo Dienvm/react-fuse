@@ -1,8 +1,8 @@
-import React from 'react';
-import FusePageCarded from '@fuse/core/FusePageCarded';
+import React from 'react'
+import FusePageCarded from '@fuse/core/FusePageCarded'
 
-import OrdersHeader from './components/OrdersHeader';
-import OrdersTable from './components/OrdersTable';
+import OrdersHeader from './components/OrdersHeader'
+import OrdersTable from './components/OrdersTable'
 
 const OrdersPage = (props) => (
   <FusePageCarded
@@ -14,6 +14,6 @@ const OrdersPage = (props) => (
     content={<OrdersTable />}
     innerScroll
   />
-);
+)
 
-export default OrdersPage;
+export default OrdersPage

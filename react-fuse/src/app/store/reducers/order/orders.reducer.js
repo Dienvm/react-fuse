@@ -1,9 +1,9 @@
-import * as OrderActions from '../../actions';
+import * as OrderActions from '../../actions'
 
 const initialState = {
   data: [],
   searchText: '',
-};
+}
 
 const ordersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,24 +11,24 @@ const ordersReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
-      };
+      }
     }
     case OrderActions.REMOVE_ORDERS: {
       return {
         ...state,
         type: action.type,
-      };
+      }
     }
     case OrderActions.SET_ORDERS_SEARCH_TEXT: {
       return {
         ...state,
         searchText: action.searchText,
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default ordersReducer;
+export default ordersReducer

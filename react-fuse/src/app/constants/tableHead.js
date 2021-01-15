@@ -5,4 +5,4 @@ export const TABLE_HEAD = {
   ORDER_PAYMENT: ['TransactionID', 'Payment Method', 'Amount', 'Date'],
   ORDER_SHIPPING: ['Tracking Code', 'Carrier', 'Weight', 'Fee', 'Date'],
   ORDER_PRODUCTS: ['ID', 'Image', 'Name', 'Price', 'Quantity'],
-};
+}

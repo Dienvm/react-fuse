@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { makeStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
   },
-}));
+}))
 
 function FuseNavBadge(props) {
-  const classes = useStyles(props);
-  const { className, badge } = props;
+  const classes = useStyles(props)
+  const { className, badge } = props
 
   return (
     <div
@@ -32,7 +32,7 @@ function FuseNavBadge(props) {
     >
       {badge.title}
     </div>
-  );
+  )
 }
 
 FuseNavBadge.propTypes = {
@@ -41,7 +41,7 @@ FuseNavBadge.propTypes = {
     bg: PropTypes.string,
     fg: PropTypes.string,
   }),
-};
-FuseNavBadge.defaultProps = {};
+}
+FuseNavBadge.defaultProps = {}
 
-export default React.memo(FuseNavBadge);
+export default React.memo(FuseNavBadge)

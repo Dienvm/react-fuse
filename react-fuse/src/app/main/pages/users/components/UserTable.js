@@ -1,5 +1,5 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import _ from '@lodash';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import _ from '@lodash'
 import {
   Checkbox,
   Icon,
@@ -8,34 +8,34 @@ import {
   TableCell,
   TablePagination,
   TableRow,
-} from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as UserActions from 'app/store/actions';
-import UserTableHead from './UserTableHead';
+} from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import * as UserActions from 'app/store/actions'
+import UserTableHead from './UserTableHead'
 
 const UsersTable = (props) => {
-  const dispatch = useDispatch();
-  const users = useSelector(({ user }) => user.users);
-  const searchText = useSelector(({ user }) => user.users.searchText);
+  const dispatch = useDispatch()
+  const users = useSelector(({ user }) => user.users)
+  const searchText = useSelector(({ user }) => user.users.searchText)
 
-  const [selected, setSelected] = useState([]);
-  const [data, setData] = useState(users.data);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [selected, setSelected] = useState([])
+  const [data, setData] = useState(users.data)
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
   const [order, setOrder] = useState({
     direction: 'asc',
     id: null,
-  });
+  })
 
   useEffect(() => {
-    if (users.data.length > 0) setData(users.data);
-  }, [users.data]);
+    if (users.data.length > 0) setData(users.data)
+  }, [users.data])
 
   useEffect(() => {
-    dispatch(UserActions.getUsers());
-  }, [dispatch]);
+    dispatch(UserActions.getUsers())
+  }, [dispatch])
 
   useEffect(() => {
     if (searchText.length !== 0) {
@@ -43,75 +43,75 @@ const UsersTable = (props) => {
         data.filter((item) =>
           item.name.toLowerCase().includes(searchText.toLowerCase())
         )
-      );
-      setPage(0);
+      )
+      setPage(0)
     } else {
-      setData(data);
+      setData(data)
     }
-  }, [data, searchText]);
+  }, [data, searchText])
 
   useEffect(() => {
     if (users.type === UserActions.REMOVE_USERS)
-      dispatch(UserActions.getUsers());
-  }, [users, dispatch]);
+      dispatch(UserActions.getUsers())
+  }, [users, dispatch])
 
   const handleRequestSort = (event, property) => {
-    const id = property;
-    let direction = 'desc';
+    const id = property
+    let direction = 'desc'
 
     if (order.id === property && order.direction === 'desc') {
-      direction = 'asc';
+      direction = 'asc'
     }
 
     setOrder({
       direction,
       id,
-    });
-  };
+    })
+  }
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      setSelected(data.map((n) => n.id));
-      return;
+      setSelected(data.map((n) => n.id))
+      return
     }
-    setSelected([]);
-  };
+    setSelected([])
+  }
 
   const handleClick = (item) => {
-    props.history.push(`/profile/${item.id}`);
-  };
+    props.history.push(`/profile/${item.id}`)
+  }
 
   const handleCheck = (event, id) => {
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
+    const selectedIndex = selected.indexOf(id)
+    let newSelected = []
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
+      newSelected = newSelected.concat(selected, id)
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
+      newSelected = newSelected.concat(selected.slice(1))
     } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
+      newSelected = newSelected.concat(selected.slice(0, -1))
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1)
-      );
+      )
     }
 
-    setSelected(newSelected);
-  };
+    setSelected(newSelected)
+  }
 
   const handleChangePage = (event, value) => {
-    setPage(value);
-  };
+    setPage(value)
+  }
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(event.target.value);
-  };
+    setRowsPerPage(event.target.value)
+  }
 
   const handleRemoveUsers = () => {
-    dispatch(UserActions.removeUsers(selected));
-  };
+    dispatch(UserActions.removeUsers(selected))
+  }
 
   return (
     <div className="w-full flex flex-col">
@@ -133,10 +133,10 @@ const UsersTable = (props) => {
                 (o) => {
                   switch (order.id) {
                     case 'displayName': {
-                      return o.displayName;
+                      return o.displayName
                     }
                     default: {
-                      return o[order.id];
+                      return o[order.id]
                     }
                   }
                 },
@@ -145,7 +145,7 @@ const UsersTable = (props) => {
             )
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((userInfo) => {
-                const isSelected = selected.indexOf(userInfo.id) !== -1;
+                const isSelected = selected.indexOf(userInfo.id) !== -1
                 return (
                   <TableRow
                     className="h-64 cursor-pointer"
@@ -210,7 +210,7 @@ const UsersTable = (props) => {
                       )}
                     </TableCell>
                   </TableRow>
-                );
+                )
               })}
           </TableBody>
         </Table>
@@ -232,7 +232,7 @@ const UsersTable = (props) => {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </div>
-  );
-};
+  )
+}
 
-export default withRouter(UsersTable);
+export default withRouter(UsersTable)

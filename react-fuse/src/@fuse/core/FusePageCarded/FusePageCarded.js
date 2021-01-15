@@ -1,15 +1,15 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import * as PropTypes from 'prop-types';
-import React, { useRef } from 'react';
-import FusePageCardedHeader from './FusePageCardedHeader';
-import FusePageCardedSidebar from './FusePageCardedSidebar';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import { makeStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import * as PropTypes from 'prop-types'
+import React, { useRef } from 'react'
+import FusePageCardedHeader from './FusePageCardedHeader'
+import FusePageCardedSidebar from './FusePageCardedSidebar'
 
-const drawerWidth = 240;
-const headerHeight = 200;
-const toolbarHeight = 64;
-const headerContentHeight = headerHeight - toolbarHeight;
+const drawerWidth = 240
+const headerHeight = 200
+const toolbarHeight = 64
+const headerContentHeight = headerHeight - toolbarHeight
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -132,25 +132,25 @@ const useStyles = makeStyles((theme) => ({
   backdrop: {
     position: 'absolute',
   },
-}));
+}))
 
 const FusePageCarded = React.forwardRef((props, ref) => {
-  const leftSidebarRef = useRef(null);
-  const rightSidebarRef = useRef(null);
-  const rootRef = useRef(null);
-  const classes = useStyles(props);
-  const isRightSidebar = props.rightSidebarHeader || props.rightSidebarContent;
-  const isLeftSidebar = props.leftSidebarHeader || props.leftSidebarContent;
+  const leftSidebarRef = useRef(null)
+  const rightSidebarRef = useRef(null)
+  const rootRef = useRef(null)
+  const classes = useStyles(props)
+  const isRightSidebar = props.rightSidebarHeader || props.rightSidebarContent
+  const isLeftSidebar = props.leftSidebarHeader || props.leftSidebarContent
 
   React.useImperativeHandle(ref, () => ({
     rootRef,
     toggleLeftSidebar: () => {
-      leftSidebarRef.current.toggleSidebar();
+      leftSidebarRef.current.toggleSidebar()
     },
     toggleRightSidebar: () => {
-      rightSidebarRef.current.toggleSidebar();
+      rightSidebarRef.current.toggleSidebar()
     },
-  }));
+  }))
 
   return (
     <div
@@ -224,8 +224,8 @@ const FusePageCarded = React.forwardRef((props, ref) => {
         )}
       </div>
     </div>
-  );
-});
+  )
+})
 
 FusePageCarded.propTypes = {
   rightSidebarHeader: PropTypes.node,
@@ -238,8 +238,8 @@ FusePageCarded.propTypes = {
   content: PropTypes.node,
   contentToolbar: PropTypes.node,
   innerScroll: PropTypes.bool,
-};
+}
 
-FusePageCarded.defaultProps = {};
+FusePageCarded.defaultProps = {}
 
-export default React.memo(FusePageCarded);
+export default React.memo(FusePageCarded)

@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
-import React from 'react';
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import clsx from 'clsx'
+import React from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#121212',
     color: '#61DAFB',
   },
-}));
+}))
 
 function Logo() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={clsx(classes.root, 'flex items-center')}>
@@ -57,7 +57,7 @@ function Logo() {
         <span className="react-text text-12 mx-4">React</span>
       </div>
     </div>
-  );
+  )
 }
 
-export default Logo;
+export default Logo

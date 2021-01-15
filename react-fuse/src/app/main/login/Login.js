@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
-import * as authActions from 'app/auth/store/actions';
-import Formsy from 'formsy-react';
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import clsx from 'clsx'
+import { Link } from 'react-router-dom'
+import * as authActions from 'app/auth/store/actions'
+import Formsy from 'formsy-react'
 
-import { useForm } from '@fuse/hooks';
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import { TextFieldFormsy } from '@fuse/core/formsy';
+import { useForm } from '@fuse/hooks'
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import { TextFieldFormsy } from '@fuse/core/formsy'
 
 import {
   Button,
@@ -20,9 +20,9 @@ import {
   Typography,
   InputAdornment,
   Icon,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { darken } from '@material-ui/core/styles/colorManipulator';
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { darken } from '@material-ui/core/styles/colorManipulator'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,49 +32,49 @@ const useStyles = makeStyles((theme) => ({
     )} 0%, ${theme.palette.primary.dark} 80%)`,
     color: theme.palette.primary.contrastText,
   },
-}));
+}))
 
 const LoginPage = () => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const login = useSelector(({ auth }) => auth.login);
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const login = useSelector(({ auth }) => auth.login)
 
-  const [isFormValid, setIsFormValid] = useState(false);
-  const formRef = useRef(null);
+  const [isFormValid, setIsFormValid] = useState(false)
+  const formRef = useRef(null)
   const { form, handleChange } = useForm({
     email: '',
     password: '',
     remember: true,
-  });
+  })
 
   useEffect(() => {
     if (login.error && (login.error.username || login.error.password)) {
       formRef.current.updateInputsWithError({
         ...login.error,
-      });
-      disableButton();
+      })
+      disableButton()
     }
-  }, [login.error]);
+  }, [login.error])
 
   const disableButton = () => {
-    setIsFormValid(false);
-  };
+    setIsFormValid(false)
+  }
 
   const enableButton = () => {
-    setIsFormValid(true);
-  };
+    setIsFormValid(true)
+  }
 
   const handleSubmit = (model) => {
-    dispatch(authActions.submitLoginWithFireBase(model));
-  };
+    dispatch(authActions.submitLoginWithFireBase(model))
+  }
 
   const handleLoginWithGoogle = () =>
-    dispatch(authActions.submitLoginWithGoogle());
+    dispatch(authActions.submitLoginWithGoogle())
 
   const handleLoginWithFacebook = () => {
     // TODO
     // dispatch(authActions.submitLoginWithFacebook);
-  };
+  }
 
   return (
     <div
@@ -220,7 +220,7 @@ const LoginPage = () => {
         </FuseAnimate>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

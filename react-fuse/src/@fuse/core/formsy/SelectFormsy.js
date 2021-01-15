@@ -1,13 +1,13 @@
-import _ from '@lodash';
-import FilledInput from '@material-ui/core/FilledInput';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Select from '@material-ui/core/Select';
-import { withFormsy } from 'formsy-react';
-import React from 'react';
+import _ from '@lodash'
+import FilledInput from '@material-ui/core/FilledInput'
+import FormControl from '@material-ui/core/FormControl'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import Select from '@material-ui/core/Select'
+import { withFormsy } from 'formsy-react'
+import React from 'react'
 
 const SelectFormsy = (props) => {
   const importedProps = _.pick(props, [
@@ -28,31 +28,31 @@ const SelectFormsy = (props) => {
     'SelectDisplayProps',
     'value',
     'variant',
-  ]);
+  ])
 
   // An error message is returned only if the component is invalid
-  const errorMessage = props.getErrorMessage();
-  const value = props.getValue();
+  const errorMessage = props.getErrorMessage()
+  const value = props.getValue()
 
   const input = () => {
     switch (importedProps.variant) {
       case 'outlined':
         return (
           <OutlinedInput labelWidth={props.label.length * 8} id={props.name} />
-        );
+        )
       case 'filled':
-        return <FilledInput id={props.name} />;
+        return <FilledInput id={props.name} />
       default:
-        return <Input id={props.name} />;
+        return <Input id={props.name} />
     }
-  };
+  }
 
   const changeValue = (event) => {
-    props.setValue(event.target.value);
+    props.setValue(event.target.value)
     if (props.onChange) {
-      props.onChange(event);
+      props.onChange(event)
     }
-  };
+  }
 
   return (
     <FormControl
@@ -71,7 +71,7 @@ const SelectFormsy = (props) => {
       />
       {Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}
     </FormControl>
-  );
-};
+  )
+}
 
-export default React.memo(withFormsy(SelectFormsy));
+export default React.memo(withFormsy(SelectFormsy))

@@ -1,5 +1,5 @@
-import React from 'react';
-import { authRoles } from 'app/auth';
+import React from 'react'
+import { authRoles } from 'app/auth'
 
 const RegisterConfig = {
   settings: {
@@ -30,6 +30,6 @@ const RegisterConfig = {
       component: React.lazy(() => import('./Register')),
     },
   ],
-};
+}
 
-export default RegisterConfig;
+export default RegisterConfig

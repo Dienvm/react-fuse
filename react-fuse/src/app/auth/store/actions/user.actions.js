@@ -1,13 +1,13 @@
-import history from '@history';
-import _ from '@lodash';
-import firebaseService from 'app/services/firebaseService';
-import * as MessageActions from 'app/store/actions/fuse/message.actions';
-import * as FuseActions from 'app/store/actions/fuse';
-import firebase from 'firebase/app';
+import history from '@history'
+import _ from '@lodash'
+import firebaseService from 'app/services/firebaseService'
+import * as MessageActions from 'app/store/actions/fuse/message.actions'
+import * as FuseActions from 'app/store/actions/fuse'
+import firebase from 'firebase/app'
 
-export const SET_USER_DATA = 'SET DATA';
-export const REMOVE_USER_DATA = 'REMOVE DATA';
-export const USER_LOGGED_OUT = 'LOGGED OUT';
+export const SET_USER_DATA = 'SET DATA'
+export const REMOVE_USER_DATA = 'REMOVE DATA'
+export const USER_LOGGED_OUT = 'LOGGED OUT'
 
 /**
  * Set user data from Firebase data
@@ -22,20 +22,20 @@ export const setUserDataFirebase = (user, authUser) => {
     user.data.settings.layout.style
   ) {
     // Set user data but do not update
-    return setUserData(user);
+    return setUserData(user)
   }
 
   // Create missing user settings
-  return createUserSettingsFirebase(authUser);
-};
+  return createUserSettingsFirebase(authUser)
+}
 
 /**
  * Create User Settings with Firebase data
  */
 export const createUserSettingsFirebase = (authUser) => {
   return (dispatch, getState) => {
-    const guestUser = getState().auth.user;
-    const { currentUser } = firebase.auth();
+    const guestUser = getState().auth.user
+    const { currentUser } = firebase.auth()
 
     /**
      * Merge with current Settings
@@ -48,13 +48,13 @@ export const createUserSettingsFirebase = (authUser) => {
         displayName: authUser.displayName,
         email: authUser.email,
       },
-    });
-    currentUser.updateProfile(user.data);
+    })
+    currentUser.updateProfile(user.data)
 
-    updateUserData(user, dispatch);
-    return dispatch(setUserData(user));
-  };
-};
+    updateUserData(user, dispatch)
+    return dispatch(setUserData(user))
+  }
+}
 
 /**
  * Set User Data
@@ -78,54 +78,54 @@ export const setUserData = (user) => {
     dispatch({
       type: SET_USER_DATA,
       payload: user,
-    });
-  };
-};
+    })
+  }
+}
 
 export const updateUserInfo = (data) => {
   return (dispatch, getState) => {
-    const oldUser = getState().auth.user;
-    const user = { ...oldUser, ...data };
+    const oldUser = getState().auth.user
+    const user = { ...oldUser, ...data }
 
-    updateUserData(user, dispatch);
+    updateUserData(user, dispatch)
 
-    return dispatch(setUserData(user));
-  };
-};
+    return dispatch(setUserData(user))
+  }
+}
 
 /**
  * Update User Settings
  */
 export const updateUserSettings = (settings) => {
   return (dispatch, getState) => {
-    const oldUser = getState().auth.user;
-    const user = _.merge({}, oldUser, { data: { settings } });
+    const oldUser = getState().auth.user
+    const user = _.merge({}, oldUser, { data: { settings } })
 
-    updateUserData(user, dispatch);
+    updateUserData(user, dispatch)
 
-    return dispatch(setUserData(user));
-  };
-};
+    return dispatch(setUserData(user))
+  }
+}
 
 /**
  * Update User Shortcuts
  */
 export const updateUserShortcuts = (shortcuts) => {
   return (dispatch, getState) => {
-    const { user } = getState().auth;
+    const { user } = getState().auth
     const newUser = {
       ...user,
       data: {
         ...user.data,
         shortcuts,
       },
-    };
+    }
 
-    updateUserData(newUser, dispatch);
+    updateUserData(newUser, dispatch)
 
-    return dispatch(setUserData(newUser));
-  };
-};
+    return dispatch(setUserData(newUser))
+  }
+}
 
 /**
  * Remove User Data
@@ -133,34 +133,34 @@ export const updateUserShortcuts = (shortcuts) => {
 export const removeUserData = () => {
   return {
     type: REMOVE_USER_DATA,
-  };
-};
+  }
+}
 
 /**
  * Logout
  */
 export const logoutUser = () => {
   return (dispatch, getState) => {
-    const { user } = getState().auth;
+    const { user } = getState().auth
 
     if (!user.role || user.role.length === 0) {
       // is guest
-      return null;
+      return null
     }
 
     history.push({
       pathname: '/login',
-    });
+    })
 
-    if (user.from === 'firebase') firebaseService.signOut();
+    if (user.from === 'firebase') firebaseService.signOut()
 
-    dispatch(FuseActions.setInitialSettings());
+    dispatch(FuseActions.setInitialSettings())
 
     return dispatch({
       type: USER_LOGGED_OUT,
-    });
-  };
-};
+    })
+  }
+}
 
 /**
  * Update User Data
@@ -168,7 +168,7 @@ export const logoutUser = () => {
 const updateUserData = (user, dispatch) => {
   if (!user.role || user.role.length === 0) {
     // is guest
-    return;
+    return
   }
 
   if (user.from) {
@@ -177,10 +177,10 @@ const updateUserData = (user, dispatch) => {
       .then(() => {
         dispatch(
           MessageActions.showMessage({ message: 'User data saved to firebase' })
-        );
+        )
       })
       .catch((error) => {
-        dispatch(MessageActions.showMessage({ message: error.message }));
-      });
+        dispatch(MessageActions.showMessage({ message: error.message }))
+      })
   }
-};
+}

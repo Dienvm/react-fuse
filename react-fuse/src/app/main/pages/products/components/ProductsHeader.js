@@ -1,19 +1,19 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import { Button, Icon, Input, Paper, Typography } from '@material-ui/core';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import { Button, Icon, Input, Paper, Typography } from '@material-ui/core'
 
-import * as ProductActions from 'app/store/actions';
+import * as ProductActions from 'app/store/actions'
 
 const ProductsHeader = () => {
-  const dispatch = useDispatch();
-  const searchText = useSelector(({ product }) => product.products.searchText);
+  const dispatch = useDispatch()
+  const searchText = useSelector(({ product }) => product.products.searchText)
 
   const handleSearchProduct = (event) => {
-    dispatch(ProductActions.setProductsSearchText(event.target.value));
-  };
+    dispatch(ProductActions.setProductsSearchText(event.target.value))
+  }
 
   return (
     <div className="flex flex-1 w-full items-center justify-between">
@@ -63,7 +63,7 @@ const ProductsHeader = () => {
         </Button>
       </FuseAnimate>
     </div>
-  );
-};
+  )
+}
 
-export default ProductsHeader;
+export default ProductsHeader

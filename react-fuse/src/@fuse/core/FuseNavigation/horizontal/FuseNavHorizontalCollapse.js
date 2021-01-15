@@ -1,23 +1,23 @@
-import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useDebounce } from '@fuse/hooks';
-import FuseUtils from '@fuse/utils';
-import Grow from '@material-ui/core/Grow';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import * as ReactDOM from 'react-dom';
-import { useTranslation } from 'react-i18next';
-import { Manager, Popper, Reference } from 'react-popper';
-import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import FuseNavBadge from '../FuseNavBadge';
-import FuseNavItem from '../FuseNavItem';
+import NavLinkAdapter from '@fuse/core/NavLinkAdapter'
+import { useDebounce } from '@fuse/hooks'
+import FuseUtils from '@fuse/utils'
+import Grow from '@material-ui/core/Grow'
+import Icon from '@material-ui/core/Icon'
+import IconButton from '@material-ui/core/IconButton'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import Paper from '@material-ui/core/Paper'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import * as ReactDOM from 'react-dom'
+import { useTranslation } from 'react-i18next'
+import { Manager, Popper, Reference } from 'react-popper'
+import { useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import FuseNavBadge from '../FuseNavBadge'
+import FuseNavItem from '../FuseNavItem'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,34 +48,34 @@ const useStyles = makeStyles((theme) => ({
   popperClose: {
     pointerEvents: 'none',
   },
-}));
+}))
 
 function FuseNavHorizontalCollapse(props) {
-  const userRole = useSelector(({ auth }) => auth.user.role);
+  const userRole = useSelector(({ auth }) => auth.user.role)
 
-  const classes = useStyles(props);
-  const [opened, setOpened] = useState(false);
-  const { item, nestedLevel, dense } = props;
-  const theme = useTheme();
-  const { t } = useTranslation('navigation');
+  const classes = useStyles(props)
+  const [opened, setOpened] = useState(false)
+  const { item, nestedLevel, dense } = props
+  const theme = useTheme()
+  const { t } = useTranslation('navigation')
 
   const handleToggle = useDebounce((open) => {
-    setOpened(open);
-  }, 150);
+    setOpened(open)
+  }, 150)
 
   if (!FuseUtils.hasPermission(item.auth, userRole)) {
-    return null;
+    return null
   }
 
   function isUrlInChildren(parent, url) {
     if (!parent.children) {
-      return false;
+      return false
     }
 
     for (let i = 0; i < parent.children.length; i += 1) {
       if (parent.children[i].children) {
         if (isUrlInChildren(parent.children[i], url)) {
-          return true;
+          return true
         }
       }
 
@@ -83,11 +83,11 @@ function FuseNavHorizontalCollapse(props) {
         parent.children[i].url === url ||
         url.includes(parent.children[i].url)
       ) {
-        return true;
+        return true
       }
     }
 
-    return false;
+    return false
   }
 
   return (
@@ -203,7 +203,7 @@ function FuseNavHorizontalCollapse(props) {
         )}
       </Manager>
     </ul>
-  );
+  )
 }
 
 FuseNavHorizontalCollapse.propTypes = {
@@ -213,10 +213,10 @@ FuseNavHorizontalCollapse.propTypes = {
     icon: PropTypes.string,
     children: PropTypes.array,
   }),
-};
+}
 
-FuseNavHorizontalCollapse.defaultProps = {};
+FuseNavHorizontalCollapse.defaultProps = {}
 
-const NavHorizontalCollapse = withRouter(React.memo(FuseNavHorizontalCollapse));
+const NavHorizontalCollapse = withRouter(React.memo(FuseNavHorizontalCollapse))
 
-export default NavHorizontalCollapse;
+export default NavHorizontalCollapse

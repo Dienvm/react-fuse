@@ -1,4 +1,4 @@
-import { authRoles } from '../auth';
+import { authRoles } from '../auth'
 
 const navigationConfig = [
   {
@@ -33,6 +33,6 @@ const navigationConfig = [
     auth: authRoles.admin,
     url: '/orders',
   },
-];
+]
 
-export default navigationConfig;
+export default navigationConfig

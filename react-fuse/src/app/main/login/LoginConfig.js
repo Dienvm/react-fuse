@@ -1,5 +1,5 @@
-import React from 'react';
-import { authRoles } from 'app/auth';
+import React from 'react'
+import { authRoles } from 'app/auth'
 
 const LoginConfig = {
   settings: {
@@ -30,6 +30,6 @@ const LoginConfig = {
       component: React.lazy(() => import('./Login')),
     },
   ],
-};
+}
 
-export default LoginConfig;
+export default LoginConfig

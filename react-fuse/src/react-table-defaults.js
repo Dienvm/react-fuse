@@ -1,15 +1,15 @@
-import _ from '@lodash';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import React, { Component } from 'react';
-import { ReactTableDefaults } from 'react-table';
-import 'react-table/react-table.css';
+import _ from '@lodash'
+import FormControl from '@material-ui/core/FormControl'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Icon from '@material-ui/core/Icon'
+import IconButton from '@material-ui/core/IconButton'
+import Input from '@material-ui/core/Input'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import React, { Component } from 'react'
+import { ReactTableDefaults } from 'react-table'
+import 'react-table/react-table.css'
 
 const filterTypes = [
   {
@@ -36,48 +36,48 @@ const filterTypes = [
     value: 'less-than',
     title: 'Less than',
   },
-];
+]
 
 class FilterComponent extends Component {
   state = {
     filterType: 'contains',
     filterValue: '',
     filterMenuEl: null,
-  };
+  }
 
   changeFilterType = (filterType) => {
     const newState = {
       ...this.state,
       filterType,
-    };
+    }
     // Update local state
-    this.setState(newState);
+    this.setState(newState)
     // Fire the callback to alert React-Table of the new filter
-    this.props.onChange(newState);
-    this.handleFilterMenuClose();
-  };
+    this.props.onChange(newState)
+    this.handleFilterMenuClose()
+  }
 
   changeFilterValue = (event) => {
     const newState = {
       ...this.state,
       filterValue: event.target.value,
-    };
+    }
     // Update local state
-    this.setState(newState);
+    this.setState(newState)
     // Fire the callback to alert React-Table of the new filter
-    this.props.onChange(newState);
-  };
+    this.props.onChange(newState)
+  }
 
   handleFilterMenuClick = (event) => {
-    this.setState({ filterMenuEl: event.currentTarget });
-  };
+    this.setState({ filterMenuEl: event.currentTarget })
+  }
 
   handleFilterMenuClose = () => {
-    this.setState({ filterMenuEl: null });
-  };
+    this.setState({ filterMenuEl: null })
+  }
 
   render() {
-    const { filterMenuEl } = this.state;
+    const { filterMenuEl } = this.state
     return (
       <div className="filter flex flex-col">
         <FormControl className="">
@@ -121,39 +121,39 @@ class FilterComponent extends Component {
           </FormHelperText>
         </FormControl>
       </div>
-    );
+    )
   }
 }
 
 const defaultFilterMethod = (filter, row) => {
-  const id = filter.pivotId || filter.id;
+  const id = filter.pivotId || filter.id
   // Pivoted rows won't contain the column.
   //  If that's the case, we set the to true (allowing us to only filter on the current column)
-  const rowValue = row[id].toLowerCase();
+  const rowValue = row[id].toLowerCase()
   if (!rowValue) {
-    return true;
+    return true
   }
 
-  const filterValue = filter.value.filterValue.toLowerCase() || '';
-  const { filterType } = filter.value;
+  const filterValue = filter.value.filterValue.toLowerCase() || ''
+  const { filterType } = filter.value
 
   switch (filterType) {
     case 'contains':
-      return rowValue.indexOf(filterValue) > -1;
+      return rowValue.indexOf(filterValue) > -1
     case 'starts-with':
-      return rowValue.startsWith(filterValue);
+      return rowValue.startsWith(filterValue)
     case 'ends-with':
-      return rowValue.endsWith(filterValue);
+      return rowValue.endsWith(filterValue)
     case 'matches':
-      return rowValue === filterValue;
+      return rowValue === filterValue
     case 'greater-than':
-      return rowValue > filterValue;
+      return rowValue > filterValue
     case 'less-than':
-      return rowValue < filterValue;
+      return rowValue < filterValue
     default:
-      return true;
+      return true
   }
-};
+}
 
 /**
  * React Table Defaults
@@ -171,4 +171,4 @@ Object.assign(ReactTableDefaults, {
   ),
   FilterComponent: (props) => <FilterComponent {...props} />,
   defaultFilterMethod,
-});
+})

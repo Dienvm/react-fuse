@@ -1,8 +1,8 @@
-import React from 'react';
-import FusePageCarded from '@fuse/core/FusePageCarded';
+import React from 'react'
+import FusePageCarded from '@fuse/core/FusePageCarded'
 
-import UserHeader from './components/UserHeader';
-import UserTable from './components/UserTable';
+import UserHeader from './components/UserHeader'
+import UserTable from './components/UserTable'
 
 function UsersPage(props) {
   return (
@@ -15,7 +15,7 @@ function UsersPage(props) {
       content={<UserTable />}
       innerScroll
     />
-  );
+  )
 }
 
-export default UsersPage;
+export default UsersPage

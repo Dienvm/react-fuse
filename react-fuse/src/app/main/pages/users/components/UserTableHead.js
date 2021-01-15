@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
+import React, { useState } from 'react'
+import clsx from 'clsx'
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Checkbox,
   Icon,
@@ -16,7 +16,7 @@ import {
   TableRow,
   TableSortLabel,
   Tooltip,
-} from '@material-ui/core';
+} from '@material-ui/core'
 
 const rows = [
   {
@@ -61,13 +61,13 @@ const rows = [
     label: 'Active',
     sort: true,
   },
-];
+]
 
 const useStyles = makeStyles((theme) => ({
   actionsButtonWrapper: {
     background: theme.palette.background.paper,
   },
-}));
+}))
 
 const UsersTableHead = ({
   numSelected,
@@ -77,25 +77,25 @@ const UsersTableHead = ({
   rowCount,
   handleRemoveUsers,
 }) => {
-  const classes = useStyles();
-  const [selectedUsersMenu, setSelectedUsersMenu] = useState(null);
+  const classes = useStyles()
+  const [selectedUsersMenu, setSelectedUsersMenu] = useState(null)
 
   const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
+    onRequestSort(event, property)
+  }
 
   const openSelectedUsersMenu = (event) => {
-    setSelectedUsersMenu(event.currentTarget);
-  };
+    setSelectedUsersMenu(event.currentTarget)
+  }
 
   const closeSelectedUsersMenu = () => {
-    setSelectedUsersMenu(null);
-  };
+    setSelectedUsersMenu(null)
+  }
 
   const onRemoveUsers = () => {
-    closeSelectedUsersMenu();
-    handleRemoveUsers();
-  };
+    closeSelectedUsersMenu()
+    handleRemoveUsers()
+  }
 
   return (
     <TableHead>
@@ -165,11 +165,11 @@ const UsersTableHead = ({
                 </Tooltip>
               )}
             </TableCell>
-          );
+          )
         })}
       </TableRow>
     </TableHead>
-  );
-};
+  )
+}
 
-export default UsersTableHead;
+export default UsersTableHead

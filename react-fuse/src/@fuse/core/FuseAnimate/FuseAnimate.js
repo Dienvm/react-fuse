@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { VelocityComponent } from 'velocity-react';
-import 'velocity-animate/velocity.ui';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { VelocityComponent } from 'velocity-react'
+import 'velocity-animate/velocity.ui'
 
 const FuseAnimate = React.forwardRef((props, ref) => {
   const children = React.cloneElement(props.children, {
@@ -9,17 +9,17 @@ const FuseAnimate = React.forwardRef((props, ref) => {
       ...props.children.style,
       visibility: 'hidden',
     },
-  });
+  })
   return (
     <VelocityComponent ref={ref} {...props}>
       {children}
     </VelocityComponent>
-  );
-});
+  )
+})
 
 FuseAnimate.propTypes = {
   children: PropTypes.element.isRequired,
-};
+}
 
 FuseAnimate.defaultProps = {
   animation: 'transition.fadeIn',
@@ -32,6 +32,6 @@ FuseAnimate.defaultProps = {
   easing: [0.4, 0.0, 0.2, 1],
   display: null,
   setRef: undefined,
-};
+}
 
-export default React.memo(FuseAnimate);
+export default React.memo(FuseAnimate)

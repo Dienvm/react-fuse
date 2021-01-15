@@ -1,31 +1,31 @@
-import Icon from '@material-ui/core/Icon';
-import { withFormsy } from 'formsy-react';
-import React, { useState } from 'react';
+import Icon from '@material-ui/core/Icon'
+import { withFormsy } from 'formsy-react'
+import React, { useState } from 'react'
 
-import FirebaseService from 'app/services/firebaseService';
-import FuseLoading from '../FuseLoading';
+import FirebaseService from 'app/services/firebaseService'
+import FuseLoading from '../FuseLoading'
 
 const FileFormsy = (props) => {
-  const value = props.getValue();
-  const [loadingImage, setLoadingImage] = useState(false);
+  const value = props.getValue()
+  const [loadingImage, setLoadingImage] = useState(false)
 
   const handleUploadChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
 
     if (!file) {
-      return;
+      return
     }
 
     const uploadTask = FirebaseService.storage
       .ref(`users/${file.name}`)
-      .put(file);
+      .put(file)
     uploadTask.on(
       'state_changed',
       (snapShot) => {
-        setLoadingImage(true);
+        setLoadingImage(true)
       },
       (err) => {
-        setLoadingImage(false);
+        setLoadingImage(false)
       },
       () => {
         FirebaseService.storage
@@ -33,12 +33,12 @@ const FileFormsy = (props) => {
           .child(file.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            setLoadingImage(false);
-            props.setValue(fireBaseUrl);
-          });
+            setLoadingImage(false)
+            props.setValue(fireBaseUrl)
+          })
       }
-    );
-  };
+    )
+  }
 
   return (
     <div>
@@ -74,7 +74,7 @@ const FileFormsy = (props) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(withFormsy(FileFormsy));
+export default React.memo(withFormsy(FileFormsy))

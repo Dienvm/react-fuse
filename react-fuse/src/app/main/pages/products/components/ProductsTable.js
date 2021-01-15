@@ -1,5 +1,5 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import _ from '@lodash';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import _ from '@lodash'
 import {
   Checkbox,
   Icon,
@@ -8,31 +8,31 @@ import {
   TableCell,
   TablePagination,
   TableRow,
-} from '@material-ui/core';
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as ProductActions from 'app/store/actions/product';
-import ProductsTableHead from './ProductsTableHead';
+} from '@material-ui/core'
+import clsx from 'clsx'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import * as ProductActions from 'app/store/actions/product'
+import ProductsTableHead from './ProductsTableHead'
 
 const ProductsTable = (props) => {
-  const dispatch = useDispatch();
-  const products = useSelector(({ product }) => product.products);
-  const searchText = useSelector(({ product }) => product.products.searchText);
+  const dispatch = useDispatch()
+  const products = useSelector(({ product }) => product.products)
+  const searchText = useSelector(({ product }) => product.products.searchText)
 
-  const [selected, setSelected] = useState([]);
-  const [data, setData] = useState(products.data);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [selected, setSelected] = useState([])
+  const [data, setData] = useState(products.data)
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
   const [order, setOrder] = useState({
     direction: 'asc',
     id: null,
-  });
+  })
 
   useEffect(() => {
-    dispatch(ProductActions.getProducts());
-  }, [dispatch]);
+    dispatch(ProductActions.getProducts())
+  }, [dispatch])
 
   useEffect(() => {
     if (searchText.length !== 0) {
@@ -40,75 +40,75 @@ const ProductsTable = (props) => {
         products.data.filter((item) =>
           item.name.toLowerCase().includes(searchText.toLowerCase())
         )
-      );
-      setPage(0);
+      )
+      setPage(0)
     } else {
-      setData(products.data);
+      setData(products.data)
     }
-  }, [products, searchText]);
+  }, [products, searchText])
 
   useEffect(() => {
     if (products.type === ProductActions.REMOVE_PRODUCTS)
-      dispatch(ProductActions.getProducts());
-  }, [products, dispatch]);
+      dispatch(ProductActions.getProducts())
+  }, [products, dispatch])
 
   const handleRequestSort = (event, property) => {
-    const id = property;
-    let direction = 'desc';
+    const id = property
+    let direction = 'desc'
 
     if (order.id === property && order.direction === 'desc') {
-      direction = 'asc';
+      direction = 'asc'
     }
 
     setOrder({
       direction,
       id,
-    });
-  };
+    })
+  }
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      setSelected(data.map((n) => n.id));
-      return;
+      setSelected(data.map((n) => n.id))
+      return
     }
-    setSelected([]);
-  };
+    setSelected([])
+  }
 
   const handleClick = (item) => {
-    props.history.push(`/product/${item.id}/${item.handle}`);
-  };
+    props.history.push(`/product/${item.id}/${item.handle}`)
+  }
 
   const handleCheck = (event, id) => {
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
+    const selectedIndex = selected.indexOf(id)
+    let newSelected = []
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
+      newSelected = newSelected.concat(selected, id)
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
+      newSelected = newSelected.concat(selected.slice(1))
     } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
+      newSelected = newSelected.concat(selected.slice(0, -1))
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1)
-      );
+      )
     }
 
-    setSelected(newSelected);
-  };
+    setSelected(newSelected)
+  }
 
   const handleChangePage = (event, value) => {
-    setPage(value);
-  };
+    setPage(value)
+  }
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(event.target.value);
-  };
+    setRowsPerPage(event.target.value)
+  }
 
   const handleRemoveProducts = () => {
-    dispatch(ProductActions.removeProducts(selected));
-  };
+    dispatch(ProductActions.removeProducts(selected))
+  }
 
   return (
     <div className="w-full flex flex-col">
@@ -130,10 +130,10 @@ const ProductsTable = (props) => {
                 (o) => {
                   switch (order.id) {
                     case 'categories': {
-                      return o.categories[0];
+                      return o.categories[0]
                     }
                     default: {
-                      return o[order.id];
+                      return o[order.id]
                     }
                   }
                 },
@@ -142,7 +142,7 @@ const ProductsTable = (props) => {
             )
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((n) => {
-                const isSelected = selected.indexOf(n.id) !== -1;
+                const isSelected = selected.indexOf(n.id) !== -1
                 return (
                   <TableRow
                     className="h-64 cursor-pointer"
@@ -220,7 +220,7 @@ const ProductsTable = (props) => {
                       )}
                     </TableCell>
                   </TableRow>
-                );
+                )
               })}
           </TableBody>
         </Table>
@@ -242,7 +242,7 @@ const ProductsTable = (props) => {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </div>
-  );
-};
+  )
+}
 
-export default withRouter(ProductsTable);
+export default withRouter(ProductsTable)

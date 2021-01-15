@@ -1,19 +1,19 @@
-import Checkbox from '@material-ui/core/Checkbox';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import { makeStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Tooltip from '@material-ui/core/Tooltip';
-import clsx from 'clsx';
-import React, { useState } from 'react';
+import Checkbox from '@material-ui/core/Checkbox'
+import Icon from '@material-ui/core/Icon'
+import IconButton from '@material-ui/core/IconButton'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
+import { makeStyles } from '@material-ui/core/styles'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TableSortLabel from '@material-ui/core/TableSortLabel'
+import Tooltip from '@material-ui/core/Tooltip'
+import clsx from 'clsx'
+import React, { useState } from 'react'
 
 const rows = [
   {
@@ -58,34 +58,34 @@ const rows = [
     label: 'Date',
     sort: true,
   },
-];
+]
 
 const useStyles = makeStyles((theme) => ({
   actionsButtonWrapper: {
     background: theme.palette.background.paper,
   },
-}));
+}))
 
 const OrdersTableHead = (props) => {
-  const classes = useStyles(props);
-  const [selectedOrdersMenu, setSelectedOrdersMenu] = useState(null);
+  const classes = useStyles(props)
+  const [selectedOrdersMenu, setSelectedOrdersMenu] = useState(null)
 
   const createSortHandler = (property) => (event) => {
-    props.onRequestSort(event, property);
-  };
+    props.onRequestSort(event, property)
+  }
 
   const openSelectedOrdersMenu = (event) => {
-    setSelectedOrdersMenu(event.currentTarget);
-  };
+    setSelectedOrdersMenu(event.currentTarget)
+  }
 
   const closeSelectedOrdersMenu = () => {
-    setSelectedOrdersMenu(null);
-  };
+    setSelectedOrdersMenu(null)
+  }
 
   const onRemoveOrders = () => {
-    props.handleRemoveOrder();
-    closeSelectedOrdersMenu();
-  };
+    props.handleRemoveOrder()
+    closeSelectedOrdersMenu()
+  }
 
   return (
     <TableHead>
@@ -158,11 +158,11 @@ const OrdersTableHead = (props) => {
                 </Tooltip>
               )}
             </TableCell>
-          );
+          )
         })}
       </TableRow>
     </TableHead>
-  );
-};
+  )
+}
 
-export default OrdersTableHead;
+export default OrdersTableHead

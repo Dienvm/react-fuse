@@ -1,7 +1,7 @@
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import { Icon, Typography } from '@material-ui/core';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import { Icon, Typography } from '@material-ui/core'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const OrderHeader = ({ order }) => (
   <div className="flex flex-1 w-full items-center justify-between">
@@ -32,6 +32,6 @@ const OrderHeader = ({ order }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default OrderHeader;
+export default OrderHeader

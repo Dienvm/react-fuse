@@ -1,32 +1,32 @@
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
-import FuseNavHorizontalCollapse from './horizontal/FuseNavHorizontalCollapse';
-import FuseNavHorizontalGroup from './horizontal/FuseNavHorizontalGroup';
-import FuseNavHorizontalItem from './horizontal/FuseNavHorizontalItem';
-import FuseNavHorizontalLink from './horizontal/FuseNavHorizontalLink';
-import FuseNavVerticalCollapse from './vertical/FuseNavVerticalCollapse';
-import FuseNavVerticalGroup from './vertical/FuseNavVerticalGroup';
-import FuseNavVerticalItem from './vertical/FuseNavVerticalItem';
-import FuseNavVerticalLink from './vertical/FuseNavVerticalLink';
-import FuseNavItem, { registerComponent } from './FuseNavItem';
+import Divider from '@material-ui/core/Divider'
+import List from '@material-ui/core/List'
+import { makeStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import React from 'react'
+import FuseNavHorizontalCollapse from './horizontal/FuseNavHorizontalCollapse'
+import FuseNavHorizontalGroup from './horizontal/FuseNavHorizontalGroup'
+import FuseNavHorizontalItem from './horizontal/FuseNavHorizontalItem'
+import FuseNavHorizontalLink from './horizontal/FuseNavHorizontalLink'
+import FuseNavVerticalCollapse from './vertical/FuseNavVerticalCollapse'
+import FuseNavVerticalGroup from './vertical/FuseNavVerticalGroup'
+import FuseNavVerticalItem from './vertical/FuseNavVerticalItem'
+import FuseNavVerticalLink from './vertical/FuseNavVerticalLink'
+import FuseNavItem, { registerComponent } from './FuseNavItem'
 
 /*
 Register Fuse Navigation Components
  */
-registerComponent('vertical-group', FuseNavVerticalGroup);
-registerComponent('vertical-collapse', FuseNavVerticalCollapse);
-registerComponent('vertical-item', FuseNavVerticalItem);
-registerComponent('vertical-link', FuseNavVerticalLink);
-registerComponent('horizontal-group', FuseNavHorizontalGroup);
-registerComponent('horizontal-collapse', FuseNavHorizontalCollapse);
-registerComponent('horizontal-item', FuseNavHorizontalItem);
-registerComponent('horizontal-link', FuseNavHorizontalLink);
-registerComponent('vertical-divider', () => <Divider className="my-16" />);
-registerComponent('horizontal-divider', () => <Divider className="my-16" />);
+registerComponent('vertical-group', FuseNavVerticalGroup)
+registerComponent('vertical-collapse', FuseNavVerticalCollapse)
+registerComponent('vertical-item', FuseNavVerticalItem)
+registerComponent('vertical-link', FuseNavVerticalLink)
+registerComponent('horizontal-group', FuseNavHorizontalGroup)
+registerComponent('horizontal-collapse', FuseNavHorizontalCollapse)
+registerComponent('horizontal-item', FuseNavHorizontalItem)
+registerComponent('horizontal-link', FuseNavHorizontalLink)
+registerComponent('vertical-divider', () => <Divider className="my-16" />)
+registerComponent('horizontal-divider', () => <Divider className="my-16" />)
 
 const useStyles = makeStyles((theme) => ({
   navigation: {
@@ -100,11 +100,11 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}));
+}))
 
 function FuseNavigation(props) {
-  const classes = useStyles(props);
-  const { navigation, layout, active, dense, className } = props;
+  const classes = useStyles(props)
+  const { navigation, layout, active, dense, className } = props
 
   const verticalNav = (
     <List
@@ -126,7 +126,7 @@ function FuseNavigation(props) {
         />
       ))}
     </List>
-  );
+  )
 
   const horizontalNav = (
     <List
@@ -149,29 +149,29 @@ function FuseNavigation(props) {
         />
       ))}
     </List>
-  );
+  )
 
   if (navigation.length > 0) {
     switch (layout) {
       case 'horizontal': {
-        return horizontalNav;
+        return horizontalNav
       }
       case 'vertical':
       default: {
-        return verticalNav;
+        return verticalNav
       }
     }
   } else {
-    return null;
+    return null
   }
 }
 
 FuseNavigation.propTypes = {
   navigation: PropTypes.array.isRequired,
-};
+}
 
 FuseNavigation.defaultProps = {
   layout: 'vertical',
-};
+}
 
-export default React.memo(FuseNavigation);
+export default React.memo(FuseNavigation)

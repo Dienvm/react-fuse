@@ -1,20 +1,20 @@
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import clsx from 'clsx';
-import React, { useImperativeHandle, useState } from 'react';
-import FusePageCardedSidebarContent from './FusePageCardedSidebarContent';
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import clsx from 'clsx'
+import React, { useImperativeHandle, useState } from 'react'
+import FusePageCardedSidebarContent from './FusePageCardedSidebarContent'
 
 function FusePageCardedSidebar(props, ref) {
-  const [isOpen, setIsOpen] = useState(false);
-  const { classes } = props;
+  const [isOpen, setIsOpen] = useState(false)
+  const { classes } = props
 
   useImperativeHandle(ref, () => ({
     toggleSidebar: handleToggleDrawer,
-  }));
+  }))
 
   const handleToggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <>
@@ -69,7 +69,7 @@ function FusePageCardedSidebar(props, ref) {
         </Hidden>
       )}
     </>
-  );
+  )
 }
 
-export default React.forwardRef(FusePageCardedSidebar);
+export default React.forwardRef(FusePageCardedSidebar)

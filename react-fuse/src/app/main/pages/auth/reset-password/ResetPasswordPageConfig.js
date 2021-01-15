@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const ResetPasswordPageConfig = {
   settings: {
@@ -12,6 +12,6 @@ const ResetPasswordPageConfig = {
       component: React.lazy(() => import('./ResetPasswordPage')),
     },
   ],
-};
+}
 
-export default ResetPasswordPageConfig;
+export default ResetPasswordPageConfig

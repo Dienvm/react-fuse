@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as ProductActions from 'app/store/actions';
-import reducer from 'app/store/reducers';
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import * as ProductActions from 'app/store/actions'
+import reducer from 'app/store/reducers'
 
-import FuseLoading from '@fuse/core/FuseLoading';
-import FusePageCarded from '@fuse/core/FusePageCarded';
-import { useForm } from '@fuse/hooks';
-import FuseUtils from '@fuse/utils';
-import { orange } from '@material-ui/core/colors';
-import { makeStyles } from '@material-ui/core/styles';
-import withReducer from 'app/store/withReducer';
+import FuseLoading from '@fuse/core/FuseLoading'
+import FusePageCarded from '@fuse/core/FusePageCarded'
+import { useForm } from '@fuse/hooks'
+import FuseUtils from '@fuse/utils'
+import { orange } from '@material-ui/core/colors'
+import { makeStyles } from '@material-ui/core/styles'
+import withReducer from 'app/store/withReducer'
 
-import firebaseService from 'app/services/firebaseService';
-import TableForm from './components/TableForm';
-import Header from './components/Header';
+import firebaseService from 'app/services/firebaseService'
+import TableForm from './components/TableForm'
+import Header from './components/Header'
 
 const useStyles = makeStyles((theme) => ({
   productImageFeaturedStar: {
@@ -48,37 +48,37 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}));
+}))
 
 const Product = (props) => {
-  const dispatch = useDispatch();
-  const productData = useSelector(({ product }) => product.product);
+  const dispatch = useDispatch()
+  const productData = useSelector(({ product }) => product.product)
 
-  const classes = useStyles(props);
-  const { form, handleChange, setForm } = useForm(null);
-  const [loadingImage, setLoadingImage] = useState(false);
-  const { productId } = props.match.params;
+  const classes = useStyles(props)
+  const { form, handleChange, setForm } = useForm(null)
+  const [loadingImage, setLoadingImage] = useState(false)
+  const { productId } = props.match.params
 
   useEffect(() => {
     const updateProductState = () => {
       if (productId === 'new') {
-        dispatch(ProductActions.newProduct());
+        dispatch(ProductActions.newProduct())
       } else {
-        dispatch(ProductActions.getProduct(productId));
+        dispatch(ProductActions.getProduct(productId))
       }
-    };
+    }
 
-    updateProductState();
-  }, [dispatch, productId]);
+    updateProductState()
+  }, [dispatch, productId])
 
   useEffect(() => {
     if (
       (productData.data && !form) ||
       (productData.data && form && productData.data.id !== form.id)
     ) {
-      setForm(productData.data);
+      setForm(productData.data)
     }
-  }, [form, productData.data, setForm]);
+  }, [form, productData.data, setForm])
 
   useEffect(() => {
     if (
@@ -87,41 +87,41 @@ const Product = (props) => {
     ) {
       props.history.push({
         pathname: '/products',
-      });
+      })
     }
-  }, [productData, props.history]);
+  }, [productData, props.history])
 
   const handleChipChange = useCallback(
     (value, name) => {
-      setForm({ ...form, [name]: value.map((item) => item.value) });
+      setForm({ ...form, [name]: value.map((item) => item.value) })
     },
     [setForm, form]
-  );
+  )
 
   const setFeaturedImage = useCallback(
     (id) => {
-      setForm({ ...form, featuredImageId: id });
+      setForm({ ...form, featuredImageId: id })
     },
     [setForm, form]
-  );
+  )
 
   const handleUploadChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
 
     if (!file) {
-      return;
+      return
     }
 
     const uploadTask = firebaseService.storage
       .ref(`products/${file.name}`)
-      .put(file);
+      .put(file)
     uploadTask.on(
       'state_changed',
       (snapShot) => {
-        setLoadingImage(true);
+        setLoadingImage(true)
       },
       (err) => {
-        setLoadingImage(false);
+        setLoadingImage(false)
       },
       () => {
         firebaseService.storage
@@ -129,7 +129,7 @@ const Product = (props) => {
           .child(file.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            setLoadingImage(false);
+            setLoadingImage(false)
             setForm({
               ...form,
               images: [
@@ -140,11 +140,11 @@ const Product = (props) => {
                 },
                 ...form.images,
               ],
-            });
-          });
+            })
+          })
       }
-    );
-  };
+    )
+  }
 
   if (
     !productData.data ||
@@ -152,7 +152,7 @@ const Product = (props) => {
       productId !== productData.data.id &&
       productId !== 'new')
   ) {
-    return <FuseLoading />;
+    return <FuseLoading />
   }
 
   return (
@@ -181,7 +181,7 @@ const Product = (props) => {
       }
       innerScroll
     />
-  );
-};
+  )
+}
 
-export default withReducer('ProductForm', reducer)(Product);
+export default withReducer('ProductForm', reducer)(Product)

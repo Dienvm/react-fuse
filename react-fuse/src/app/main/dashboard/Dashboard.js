@@ -1,6 +1,6 @@
-import FusePageCarded from '@fuse/core/FusePageCarded';
-import React from 'react';
-import DashboardComponent from './components';
+import FusePageCarded from '@fuse/core/FusePageCarded'
+import React from 'react'
+import DashboardComponent from './components'
 
 function DashboardPage(props) {
   return (
@@ -18,7 +18,7 @@ function DashboardPage(props) {
         </div>
       }
     />
-  );
+  )
 }
 
-export default DashboardPage;
+export default DashboardPage

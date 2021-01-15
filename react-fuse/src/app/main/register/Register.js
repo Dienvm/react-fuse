@@ -1,21 +1,21 @@
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import { useForm } from '@fuse/hooks';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { makeStyles } from '@material-ui/core/styles';
-import { darken } from '@material-ui/core/styles/colorManipulator';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import { useForm } from '@fuse/hooks'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Checkbox from '@material-ui/core/Checkbox'
+import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { makeStyles } from '@material-ui/core/styles'
+import { darken } from '@material-ui/core/styles/colorManipulator'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
 
-import clsx from 'clsx';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import * as authActions from 'app/auth/store/actions';
+import clsx from 'clsx'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import * as authActions from 'app/auth/store/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
     )} 0%, ${theme.palette.primary.dark} 80%)`,
     color: theme.palette.primary.contrastText,
   },
-}));
+}))
 
 const RegisterPage = () => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
+  const classes = useStyles()
+  const dispatch = useDispatch()
 
   const { form, handleChange, resetForm } = useForm({
     name: '',
@@ -37,7 +37,7 @@ const RegisterPage = () => {
     password: '',
     passwordConfirm: '',
     acceptTermsConditions: false,
-  });
+  })
 
   const isFormValid = () => {
     return (
@@ -46,15 +46,15 @@ const RegisterPage = () => {
       form.password.length > 3 &&
       form.password === form.passwordConfirm &&
       form.acceptTermsConditions
-    );
-  };
+    )
+  }
 
   const handleSubmit = (ev) => {
-    ev.preventDefault();
+    ev.preventDefault()
 
-    dispatch(authActions.registerWithFirebase(form));
-    resetForm();
-  };
+    dispatch(authActions.registerWithFirebase(form))
+    resetForm()
+  }
 
   return (
     <div
@@ -168,7 +168,7 @@ const RegisterPage = () => {
         </FuseAnimate>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RegisterPage;
+export default RegisterPage

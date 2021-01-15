@@ -1,14 +1,14 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import * as PropTypes from 'prop-types';
-import React, { useRef } from 'react';
-import FusePageSimpleHeader from './FusePageSimpleHeader';
-import FusePageSimpleSidebar from './FusePageSimpleSidebar';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import { makeStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import * as PropTypes from 'prop-types'
+import React, { useRef } from 'react'
+import FusePageSimpleHeader from './FusePageSimpleHeader'
+import FusePageSimpleSidebar from './FusePageSimpleSidebar'
 
-const headerHeight = 120;
-const toolbarHeight = 64;
-const drawerWidth = 240;
+const headerHeight = 120
+const toolbarHeight = 64
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -138,24 +138,24 @@ const useStyles = makeStyles((theme) => ({
   backdrop: {
     position: 'absolute',
   },
-}));
+}))
 
 const FusePageSimple = React.forwardRef((props, ref) => {
   // console.info("render::FusePageSimple");
-  const leftSidebarRef = useRef(null);
-  const rightSidebarRef = useRef(null);
-  const rootRef = useRef(null);
-  const classes = useStyles(props);
+  const leftSidebarRef = useRef(null)
+  const rightSidebarRef = useRef(null)
+  const rootRef = useRef(null)
+  const classes = useStyles(props)
 
   React.useImperativeHandle(ref, () => ({
     rootRef,
     toggleLeftSidebar: () => {
-      leftSidebarRef.current.toggleSidebar();
+      leftSidebarRef.current.toggleSidebar()
     },
     toggleRightSidebar: () => {
-      rightSidebarRef.current.toggleSidebar();
+      rightSidebarRef.current.toggleSidebar()
     },
-  }));
+  }))
 
   return (
     <div
@@ -222,8 +222,8 @@ const FusePageSimple = React.forwardRef((props, ref) => {
         </div>
       </div>
     </div>
-  );
-});
+  )
+})
 
 FusePageSimple.propTypes = {
   leftSidebarHeader: PropTypes.node,
@@ -237,8 +237,8 @@ FusePageSimple.propTypes = {
   contentToolbar: PropTypes.node,
   sidebarInner: PropTypes.bool,
   innerScroll: PropTypes.bool,
-};
+}
 
-FusePageSimple.defaultProps = {};
+FusePageSimple.defaultProps = {}
 
-export default React.memo(FusePageSimple);
+export default React.memo(FusePageSimple)

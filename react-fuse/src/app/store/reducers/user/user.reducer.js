@@ -1,6 +1,6 @@
-import * as UserActions from '../../actions';
+import * as UserActions from '../../actions'
 
-const initialState = {};
+const initialState = {}
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -8,18 +8,18 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
-      };
+      }
     }
     case UserActions.SAVE_USER: {
       return {
         ...state,
         type: action.type,
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default usersReducer;
+export default usersReducer

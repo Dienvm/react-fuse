@@ -1,15 +1,15 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import AppBar from '@material-ui/core/AppBar';
-import Hidden from '@material-ui/core/Hidden';
-import Icon from '@material-ui/core/Icon';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Logo from 'app/fuse-layouts/shared-components/Logo';
-import NavbarFoldedToggleButton from 'app/fuse-layouts/shared-components/NavbarFoldedToggleButton';
-import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
-import Navigation from 'app/fuse-layouts/shared-components/Navigation';
-import UserNavbarHeader from 'app/fuse-layouts/shared-components/UserNavbarHeader';
-import clsx from 'clsx';
-import React from 'react';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import AppBar from '@material-ui/core/AppBar'
+import Hidden from '@material-ui/core/Hidden'
+import Icon from '@material-ui/core/Icon'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Logo from 'app/fuse-layouts/shared-components/Logo'
+import NavbarFoldedToggleButton from 'app/fuse-layouts/shared-components/NavbarFoldedToggleButton'
+import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton'
+import Navigation from 'app/fuse-layouts/shared-components/Navigation'
+import UserNavbarHeader from 'app/fuse-layouts/shared-components/UserNavbarHeader'
+import clsx from 'clsx'
+import React from 'react'
 
 const useStyles = makeStyles({
   content: {
@@ -22,11 +22,11 @@ const useStyles = makeStyles({
     backgroundSize: '100% 40px, 100% 10px',
     backgroundAttachment: 'local, scroll',
   },
-});
+})
 
 function NavbarLayout1(props) {
-  const classes = useStyles();
-  const theme = useTheme();
+  const classes = useStyles()
+  const theme = useTheme()
 
   return (
     <div
@@ -64,7 +64,7 @@ function NavbarLayout1(props) {
         <Navigation layout="vertical" />
       </FuseScrollbars>
     </div>
-  );
+  )
 }
 
-export default NavbarLayout1;
+export default NavbarLayout1

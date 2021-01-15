@@ -1,6 +1,6 @@
-import { authRoles } from 'app/auth';
-import { logoutUser } from 'app/auth/store/actions';
-import store from 'app/store';
+import { authRoles } from 'app/auth'
+import { logoutUser } from 'app/auth/store/actions'
+import store from 'app/store'
 
 const LogoutConfig = {
   auth: authRoles.user,
@@ -8,11 +8,11 @@ const LogoutConfig = {
     {
       path: '/logout',
       component: () => {
-        store.dispatch(logoutUser());
-        return 'Logging out..';
+        store.dispatch(logoutUser())
+        return 'Logging out..'
       },
     },
   ],
-};
+}
 
-export default LogoutConfig;
+export default LogoutConfig

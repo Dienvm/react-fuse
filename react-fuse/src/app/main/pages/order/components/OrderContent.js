@@ -1,7 +1,7 @@
-import { Avatar, Icon, Typography } from '@material-ui/core';
-import { TABLE_HEAD } from 'app/constants';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Avatar, Icon, Typography } from '@material-ui/core'
+import { TABLE_HEAD } from 'app/constants'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const OrderContent = ({ order }) => (
   <div className="p-16 sm:p-24 max-w-2xl w-full">
@@ -220,6 +220,6 @@ const OrderContent = ({ order }) => (
       </table>
     </div>
   </div>
-);
+)
 
-export default OrderContent;
+export default OrderContent

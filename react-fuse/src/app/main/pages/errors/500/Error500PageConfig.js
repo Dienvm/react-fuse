@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Error500PageConfig = {
   settings: {
@@ -12,6 +12,6 @@ const Error500PageConfig = {
       component: React.lazy(() => import('./Error500Page')),
     },
   ],
-};
+}
 
-export default Error500PageConfig;
+export default Error500PageConfig

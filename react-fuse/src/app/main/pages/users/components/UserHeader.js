@@ -1,23 +1,23 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import Input from '@material-ui/core/Input';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
+import Input from '@material-ui/core/Input'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
-import * as userActions from 'app/store/actions';
+import * as userActions from 'app/store/actions'
 
 const UserHeader = () => {
-  const dispatch = useDispatch();
-  const searchText = useSelector(({ user }) => user.searchText);
+  const dispatch = useDispatch()
+  const searchText = useSelector(({ user }) => user.searchText)
 
   const handleSearchUser = (event) => {
-    dispatch(userActions.setProductsSearchText(event.target.value));
-  };
+    dispatch(userActions.setProductsSearchText(event.target.value))
+  }
 
   return (
     <div className="flex flex-1 w-full items-center justify-between">
@@ -67,7 +67,7 @@ const UserHeader = () => {
         </Button>
       </FuseAnimate>
     </div>
-  );
-};
+  )
+}
 
-export default UserHeader;
+export default UserHeader

@@ -1,14 +1,14 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import Drawer from '@material-ui/core/Drawer';
-import Fab from '@material-ui/core/Fab';
-import Hidden from '@material-ui/core/Hidden';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import clsx from 'clsx';
-import React, { useState } from 'react';
+import FuseScrollbars from '@fuse/core/FuseScrollbars'
+import Drawer from '@material-ui/core/Drawer'
+import Fab from '@material-ui/core/Fab'
+import Hidden from '@material-ui/core/Hidden'
+import Icon from '@material-ui/core/Icon'
+import IconButton from '@material-ui/core/IconButton'
+import Paper from '@material-ui/core/Paper'
+import { makeStyles } from '@material-ui/core/styles'
+import Tooltip from '@material-ui/core/Tooltip'
+import clsx from 'clsx'
+import React, { useState } from 'react'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -170,19 +170,19 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}));
+}))
 
 function FuseSidePanel(props) {
-  const classes = useStyles(props);
-  const [opened, setOpened] = useState(props.opened);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const classes = useStyles(props)
+  const [opened, setOpened] = useState(props.opened)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   function toggleOpened() {
-    setOpened(!opened);
+    setOpened(!opened)
   }
 
   function toggleMobileDrawer() {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen(!mobileOpen)
   }
 
   return (
@@ -249,13 +249,13 @@ function FuseSidePanel(props) {
         </Tooltip>
       </Hidden>
     </>
-  );
+  )
 }
 
-FuseSidePanel.propTypes = {};
+FuseSidePanel.propTypes = {}
 FuseSidePanel.defaultProps = {
   position: 'left',
   opened: true,
-};
+}
 
-export default React.memo(FuseSidePanel);
+export default React.memo(FuseSidePanel)

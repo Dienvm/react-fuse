@@ -1,17 +1,17 @@
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import { useForm } from '@fuse/hooks';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import { useForm } from '@fuse/hooks'
 import {
   Button,
   Card,
   CardContent,
   TextField,
   Typography,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { darken } from '@material-ui/core/styles/colorManipulator';
-import clsx from 'clsx';
-import React from 'react';
-import { Link } from 'react-router-dom';
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { darken } from '@material-ui/core/styles/colorManipulator'
+import clsx from 'clsx'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,17 +20,17 @@ const useStyles = makeStyles((theme) => ({
     } 0%, ${darken(theme.palette.primary.dark, 0.5)} 100%)`,
     color: theme.palette.primary.contrastText,
   },
-}));
+}))
 
 const ResetPasswordPage = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const { form, handleChange, resetForm } = useForm({
     name: '',
     email: '',
     password: '',
     passwordConfirm: '',
-  });
+  })
 
   const isFormValid = () => {
     return (
@@ -38,13 +38,13 @@ const ResetPasswordPage = () => {
       form.password.length > 0 &&
       form.password.length > 3 &&
       form.password === form.passwordConfirm
-    );
-  };
+    )
+  }
 
   const handleSubmit = (ev) => {
-    ev.preventDefault();
-    resetForm();
-  };
+    ev.preventDefault()
+    resetForm()
+  }
 
   return (
     <div
@@ -152,7 +152,7 @@ const ResetPasswordPage = () => {
         </Card>
       </FuseAnimate>
     </div>
-  );
-};
+  )
+}
 
-export default ResetPasswordPage;
+export default ResetPasswordPage

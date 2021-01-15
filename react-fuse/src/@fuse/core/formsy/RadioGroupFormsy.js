@@ -1,10 +1,10 @@
-import _ from '@lodash';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormLabel from '@material-ui/core/FormLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import { withFormsy } from 'formsy-react';
-import React from 'react';
+import _ from '@lodash'
+import FormControl from '@material-ui/core/FormControl'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import FormLabel from '@material-ui/core/FormLabel'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import { withFormsy } from 'formsy-react'
+import React from 'react'
 
 function RadioGroupFormsy(props) {
   const importedProps = _.pick(props, [
@@ -14,16 +14,16 @@ function RadioGroupFormsy(props) {
     'onChange',
     'onKeyDown',
     'variant',
-  ]);
+  ])
 
   // An error message is returned only if the component is invalid
-  const errorMessage = props.getErrorMessage();
-  const value = props.getValue();
+  const errorMessage = props.getErrorMessage()
+  const value = props.getValue()
 
   function changeValue(event, val) {
-    props.setValue(val);
+    props.setValue(val)
     if (props.onChange) {
-      props.onChange(event);
+      props.onChange(event)
     }
   }
 
@@ -41,7 +41,7 @@ function RadioGroupFormsy(props) {
         )}
       </FormControl>
     </FormControl>
-  );
+  )
 }
 
-export default React.memo(withFormsy(RadioGroupFormsy));
+export default React.memo(withFormsy(RadioGroupFormsy))

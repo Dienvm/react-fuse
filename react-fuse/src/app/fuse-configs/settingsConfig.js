@@ -12,6 +12,6 @@ const settingsConfig = {
     toolbar: 'mainThemeLight',
     footer: 'mainThemeDark',
   },
-};
+}
 
-export default settingsConfig;
+export default settingsConfig

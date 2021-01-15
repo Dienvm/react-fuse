@@ -1,8 +1,8 @@
-import { fuseDark } from '@fuse/colors';
-import _ from '@lodash';
-import { lightBlue, red } from '@material-ui/core/colors';
-import { createMuiTheme } from '@material-ui/core/styles';
-import qs from 'qs';
+import { fuseDark } from '@fuse/colors'
+import _ from '@lodash'
+import { lightBlue, red } from '@material-ui/core/colors'
+import { createMuiTheme } from '@material-ui/core/styles'
+import qs from 'qs'
 
 /**
  * SETTINGS DEFAULTS
@@ -17,17 +17,17 @@ export const defaultSettings = {
     toolbar: 'mainThemeLight',
     footer: 'mainThemeDark',
   },
-};
+}
 
 export function getParsedQuerySettings() {
   const parsedQueryString = qs.parse(window.location.search, {
     ignoreQueryPrefix: true,
-  });
+  })
 
   if (parsedQueryString && parsedQueryString.defaultSettings) {
-    return JSON.parse(parsedQueryString.defaultSettings);
+    return JSON.parse(parsedQueryString.defaultSettings)
   }
-  return {};
+  return {}
 
   // Generating route params from settings
   /* const settings = qs.stringify({
@@ -50,7 +50,7 @@ export const defaultThemeOptions = {
     useNextVariants: true,
     suppressDeprecationWarnings: true,
   },
-};
+}
 
 export const mustHaveThemeOptions = {
   typography: {
@@ -62,7 +62,7 @@ export const mustHaveThemeOptions = {
       fontSize: '1.4rem',
     },
   },
-};
+}
 
 export const defaultThemes = {
   default: {
@@ -95,10 +95,10 @@ export const defaultThemes = {
       danger: 'orange',
     },
   },
-};
+}
 
 export function extendThemeWithMixins(obj) {
-  const theme = createMuiTheme(obj);
+  const theme = createMuiTheme(obj)
   return {
     border: (width = 1) => ({
       borderWidth: width,
@@ -125,7 +125,7 @@ export function extendThemeWithMixins(obj) {
       borderStyle: 'solid',
       borderColor: theme.palette.divider,
     }),
-  };
+  }
 }
 
 export function mainThemeVariations(theme) {
@@ -154,5 +154,5 @@ export function mainThemeVariations(theme) {
         ...mustHaveThemeOptions,
       })
     ),
-  };
+  }
 }

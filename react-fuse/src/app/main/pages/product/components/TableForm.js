@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import FuseChipSelect from '@fuse/core/FuseChipSelect';
-import Icon from '@material-ui/core/Icon';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField from '@material-ui/core/TextField';
-import clsx from 'clsx';
-import FuseLoading from '@fuse/core/FuseLoading';
+import FuseChipSelect from '@fuse/core/FuseChipSelect'
+import Icon from '@material-ui/core/Icon'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import TextField from '@material-ui/core/TextField'
+import clsx from 'clsx'
+import FuseLoading from '@fuse/core/FuseLoading'
 
 const TableForm = ({
   form,
@@ -290,7 +290,7 @@ const TableForm = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TableForm;
+export default TableForm

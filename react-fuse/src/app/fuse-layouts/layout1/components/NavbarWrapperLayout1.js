@@ -1,14 +1,14 @@
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import NavbarMobileToggleFab from 'app/fuse-layouts/shared-components/NavbarMobileToggleFab';
-import * as Actions from 'app/store/actions';
-import clsx from 'clsx';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import NavbarLayout1 from './NavbarLayout1';
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import NavbarMobileToggleFab from 'app/fuse-layouts/shared-components/NavbarMobileToggleFab'
+import * as Actions from 'app/store/actions'
+import clsx from 'clsx'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import NavbarLayout1 from './NavbarLayout1'
 
-const navbarWidth = 280;
+const navbarWidth = 280
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -115,19 +115,19 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}));
+}))
 
 function NavbarWrapperLayout1(props) {
-  const dispatch = useDispatch();
-  const config = useSelector(({ fuse }) => fuse.settings.current.layout.config);
-  const navbarTheme = useSelector(({ fuse }) => fuse.settings.navbarTheme);
-  const navbar = useSelector(({ fuse }) => fuse.navbar);
+  const dispatch = useDispatch()
+  const config = useSelector(({ fuse }) => fuse.settings.current.layout.config)
+  const navbarTheme = useSelector(({ fuse }) => fuse.settings.navbarTheme)
+  const navbar = useSelector(({ fuse }) => fuse.navbar)
 
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const { folded } = config.navbar;
-  const foldedAndClosed = folded && !navbar.foldedOpen;
-  const foldedAndOpened = folded && navbar.foldedOpen;
+  const { folded } = config.navbar
+  const foldedAndClosed = folded && !navbar.foldedOpen
+  const foldedAndOpened = folded && navbar.foldedOpen
 
   return (
     <>
@@ -184,7 +184,7 @@ function NavbarWrapperLayout1(props) {
         </Hidden>
       )}
     </>
-  );
+  )
 }
 
-export default NavbarWrapperLayout1;
+export default NavbarWrapperLayout1

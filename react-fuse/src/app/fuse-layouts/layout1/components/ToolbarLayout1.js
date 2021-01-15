@@ -1,13 +1,13 @@
-import FuseSearch from '@fuse/core/FuseSearch';
-import FuseShortcuts from '@fuse/core/FuseShortcuts';
-import AppBar from '@material-ui/core/AppBar';
-import Hidden from '@material-ui/core/Hidden';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
-import UserMenu from 'app/fuse-layouts/shared-components/UserMenu';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import FuseSearch from '@fuse/core/FuseSearch'
+import FuseShortcuts from '@fuse/core/FuseShortcuts'
+import AppBar from '@material-ui/core/AppBar'
+import Hidden from '@material-ui/core/Hidden'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar'
+import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton'
+import UserMenu from 'app/fuse-layouts/shared-components/UserMenu'
+import React from 'react'
+import { useSelector } from 'react-redux'
 // import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
     height: 64,
     backgroundColor: theme.palette.divider,
   },
-}));
+}))
 
 function ToolbarLayout1(props) {
-  const config = useSelector(({ fuse }) => fuse.settings.current.layout.config);
-  const toolbarTheme = useSelector(({ fuse }) => fuse.settings.toolbarTheme);
+  const config = useSelector(({ fuse }) => fuse.settings.current.layout.config)
+  const toolbarTheme = useSelector(({ fuse }) => fuse.settings.toolbarTheme)
 
-  const classes = useStyles(props);
+  const classes = useStyles(props)
 
   return (
     <ThemeProvider theme={toolbarTheme}>
@@ -64,7 +64,7 @@ function ToolbarLayout1(props) {
         </Toolbar>
       </AppBar>
     </ThemeProvider>
-  );
+  )
 }
 
-export default ToolbarLayout1;
+export default ToolbarLayout1

@@ -1,7 +1,7 @@
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import Typography from '@material-ui/core/Typography';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import FuseAnimate from '@fuse/core/FuseAnimate'
+import Typography from '@material-ui/core/Typography'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Error500Page = () => {
   return (
@@ -39,7 +39,7 @@ const Error500Page = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Error500Page;
+export default Error500Page

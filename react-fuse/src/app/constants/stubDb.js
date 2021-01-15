@@ -29,4 +29,4 @@ export const PRODUCTS = [
     weight: '1',
     width: '1',
   },
-];
+]
