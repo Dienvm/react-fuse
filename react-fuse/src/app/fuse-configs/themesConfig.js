@@ -1,5 +1,6 @@
 import { fuseDark, skyBlue } from '@fuse/colors'
 import { lightBlue, red } from '@material-ui/core/colors'
+import { COLORS } from '../constants'
 
 const themesConfig = {
   default: {
@@ -12,13 +13,13 @@ const themesConfig = {
         dark: skyBlue[900],
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
       error: red,
     },
     status: {
-      danger: 'orange',
+      danger: COLORS.orange,
     },
   },
   legacy: {
@@ -31,81 +32,81 @@ const themesConfig = {
         dark: lightBlue[700],
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
       error: red,
     },
     status: {
-      danger: 'orange',
+      danger: COLORS.orange,
     },
   },
   sunset: {
     palette: {
       type: 'light',
       primary: {
-        light: '#FF908B',
-        main: '#D0605E',
-        dark: '#9B3134',
+        light: COLORS.sunsetPrimaryLight,
+        main: COLORS.sunsetPrimaryMain,
+        dark: COLORS.sunsetPrimaryDark,
       },
       secondary: {
-        light: '#C76A1D',
-        main: '#FF994C',
-        dark: '#FFCA7B',
-        contrastText: '#FFF',
+        light: COLORS.sunsetSecondaryLight,
+        main: COLORS.sunsetSecondaryMain,
+        dark: COLORS.sunsetSecondaryDark,
+        contrastText: COLORS.white,
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
       error: red,
     },
     status: {
-      danger: 'orange',
+      danger: COLORS.orange,
     },
   },
   greeny: {
     palette: {
       type: 'light',
       primary: {
-        light: '#6CABD4',
-        main: '#387CA3',
-        dark: '#005074',
+        light: COLORS.greenyPrimaryLight,
+        main: COLORS.greenyPrimaryMain,
+        dark: COLORS.greenyPrimaryDark,
       },
       secondary: {
-        light: '#89F6CF',
-        main: '#55C39E',
-        dark: '#159270',
-        contrastText: '#FFF',
+        light: COLORS.greenySecondaryLight,
+        main: COLORS.greenySecondaryMain,
+        dark: COLORS.greenySecondaryDark,
+        contrastText: COLORS.white,
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
       error: red,
     },
     status: {
-      danger: 'orange',
+      danger: COLORS.orange,
     },
   },
   beach: {
     palette: {
       type: 'light',
       primary: {
-        light: '#C4D8DD',
-        main: '#93A7AB',
-        dark: '#65787C',
-        contrastText: '#FFF',
+        light: COLORS.beachPrimaryLight,
+        main: COLORS.beachPrimaryMain,
+        dark: COLORS.beachPrimaryDark,
+        contrastText: COLORS.white,
       },
       secondary: {
-        light: '#FFB281',
-        main: '#F18153',
-        dark: '#BA5228',
-        contrastText: '#FFF',
+        light: COLORS.beachSecondaryLight,
+        main: COLORS.beachSecondaryMain,
+        dark: COLORS.beachSecondaryDark,
+        contrastText: COLORS.white,
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
     },
   },
@@ -113,19 +114,19 @@ const themesConfig = {
     palette: {
       type: 'light',
       primary: {
-        light: '#87EFFF',
-        main: '#4DBCE9',
-        dark: '#008CB7',
-        contrastText: '#FFF',
+        light: COLORS.techPrimaryLight,
+        main: COLORS.techPrimaryMain,
+        dark: COLORS.techPrimaryDark,
+        contrastText: COLORS.white,
       },
       secondary: {
-        light: '#FFFF83',
-        main: '#D1E751',
-        dark: '#9DB516',
+        light: COLORS.techSecondaryLight,
+        main: COLORS.techSecondaryMain,
+        dark: COLORS.techSecondaryDark,
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
     },
   },
@@ -133,19 +134,19 @@ const themesConfig = {
     palette: {
       type: 'light',
       primary: {
-        light: '#D5C1EB',
-        main: '#A391B9',
-        dark: '#746389',
-        contrastText: '#FFF',
+        light: COLORS.sweetHuesPrimaryLight,
+        main: COLORS.sweetHuesPrimaryMain,
+        dark: COLORS.sweetHuesPrimaryDark,
+        contrastText: COLORS.white,
       },
       secondary: {
-        light: '#90AFD4',
-        main: '#6080A3',
-        dark: '#325474',
+        light: COLORS.sweetHuesSecondaryLight,
+        main: COLORS.sweetHuesSecondaryMain,
+        dark: COLORS.sweetHuesSecondaryDark,
       },
       background: {
-        paper: '#FFFFFF',
-        default: '#F7F7F7',
+        paper: COLORS.white,
+        default: COLORS.alabaster,
       },
     },
   },
@@ -159,32 +160,32 @@ const themesConfig = {
         dark: skyBlue[900],
       },
       background: {
-        paper: '#1E2125',
-        default: '#121212',
+        paper: COLORS.backgroundPaper,
+        default: COLORS.backgroundDefault,
       },
       error: red,
     },
     status: {
-      danger: 'orange',
+      danger: COLORS.orange,
     },
   },
   deepOcean: {
     palette: {
       type: 'dark',
       primary: {
-        light: '#8F53E7',
-        main: '#5A24B4',
-        dark: '#1E0083',
+        light: COLORS.deepOceanPrimaryLight,
+        main: COLORS.deepOceanPrimaryMain,
+        dark: COLORS.deepOceanPrimaryDark,
       },
       secondary: {
-        light: '#FF61FF',
-        main: '#FE00E9',
-        dark: '#C600B6',
-        contrastText: '#FFF',
+        light: COLORS.deepOceanSecondaryLight,
+        main: COLORS.deepOceanSecondaryMain,
+        dark: COLORS.deepOceanSecondaryDark,
+        contrastText: COLORS.white,
       },
       background: {
-        paper: '#1E2125',
-        default: '#121212',
+        paper: COLORS.backgroundPaper,
+        default: COLORS.backgroundDefault,
       },
     },
   },
@@ -192,19 +193,19 @@ const themesConfig = {
     palette: {
       type: 'dark',
       primary: {
-        light: '#86FFF7',
-        main: '#4ECDC4',
-        dark: '#009B94',
+        light: COLORS.slatePrimaryLight,
+        main: COLORS.slatePrimaryMain,
+        dark: COLORS.slatePrimaryDark,
       },
       secondary: {
-        light: '#FF9D99',
-        main: '#FF6B6B',
-        dark: '#C73840',
-        contrastText: '#FFF',
+        light: COLORS.slateSecondaryLight,
+        main: COLORS.slateSecondaryMain,
+        dark: COLORS.slateSecondaryDark,
+        contrastText: COLORS.white,
       },
       background: {
-        paper: '#1E2125',
-        default: '#121212',
+        paper: COLORS.backgroundPaper,
+        default: COLORS.backgroundDefault,
       },
     },
   },
