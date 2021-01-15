@@ -86,7 +86,7 @@ function UserMenu(props) {
           <>
             <MenuItem
               component={Link}
-              to={`${ROUTES.profile}/${user.uid}`}
+              to={`/profile/${user.uid}`}
               onClick={userMenuClose}
               role="button"
             >

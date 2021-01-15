@@ -24,7 +24,7 @@ const navigationConfig = [
     type: 'item',
     icon: 'account_circle',
     auth: authRoles.admin,
-    url: ROUTES.users,
+    url: ROUTES.user,
   },
   {
     id: 'order',
