@@ -1,19 +1,19 @@
-import NavLinkAdapter from '@fuse/core/NavLinkAdapter'
-import FuseUtils from '@fuse/utils'
-import Collapse from '@material-ui/core/Collapse'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import {makeStyles} from '@material-ui/core/styles'
-import clsx from 'clsx'
-import PropTypes from 'prop-types'
-import React, {useEffect, useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {useSelector} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import FuseNavBadge from '../FuseNavBadge'
-import FuseNavItem from '../FuseNavItem'
+import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
+import FuseUtils from '@fuse/utils';
+import Collapse from '@material-ui/core/Collapse';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import FuseNavBadge from '../FuseNavBadge';
+import FuseNavItem from '../FuseNavItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,21 +39,21 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 16,
     },
   }),
-}))
+}));
 
 function needsToBeOpened(location, item) {
-  return location && isUrlInChildren(item, location.pathname)
+  return location && isUrlInChildren(item, location.pathname);
 }
 
 function isUrlInChildren(parent, url) {
   if (!parent.children) {
-    return false
+    return false;
   }
 
   for (let i = 0; i < parent.children.length; i += 1) {
     if (parent.children[i].children) {
       if (isUrlInChildren(parent.children[i], url)) {
-        return true
+        return true;
       }
     }
 
@@ -61,36 +61,36 @@ function isUrlInChildren(parent, url) {
       parent.children[i].url === url ||
       url.includes(parent.children[i].url)
     ) {
-      return true
+      return true;
     }
   }
 
-  return false
+  return false;
 }
 
 function FuseNavVerticalCollapse(props) {
-  const userRole = useSelector(({auth}) => auth.user.role)
+  const userRole = useSelector(({ auth }) => auth.user.role);
   const [open, setOpen] = useState(() =>
-    needsToBeOpened(props.location, props.item),
-  )
-  const {item, nestedLevel} = props
+    needsToBeOpened(props.location, props.item)
+  );
+  const { item, nestedLevel } = props;
   const classes = useStyles({
     itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24,
-  })
-  const {t} = useTranslation('navigation')
+  });
+  const { t } = useTranslation('navigation');
 
   useEffect(() => {
     if (needsToBeOpened(props.location, props.item)) {
-      setOpen(true)
+      setOpen(true);
     }
-  }, [props.location, props.item])
+  }, [props.location, props.item]);
 
   function handleClick() {
-    setOpen(!open)
+    setOpen(!open);
   }
 
   if (!FuseUtils.hasPermission(item.auth, userRole)) {
-    return null
+    return null;
   }
 
   return (
@@ -101,7 +101,8 @@ function FuseNavVerticalCollapse(props) {
         onClick={handleClick}
         component={item.url ? NavLinkAdapter : 'li'}
         to={item.url}
-        role="button">
+        role="button"
+      >
         {item.icon && (
           <Icon color="action" className="list-item-icon text-16 flex-shrink-0">
             {item.icon}
@@ -111,7 +112,7 @@ function FuseNavVerticalCollapse(props) {
         <ListItemText
           className="list-item-text"
           primary={item.translate ? t(item.translate) : item.title}
-          classes={{primary: 'text-14'}}
+          classes={{ primary: 'text-14' }}
         />
 
         {item.badge && <FuseNavBadge className="mx-4" badge={item.badge} />}
@@ -119,7 +120,8 @@ function FuseNavVerticalCollapse(props) {
         <IconButton
           disableRipple
           className="w-40 h-40 -mx-12 p-0 focus:bg-transparent hover:bg-transparent"
-          onClick={(ev) => ev.preventDefault()}>
+          onClick={(ev) => ev.preventDefault()}
+        >
           <Icon className="text-16 arrow-icon" color="inherit">
             {open ? 'expand_less' : 'expand_more'}
           </Icon>
@@ -139,7 +141,7 @@ function FuseNavVerticalCollapse(props) {
         </Collapse>
       )}
     </ul>
-  )
+  );
 }
 
 FuseNavVerticalCollapse.propTypes = {
@@ -149,9 +151,9 @@ FuseNavVerticalCollapse.propTypes = {
     icon: PropTypes.string,
     children: PropTypes.array,
   }),
-}
-FuseNavVerticalCollapse.defaultProps = {}
+};
+FuseNavVerticalCollapse.defaultProps = {};
 
-const NavVerticalCollapse = withRouter(React.memo(FuseNavVerticalCollapse))
+const NavVerticalCollapse = withRouter(React.memo(FuseNavVerticalCollapse));
 
-export default NavVerticalCollapse
+export default NavVerticalCollapse;

@@ -1,14 +1,14 @@
-import {amber, blue, green} from '@material-ui/core/colors'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import Snackbar from '@material-ui/core/Snackbar'
-import SnackbarContent from '@material-ui/core/SnackbarContent'
-import {makeStyles} from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import * as Actions from 'app/store/actions'
-import clsx from 'clsx'
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import { amber, blue, green } from '@material-ui/core/colors';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import * as Actions from 'app/store/actions';
+import clsx from 'clsx';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -28,21 +28,21 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: amber[600],
     color: '#FFFFFF',
   },
-}))
+}));
 
 const variantIcon = {
   success: 'check_circle',
   warning: 'warning',
   error: 'error_outline',
   info: 'info',
-}
+};
 
 function FuseMessage(props) {
-  const dispatch = useDispatch()
-  const state = useSelector(({fuse}) => fuse.message.state)
-  const options = useSelector(({fuse}) => fuse.message.options)
+  const dispatch = useDispatch();
+  const state = useSelector(({ fuse }) => fuse.message.state);
+  const options = useSelector(({ fuse }) => fuse.message.options);
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Snackbar
@@ -58,7 +58,8 @@ function FuseMessage(props) {
           body1: 'div',
           body2: 'div',
         },
-      }}>
+      }}
+    >
       <SnackbarContent
         className={clsx(classes[options.variant])}
         message={
@@ -74,13 +75,14 @@ function FuseMessage(props) {
             key="close"
             aria-label="Close"
             color="inherit"
-            onClick={() => dispatch(Actions.hideMessage())}>
+            onClick={() => dispatch(Actions.hideMessage())}
+          >
             <Icon>close</Icon>
           </IconButton>,
         ]}
       />
     </Snackbar>
-  )
+  );
 }
 
-export default React.memo(FuseMessage)
+export default React.memo(FuseMessage);

@@ -1,58 +1,59 @@
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import {useForm} from '@fuse/hooks'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { useForm } from '@fuse/hooks';
 import {
   Button,
   Card,
   CardContent,
   TextField,
   Typography,
-} from '@material-ui/core'
-import {makeStyles} from '@material-ui/core/styles'
-import {darken} from '@material-ui/core/styles/colorManipulator'
-import clsx from 'clsx'
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import * as authActions from 'app/auth/store/actions'
-import history from '@history'
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { darken } from '@material-ui/core/styles/colorManipulator';
+import clsx from 'clsx';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as authActions from 'app/auth/store/actions';
+import history from '@history';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     background: `radial-gradient(${darken(
       theme.palette.primary.dark,
-      0.5,
+      0.5
     )} 0%, ${theme.palette.primary.dark} 80%)`,
     color: theme.palette.primary.contrastText,
   },
-}))
+}));
 
 const ForgotPasswordPage = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const {form, handleChange, resetForm} = useForm({
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const { form, handleChange, resetForm } = useForm({
     email: '',
-  })
+  });
 
   const isFormValid = () => {
-    return form.email.length > 0
-  }
+    return form.email.length > 0;
+  };
 
   const handleSubmit = (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
 
-    dispatch(authActions.resetPassword(form))
-    resetForm()
+    dispatch(authActions.resetPassword(form));
+    resetForm();
     history.push({
       pathname: '/login',
-    })
-  }
+    });
+  };
 
   return (
     <div
       className={clsx(
         classes.root,
-        'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32',
-      )}>
+        'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32'
+      )}
+    >
       <div className="flex flex-col items-center justify-center w-full">
         <FuseAnimate animation="transition.expandIn">
           <Card className="w-full max-w-384">
@@ -69,7 +70,8 @@ const ForgotPasswordPage = () => {
                 name="recoverForm"
                 noValidate
                 className="flex flex-col justify-center w-full"
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
+              >
                 <TextField
                   className="mb-16"
                   label="Email"
@@ -89,7 +91,8 @@ const ForgotPasswordPage = () => {
                   className="w-224 mx-auto mt-16"
                   aria-label="Reset"
                   disabled={!isFormValid()}
-                  type="submit">
+                  type="submit"
+                >
                   SEND RESET LINK
                 </Button>
               </form>
@@ -104,7 +107,7 @@ const ForgotPasswordPage = () => {
         </FuseAnimate>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ForgotPasswordPage
+export default ForgotPasswordPage;

@@ -1,10 +1,10 @@
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import Icon from '@material-ui/core/Icon'
-import Input from '@material-ui/core/Input'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
-import React from 'react'
-import {Link} from 'react-router-dom'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import Icon from '@material-ui/core/Icon';
+import Input from '@material-ui/core/Input';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Error404Page = () => {
   return (
@@ -14,7 +14,8 @@ const Error404Page = () => {
           <Typography
             variant="h1"
             color="inherit"
-            className="font-medium mb-16">
+            className="font-medium mb-16"
+          >
             404
           </Typography>
         </FuseAnimate>
@@ -27,7 +28,8 @@ const Error404Page = () => {
 
         <Paper
           className="flex items-center w-full h-56 p-16 mt-48 mb-16"
-          elevation={1}>
+          elevation={1}
+        >
           <Icon color="action">search</Icon>
           <Input
             placeholder="Search for anything"
@@ -45,7 +47,7 @@ const Error404Page = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Error404Page
+export default Error404Page;

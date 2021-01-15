@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ForgotPassword2PageConfig = {
   settings: {
@@ -12,6 +12,6 @@ const ForgotPassword2PageConfig = {
       component: React.lazy(() => import('./ForgotPasswordPage')),
     },
   ],
-}
+};
 
-export default ForgotPassword2PageConfig
+export default ForgotPassword2PageConfig;

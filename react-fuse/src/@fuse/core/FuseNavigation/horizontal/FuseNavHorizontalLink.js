@@ -1,16 +1,16 @@
-import FuseUtils from '@fuse/utils'
-import Icon from '@material-ui/core/Icon'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import {makeStyles} from '@material-ui/core/styles'
-import * as Actions from 'app/store/actions'
-import clsx from 'clsx'
-import PropTypes from 'prop-types'
-import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {useDispatch, useSelector} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import FuseNavBadge from '../FuseNavBadge'
+import FuseUtils from '@fuse/utils';
+import Icon from '@material-ui/core/Icon';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/core/styles';
+import * as Actions from 'app/store/actions';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import FuseNavBadge from '../FuseNavBadge';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,18 +33,18 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     textDecoration: 'none!important',
   },
-}))
+}));
 
 function FuseNavHorizontalLink(props) {
-  const dispatch = useDispatch()
-  const userRole = useSelector(({auth}) => auth.user.role)
+  const dispatch = useDispatch();
+  const userRole = useSelector(({ auth }) => auth.user.role);
 
-  const classes = useStyles(props)
-  const {item} = props
-  const {t} = useTranslation('navigation')
+  const classes = useStyles(props);
+  const { item } = props;
+  const { t } = useTranslation('navigation');
 
   if (!FuseUtils.hasPermission(item.auth, userRole)) {
-    return null
+    return null;
   }
 
   return (
@@ -55,7 +55,8 @@ function FuseNavHorizontalLink(props) {
       target={item.target ? item.target : '_blank'}
       className={clsx('list-item', classes.root)}
       onClick={(ev) => dispatch(Actions.navbarCloseMobile())}
-      role="button">
+      role="button"
+    >
       {item.icon && (
         <Icon className="list-item-icon text-16 flex-shrink-0" color="action">
           {item.icon}
@@ -65,14 +66,14 @@ function FuseNavHorizontalLink(props) {
       <ListItemText
         className="list-item-text"
         primary={item.translate ? t(item.translate) : item.title}
-        classes={{primary: 'text-14 list-item-text-primary'}}
+        classes={{ primary: 'text-14 list-item-text-primary' }}
       />
 
       {item.badge && (
         <FuseNavBadge className="ltr:ml-8 rtl:mr-8" badge={item.badge} />
       )}
     </ListItem>
-  )
+  );
 }
 
 FuseNavHorizontalLink.propTypes = {
@@ -83,10 +84,10 @@ FuseNavHorizontalLink.propTypes = {
     url: PropTypes.string,
     target: PropTypes.string,
   }),
-}
+};
 
-FuseNavHorizontalLink.defaultProps = {}
+FuseNavHorizontalLink.defaultProps = {};
 
-const NavHorizontalLink = withRouter(React.memo(FuseNavHorizontalLink))
+const NavHorizontalLink = withRouter(React.memo(FuseNavHorizontalLink));
 
-export default NavHorizontalLink
+export default NavHorizontalLink;

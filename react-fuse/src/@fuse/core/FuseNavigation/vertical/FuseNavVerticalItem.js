@@ -1,17 +1,17 @@
-import NavLinkAdapter from '@fuse/core/NavLinkAdapter'
-import FuseUtils from '@fuse/utils'
-import Icon from '@material-ui/core/Icon'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import {makeStyles} from '@material-ui/core/styles'
-import * as Actions from 'app/store/actions'
-import clsx from 'clsx'
-import PropTypes from 'prop-types'
-import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {useDispatch, useSelector} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import FuseNavBadge from '../FuseNavBadge'
+import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
+import FuseUtils from '@fuse/utils';
+import Icon from '@material-ui/core/Icon';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/core/styles';
+import * as Actions from 'app/store/actions';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import FuseNavBadge from '../FuseNavBadge';
 
 const useStyles = makeStyles((theme) => ({
   item: (props) => ({
@@ -40,19 +40,19 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     textDecoration: 'none!important',
   }),
-}))
+}));
 
 function FuseNavVerticalItem(props) {
-  const dispatch = useDispatch()
-  const userRole = useSelector(({auth}) => auth.user.role)
-  const {item, nestedLevel} = props
+  const dispatch = useDispatch();
+  const userRole = useSelector(({ auth }) => auth.user.role);
+  const { item, nestedLevel } = props;
   const classes = useStyles({
     itemPadding: nestedLevel > 0 ? 40 + nestedLevel * 16 : 24,
-  })
-  const {t} = useTranslation('navigation')
+  });
+  const { t } = useTranslation('navigation');
 
   if (!FuseUtils.hasPermission(item.auth, userRole)) {
-    return null
+    return null;
   }
 
   return (
@@ -63,7 +63,8 @@ function FuseNavVerticalItem(props) {
       activeClassName="active"
       className={clsx(classes.item, 'list-item')}
       onClick={(ev) => dispatch(Actions.navbarCloseMobile())}
-      exact={item.exact}>
+      exact={item.exact}
+    >
       {item.icon && (
         <Icon className="list-item-icon text-16 flex-shrink-0" color="action">
           {item.icon}
@@ -73,12 +74,12 @@ function FuseNavVerticalItem(props) {
       <ListItemText
         className="list-item-text"
         primary={item.translate ? t(item.translate) : item.title}
-        classes={{primary: 'text-14 list-item-text-primary'}}
+        classes={{ primary: 'text-14 list-item-text-primary' }}
       />
 
       {item.badge && <FuseNavBadge badge={item.badge} />}
     </ListItem>
-  )
+  );
 }
 
 FuseNavVerticalItem.propTypes = {
@@ -88,10 +89,10 @@ FuseNavVerticalItem.propTypes = {
     icon: PropTypes.string,
     url: PropTypes.string,
   }),
-}
+};
 
-FuseNavVerticalItem.defaultProps = {}
+FuseNavVerticalItem.defaultProps = {};
 
-const NavVerticalItem = withRouter(React.memo(FuseNavVerticalItem))
+const NavVerticalItem = withRouter(React.memo(FuseNavVerticalItem));
 
-export default NavVerticalItem
+export default NavVerticalItem;

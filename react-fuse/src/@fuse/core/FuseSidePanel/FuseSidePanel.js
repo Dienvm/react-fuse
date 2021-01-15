@@ -1,14 +1,14 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import Drawer from '@material-ui/core/Drawer'
-import Fab from '@material-ui/core/Fab'
-import Hidden from '@material-ui/core/Hidden'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import Paper from '@material-ui/core/Paper'
-import {makeStyles} from '@material-ui/core/styles'
-import Tooltip from '@material-ui/core/Tooltip'
-import clsx from 'clsx'
-import React, {useState} from 'react'
+import FuseScrollbars from '@fuse/core/FuseScrollbars';
+import Drawer from '@material-ui/core/Drawer';
+import Fab from '@material-ui/core/Fab';
+import Hidden from '@material-ui/core/Hidden';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
+import clsx from 'clsx';
+import React, { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
           {
             easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.shorter,
-          },
+          }
         ),
         width: 24,
         '&:hover': {
@@ -146,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
       {
         easing: theme.transitions.easing.easeInOut,
         duration: theme.transitions.duration.shorter,
-      },
+      }
     ),
     '&:hover': {
       width: 52,
@@ -170,19 +170,19 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}))
+}));
 
 function FuseSidePanel(props) {
-  const classes = useStyles(props)
-  const [opened, setOpened] = useState(props.opened)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const classes = useStyles(props);
+  const [opened, setOpened] = useState(props.opened);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   function toggleOpened() {
-    setOpened(!opened)
+    setOpened(!opened);
   }
 
   function toggleMobileDrawer() {
-    setMobileOpen(!mobileOpen)
+    setMobileOpen(!mobileOpen);
   }
 
   return (
@@ -194,10 +194,11 @@ function FuseSidePanel(props) {
             classes.paper,
             props.className,
             opened ? 'opened' : 'closed',
-            props.position,
+            props.position
           )}
           elevation={3}
-          square>
+          square
+        >
           <FuseScrollbars className={clsx('content', classes.content)}>
             {props.children}
           </FuseScrollbars>
@@ -205,11 +206,13 @@ function FuseSidePanel(props) {
           <div className={classes.buttonWrapper}>
             <Tooltip
               title="Toggle side panel"
-              placement={props.position === 'left' ? 'right' : 'right'}>
+              placement={props.position === 'left' ? 'right' : 'right'}
+            >
               <IconButton
                 className={classes.button}
                 onClick={toggleOpened}
-                disableRipple>
+                disableRipple
+              >
                 <Icon className={classes.buttonIcon}>keyboard_arrow_left</Icon>
               </IconButton>
             </Tooltip>
@@ -223,7 +226,8 @@ function FuseSidePanel(props) {
           }}
           anchor={props.position}
           open={mobileOpen}
-          onClose={toggleMobileDrawer}>
+          onClose={toggleMobileDrawer}
+        >
           <FuseScrollbars className={clsx('content', classes.content)}>
             {props.children}
           </FuseScrollbars>
@@ -231,11 +235,13 @@ function FuseSidePanel(props) {
 
         <Tooltip
           title="Hide side panel"
-          placement={props.position === 'left' ? 'right' : 'right'}>
+          placement={props.position === 'left' ? 'right' : 'right'}
+        >
           <Fab
             className={clsx(classes.mobileButton, props.position)}
             onClick={toggleMobileDrawer}
-            disableRipple>
+            disableRipple
+          >
             <Icon className={classes.buttonIcon} color="action">
               keyboard_arrow_right
             </Icon>
@@ -243,13 +249,13 @@ function FuseSidePanel(props) {
         </Tooltip>
       </Hidden>
     </>
-  )
+  );
 }
 
-FuseSidePanel.propTypes = {}
+FuseSidePanel.propTypes = {};
 FuseSidePanel.defaultProps = {
   position: 'left',
   opened: true,
-}
+};
 
-export default React.memo(FuseSidePanel)
+export default React.memo(FuseSidePanel);

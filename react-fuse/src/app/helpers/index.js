@@ -1,1 +1,1 @@
-export * from './convertObjectToArray'
+export * from './convertObjectToArray';

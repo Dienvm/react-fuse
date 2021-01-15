@@ -1,19 +1,19 @@
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import {Button, Icon, Input, Paper, Typography} from '@material-ui/core'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { Button, Icon, Input, Paper, Typography } from '@material-ui/core';
 
-import * as ProductActions from 'app/store/actions'
+import * as ProductActions from 'app/store/actions';
 
 const ProductsHeader = () => {
-  const dispatch = useDispatch()
-  const searchText = useSelector(({product}) => product.products.searchText)
+  const dispatch = useDispatch();
+  const searchText = useSelector(({ product }) => product.products.searchText);
 
   const handleSearchProduct = (event) => {
-    dispatch(ProductActions.setProductsSearchText(event.target.value))
-  }
+    dispatch(ProductActions.setProductsSearchText(event.target.value));
+  };
 
   return (
     <div className="flex flex-1 w-full items-center justify-between">
@@ -32,7 +32,8 @@ const ProductsHeader = () => {
         <FuseAnimate animation="transition.slideDownIn" delay={300}>
           <Paper
             className="flex items-center w-full max-w-512 px-8 py-4 rounded-8"
-            elevation={1}>
+            elevation={1}
+          >
             <Icon color="action">search</Icon>
 
             <Input
@@ -55,13 +56,14 @@ const ProductsHeader = () => {
           to="product/new"
           className="whitespace-no-wrap normal-case"
           variant="contained"
-          color="secondary">
+          color="secondary"
+        >
           <span className="hidden sm:flex">Add New Product</span>
           <span className="flex sm:hidden">New</span>
         </Button>
       </FuseAnimate>
     </div>
-  )
-}
+  );
+};
 
-export default ProductsHeader
+export default ProductsHeader;

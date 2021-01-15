@@ -1,29 +1,29 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
-import Typography from '@material-ui/core/Typography'
-import * as ProductActions from 'app/store/actions'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import Typography from '@material-ui/core/Typography';
+import * as ProductActions from 'app/store/actions';
 
-import _ from 'lodash'
+import _ from 'lodash';
 
-const Header = ({form, productData, productId}) => {
-  const dispatch = useDispatch()
+const Header = ({ form, productData, productId }) => {
+  const dispatch = useDispatch();
 
   const canBeSubmitted = () => {
-    return form && form.name.length > 0 && _.isEqual(productData.data, form)
-  }
+    return form && form.name.length > 0 && _.isEqual(productData.data, form);
+  };
 
   const handleSaveProduct = () => {
     if (productId === 'new') {
-      dispatch(ProductActions.saveProduct(form))
+      dispatch(ProductActions.saveProduct(form));
     } else {
-      dispatch(ProductActions.updateProduct(productId, form))
+      dispatch(ProductActions.updateProduct(productId, form));
     }
-  }
+  };
 
   return (
     <div className="flex flex-1 w-full items-center justify-between">
@@ -34,7 +34,8 @@ const Header = ({form, productData, productId}) => {
             component={Link}
             role="button"
             to="/products"
-            color="inherit">
+            color="inherit"
+          >
             <Icon className="text-20">arrow_back</Icon>
             <span className="mx-4">Products</span>
           </Typography>
@@ -77,12 +78,13 @@ const Header = ({form, productData, productId}) => {
           variant="contained"
           color="secondary"
           disabled={!canBeSubmitted()}
-          onClick={handleSaveProduct}>
+          onClick={handleSaveProduct}
+        >
           Save
         </Button>
       </FuseAnimate>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

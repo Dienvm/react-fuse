@@ -1,17 +1,17 @@
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import {useForm} from '@fuse/hooks'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { useForm } from '@fuse/hooks';
 import {
   Button,
   Card,
   CardContent,
   TextField,
   Typography,
-} from '@material-ui/core'
-import {makeStyles} from '@material-ui/core/styles'
-import {darken} from '@material-ui/core/styles/colorManipulator'
-import clsx from 'clsx'
-import React from 'react'
-import {Link} from 'react-router-dom'
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { darken } from '@material-ui/core/styles/colorManipulator';
+import clsx from 'clsx';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,17 +20,17 @@ const useStyles = makeStyles((theme) => ({
     } 0%, ${darken(theme.palette.primary.dark, 0.5)} 100%)`,
     color: theme.palette.primary.contrastText,
   },
-}))
+}));
 
 const ResetPasswordPage = () => {
-  const classes = useStyles()
+  const classes = useStyles();
 
-  const {form, handleChange, resetForm} = useForm({
+  const { form, handleChange, resetForm } = useForm({
     name: '',
     email: '',
     password: '',
     passwordConfirm: '',
-  })
+  });
 
   const isFormValid = () => {
     return (
@@ -38,20 +38,21 @@ const ResetPasswordPage = () => {
       form.password.length > 0 &&
       form.password.length > 3 &&
       form.password === form.passwordConfirm
-    )
-  }
+    );
+  };
 
   const handleSubmit = (ev) => {
-    ev.preventDefault()
-    resetForm()
-  }
+    ev.preventDefault();
+    resetForm();
+  };
 
   return (
     <div
       className={clsx(
         classes.root,
-        'flex flex-col flex-auto flex-shrink-0 p-24 md:flex-row md:p-0',
-      )}>
+        'flex flex-col flex-auto flex-shrink-0 p-24 md:flex-row md:p-0'
+      )}
+    >
       <div className="flex flex-col flex-grow-0 items-center text-white p-16 text-center md:p-128 md:items-start md:flex-shrink-0 md:flex-1 md:text-left">
         <FuseAnimate animation="transition.expandIn">
           <img
@@ -71,7 +72,8 @@ const ResetPasswordPage = () => {
           <Typography
             variant="subtitle1"
             color="inherit"
-            className="max-w-512 mt-16">
+            className="max-w-512 mt-16"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
             ullamcorper nisl erat, vel convallis elit fermentum pellentesque.
             Sed mollis velit facilisis facilisis.
@@ -79,7 +81,7 @@ const ResetPasswordPage = () => {
         </FuseAnimate>
       </div>
 
-      <FuseAnimate animation={{translateX: [0, '100%']}}>
+      <FuseAnimate animation={{ translateX: [0, '100%'] }}>
         <Card className="w-full max-w-400 mx-auto m-16 md:m-0" square>
           <CardContent className="flex flex-col items-center justify-center p-32 md:p-48 md:pt-128">
             <Typography variant="h6" className="md:w-full mb-32">
@@ -90,7 +92,8 @@ const ResetPasswordPage = () => {
               name="resetForm"
               noValidate
               className="flex flex-col justify-center w-full"
-              onSubmit={handleSubmit}>
+              onSubmit={handleSubmit}
+            >
               <TextField
                 className="mb-16"
                 label="Email"
@@ -134,7 +137,8 @@ const ResetPasswordPage = () => {
                 className="w-224 mx-auto mt-16"
                 aria-label="Reset"
                 disabled={!isFormValid()}
-                type="submit">
+                type="submit"
+              >
                 RESET MY PASSWORD
               </Button>
             </form>
@@ -148,7 +152,7 @@ const ResetPasswordPage = () => {
         </Card>
       </FuseAnimate>
     </div>
-  )
-}
+  );
+};
 
-export default ResetPasswordPage
+export default ResetPasswordPage;

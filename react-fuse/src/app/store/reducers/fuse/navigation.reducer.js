@@ -1,23 +1,23 @@
-import navigationConfig from 'app/fuse-configs/navigationConfig'
-import * as Actions from '../../actions/fuse'
+import navigationConfig from 'app/fuse-configs/navigationConfig';
+import * as Actions from '../../actions/fuse';
 
-const initialState = navigationConfig
+const initialState = navigationConfig;
 
 const navigation = (state = initialState, action) => {
   switch (action.type) {
     case Actions.GET_NAVIGATION: {
-      return [...state]
+      return [...state];
     }
     case Actions.SET_NAVIGATION: {
-      return [...action.navigation]
+      return [...action.navigation];
     }
     case Actions.RESET_NAVIGATION: {
-      return [...initialState]
+      return [...initialState];
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
-export default navigation
+export default navigation;

@@ -1,18 +1,18 @@
-import FuseDialog from '@fuse/core/FuseDialog'
-import FuseMessage from '@fuse/core/FuseMessage'
-import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import FuseSuspense from '@fuse/core/FuseSuspense'
-import {makeStyles} from '@material-ui/core/styles'
-import AppContext from 'app/AppContext'
+import FuseDialog from '@fuse/core/FuseDialog';
+import FuseMessage from '@fuse/core/FuseMessage';
+import FuseScrollbars from '@fuse/core/FuseScrollbars';
+import FuseSuspense from '@fuse/core/FuseSuspense';
+import { makeStyles } from '@material-ui/core/styles';
+import AppContext from 'app/AppContext';
 
-import clsx from 'clsx'
-import React, {useContext} from 'react'
-import {useSelector} from 'react-redux'
-import {renderRoutes} from 'react-router-config'
-import FooterLayout1 from './components/FooterLayout1'
-import LeftSideLayout1 from './components/LeftSideLayout1'
-import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1'
-import ToolbarLayout1 from './components/ToolbarLayout1'
+import clsx from 'clsx';
+import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { renderRoutes } from 'react-router-config';
+import FooterLayout1 from './components/FooterLayout1';
+import LeftSideLayout1 from './components/LeftSideLayout1';
+import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1';
+import ToolbarLayout1 from './components/ToolbarLayout1';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,14 +77,14 @@ const useStyles = makeStyles((theme) => ({
     '-webkit-overflow-scrolling': 'touch',
     zIndex: 2,
   },
-}))
+}));
 
 function Layout1(props) {
-  const config = useSelector(({fuse}) => fuse.settings.current.layout.config)
+  const config = useSelector(({ fuse }) => fuse.settings.current.layout.config);
 
-  const appContext = useContext(AppContext)
-  const classes = useStyles(props)
-  const {routes} = appContext
+  const appContext = useContext(AppContext);
+  const classes = useStyles(props);
+  const { routes } = appContext;
 
   // console.warn('FuseLayout:: rendered');
 
@@ -93,11 +93,8 @@ function Layout1(props) {
       return (
         <div
           id="fuse-layout"
-          className={clsx(
-            classes.root,
-            config.mode,
-            `scroll-${config.scroll}`,
-          )}>
+          className={clsx(classes.root, config.mode, `scroll-${config.scroll}`)}
+        >
           {config.leftSidePanel.display && <LeftSideLayout1 />}
 
           <div className="flex flex-1 flex-col overflow-hidden relative">
@@ -148,18 +145,15 @@ function Layout1(props) {
           </div>
           <FuseMessage />
         </div>
-      )
+      );
     }
     case 'content':
     default: {
       return (
         <div
           id="fuse-layout"
-          className={clsx(
-            classes.root,
-            config.mode,
-            `scroll-${config.scroll}`,
-          )}>
+          className={clsx(classes.root, config.mode, `scroll-${config.scroll}`)}
+        >
           {config.leftSidePanel.display && <LeftSideLayout1 />}
 
           <div className="flex flex-1 flex-col overflow-hidden relative">
@@ -179,7 +173,8 @@ function Layout1(props) {
 
                 <FuseScrollbars
                   className={classes.content}
-                  scrollToTopOnRouteChange>
+                  scrollToTopOnRouteChange
+                >
                   {config.toolbar.display &&
                     config.toolbar.position === 'below' &&
                     config.toolbar.style !== 'fixed' && <ToolbarLayout1 />}
@@ -212,9 +207,9 @@ function Layout1(props) {
 
           <FuseMessage />
         </div>
-      )
+      );
     }
   }
 }
 
-export default Layout1
+export default Layout1;

@@ -1,20 +1,20 @@
-import React, {useState} from 'react'
-import clsx from 'clsx'
+import React, { useState } from 'react';
+import clsx from 'clsx';
 
-import Checkbox from '@material-ui/core/Checkbox'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import MenuList from '@material-ui/core/MenuList'
-import {makeStyles} from '@material-ui/core/styles'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import TableSortLabel from '@material-ui/core/TableSortLabel'
-import Tooltip from '@material-ui/core/Tooltip'
+import Checkbox from '@material-ui/core/Checkbox';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import { makeStyles } from '@material-ui/core/styles';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const rows = [
   {
@@ -59,13 +59,13 @@ const rows = [
     label: 'Active',
     sort: true,
   },
-]
+];
 
 const useStyles = makeStyles((theme) => ({
   actionsButtonWrapper: {
     background: theme.palette.background.paper,
   },
-}))
+}));
 
 const ProductsTableHead = ({
   numSelected,
@@ -75,25 +75,25 @@ const ProductsTableHead = ({
   rowCount,
   handleRemoveProducts,
 }) => {
-  const classes = useStyles()
-  const [selectedProductsMenu, setSelectedProductsMenu] = useState(null)
+  const classes = useStyles();
+  const [selectedProductsMenu, setSelectedProductsMenu] = useState(null);
 
   const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property)
-  }
+    onRequestSort(event, property);
+  };
 
   const openSelectedProductsMenu = (event) => {
-    setSelectedProductsMenu(event.currentTarget)
-  }
+    setSelectedProductsMenu(event.currentTarget);
+  };
 
   const closeSelectedProductsMenu = () => {
-    setSelectedProductsMenu(null)
-  }
+    setSelectedProductsMenu(null);
+  };
 
   const onRemoveProducts = () => {
-    closeSelectedProductsMenu()
-    handleRemoveProducts()
-  }
+    closeSelectedProductsMenu();
+    handleRemoveProducts();
+  };
 
   return (
     <TableHead>
@@ -108,19 +108,22 @@ const ProductsTableHead = ({
             <div
               className={clsx(
                 'flex items-center justify-center absolute w-64 top-0 ltr:left-0 rtl:right-0 mx-56 h-64 z-10',
-                classes.actionsButtonWrapper,
-              )}>
+                classes.actionsButtonWrapper
+              )}
+            >
               <IconButton
                 aria-owns={selectedProductsMenu ? 'selectedProductsMenu' : null}
                 aria-haspopup="true"
-                onClick={openSelectedProductsMenu}>
+                onClick={openSelectedProductsMenu}
+              >
                 <Icon>more_horiz</Icon>
               </IconButton>
               <Menu
                 id="selectedProductsMenu"
                 anchorEl={selectedProductsMenu}
                 open={Boolean(selectedProductsMenu)}
-                onClose={closeSelectedProductsMenu}>
+                onClose={closeSelectedProductsMenu}
+              >
                 <MenuList>
                   <MenuItem onClick={onRemoveProducts}>
                     <ListItemIcon className="min-w-40">
@@ -140,28 +143,31 @@ const ProductsTableHead = ({
               key={row.id}
               align={row.align}
               padding={row.disablePadding ? 'none' : 'default'}
-              sortDirection={order.id === row.id ? order.direction : false}>
+              sortDirection={order.id === row.id ? order.direction : false}
+            >
               {row.sort && (
                 <Tooltip
                   title="Sort"
                   placement={
                     row.align === 'right' ? 'bottom-end' : 'bottom-start'
                   }
-                  enterDelay={300}>
+                  enterDelay={300}
+                >
                   <TableSortLabel
                     active={order.id === row.id}
                     direction={order.direction}
-                    onClick={createSortHandler(row.id)}>
+                    onClick={createSortHandler(row.id)}
+                  >
                     {row.label}
                   </TableSortLabel>
                 </Tooltip>
               )}
             </TableCell>
-          )
+          );
         })}
       </TableRow>
     </TableHead>
-  )
-}
+  );
+};
 
-export default ProductsTableHead
+export default ProductsTableHead;

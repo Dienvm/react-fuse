@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function LeftSideLayout1() {
-  return <></>
+  return <></>;
 }
 
-export default LeftSideLayout1
+export default LeftSideLayout1;

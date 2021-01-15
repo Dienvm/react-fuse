@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ProfilePageConfig = {
   settings: {
@@ -12,6 +12,6 @@ const ProfilePageConfig = {
       component: React.lazy(() => import('./ProfilePage')),
     },
   ],
-}
+};
 
-export default ProfilePageConfig
+export default ProfilePageConfig;

@@ -1,7 +1,7 @@
-import _ from '@lodash'
-import TextField from '@material-ui/core/TextField'
-import {withFormsy} from 'formsy-react'
-import React from 'react'
+import _ from '@lodash';
+import TextField from '@material-ui/core/TextField';
+import { withFormsy } from 'formsy-react';
+import React from 'react';
 
 function TextFieldFormsy(props) {
   const importedProps = _.pick(props, [
@@ -32,15 +32,15 @@ function TextFieldFormsy(props) {
     'SelectProps',
     'type',
     'variant',
-  ])
+  ]);
 
-  const errorMessage = props.getErrorMessage()
-  const value = props.getValue() || ''
+  const errorMessage = props.getErrorMessage();
+  const value = props.getValue() || '';
 
   function changeValue(event) {
-    props.setValue(event.currentTarget.value)
+    props.setValue(event.currentTarget.value);
     if (props.onChange) {
-      props.onChange(event)
+      props.onChange(event);
     }
   }
 
@@ -52,7 +52,7 @@ function TextFieldFormsy(props) {
       error={Boolean(errorMessage)}
       helperText={errorMessage}
     />
-  )
+  );
 }
 
-export default React.memo(withFormsy(TextFieldFormsy))
+export default React.memo(withFormsy(TextFieldFormsy));

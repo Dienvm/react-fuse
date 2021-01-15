@@ -1,43 +1,43 @@
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import {useForm} from '@fuse/hooks'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Checkbox from '@material-ui/core/Checkbox'
-import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import {makeStyles} from '@material-ui/core/styles'
-import {darken} from '@material-ui/core/styles/colorManipulator'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { useForm } from '@fuse/hooks';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { makeStyles } from '@material-ui/core/styles';
+import { darken } from '@material-ui/core/styles/colorManipulator';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
-import clsx from 'clsx'
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import * as authActions from 'app/auth/store/actions'
+import clsx from 'clsx';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as authActions from 'app/auth/store/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     background: `radial-gradient(${darken(
       theme.palette.primary.dark,
-      0.5,
+      0.5
     )} 0%, ${theme.palette.primary.dark} 80%)`,
     color: theme.palette.primary.contrastText,
   },
-}))
+}));
 
 const RegisterPage = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const {form, handleChange, resetForm} = useForm({
+  const { form, handleChange, resetForm } = useForm({
     name: '',
     email: '',
     password: '',
     passwordConfirm: '',
     acceptTermsConditions: false,
-  })
+  });
 
   const isFormValid = () => {
     return (
@@ -46,22 +46,23 @@ const RegisterPage = () => {
       form.password.length > 3 &&
       form.password === form.passwordConfirm &&
       form.acceptTermsConditions
-    )
-  }
+    );
+  };
 
   const handleSubmit = (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
 
-    dispatch(authActions.registerWithFirebase(form))
-    resetForm()
-  }
+    dispatch(authActions.registerWithFirebase(form));
+    resetForm();
+  };
 
   return (
     <div
       className={clsx(
         classes.root,
-        'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32',
-      )}>
+        'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32'
+      )}
+    >
       <div className="flex flex-col items-center justify-center w-full">
         <FuseAnimate animation="transition.expandIn">
           <Card className="w-full max-w-384">
@@ -80,7 +81,8 @@ const RegisterPage = () => {
                 name="registerForm"
                 noValidate
                 className="flex flex-col justify-center w-full"
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
+              >
                 <TextField
                   className="mb-16"
                   label="Name"
@@ -149,7 +151,8 @@ const RegisterPage = () => {
                   className="w-224 mx-auto mt-16"
                   aria-label="Register"
                   disabled={!isFormValid()}
-                  type="submit">
+                  type="submit"
+                >
                   CREATE AN ACCOUNT
                 </Button>
               </form>
@@ -165,7 +168,7 @@ const RegisterPage = () => {
         </FuseAnimate>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;

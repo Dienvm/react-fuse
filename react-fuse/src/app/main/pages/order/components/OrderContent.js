@@ -1,9 +1,9 @@
-import {Avatar, Icon, Typography} from '@material-ui/core'
-import {TABLE_HEAD} from 'app/constants'
-import React from 'react'
-import {Link} from 'react-router-dom'
+import { Avatar, Icon, Typography } from '@material-ui/core';
+import { TABLE_HEAD } from 'app/constants';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const OrderContent = ({order}) => (
+const OrderContent = ({ order }) => (
   <div className="p-16 sm:p-24 max-w-2xl w-full">
     {/* Order Details */}
     <div>
@@ -80,7 +80,8 @@ const OrderContent = ({order}) => (
               <tr>
                 <td>
                   <div
-                    className={`inline text-12 p-4 rounded truncate', ${order.status.color}`}>
+                    className={`inline text-12 p-4 rounded truncate', ${order.status.color}`}
+                  >
                     {order.status.name}
                   </div>
                 </td>
@@ -202,7 +203,8 @@ const OrderContent = ({order}) => (
                   style={{
                     color: 'inherit',
                     textDecoration: 'underline',
-                  }}>
+                  }}
+                >
                   {product.name}
                 </Typography>
               </td>
@@ -218,6 +220,6 @@ const OrderContent = ({order}) => (
       </table>
     </div>
   </div>
-)
+);
 
-export default OrderContent
+export default OrderContent;

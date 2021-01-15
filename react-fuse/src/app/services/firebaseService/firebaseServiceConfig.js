@@ -5,7 +5,7 @@ const prodConfig = {
   projectId: 'react-fuse-production',
   storageBucket: 'react-fuse-production.appspot.com',
   messagingSenderId: '894282411305',
-}
+};
 
 const devConfig = {
   apiKey: 'AIzaSyDgVbsE_hYQZj27WSz9igz5j33wMH8v_zI',
@@ -14,8 +14,8 @@ const devConfig = {
   projectId: 'react-fuse',
   storageBucket: 'react-fuse.appspot.com',
   messagingSenderId: '955078169400',
-}
+};
 
-const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig
+const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-export default config
+export default config;

@@ -1,14 +1,14 @@
-import Chip from '@material-ui/core/Chip'
-import MenuItem from '@material-ui/core/MenuItem'
-import Paper from '@material-ui/core/Paper'
-import {makeStyles} from '@material-ui/core/styles'
-import {emphasize} from '@material-ui/core/styles/colorManipulator'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
-import clsx from 'clsx'
-import React from 'react'
-import Select from 'react-select'
-import Creatable from 'react-select/creatable'
+import Chip from '@material-ui/core/Chip';
+import MenuItem from '@material-ui/core/MenuItem';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import { emphasize } from '@material-ui/core/styles/colorManipulator';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import clsx from 'clsx';
+import React from 'react';
+import Select from 'react-select';
+import Creatable from 'react-select/creatable';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
       theme.palette.type === 'light'
         ? theme.palette.grey[300]
         : theme.palette.grey[700],
-      0.08,
+      0.08
     ),
   },
   noOptionsMessage: {
@@ -90,27 +90,28 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     height: theme.spacing(2),
   },
-}))
+}));
 
 function NoOptionsMessage(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Typography
       color="textSecondary"
       className={classes.noOptionsMessage}
-      {...props.innerProps}>
+      {...props.innerProps}
+    >
       {props.children}
     </Typography>
-  )
+  );
 }
 
-function inputComponent({inputRef, ...props}) {
-  return <div ref={inputRef} {...props} />
+function inputComponent({ inputRef, ...props }) {
+  return <div ref={inputRef} {...props} />;
 }
 
 function Control(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <TextField
@@ -128,7 +129,7 @@ function Control(props) {
       }}
       {...props.selectProps.textFieldProps}
     />
-  )
+  );
 }
 
 function Option(props) {
@@ -140,43 +141,45 @@ function Option(props) {
       style={{
         fontWeight: props.isSelected ? 600 : 400,
       }}
-      {...props.innerProps}>
+      {...props.innerProps}
+    >
       {props.children}
     </MenuItem>
-  )
+  );
 }
 
 function Placeholder(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Typography
       color="textSecondary"
       className={classes.placeholder}
-      {...props.innerProps}>
+      {...props.innerProps}
+    >
       {props.children}
     </Typography>
-  )
+  );
 }
 
 function SingleValue(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Typography className={classes.singleValue} {...props.innerProps}>
       {props.children}
     </Typography>
-  )
+  );
 }
 
 function ValueContainer(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
-  return <div className={classes.valueContainer}>{props.children}</div>
+  return <div className={classes.valueContainer}>{props.children}</div>;
 }
 
 function MultiValue(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Chip
@@ -187,24 +190,24 @@ function MultiValue(props) {
         {
           [classes.chipFocused]: props.isFocused,
         },
-        props.data.class,
+        props.data.class
       )}
       onDelete={(event) => {
-        props.removeProps.onClick()
-        props.removeProps.onMouseDown(event)
+        props.removeProps.onClick();
+        props.removeProps.onMouseDown(event);
       }}
     />
-  )
+  );
 }
 
 function Menu(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Paper square className={classes.paper} {...props.innerProps}>
       {props.children}
     </Paper>
-  )
+  );
 }
 
 const components = {
@@ -216,17 +219,17 @@ const components = {
   Placeholder,
   SingleValue,
   ValueContainer,
-}
+};
 
 function FuseChipSelect(props) {
   const handleOnChange = (value) => {
     if (value === null) {
-      value = []
+      value = [];
     }
     if (props.onChange) {
-      props.onChange(value)
+      props.onChange(value);
     }
-  }
+  };
 
   return props.variant === 'fixed' ? (
     <Select
@@ -242,7 +245,7 @@ function FuseChipSelect(props) {
       components={components}
       onChange={handleOnChange}
     />
-  )
+  );
 }
 
-export default React.memo(FuseChipSelect)
+export default React.memo(FuseChipSelect);

@@ -1,28 +1,28 @@
-import FuseSplashScreen from '@fuse/core/FuseSplashScreen'
-import * as userActions from 'app/auth/store/actions'
-import firebaseService from 'app/services/firebaseService'
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
+import * as userActions from 'app/auth/store/actions';
+import firebaseService from 'app/services/firebaseService';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class Auth extends Component {
   state = {
     waitAuthCheck: true,
-  }
+  };
 
   componentDidMount() {
     return Promise.all([this.firebaseCheck()]).then(() => {
-      this.setState({waitAuthCheck: false})
-    })
+      this.setState({ waitAuthCheck: false });
+    });
   }
 
   firebaseCheck = () =>
     new Promise((resolve) => {
       firebaseService.init((success) => {
         if (!success) {
-          resolve()
+          resolve();
         }
-      })
+      });
 
       firebaseService.onAuthStateChanged((authUser) => {
         if (authUser) {
@@ -31,27 +31,27 @@ class Auth extends Component {
            */
           firebaseService.getUserData(authUser.uid).then(
             (user) => {
-              this.props.setUserDataFirebase(user, authUser)
-              resolve()
+              this.props.setUserDataFirebase(user, authUser);
+              resolve();
             },
             (error) => {
-              resolve()
-            },
-          )
+              resolve();
+            }
+          );
         } else {
-          resolve()
+          resolve();
         }
-      })
+      });
 
-      return Promise.resolve()
-    })
+      return Promise.resolve();
+    });
 
   render() {
     return this.state.waitAuthCheck ? (
       <FuseSplashScreen />
     ) : (
       <>{this.props.children}</>
-    )
+    );
   }
 }
 
@@ -60,8 +60,8 @@ function mapDispatchToProps(dispatch) {
     {
       setUserDataFirebase: userActions.setUserDataFirebase,
     },
-    dispatch,
-  )
+    dispatch
+  );
 }
 
-export default connect(null, mapDispatchToProps)(Auth)
+export default connect(null, mapDispatchToProps)(Auth);

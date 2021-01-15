@@ -1,10 +1,10 @@
-import _ from '@lodash'
-import Checkbox from '@material-ui/core/Checkbox'
-import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import {withFormsy} from 'formsy-react'
-import React from 'react'
+import _ from '@lodash';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import { withFormsy } from 'formsy-react';
+import React from 'react';
 
 function CheckboxFormsy(props) {
   const importedProps = _.pick(props, [
@@ -21,16 +21,16 @@ function CheckboxFormsy(props) {
     'inputRef',
     'onChange',
     'variant',
-  ])
+  ]);
 
   // An error message is returned only if the component is invalid
-  const errorMessage = props.getErrorMessage()
-  const value = props.getValue()
+  const errorMessage = props.getErrorMessage();
+  const value = props.getValue();
 
   function changeValue(event) {
-    props.setValue(event.target.checked)
+    props.setValue(event.target.checked);
     if (props.onChange) {
-      props.onChange(event)
+      props.onChange(event);
     }
   }
 
@@ -49,7 +49,7 @@ function CheckboxFormsy(props) {
       />
       {Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}
     </FormControl>
-  )
+  );
 }
 
-export default React.memo(withFormsy(CheckboxFormsy))
+export default React.memo(withFormsy(CheckboxFormsy));

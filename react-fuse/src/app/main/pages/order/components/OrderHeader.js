@@ -1,9 +1,9 @@
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import {Icon, Typography} from '@material-ui/core'
-import React from 'react'
-import {Link} from 'react-router-dom'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { Icon, Typography } from '@material-ui/core';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const OrderHeader = ({order}) => (
+const OrderHeader = ({ order }) => (
   <div className="flex flex-1 w-full items-center justify-between">
     <div className="flex flex-1 flex-col items-center sm:items-start">
       <FuseAnimate animation="transition.slideRightIn" delay={300}>
@@ -12,7 +12,8 @@ const OrderHeader = ({order}) => (
           component={Link}
           role="button"
           to="/apps/e-commerce/orders"
-          color="inherit">
+          color="inherit"
+        >
           <Icon className="text-20">arrow_back</Icon>
           <span className="mx-4">Orders</span>
         </Typography>
@@ -31,6 +32,6 @@ const OrderHeader = ({order}) => (
       </div>
     </div>
   </div>
-)
+);
 
-export default OrderHeader
+export default OrderHeader;

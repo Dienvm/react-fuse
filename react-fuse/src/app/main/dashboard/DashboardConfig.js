@@ -1,5 +1,5 @@
-import React from 'react'
-import {authRoles} from '../../auth'
+import React from 'react';
+import { authRoles } from '../../auth';
 
 /**
  * Lazy load Dashboard
@@ -18,6 +18,6 @@ const DashboardConfig = {
       component: React.lazy(() => import('./Dashboard')),
     },
   ],
-}
+};
 
-export default DashboardConfig
+export default DashboardConfig;

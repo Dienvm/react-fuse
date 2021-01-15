@@ -1,16 +1,16 @@
-import {useEffect, useRef} from 'react'
+import { useEffect, useRef } from 'react';
 
 const useUpdateEffect = (effect, deps) => {
-  const isInitialMount = useRef(true)
+  const isInitialMount = useRef(true);
 
   useEffect(
     isInitialMount.current
       ? () => {
-          isInitialMount.current = false
+          isInitialMount.current = false;
         }
       : effect,
-    deps,
-  )
-}
+    deps
+  );
+};
 
-export default useUpdateEffect
+export default useUpdateEffect;

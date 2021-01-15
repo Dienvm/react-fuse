@@ -1,23 +1,23 @@
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
-import Input from '@material-ui/core/Input'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import Input from '@material-ui/core/Input';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
-import * as userActions from 'app/store/actions'
+import * as userActions from 'app/store/actions';
 
 const UserHeader = () => {
-  const dispatch = useDispatch()
-  const searchText = useSelector(({user}) => user.searchText)
+  const dispatch = useDispatch();
+  const searchText = useSelector(({ user }) => user.searchText);
 
   const handleSearchUser = (event) => {
-    dispatch(userActions.setProductsSearchText(event.target.value))
-  }
+    dispatch(userActions.setProductsSearchText(event.target.value));
+  };
 
   return (
     <div className="flex flex-1 w-full items-center justify-between">
@@ -36,7 +36,8 @@ const UserHeader = () => {
         <FuseAnimate animation="transition.slideDownIn" delay={300}>
           <Paper
             className="flex items-center w-full max-w-512 px-8 py-4 rounded-8"
-            elevation={1}>
+            elevation={1}
+          >
             <Icon color="action">search</Icon>
 
             <Input
@@ -59,13 +60,14 @@ const UserHeader = () => {
           to="/profile/new"
           className="whitespace-no-wrap normal-case"
           variant="contained"
-          color="secondary">
+          color="secondary"
+        >
           <span className="hidden sm:flex">Add New User</span>
           <span className="flex sm:hidden">New</span>
         </Button>
       </FuseAnimate>
     </div>
-  )
-}
+  );
+};
 
-export default UserHeader
+export default UserHeader;

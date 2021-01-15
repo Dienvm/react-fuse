@@ -1,13 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import clsx from 'clsx'
-import {Link} from 'react-router-dom'
-import * as authActions from 'app/auth/store/actions'
-import Formsy from 'formsy-react'
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import * as authActions from 'app/auth/store/actions';
+import Formsy from 'formsy-react';
 
-import {useForm} from '@fuse/hooks'
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import {TextFieldFormsy} from '@fuse/core/formsy'
+import { useForm } from '@fuse/hooks';
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import { TextFieldFormsy } from '@fuse/core/formsy';
 
 import {
   Button,
@@ -20,68 +20,69 @@ import {
   Typography,
   InputAdornment,
   Icon,
-} from '@material-ui/core'
-import {makeStyles} from '@material-ui/core/styles'
-import {darken} from '@material-ui/core/styles/colorManipulator'
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { darken } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     background: `radial-gradient(${darken(
       theme.palette.primary.dark,
-      0.5,
+      0.5
     )} 0%, ${theme.palette.primary.dark} 80%)`,
     color: theme.palette.primary.contrastText,
   },
-}))
+}));
 
 const LoginPage = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const login = useSelector(({auth}) => auth.login)
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const login = useSelector(({ auth }) => auth.login);
 
-  const [isFormValid, setIsFormValid] = useState(false)
-  const formRef = useRef(null)
-  const {form, handleChange} = useForm({
+  const [isFormValid, setIsFormValid] = useState(false);
+  const formRef = useRef(null);
+  const { form, handleChange } = useForm({
     email: '',
     password: '',
     remember: true,
-  })
+  });
 
   useEffect(() => {
     if (login.error && (login.error.username || login.error.password)) {
       formRef.current.updateInputsWithError({
         ...login.error,
-      })
-      disableButton()
+      });
+      disableButton();
     }
-  }, [login.error])
+  }, [login.error]);
 
   const disableButton = () => {
-    setIsFormValid(false)
-  }
+    setIsFormValid(false);
+  };
 
   const enableButton = () => {
-    setIsFormValid(true)
-  }
+    setIsFormValid(true);
+  };
 
   const handleSubmit = (model) => {
-    dispatch(authActions.submitLoginWithFireBase(model))
-  }
+    dispatch(authActions.submitLoginWithFireBase(model));
+  };
 
   const handleLoginWithGoogle = () =>
-    dispatch(authActions.submitLoginWithGoogle())
+    dispatch(authActions.submitLoginWithGoogle());
 
   const handleLoginWithFacebook = () => {
     // TODO
     // dispatch(authActions.submitLoginWithFacebook);
-  }
+  };
 
   return (
     <div
       className={clsx(
         classes.root,
-        'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32',
-      )}>
+        'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32'
+      )}
+    >
       <div className="flex flex-col items-center justify-center w-full">
         <FuseAnimate animation="transition.expandIn">
           <Card className="w-full max-w-384">
@@ -101,7 +102,8 @@ const LoginPage = () => {
                 onValid={enableButton}
                 onInvalid={disableButton}
                 ref={formRef}
-                className="flex flex-col justify-center w-full">
+                className="flex flex-col justify-center w-full"
+              >
                 <TextFieldFormsy
                   className="mb-16"
                   type="text"
@@ -175,7 +177,8 @@ const LoginPage = () => {
                   color="primary"
                   className="w-full mx-auto normal-case mt-16"
                   aria-label="LOG IN"
-                  disabled={!isFormValid}>
+                  disabled={!isFormValid}
+                >
                   Log in
                 </Button>
               </Formsy>
@@ -191,7 +194,8 @@ const LoginPage = () => {
                 color="secondary"
                 size="small"
                 className="normal-case w-192 mb-8"
-                onClick={handleLoginWithGoogle}>
+                onClick={handleLoginWithGoogle}
+              >
                 Log in with Google
               </Button>
 
@@ -200,7 +204,8 @@ const LoginPage = () => {
                 color="primary"
                 size="small"
                 className="normal-case w-192"
-                onClick={handleLoginWithFacebook}>
+                onClick={handleLoginWithFacebook}
+              >
                 Log in with Facebook
               </Button>
 
@@ -215,7 +220,7 @@ const LoginPage = () => {
         </FuseAnimate>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

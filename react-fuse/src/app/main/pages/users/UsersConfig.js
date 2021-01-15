@@ -1,5 +1,5 @@
-import React from 'react'
-import {authRoles} from 'app/auth'
+import React from 'react';
+import { authRoles } from 'app/auth';
 
 /**
  * Lazy load Users
@@ -18,6 +18,6 @@ const UsersConfig = {
       component: React.lazy(() => import('./Users')),
     },
   ],
-}
+};
 
-export default UsersConfig
+export default UsersConfig;

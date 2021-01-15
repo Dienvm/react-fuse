@@ -1,18 +1,18 @@
-import renderer from 'react-test-renderer'
-import {configure, shallow, mount} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import firebaseService from 'app/services/firebaseService'
+import renderer from 'react-test-renderer';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import firebaseService from 'app/services/firebaseService';
 
-configure({adapter: new Adapter()})
+configure({ adapter: new Adapter() });
 
-const globalCustom = global
-globalCustom.renderer = renderer
-globalCustom.shallow = shallow
-globalCustom.mount = mount
+const globalCustom = global;
+globalCustom.renderer = renderer;
+globalCustom.shallow = shallow;
+globalCustom.mount = mount;
 
-jest.mock('i18next')
-jest.mock('perfect-scrollbar/css/perfect-scrollbar.css', () => 'mockStyle')
-jest.mock('@fuse/core/FuseScrollbars', () => 'FuseScrollbars')
+jest.mock('i18next');
+jest.mock('perfect-scrollbar/css/perfect-scrollbar.css', () => 'mockStyle');
+jest.mock('@fuse/core/FuseScrollbars', () => 'FuseScrollbars');
 
 jest.mock('firebase', () => ({
   apps: [],
@@ -24,4 +24,4 @@ jest.mock('firebase', () => ({
     })),
     settings: jest.fn(),
   })),
-}))
+}));

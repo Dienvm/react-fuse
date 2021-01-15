@@ -1,7 +1,7 @@
-import FuseAnimate from '@fuse/core/FuseAnimate'
-import Typography from '@material-ui/core/Typography'
-import React from 'react'
-import {Link} from 'react-router-dom'
+import FuseAnimate from '@fuse/core/FuseAnimate';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Error500Page = () => {
   return (
@@ -11,7 +11,8 @@ const Error500Page = () => {
           <Typography
             variant="h1"
             color="inherit"
-            className="font-medium mb-16">
+            className="font-medium mb-16"
+          >
             500
           </Typography>
         </FuseAnimate>
@@ -26,7 +27,8 @@ const Error500Page = () => {
           <Typography
             variant="subtitle1"
             color="textSecondary"
-            className="mb-48">
+            className="mb-48"
+          >
             Just kidding, looks like we have an internal issue, please try again
             in couple minutes
           </Typography>
@@ -37,7 +39,7 @@ const Error500Page = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Error500Page
+export default Error500Page;

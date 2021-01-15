@@ -1,15 +1,15 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import AppBar from '@material-ui/core/AppBar'
-import Hidden from '@material-ui/core/Hidden'
-import Icon from '@material-ui/core/Icon'
-import {makeStyles, useTheme} from '@material-ui/core/styles'
-import Logo from 'app/fuse-layouts/shared-components/Logo'
-import NavbarFoldedToggleButton from 'app/fuse-layouts/shared-components/NavbarFoldedToggleButton'
-import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton'
-import Navigation from 'app/fuse-layouts/shared-components/Navigation'
-import UserNavbarHeader from 'app/fuse-layouts/shared-components/UserNavbarHeader'
-import clsx from 'clsx'
-import React from 'react'
+import FuseScrollbars from '@fuse/core/FuseScrollbars';
+import AppBar from '@material-ui/core/AppBar';
+import Hidden from '@material-ui/core/Hidden';
+import Icon from '@material-ui/core/Icon';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Logo from 'app/fuse-layouts/shared-components/Logo';
+import NavbarFoldedToggleButton from 'app/fuse-layouts/shared-components/NavbarFoldedToggleButton';
+import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
+import Navigation from 'app/fuse-layouts/shared-components/Navigation';
+import UserNavbarHeader from 'app/fuse-layouts/shared-components/UserNavbarHeader';
+import clsx from 'clsx';
+import React from 'react';
 
 const useStyles = makeStyles({
   content: {
@@ -22,20 +22,22 @@ const useStyles = makeStyles({
     backgroundSize: '100% 40px, 100% 10px',
     backgroundAttachment: 'local, scroll',
   },
-})
+});
 
 function NavbarLayout1(props) {
-  const classes = useStyles()
-  const theme = useTheme()
+  const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <div
-      className={clsx('flex flex-col overflow-hidden h-full', props.className)}>
+      className={clsx('flex flex-col overflow-hidden h-full', props.className)}
+    >
       <AppBar
         color="primary"
         position="static"
         elevation={0}
-        className="flex flex-row items-center flex-shrink h-64 min-h-64 px-12">
+        className="flex flex-row items-center flex-shrink h-64 min-h-64 px-12"
+      >
         <div className="flex flex-1 mx-8">
           <Logo />
         </div>
@@ -55,13 +57,14 @@ function NavbarLayout1(props) {
 
       <FuseScrollbars
         className={clsx(classes.content)}
-        option={{suppressScrollX: true}}>
+        option={{ suppressScrollX: true }}
+      >
         <UserNavbarHeader />
 
         <Navigation layout="vertical" />
       </FuseScrollbars>
     </div>
-  )
+  );
 }
 
-export default NavbarLayout1
+export default NavbarLayout1;

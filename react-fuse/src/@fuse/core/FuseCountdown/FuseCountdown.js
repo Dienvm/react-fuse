@@ -1,51 +1,51 @@
-import Typography from '@material-ui/core/Typography'
-import clsx from 'clsx'
-import moment from 'moment'
-import PropTypes from 'prop-types'
-import React, {useCallback, useEffect, useRef, useState} from 'react'
+import Typography from '@material-ui/core/Typography';
+import clsx from 'clsx';
+import moment from 'moment';
+import PropTypes from 'prop-types';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 function FuseCountdown(props) {
-  const {onComplete} = props
+  const { onComplete } = props;
   const [endDate] = useState(
-    moment.isMoment(props.endDate) ? props.endDate : moment(props.endDate),
-  )
+    moment.isMoment(props.endDate) ? props.endDate : moment(props.endDate)
+  );
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
-  })
-  const intervalRef = useRef()
+  });
+  const intervalRef = useRef();
 
   const complete = useCallback(() => {
-    window.clearInterval(intervalRef.current)
+    window.clearInterval(intervalRef.current);
     if (onComplete) {
-      onComplete()
+      onComplete();
     }
-  }, [onComplete])
+  }, [onComplete]);
 
   const tick = useCallback(() => {
-    const currDate = moment()
-    const diff = endDate.diff(currDate, 'seconds')
+    const currDate = moment();
+    const diff = endDate.diff(currDate, 'seconds');
     if (diff < 0) {
-      complete()
-      return
+      complete();
+      return;
     }
-    const timeLeft = moment.duration(diff, 'seconds')
+    const timeLeft = moment.duration(diff, 'seconds');
     setCountdown({
       days: timeLeft.asDays().toFixed(0),
       hours: timeLeft.hours(),
       minutes: timeLeft.minutes(),
       seconds: timeLeft.seconds(),
-    })
-  }, [complete, endDate])
+    });
+  }, [complete, endDate]);
 
   useEffect(() => {
-    intervalRef.current = setInterval(tick, 1000)
+    intervalRef.current = setInterval(tick, 1000);
     return () => {
-      clearInterval(intervalRef.current)
-    }
-  }, [tick])
+      clearInterval(intervalRef.current);
+    };
+  }, [tick]);
 
   return (
     <div className={clsx('flex items-center', props.className)}>
@@ -82,16 +82,16 @@ function FuseCountdown(props) {
         </Typography>
       </div>
     </div>
-  )
+  );
 }
 
 FuseCountdown.propTypes = {
   endDate: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   onComplete: PropTypes.func,
-}
+};
 
 FuseCountdown.defaultProps = {
   endDate: moment().add(15, 'days'),
-}
+};
 
-export default React.memo(FuseCountdown)
+export default React.memo(FuseCountdown);

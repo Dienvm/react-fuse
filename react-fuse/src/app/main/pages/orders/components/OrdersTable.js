@@ -1,6 +1,6 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import FuseUtils from '@fuse/utils'
-import _ from '@lodash'
+import FuseScrollbars from '@fuse/core/FuseScrollbars';
+import FuseUtils from '@fuse/utils';
+import _ from '@lodash';
 import {
   Checkbox,
   Table,
@@ -8,97 +8,97 @@ import {
   TableCell,
   TablePagination,
   TableRow,
-} from '@material-ui/core'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import * as ordersActions from 'app/store/actions'
-import OrdersTableHead from './OrdersTableHead'
+} from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as ordersActions from 'app/store/actions';
+import OrdersTableHead from './OrdersTableHead';
 
 const OrdersTable = (props) => {
-  const dispatch = useDispatch()
-  const ordersData = useSelector(({order}) => order.orders.data)
-  const searchText = useSelector(({order}) => order.orders.searchText)
+  const dispatch = useDispatch();
+  const ordersData = useSelector(({ order }) => order.orders.data);
+  const searchText = useSelector(({ order }) => order.orders.searchText);
 
-  const [selected, setSelected] = useState([])
-  const [data, setData] = useState(ordersData)
-  const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [selected, setSelected] = useState([]);
+  const [data, setData] = useState(ordersData);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [order, setOrder] = useState({
     direction: 'asc',
     id: null,
-  })
+  });
 
   useEffect(() => {
-    dispatch(ordersActions.getOrders())
-  }, [dispatch])
+    dispatch(ordersActions.getOrders());
+  }, [dispatch]);
 
   useEffect(() => {
     if (searchText.length !== 0) {
-      setData(FuseUtils.filterArrayByString(ordersData, searchText))
-      setPage(0)
+      setData(FuseUtils.filterArrayByString(ordersData, searchText));
+      setPage(0);
     } else {
-      setData(ordersData)
+      setData(ordersData);
     }
-  }, [ordersData, searchText])
+  }, [ordersData, searchText]);
 
   const handleRequestSort = (event, property) => {
-    const id = property
-    let direction = 'desc'
+    const id = property;
+    let direction = 'desc';
 
     if (order.id === property && order.direction === 'desc') {
-      direction = 'asc'
+      direction = 'asc';
     }
 
     setOrder({
       direction,
       id,
-    })
-  }
+    });
+  };
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      setSelected(data.map((n) => n.id))
-      return
+      setSelected(data.map((n) => n.id));
+      return;
     }
-    setSelected([])
-  }
+    setSelected([]);
+  };
 
   const handleClick = (item) => {
-    props.history.push(`/order/${item.id}`)
-  }
+    props.history.push(`/order/${item.id}`);
+  };
 
   const handleCheck = (event, id) => {
-    const selectedIndex = selected.indexOf(id)
-    let newSelected = []
+    const selectedIndex = selected.indexOf(id);
+    let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id)
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
+      newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
+      newSelected = newSelected.concat(selected.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      )
+        selected.slice(selectedIndex + 1)
+      );
     }
 
-    setSelected(newSelected)
-  }
+    setSelected(newSelected);
+  };
 
   const handleChangePage = (event, value) => {
-    setPage(value)
-  }
+    setPage(value);
+  };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(event.target.value)
-  }
+    setRowsPerPage(event.target.value);
+  };
 
   const handleRemoveOrder = () => {
-    dispatch(ordersActions.removeOrders(selected))
-  }
+    dispatch(ordersActions.removeOrders(selected));
+  };
 
   return (
     <div className="w-full flex flex-col">
@@ -120,28 +120,28 @@ const OrdersTable = (props) => {
                 (o) => {
                   switch (order.id) {
                     case 'id': {
-                      return parseInt(o.id, 10)
+                      return parseInt(o.id, 10);
                     }
                     case 'customer': {
-                      return o.customer.firstName
+                      return o.customer.firstName;
                     }
                     case 'payment': {
-                      return o.payment.method
+                      return o.payment.method;
                     }
                     case 'status': {
-                      return o.status[0].name
+                      return o.status[0].name;
                     }
                     default: {
-                      return o[order.id]
+                      return o[order.id];
                     }
                   }
                 },
               ],
-              [order.direction],
+              [order.direction]
             )
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((n) => {
-                const isSelected = selected.indexOf(n.id) !== -1
+                const isSelected = selected.indexOf(n.id) !== -1;
                 return (
                   <TableRow
                     className="h-64 cursor-pointer"
@@ -151,7 +151,8 @@ const OrdersTable = (props) => {
                     tabIndex={-1}
                     key={n.id}
                     selected={isSelected}
-                    onClick={(event) => handleClick(n)}>
+                    onClick={(event) => handleClick(n)}
+                  >
                     <TableCell className="w-64 text-center" padding="none">
                       <Checkbox
                         checked={isSelected}
@@ -178,7 +179,8 @@ const OrdersTable = (props) => {
 
                     <TableCell component="th" scope="row">
                       <div
-                        className={`inline text-12 p-4 rounded truncate', ${n.status.color}`}>
+                        className={`inline text-12 p-4 rounded truncate', ${n.status.color}`}
+                      >
                         {n.status.name}
                       </div>
                     </TableCell>
@@ -187,7 +189,7 @@ const OrdersTable = (props) => {
                       {n.date}
                     </TableCell>
                   </TableRow>
-                )
+                );
               })}
           </TableBody>
         </Table>
@@ -209,7 +211,7 @@ const OrdersTable = (props) => {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </div>
-  )
-}
+  );
+};
 
-export default withRouter(OrdersTable)
+export default withRouter(OrdersTable);

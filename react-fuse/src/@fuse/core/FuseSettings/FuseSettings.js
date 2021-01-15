@@ -1,20 +1,20 @@
-import FuseLayoutConfigs from '@fuse/layouts/FuseLayoutConfigs'
-import _ from '@lodash'
-import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormLabel from '@material-ui/core/FormLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import Select from '@material-ui/core/Select'
-import {makeStyles} from '@material-ui/core/styles'
-import Switch from '@material-ui/core/Switch'
-import Typography from '@material-ui/core/Typography'
-import * as AuthActions from 'app/auth/store/actions'
-import * as Actions from 'app/store/actions'
-import clsx from 'clsx'
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import FuseLayoutConfigs from '@fuse/layouts/FuseLayoutConfigs';
+import _ from '@lodash';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography';
+import * as AuthActions from 'app/auth/store/actions';
+import * as Actions from 'app/store/actions';
+import clsx from 'clsx';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -44,15 +44,15 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 16,
     },
   },
-}))
+}));
 
 function FuseSettings(props) {
-  const dispatch = useDispatch()
-  const user = useSelector(({auth}) => auth.user)
-  const themes = useSelector(({fuse}) => fuse.settings.themes)
-  const settings = useSelector(({fuse}) => fuse.settings.current)
+  const dispatch = useDispatch();
+  const user = useSelector(({ auth }) => auth.user);
+  const themes = useSelector(({ fuse }) => fuse.settings.themes);
+  const settings = useSelector(({ fuse }) => fuse.settings.current);
 
-  const classes = useStyles(props)
+  const classes = useStyles(props);
 
   function handleChange(event) {
     const newSettings = _.set(
@@ -60,8 +60,8 @@ function FuseSettings(props) {
       event.target.name,
       event.target.type === 'checkbox'
         ? event.target.checked
-        : event.target.value,
-    )
+        : event.target.value
+    );
 
     /**
      * If layout style changes,
@@ -71,23 +71,24 @@ function FuseSettings(props) {
       event.target.name === 'layout.style' &&
       event.target.value !== settings.layout.style
     ) {
-      newSettings.layout.config = {}
+      newSettings.layout.config = {};
     }
 
     if (user.role === 'guest') {
-      dispatch(Actions.setDefaultSettings(newSettings))
+      dispatch(Actions.setDefaultSettings(newSettings));
     } else {
-      dispatch(AuthActions.updateUserSettings(newSettings))
+      dispatch(AuthActions.updateUserSettings(newSettings));
     }
   }
 
-  const ThemeSelect = ({value, name, handleThemeChange}) => {
+  const ThemeSelect = ({ value, name, handleThemeChange }) => {
     return (
       <Select
         className="w-full"
         value={value}
         onChange={handleThemeChange}
-        name={name}>
+        name={name}
+      >
         {Object.entries(themes).map(([key, val]) => (
           <MenuItem
             key={key}
@@ -97,35 +98,37 @@ function FuseSettings(props) {
               backgroundColor: val.palette.background.default,
               color: val.palette.text.primary,
               border: `1px solid ${val.palette.divider}`,
-            }}>
+            }}
+          >
             {_.startCase(key)}
             <div
               className="flex w-full h-8 block absolute bottom-0 left-0 right-0"
               style={{
                 borderTop: `1px solid ${val.palette.divider}`,
-              }}>
+              }}
+            >
               <div
                 className="w-1/4 h-8"
-                style={{backgroundColor: val.palette.primary.main}}
+                style={{ backgroundColor: val.palette.primary.main }}
               />
               <div
                 className="w-1/4 h-8"
-                style={{backgroundColor: val.palette.secondary.main}}
+                style={{ backgroundColor: val.palette.secondary.main }}
               />
               <div
                 className="w-1/4 h-8"
-                style={{backgroundColor: val.palette.error.main}}
+                style={{ backgroundColor: val.palette.error.main }}
               />
               <div
                 className="w-1/4 h-8"
-                style={{backgroundColor: val.palette.background.paper}}
+                style={{ backgroundColor: val.palette.background.paper }}
               />
             </div>
           </MenuItem>
         ))}
       </Select>
-    )
-  }
+    );
+  };
 
   const LayoutSelect = () => (
     <FormControl component="fieldset" className={classes.formControl}>
@@ -138,7 +141,8 @@ function FuseSettings(props) {
         name="layout.style"
         className={classes.group}
         value={settings.layout.style}
-        onChange={handleChange}>
+        onChange={handleChange}
+      >
         {Object.entries(FuseLayoutConfigs).map(([key, layout]) => (
           <FormControlLabel
             key={key}
@@ -149,7 +153,7 @@ function FuseSettings(props) {
         ))}
       </RadioGroup>
     </FormControl>
-  )
+  );
 
   const DirectionSelect = () => (
     <FormControl component="fieldset" className={classes.formControl}>
@@ -163,7 +167,8 @@ function FuseSettings(props) {
         className={classes.group}
         value={settings.direction}
         onChange={handleChange}
-        row>
+        row
+      >
         <FormControlLabel
           key="rtl"
           value="rtl"
@@ -178,18 +183,19 @@ function FuseSettings(props) {
         />
       </RadioGroup>
     </FormControl>
-  )
+  );
 
   const getForm = (form, prefix) =>
     Object.entries(form).map(([key, formControl]) => {
-      const target = prefix ? `${prefix}.${key}` : key
+      const target = prefix ? `${prefix}.${key}` : key;
       switch (formControl.type) {
         case 'radio': {
           return (
             <FormControl
               key={target}
               component="fieldset"
-              className={classes.formControl}>
+              className={classes.formControl}
+            >
               <FormLabel component="legend" className="text-14">
                 {formControl.title}
               </FormLabel>
@@ -199,7 +205,8 @@ function FuseSettings(props) {
                 className={classes.group}
                 value={_.get(settings.layout.config, target)}
                 onChange={handleChange}
-                row={formControl.options.length < 4}>
+                row={formControl.options.length < 4}
+              >
                 {formControl.options.map((opt) => (
                   <FormControlLabel
                     key={opt.value}
@@ -210,14 +217,15 @@ function FuseSettings(props) {
                 ))}
               </RadioGroup>
             </FormControl>
-          )
+          );
         }
         case 'switch': {
           return (
             <FormControl
               key={target}
               component="fieldset"
-              className={classes.formControl}>
+              className={classes.formControl}
+            >
               <FormControlLabel
                 classes={
                   {
@@ -239,30 +247,31 @@ function FuseSettings(props) {
                 }
               />
             </FormControl>
-          )
+          );
         }
         case 'group': {
           return (
             <div key={target} className={classes.formGroup}>
               <Typography
                 className={classes.formGroupTitle}
-                color="textSecondary">
+                color="textSecondary"
+              >
                 {formControl.title}
               </Typography>
 
               {getForm(formControl.children, key)}
             </div>
-          )
+          );
         }
         default: {
-          return ''
+          return '';
         }
       }
-    })
+    });
 
   function LayoutConfig() {
-    const {form} = FuseLayoutConfigs[settings.layout.style]
-    return getForm(form)
+    const { form } = FuseLayoutConfigs[settings.layout.style];
+    return getForm(form);
   }
 
   return (
@@ -354,7 +363,7 @@ function FuseSettings(props) {
 
       <DirectionSelect />
     </div>
-  )
+  );
 }
 
-export default React.memo(FuseSettings)
+export default React.memo(FuseSettings);

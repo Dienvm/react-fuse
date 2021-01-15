@@ -1,11 +1,11 @@
-import Fab from '@material-ui/core/Fab'
-import Icon from '@material-ui/core/Icon'
-import {makeStyles} from '@material-ui/core/styles'
-import Tooltip from '@material-ui/core/Tooltip'
-import * as Actions from 'app/store/actions'
-import clsx from 'clsx'
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import Fab from '@material-ui/core/Fab';
+import Icon from '@material-ui/core/Icon';
+import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
+import * as Actions from 'app/store/actions';
+import clsx from 'clsx';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   buttonIcon: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
       {
         easing: theme.transitions.easing.easeInOut,
         duration: theme.transitions.duration.shorter,
-      },
+      }
     ),
     '&:hover': {
       width: 52,
@@ -53,34 +53,36 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}))
+}));
 
 function NavbarMobileToggleFab(props) {
-  const classes = useStyles(props)
-  const config = useSelector(({fuse}) => fuse.settings.current.layout.config)
+  const classes = useStyles(props);
+  const config = useSelector(({ fuse }) => fuse.settings.current.layout.config);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <Tooltip
       title="Show Navigation"
-      placement={config.navbar.position === 'left' ? 'right' : 'left'}>
+      placement={config.navbar.position === 'left' ? 'right' : 'left'}
+    >
       <Fab
         className={clsx(
           classes.mobileButton,
           config.navbar.position,
-          props.className,
+          props.className
         )}
         onClick={(ev) => dispatch(Actions.navbarToggleMobile())}
-        disableRipple>
+        disableRipple
+      >
         <Icon className={classes.buttonIcon} color="action">
           menu
         </Icon>
       </Fab>
     </Tooltip>
-  )
+  );
 }
 
-NavbarMobileToggleFab.defaultProps = {}
+NavbarMobileToggleFab.defaultProps = {};
 
-export default NavbarMobileToggleFab
+export default NavbarMobileToggleFab;

@@ -1,8 +1,8 @@
-import _ from '@lodash'
-import PropTypes from 'prop-types'
-import React from 'react'
-import {VelocityTransitionGroup} from 'velocity-react'
-import 'velocity-animate/velocity.ui'
+import _ from '@lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { VelocityTransitionGroup } from 'velocity-react';
+import 'velocity-animate/velocity.ui';
 
 const enterAnimationDefaults = {
   animation: 'transition.fadeIn',
@@ -11,7 +11,7 @@ const enterAnimationDefaults = {
   display: null,
   visibility: 'visible',
   delay: 0,
-}
+};
 
 const leaveAnimationDefaults = {
   stagger: 50,
@@ -19,7 +19,7 @@ const leaveAnimationDefaults = {
   display: null,
   visibility: 'visible',
   delay: 0,
-}
+};
 
 function FuseAnimateGroup(props) {
   const newProps = _.merge(
@@ -28,19 +28,19 @@ function FuseAnimateGroup(props) {
       enter: enterAnimationDefaults,
       leave: leaveAnimationDefaults,
     },
-    props,
-  )
+    props
+  );
 
   return (
     <VelocityTransitionGroup {...newProps}>
       {props.children}
     </VelocityTransitionGroup>
-  )
+  );
 }
 
 FuseAnimateGroup.propTypes = {
   children: PropTypes.any,
-}
+};
 
 FuseAnimateGroup.defaultProps = {
   enter: enterAnimationDefaults,
@@ -53,6 +53,6 @@ FuseAnimateGroup.defaultProps = {
   enterShowStyle: {
     visibility: 'hidden',
   },
-}
+};
 
-export default React.memo(FuseAnimateGroup)
+export default React.memo(FuseAnimateGroup);

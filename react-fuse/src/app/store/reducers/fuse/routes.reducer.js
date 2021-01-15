@@ -1,13 +1,13 @@
 // import routesConfig from 'app/fuse-configs/routesConfig';
 
-const initialState = {}
+const initialState = {};
 
 const routes = (state = initialState, action) => {
   switch (action.type) {
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
-export default routes
+export default routes;

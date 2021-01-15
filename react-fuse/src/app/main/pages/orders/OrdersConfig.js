@@ -1,5 +1,5 @@
-import React from 'react'
-import {authRoles} from 'app/auth'
+import React from 'react';
+import { authRoles } from 'app/auth';
 
 const OrdersConfig = {
   settings: {
@@ -14,6 +14,6 @@ const OrdersConfig = {
       component: React.lazy(() => import('./Orders')),
     },
   ],
-}
+};
 
-export default OrdersConfig
+export default OrdersConfig;

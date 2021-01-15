@@ -1,12 +1,12 @@
-import AppBar from '@material-ui/core/AppBar'
-import {ThemeProvider} from '@material-ui/core/styles'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import React from 'react'
-import {useSelector} from 'react-redux'
+import AppBar from '@material-ui/core/AppBar';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function FooterLayout1(props) {
-  const footerTheme = useSelector(({fuse}) => fuse.settings.footerTheme)
+  const footerTheme = useSelector(({ fuse }) => fuse.settings.footerTheme);
 
   return (
     <ThemeProvider theme={footerTheme}>
@@ -16,7 +16,7 @@ function FooterLayout1(props) {
         </Toolbar>
       </AppBar>
     </ThemeProvider>
-  )
+  );
 }
 
-export default FooterLayout1
+export default FooterLayout1;

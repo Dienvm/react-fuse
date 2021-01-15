@@ -1,23 +1,23 @@
-import NavLinkAdapter from '@fuse/core/NavLinkAdapter'
-import {useDebounce} from '@fuse/hooks'
-import FuseUtils from '@fuse/utils'
-import Grow from '@material-ui/core/Grow'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Paper from '@material-ui/core/Paper'
-import {makeStyles, useTheme} from '@material-ui/core/styles'
-import clsx from 'clsx'
-import PropTypes from 'prop-types'
-import React, {useState} from 'react'
-import * as ReactDOM from 'react-dom'
-import {useTranslation} from 'react-i18next'
-import {Manager, Popper, Reference} from 'react-popper'
-import {useSelector} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import FuseNavBadge from '../FuseNavBadge'
-import FuseNavItem from '../FuseNavItem'
+import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
+import { useDebounce } from '@fuse/hooks';
+import FuseUtils from '@fuse/utils';
+import Grow from '@material-ui/core/Grow';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import * as ReactDOM from 'react-dom';
+import { useTranslation } from 'react-i18next';
+import { Manager, Popper, Reference } from 'react-popper';
+import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import FuseNavBadge from '../FuseNavBadge';
+import FuseNavItem from '../FuseNavItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,34 +48,34 @@ const useStyles = makeStyles((theme) => ({
   popperClose: {
     pointerEvents: 'none',
   },
-}))
+}));
 
 function FuseNavHorizontalCollapse(props) {
-  const userRole = useSelector(({auth}) => auth.user.role)
+  const userRole = useSelector(({ auth }) => auth.user.role);
 
-  const classes = useStyles(props)
-  const [opened, setOpened] = useState(false)
-  const {item, nestedLevel, dense} = props
-  const theme = useTheme()
-  const {t} = useTranslation('navigation')
+  const classes = useStyles(props);
+  const [opened, setOpened] = useState(false);
+  const { item, nestedLevel, dense } = props;
+  const theme = useTheme();
+  const { t } = useTranslation('navigation');
 
   const handleToggle = useDebounce((open) => {
-    setOpened(open)
-  }, 150)
+    setOpened(open);
+  }, 150);
 
   if (!FuseUtils.hasPermission(item.auth, userRole)) {
-    return null
+    return null;
   }
 
   function isUrlInChildren(parent, url) {
     if (!parent.children) {
-      return false
+      return false;
     }
 
     for (let i = 0; i < parent.children.length; i += 1) {
       if (parent.children[i].children) {
         if (isUrlInChildren(parent.children[i], url)) {
-          return true
+          return true;
         }
       }
 
@@ -83,18 +83,18 @@ function FuseNavHorizontalCollapse(props) {
         parent.children[i].url === url ||
         url.includes(parent.children[i].url)
       ) {
-        return true
+        return true;
       }
     }
 
-    return false
+    return false;
   }
 
   return (
     <ul className={clsx(classes.root, 'relative px-0')}>
       <Manager>
         <Reference>
-          {({ref}) => (
+          {({ ref }) => (
             <div ref={ref}>
               <ListItem
                 button
@@ -102,7 +102,7 @@ function FuseNavHorizontalCollapse(props) {
                   'list-item',
                   classes.button,
                   opened && 'open',
-                  isUrlInChildren(item, props.location.pathname) && 'active',
+                  isUrlInChildren(item, props.location.pathname) && 'active'
                 )}
                 onMouseEnter={() => handleToggle(true)}
                 onMouseLeave={() => handleToggle(false)}
@@ -110,11 +110,13 @@ function FuseNavHorizontalCollapse(props) {
                 aria-haspopup="true"
                 component={item.url ? NavLinkAdapter : 'li'}
                 to={item.url}
-                role="button">
+                role="button"
+              >
                 {item.icon && (
                   <Icon
                     color="action"
-                    className="list-item-icon text-16 flex-shrink-0">
+                    className="list-item-icon text-16 flex-shrink-0"
+                  >
                     {item.icon}
                   </Icon>
                 )}
@@ -122,7 +124,7 @@ function FuseNavHorizontalCollapse(props) {
                 <ListItemText
                   className="list-item-text"
                   primary={item.translate ? t(item.translate) : item.title}
-                  classes={{primary: 'text-14'}}
+                  classes={{ primary: 'text-14' }}
                 />
 
                 {item.badge && (
@@ -131,7 +133,8 @@ function FuseNavHorizontalCollapse(props) {
                 <IconButton
                   disableRipple
                   className="w-16 h-16 ltr:ml-4 rtl:mr-4 p-0"
-                  color="inherit">
+                  color="inherit"
+                >
                   <Icon className="text-16 arrow-icon">
                     {theme.direction === 'ltr'
                       ? 'keyboard_arrow_right'
@@ -146,8 +149,9 @@ function FuseNavHorizontalCollapse(props) {
           <Popper
             placement={theme.direction === 'ltr' ? 'right' : 'left'}
             eventsEnabled={opened}
-            positionFixed>
-            {({ref, style, placement, arrowProps}) =>
+            positionFixed
+          >
+            {({ ref, style, placement, arrowProps }) =>
               opened && (
                 <div
                   ref={ref}
@@ -158,22 +162,26 @@ function FuseNavHorizontalCollapse(props) {
                   data-placement={placement}
                   className={clsx(classes.popper, {
                     [classes.popperClose]: !opened,
-                  })}>
+                  })}
+                >
                   <Grow
                     in={opened}
                     id="menu-list-grow"
-                    style={{transformOrigin: '0 0 0'}}>
+                    style={{ transformOrigin: '0 0 0' }}
+                  >
                     <Paper
                       onMouseEnter={() => handleToggle(true)}
-                      onMouseLeave={() => handleToggle(false)}>
+                      onMouseLeave={() => handleToggle(false)}
+                    >
                       {item.children && (
                         <ul
                           className={clsx(
                             classes.children,
                             'popper-navigation-list',
                             dense && 'dense',
-                            'px-0',
-                          )}>
+                            'px-0'
+                          )}
+                        >
                           {item.children.map((_item) => (
                             <FuseNavItem
                               key={_item.id}
@@ -191,11 +199,11 @@ function FuseNavHorizontalCollapse(props) {
               )
             }
           </Popper>,
-          document.querySelector('#root'),
+          document.querySelector('#root')
         )}
       </Manager>
     </ul>
-  )
+  );
 }
 
 FuseNavHorizontalCollapse.propTypes = {
@@ -205,10 +213,10 @@ FuseNavHorizontalCollapse.propTypes = {
     icon: PropTypes.string,
     children: PropTypes.array,
   }),
-}
+};
 
-FuseNavHorizontalCollapse.defaultProps = {}
+FuseNavHorizontalCollapse.defaultProps = {};
 
-const NavHorizontalCollapse = withRouter(React.memo(FuseNavHorizontalCollapse))
+const NavHorizontalCollapse = withRouter(React.memo(FuseNavHorizontalCollapse));
 
-export default NavHorizontalCollapse
+export default NavHorizontalCollapse;

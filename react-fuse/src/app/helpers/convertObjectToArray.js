@@ -6,12 +6,12 @@
  * @return {array} response - array converted
  */
 export const convertObjectToArray = (object: Object) => {
-  let response = []
+  let response = [];
   response = object
     ? Array.from(Object.keys(object), (id) => ({
         id,
         ...object[id],
       }))
-    : []
-  return response
-}
+    : [];
+  return response;
+};

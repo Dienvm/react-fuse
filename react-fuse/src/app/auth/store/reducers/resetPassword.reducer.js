@@ -1,4 +1,4 @@
-import * as Actions from '../actions'
+import * as Actions from '../actions';
 
 const initialState = {
   success: false,
@@ -6,7 +6,7 @@ const initialState = {
     username: null,
     password: null,
   },
-}
+};
 
 const login = (state = initialState, action) => {
   switch (action.type) {
@@ -14,18 +14,18 @@ const login = (state = initialState, action) => {
       return {
         ...initialState,
         success: true,
-      }
+      };
     }
     case Actions.RESET_PASSWORD_ERROR: {
       return {
         success: false,
         error: action.payload,
-      }
+      };
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
-export default login
+export default login;

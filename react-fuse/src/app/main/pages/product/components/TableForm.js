@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import FuseChipSelect from '@fuse/core/FuseChipSelect'
-import Icon from '@material-ui/core/Icon'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
-import clsx from 'clsx'
-import FuseLoading from '@fuse/core/FuseLoading'
+import FuseChipSelect from '@fuse/core/FuseChipSelect';
+import Icon from '@material-ui/core/Icon';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import clsx from 'clsx';
+import FuseLoading from '@fuse/core/FuseLoading';
 
 const TableForm = ({
   form,
@@ -92,8 +92,9 @@ const TableForm = ({
             htmlFor="button-file"
             className={clsx(
               classes.productImageUpload,
-              'flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5',
-            )}>
+              'flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5'
+            )}
+          >
             <input
               accept="image/*"
               className="hidden"
@@ -114,9 +115,10 @@ const TableForm = ({
               className={clsx(
                 classes.productImageItem,
                 'flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5',
-                media.id === form.featuredImageId && 'featured',
+                media.id === form.featuredImageId && 'featured'
               )}
-              key={media.id}>
+              key={media.id}
+            >
               <Icon className={classes.productImageFeaturedStar}>star</Icon>
               <img
                 className="max-w-none w-auto h-full"
@@ -288,7 +290,7 @@ const TableForm = ({
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TableForm
+export default TableForm;

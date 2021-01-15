@@ -1,20 +1,20 @@
-import Drawer from '@material-ui/core/Drawer'
-import Hidden from '@material-ui/core/Hidden'
-import clsx from 'clsx'
-import React, {useImperativeHandle, useState} from 'react'
-import FusePageSimpleSidebarContent from './FusePageSimpleSidebarContent'
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import clsx from 'clsx';
+import React, { useImperativeHandle, useState } from 'react';
+import FusePageSimpleSidebarContent from './FusePageSimpleSidebarContent';
 
 function FusePageSimpleSidebar(props, ref) {
-  const [isOpen, setIsOpen] = useState(false)
-  const {classes} = props
+  const [isOpen, setIsOpen] = useState(false);
+  const { classes } = props;
 
   useImperativeHandle(ref, () => ({
     toggleSidebar: handleToggleDrawer,
-  }))
+  }));
 
   const handleToggleDrawer = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -31,7 +31,7 @@ function FusePageSimpleSidebar(props, ref) {
               props.variant,
               props.position === 'left'
                 ? classes.leftSidebar
-                : classes.rightSidebar,
+                : classes.rightSidebar
             ),
           }}
           ModalProps={{
@@ -43,7 +43,8 @@ function FusePageSimpleSidebar(props, ref) {
               root: classes.backdrop,
             },
           }}
-          style={{position: 'absolute'}}>
+          style={{ position: 'absolute' }}
+        >
           <FusePageSimpleSidebarContent {...props} />
         </Drawer>
       </Hidden>
@@ -59,15 +60,16 @@ function FusePageSimpleSidebar(props, ref) {
                 props.variant,
                 props.position === 'left'
                   ? classes.leftSidebar
-                  : classes.rightSidebar,
+                  : classes.rightSidebar
               ),
-            }}>
+            }}
+          >
             <FusePageSimpleSidebarContent {...props} />
           </Drawer>
         </Hidden>
       )}
     </>
-  )
+  );
 }
 
-export default React.forwardRef(FusePageSimpleSidebar)
+export default React.forwardRef(FusePageSimpleSidebar);

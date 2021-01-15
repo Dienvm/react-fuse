@@ -1,4 +1,4 @@
-import * as Actions from '../actions'
+import * as Actions from '../actions';
 
 const initialState = {
   role: [],
@@ -8,7 +8,7 @@ const initialState = {
     email: '',
     shortcuts: [],
   },
-}
+};
 
 const user = (state = initialState, action) => {
   switch (action.type) {
@@ -17,20 +17,20 @@ const user = (state = initialState, action) => {
         ...initialState,
         ...action.payload,
         type: action.type,
-      }
+      };
     }
     case Actions.REMOVE_USER_DATA: {
       return {
         ...initialState,
-      }
+      };
     }
     case Actions.USER_LOGGED_OUT: {
-      return initialState
+      return initialState;
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
-export default user
+export default user;

@@ -1,9 +1,9 @@
-import * as ProductActions from '../../actions'
+import * as ProductActions from '../../actions';
 
 const initialState = {
   data: [],
   searchText: '',
-}
+};
 
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,24 +11,24 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
-      }
+      };
     }
     case ProductActions.REMOVE_PRODUCTS: {
       return {
         ...state,
         type: action.type,
-      }
+      };
     }
     case ProductActions.SET_PRODUCTS_SEARCH_TEXT: {
       return {
         ...state,
         searchText: action.searchText,
-      }
+      };
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
-export default productsReducer
+export default productsReducer;

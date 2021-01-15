@@ -1,29 +1,29 @@
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import MenuItem from '@material-ui/core/MenuItem'
-import Popover from '@material-ui/core/Popover'
-import Typography from '@material-ui/core/Typography'
-import * as authActions from 'app/auth/store/actions'
-import React, {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuItem from '@material-ui/core/MenuItem';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+import * as authActions from 'app/auth/store/actions';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function UserMenu(props) {
-  const dispatch = useDispatch()
-  const user = useSelector(({auth}) => auth.user)
+  const dispatch = useDispatch();
+  const user = useSelector(({ auth }) => auth.user);
 
-  const [userMenu, setUserMenu] = useState(null)
+  const [userMenu, setUserMenu] = useState(null);
 
   const userMenuClick = (event) => {
-    setUserMenu(event.currentTarget)
-  }
+    setUserMenu(event.currentTarget);
+  };
 
   const userMenuClose = () => {
-    setUserMenu(null)
-  }
+    setUserMenu(null);
+  };
 
   return (
     <>
@@ -64,7 +64,8 @@ function UserMenu(props) {
         }}
         classes={{
           paper: 'py-8',
-        }}>
+        }}
+      >
         {!user.role || user.role.length === 0 ? (
           <>
             <MenuItem component={Link} to="/login" role="button">
@@ -86,7 +87,8 @@ function UserMenu(props) {
               component={Link}
               to={`/profile/${user.uid}`}
               onClick={userMenuClose}
-              role="button">
+              role="button"
+            >
               <ListItemIcon className="min-w-40">
                 <Icon>account_circle</Icon>
               </ListItemIcon>
@@ -94,9 +96,10 @@ function UserMenu(props) {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                dispatch(authActions.logoutUser())
-                userMenuClose()
-              }}>
+                dispatch(authActions.logoutUser());
+                userMenuClose();
+              }}
+            >
               <ListItemIcon className="min-w-40">
                 <Icon>exit_to_app</Icon>
               </ListItemIcon>
@@ -106,7 +109,7 @@ function UserMenu(props) {
         )}
       </Popover>
     </>
-  )
+  );
 }
 
-export default UserMenu
+export default UserMenu;

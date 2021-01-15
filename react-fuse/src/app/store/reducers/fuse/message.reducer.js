@@ -1,4 +1,4 @@
-import * as Actions from '../../actions/fuse'
+import * as Actions from '../../actions/fuse';
 
 const initialState = {
   state: null,
@@ -11,7 +11,7 @@ const initialState = {
     message: 'Hi',
     variant: null,
   },
-}
+};
 
 const message = (state = initialState, action) => {
   switch (action.type) {
@@ -22,18 +22,18 @@ const message = (state = initialState, action) => {
           ...initialState.options,
           ...action.options,
         },
-      }
+      };
     }
     case Actions.HIDE_MESSAGE: {
       return {
         ...state,
         state: null,
-      }
+      };
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
-export default message
+export default message;

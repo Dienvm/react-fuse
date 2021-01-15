@@ -1,27 +1,27 @@
-import FuseUtils from '@fuse/utils'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import MenuItem from '@material-ui/core/MenuItem'
-import Paper from '@material-ui/core/Paper'
-import Popper from '@material-ui/core/Popper'
-import {makeStyles} from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
-import match from 'autosuggest-highlight/match'
-import parse from 'autosuggest-highlight/parse'
-import clsx from 'clsx'
-import _ from '@lodash'
-import React, {useEffect, useReducer, useRef} from 'react'
-import Autosuggest from 'react-autosuggest'
-import {useSelector} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import FuseUtils from '@fuse/utils';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuItem from '@material-ui/core/MenuItem';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+import clsx from 'clsx';
+import _ from '@lodash';
+import React, { useEffect, useReducer, useRef } from 'react';
+import Autosuggest from 'react-autosuggest';
+import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 function renderInputComponent(inputProps) {
-  const {variant, classes, inputRef = () => {}, ref, ...other} = inputProps
+  const { variant, classes, inputRef = () => {}, ref, ...other } = inputProps;
   return (
     <div className="w-full relative">
       {variant === 'basic' ? (
@@ -31,13 +31,13 @@ function renderInputComponent(inputProps) {
             fullWidth
             InputProps={{
               inputRef: (node) => {
-                ref(node)
-                inputRef(node)
+                ref(node);
+                inputRef(node);
               },
               classes: {
                 input: clsx(
                   classes.input,
-                  'py-0 px-16 h-48 ltr:pr-48 rtl:pl-48',
+                  'py-0 px-16 h-48 ltr:pr-48 rtl:pl-48'
                 ),
                 notchedOutline: 'rounded-8',
               },
@@ -47,7 +47,8 @@ function renderInputComponent(inputProps) {
           />
           <Icon
             className="absolute top-0 ltr:right-0 rtl:left-0 h-48 w-48 p-12 pointer-events-none"
-            color="action">
+            color="action"
+          >
             search
           </Icon>
         </>
@@ -58,8 +59,8 @@ function renderInputComponent(inputProps) {
           InputProps={{
             disableUnderline: true,
             inputRef: (node) => {
-              ref(node)
-              inputRef(node)
+              ref(node);
+              inputRef(node);
             },
             classes: {
               input: clsx(classes.input, 'py-0 px-16 h-64'),
@@ -70,12 +71,12 @@ function renderInputComponent(inputProps) {
         />
       )}
     </div>
-  )
+  );
 }
 
-function renderSuggestion(suggestion, {query, isHighlighted}) {
-  const matches = match(suggestion.title, query)
-  const parts = parse(suggestion.title, matches)
+function renderSuggestion(suggestion, { query, isHighlighted }) {
+  const matches = match(suggestion.title, query);
+  const parts = parse(suggestion.title, matches);
 
   return (
     <MenuItem selected={isHighlighted} component="div">
@@ -91,41 +92,41 @@ function renderSuggestion(suggestion, {query, isHighlighted}) {
       <ListItemText
         primary={parts.map((part, index) =>
           part.highlight ? (
-            <span key={String(index)} style={{fontWeight: 600}}>
+            <span key={String(index)} style={{ fontWeight: 600 }}>
               {part.text}
             </span>
           ) : (
-            <strong key={String(index)} style={{fontWeight: 300}}>
+            <strong key={String(index)} style={{ fontWeight: 300 }}>
               {part.text}
             </strong>
-          ),
+          )
         )}
       />
     </MenuItem>
-  )
+  );
 }
 
 function getSuggestions(value, data) {
-  const inputValue = _.deburr(value.trim()).toLowerCase()
-  const inputLength = inputValue.length
-  let count = 0
+  const inputValue = _.deburr(value.trim()).toLowerCase();
+  const inputLength = inputValue.length;
+  let count = 0;
 
   return inputLength === 0
     ? []
     : data.filter((suggestion) => {
         const keep =
-          count < 10 && match(suggestion.title, inputValue).length > 0
+          count < 10 && match(suggestion.title, inputValue).length > 0;
 
         if (keep) {
-          count += 1
+          count += 1;
         }
 
-        return keep
-      })
+        return keep;
+      });
 }
 
 function getSuggestionValue(suggestion) {
-  return suggestion.title
+  return suggestion.title;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -157,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
     },
   },
-}))
+}));
 
 const initialState = {
   searchText: '',
@@ -165,7 +166,7 @@ const initialState = {
   navigation: null,
   suggestions: [],
   noSuggestions: false,
-}
+};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -173,124 +174,124 @@ function reducer(state, action) {
       return {
         ...state,
         opened: true,
-      }
+      };
     }
     case 'close': {
       return {
         ...state,
         opened: false,
         searchText: '',
-      }
+      };
     }
     case 'setSearchText': {
       return {
         ...state,
         searchText: action.value,
-      }
+      };
     }
     case 'setNavigation': {
       return {
         ...state,
         navigation: action.value,
-      }
+      };
     }
     case 'updateSuggestions': {
-      const suggestions = getSuggestions(action.value, state.navigation)
-      const isInputBlank = action.value.trim() === ''
-      const noSuggestions = !isInputBlank && suggestions.length === 0
+      const suggestions = getSuggestions(action.value, state.navigation);
+      const isInputBlank = action.value.trim() === '';
+      const noSuggestions = !isInputBlank && suggestions.length === 0;
 
       return {
         ...state,
         suggestions,
         noSuggestions,
-      }
+      };
     }
     case 'clearSuggestions': {
       return {
         ...state,
         suggestions: [],
         noSuggestions: false,
-      }
+      };
     }
     case 'decrement': {
-      return {count: state.count - 1}
+      return { count: state.count - 1 };
     }
     default: {
-      throw new Error()
+      throw new Error();
     }
   }
 }
 
 function FuseSearch(props) {
-  const userRole = useSelector(({auth}) => auth.user.role)
-  const navigation = useSelector(({fuse}) => fuse.navigation)
+  const userRole = useSelector(({ auth }) => auth.user.role);
+  const navigation = useSelector(({ fuse }) => fuse.navigation);
 
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const classes = useStyles(props)
-  const suggestionsNode = useRef(null)
-  const popperNode = useRef(null)
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const classes = useStyles(props);
+  const suggestionsNode = useRef(null);
+  const popperNode = useRef(null);
 
   useEffect(() => {
     function itemAuthAllowed(item) {
-      return FuseUtils.hasPermission(item.auth, userRole)
+      return FuseUtils.hasPermission(item.auth, userRole);
     }
 
     function setNavigation() {
       dispatch({
         type: 'setNavigation',
         value: FuseUtils.getFlatNavigation(navigation).filter((item) =>
-          itemAuthAllowed(item),
+          itemAuthAllowed(item)
         ),
-      })
+      });
     }
 
-    setNavigation()
-  }, [userRole, navigation])
+    setNavigation();
+  }, [userRole, navigation]);
 
   function showSearch() {
-    dispatch({type: 'open'})
-    document.addEventListener('keydown', escFunction, false)
+    dispatch({ type: 'open' });
+    document.addEventListener('keydown', escFunction, false);
   }
 
   function hideSearch() {
-    dispatch({type: 'close'})
-    document.removeEventListener('keydown', escFunction, false)
+    dispatch({ type: 'close' });
+    document.removeEventListener('keydown', escFunction, false);
   }
 
   function escFunction(event) {
     if (event.keyCode === 27) {
-      hideSearch()
+      hideSearch();
     }
   }
 
-  function handleSuggestionsFetchRequested({value}) {
+  function handleSuggestionsFetchRequested({ value }) {
     dispatch({
       type: 'updateSuggestions',
       value,
-    })
+    });
   }
 
-  function handleSuggestionSelected(event, {suggestion}) {
-    event.preventDefault()
-    event.stopPropagation()
+  function handleSuggestionSelected(event, { suggestion }) {
+    event.preventDefault();
+    event.stopPropagation();
     if (!suggestion.url) {
-      return
+      return;
     }
-    props.history.push(suggestion.url)
-    hideSearch()
+    props.history.push(suggestion.url);
+    hideSearch();
   }
 
   function handleSuggestionsClearRequested() {
     dispatch({
       type: 'clearSuggestions',
-    })
+    });
   }
 
   function handleChange(event) {
     dispatch({
       type: 'setSearchText',
       value: event.target.value,
-    })
+    });
   }
 
   function handleClickAway(event) {
@@ -298,7 +299,7 @@ function FuseSearch(props) {
       (!suggestionsNode.current ||
         !suggestionsNode.current.contains(event.target)) &&
       hideSearch()
-    )
+    );
   }
 
   const autosuggestProps = {
@@ -310,14 +311,15 @@ function FuseSearch(props) {
     onSuggestionSelected: handleSuggestionSelected,
     getSuggestionValue,
     renderSuggestion,
-  }
+  };
 
   switch (props.variant) {
     case 'basic': {
       return (
         <div
           className={clsx('flex items-center w-full', props.className)}
-          ref={popperNode}>
+          ref={popperNode}
+        >
           <Autosuggest
             {...autosuggestProps}
             inputProps={{
@@ -341,8 +343,9 @@ function FuseSearch(props) {
               <Popper
                 anchorEl={popperNode.current}
                 open={Boolean(options.children) || state.noSuggestions}
-                popperOptions={{positionFixed: true}}
-                className="z-9999">
+                popperOptions={{ positionFixed: true }}
+                className="z-9999"
+              >
                 <div ref={suggestionsNode}>
                   <Paper
                     elevation={1}
@@ -352,7 +355,8 @@ function FuseSearch(props) {
                       width: popperNode.current
                         ? popperNode.current.clientWidth
                         : null,
-                    }}>
+                    }}
+                  >
                     {options.children}
                     {state.noSuggestions && (
                       <Typography className="px-16 py-12">
@@ -365,7 +369,7 @@ function FuseSearch(props) {
             )}
           />
         </div>
-      )
+      );
     }
     case 'full': {
       return (
@@ -375,7 +379,8 @@ function FuseSearch(props) {
               onClick={showSearch}
               onKeyDown={showSearch}
               role="button"
-              tabIndex={0}>
+              tabIndex={0}
+            >
               {props.trigger}
             </div>
           </Tooltip>
@@ -405,8 +410,9 @@ function FuseSearch(props) {
                       <Popper
                         anchorEl={popperNode.current}
                         open={Boolean(options.children) || state.noSuggestions}
-                        popperOptions={{positionFixed: true}}
-                        className="z-9999">
+                        popperOptions={{ positionFixed: true }}
+                        className="z-9999"
+                      >
                         <div ref={suggestionsNode}>
                           <Paper
                             elevation={1}
@@ -416,7 +422,8 @@ function FuseSearch(props) {
                               width: popperNode.current
                                 ? popperNode.current.clientWidth
                                 : null,
-                            }}>
+                            }}
+                          >
                             {options.children}
                             {state.noSuggestions && (
                               <Typography className="px-16 py-12">
@@ -436,15 +443,15 @@ function FuseSearch(props) {
             </ClickAwayListener>
           )}
         </div>
-      )
+      );
     }
     default: {
-      return null
+      return null;
     }
   }
 }
 
-FuseSearch.propTypes = {}
+FuseSearch.propTypes = {};
 FuseSearch.defaultProps = {
   trigger: (
     <IconButton className="w-64 h-64">
@@ -452,6 +459,6 @@ FuseSearch.defaultProps = {
     </IconButton>
   ),
   variant: 'full', // basic, full
-}
+};
 
-export default withRouter(React.memo(FuseSearch))
+export default withRouter(React.memo(FuseSearch));

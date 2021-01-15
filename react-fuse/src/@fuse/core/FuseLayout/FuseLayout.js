@@ -1,16 +1,16 @@
-import FuseLayouts from '@fuse/layouts/FuseLayouts'
-import _ from '@lodash'
-import {withStyles} from '@material-ui/core/styles'
-import AppContext from 'app/AppContext'
-import * as Actions from 'app/store/actions'
-import {generateSettings} from 'app/store/reducers/fuse/settings.reducer'
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {matchRoutes} from 'react-router-config'
-import {withRouter} from 'react-router-dom'
-import {bindActionCreators} from 'redux'
-import * as Velocity from 'velocity-animate'
-import {defaults as Chartjs2Defaults} from 'react-chartjs-2'
+import FuseLayouts from '@fuse/layouts/FuseLayouts';
+import _ from '@lodash';
+import { withStyles } from '@material-ui/core/styles';
+import AppContext from 'app/AppContext';
+import * as Actions from 'app/store/actions';
+import { generateSettings } from 'app/store/reducers/fuse/settings.reducer';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { matchRoutes } from 'react-router-config';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import * as Velocity from 'velocity-animate';
+import { defaults as Chartjs2Defaults } from 'react-chartjs-2';
 
 const styles = (theme) => ({
   '@global': {
@@ -48,69 +48,69 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
   },
-})
+});
 
 class FuseLayout extends Component {
   constructor(props, context) {
-    super(props)
-    const {routes} = context
+    super(props);
+    const { routes } = context;
 
     this.state = {
       awaitRender: false,
       routes,
-    }
+    };
   }
 
   static getDerivedStateFromProps(props, state) {
-    const {pathname} = props.location
-    const matched = matchRoutes(state.routes, pathname)[0]
-    let newSettings = props.settings
+    const { pathname } = props.location;
+    const matched = matchRoutes(state.routes, pathname)[0];
+    let newSettings = props.settings;
 
     if (state.pathname !== pathname) {
       if (matched && matched.route.settings) {
-        const routeSettings = matched.route.settings
+        const routeSettings = matched.route.settings;
 
-        newSettings = generateSettings(props.defaultSettings, routeSettings)
+        newSettings = generateSettings(props.defaultSettings, routeSettings);
 
         if (!_.isEqual(props.settings, newSettings)) {
-          props.setSettings(newSettings)
+          props.setSettings(newSettings);
         }
       } else if (!_.isEqual(props.settings, props.defaultSettings)) {
-        newSettings = _.merge({}, props.defaultSettings)
+        newSettings = _.merge({}, props.defaultSettings);
 
-        props.resetSettings()
+        props.resetSettings();
       }
     }
 
     function AnimationToggle(settings) {
       if (!settings.animations) {
-        document.body.classList.add('no-animate')
-        Velocity.mock = true
-        Chartjs2Defaults.global.animation = true
+        document.body.classList.add('no-animate');
+        Velocity.mock = true;
+        Chartjs2Defaults.global.animation = true;
       } else {
-        document.body.classList.remove('no-animate')
-        Velocity.mock = false
-        Chartjs2Defaults.global.animation = false
+        document.body.classList.remove('no-animate');
+        Velocity.mock = false;
+        Chartjs2Defaults.global.animation = false;
       }
     }
 
-    AnimationToggle(newSettings)
+    AnimationToggle(newSettings);
 
     return {
       awaitRender: !_.isEqual(props.settings, newSettings),
       pathname,
-    }
+    };
   }
 
   render() {
-    const {settings, classes} = this.props
+    const { settings, classes } = this.props;
     // console.warn('FuseLayout:: rendered');
 
-    const Layout = FuseLayouts[settings.layout.style]
+    const Layout = FuseLayouts[settings.layout.style];
 
     return !this.state.awaitRender ? (
-      <Layout classes={{root: classes.root}} {...this.props} />
-    ) : null
+      <Layout classes={{ root: classes.root }} {...this.props} />
+    ) : null;
   }
 }
 
@@ -120,21 +120,21 @@ function mapDispatchToProps(dispatch) {
       setSettings: Actions.setSettings,
       resetSettings: Actions.resetSettings,
     },
-    dispatch,
-  )
+    dispatch
+  );
 }
 
-function mapStateToProps({fuse}) {
+function mapStateToProps({ fuse }) {
   return {
     defaultSettings: fuse.settings.defaults,
     settings: fuse.settings.current,
-  }
+  };
 }
 
-FuseLayout.contextType = AppContext
+FuseLayout.contextType = AppContext;
 
-export default withStyles(styles, {withTheme: true})(
+export default withStyles(styles, { withTheme: true })(
   withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(React.memo(FuseLayout)),
-  ),
-)
+    connect(mapStateToProps, mapDispatchToProps)(React.memo(FuseLayout))
+  )
+);

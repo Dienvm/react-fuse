@@ -1,5 +1,5 @@
-import React from 'react'
-import {authRoles} from 'app/auth'
+import React from 'react';
+import { authRoles } from 'app/auth';
 
 /**
  * Lazy load Products
@@ -18,6 +18,6 @@ const ProductsConfig = {
       component: React.lazy(() => import('./Product')),
     },
   ],
-}
+};
 
-export default ProductsConfig
+export default ProductsConfig;
