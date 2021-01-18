@@ -65,7 +65,7 @@ const OrdersTable = (props) => {
     setSelected([])
   }
 
-  const handleClick = (item) => {
+  const showOrderDetail = (item) => {
     props.history.push(`/order/${item.id}`)
   }
 
@@ -141,7 +141,7 @@ const OrdersTable = (props) => {
                     tabIndex={-1}
                     key={n.id}
                     selected={isSelected}
-                    onClick={(event) => handleClick(n)}
+                    onClick={(event) => showOrderDetail(n)}
                   >
                     <TableCell className="w-64 text-center" padding="none">
                       <Checkbox

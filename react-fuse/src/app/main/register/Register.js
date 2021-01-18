@@ -16,7 +16,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as authActions from 'app/auth/store/actions'
-import { ROUTES } from 'app/constants'
+import { RE_EMAIL, ROUTES } from 'app/constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +43,7 @@ const RegisterPage = () => {
   const isFormValid = () => {
     return (
       form.email.length > 0 &&
+      RE_EMAIL.test(form.email) &&
       form.password.length > 0 &&
       form.password.length > 3 &&
       form.password === form.passwordConfirm &&

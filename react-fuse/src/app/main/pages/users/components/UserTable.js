@@ -78,7 +78,7 @@ const UsersTable = (props) => {
     setSelected([])
   }
 
-  const handleClick = (item) => {
+  const showUserDetail = (item) => {
     props.history.push(`/profile/${item.id}`)
   }
 
@@ -145,7 +145,7 @@ const UsersTable = (props) => {
                     tabIndex={-1}
                     key={userInfo.id}
                     selected={isSelected}
-                    onClick={(event) => handleClick(userInfo)}
+                    onClick={(event) => showUserDetail(userInfo)}
                   >
                     <TableCell className="w-64 text-center" padding="none">
                       <Checkbox

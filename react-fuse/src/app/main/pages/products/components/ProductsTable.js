@@ -75,7 +75,7 @@ const ProductsTable = (props) => {
     setSelected([])
   }
 
-  const handleClick = (item) => {
+  const showProductDetail = (item) => {
     props.history.push(`/product/${item.id}/${item.handle}`)
   }
 
@@ -142,7 +142,7 @@ const ProductsTable = (props) => {
                     tabIndex={-1}
                     key={n.id}
                     selected={isSelected}
-                    onClick={(event) => handleClick(n)}
+                    onClick={(event) => showProductDetail(n)}
                   >
                     <TableCell className="w-64 text-center" padding="none">
                       <Checkbox

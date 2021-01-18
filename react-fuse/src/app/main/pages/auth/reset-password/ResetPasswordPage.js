@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { darken } from '@material-ui/core/styles/colorManipulator'
+import { RE_EMAIL } from 'app/constants'
 import clsx from 'clsx'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -35,6 +36,7 @@ const ResetPasswordPage = () => {
   const isFormValid = () => {
     return (
       form.email.length > 0 &&
+      RE_EMAIL.test(form.email) &&
       form.password.length > 0 &&
       form.password.length > 3 &&
       form.password === form.passwordConfirm
