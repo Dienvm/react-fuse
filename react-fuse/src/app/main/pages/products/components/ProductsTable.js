@@ -10,10 +10,11 @@ import {
   TableRow,
 } from '@material-ui/core'
 import clsx from 'clsx'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import * as ProductActions from 'app/store/actions/product'
+import { handleSelectRow } from 'app/helpers'
 import ProductsTableHead from './ProductsTableHead'
 
 const ProductsTable = (props) => {
@@ -78,25 +79,14 @@ const ProductsTable = (props) => {
     props.history.push(`/product/${item.id}/${item.handle}`)
   }
 
-  const handleCheck = (event, id) => {
-    const selectedIndex = selected.indexOf(id)
-    let newSelected = []
+  const handleCheck = useCallback(
+    (id) => {
+      const newSelected = handleSelectRow(id, selected)
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
-
-    setSelected(newSelected)
-  }
+      setSelected(newSelected)
+    },
+    [setSelected, selected]
+  )
 
   const handleChangePage = (event, value) => {
     setPage(value)
@@ -158,7 +148,7 @@ const ProductsTable = (props) => {
                       <Checkbox
                         checked={isSelected}
                         onClick={(event) => event.stopPropagation()}
-                        onChange={(event) => handleCheck(event, n.id)}
+                        onChange={() => handleCheck(n.id)}
                       />
                     </TableCell>
 

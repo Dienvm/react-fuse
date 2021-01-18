@@ -24,7 +24,7 @@ const OrderContent = ({ order }) => {
               Customer
             </Typography>
           </div>
-  
+
           <div className="mb-24">
             <div className="table-responsive mb-16">
               <table className="simple">

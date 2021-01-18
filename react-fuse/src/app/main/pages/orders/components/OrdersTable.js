@@ -9,10 +9,11 @@ import {
   TablePagination,
   TableRow,
 } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import * as ordersActions from 'app/store/actions'
+import { handleSelectRow } from 'app/helpers'
 import OrdersTableHead from './OrdersTableHead'
 
 const OrdersTable = (props) => {
@@ -68,25 +69,14 @@ const OrdersTable = (props) => {
     props.history.push(`/order/${item.id}`)
   }
 
-  const handleCheck = (event, id) => {
-    const selectedIndex = selected.indexOf(id)
-    let newSelected = []
+  const handleCheck = useCallback(
+    (id) => {
+      const newSelected = handleSelectRow(id, selected)
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
-
-    setSelected(newSelected)
-  }
+      setSelected(newSelected)
+    },
+    [setSelected, selected]
+  )
 
   const handleChangePage = (event, value) => {
     setPage(value)

@@ -41,6 +41,7 @@
       "no-use-before-define": "off",
       "no-nested-ternary": "off",
       "no-underscore-dangle": "off",
+      "no-unused-expressions": "off",
       "import/no-unresolved": "off",
       "no-constant-condition": "off",
       "global-require": "off",

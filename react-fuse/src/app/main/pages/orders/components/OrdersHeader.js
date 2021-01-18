@@ -1,6 +1,6 @@
 import FuseAnimate from '@fuse/core/FuseAnimate'
 import { Icon, Input, Paper, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import * as orderActions from 'app/store/actions'
@@ -8,6 +8,13 @@ import * as orderActions from 'app/store/actions'
 const OrdersHeader = () => {
   const dispatch = useDispatch()
   const searchText = useSelector(({ order }) => order.orders.searchText)
+
+  const handleSearchOrder = useCallback(
+    (event) => {
+      dispatch(orderActions.setOrdersSearchText(event))
+    },
+    [dispatch]
+  )
 
   return (
     <div className="flex flex-1 w-full items-center justify-between">
@@ -40,7 +47,7 @@ const OrdersHeader = () => {
               inputProps={{
                 'aria-label': 'Search',
               }}
-              onChange={(ev) => dispatch(orderActions.setOrdersSearchText(ev))}
+              onChange={(event) => handleSearchOrder(event)}
             />
           </Paper>
         </FuseAnimate>
