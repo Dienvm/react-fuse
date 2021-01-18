@@ -6,6 +6,7 @@ export const ROUTES = {
   forgotPassword: '/forgot-password',
   resestPassword: '/reset-password',
   error404: '/not-found',
+  error500: '/error-500',
   order: '/order/:orderId',
   orders: '/orders',
   product: '/product/:productId',

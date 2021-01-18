@@ -1,9 +1,5 @@
+import { lazy } from 'react'
 import { ROUTES } from 'app/constants'
-import OrderPage from './order/Order'
-import OrdersPage from './orders/Orders'
-import ProductPage from './product/Product'
-import ProductsPage from './products/Products'
-import UsersPage from './users/Users'
 
 const ShopConfig = {
   settings: {
@@ -12,23 +8,23 @@ const ShopConfig = {
   routes: [
     {
       path: ROUTES.orders,
-      component: OrdersPage,
+      component: lazy(() => import('./orders/Orders')),
     },
     {
       path: ROUTES.order,
-      component: OrderPage,
+      component: lazy(() => import('./order/Order')),
     },
     {
       path: ROUTES.user,
-      component: UsersPage,
+      component: lazy(() => import('./users/Users')),
     },
     {
       path: ROUTES.products,
-      component: ProductsPage,
+      component: lazy(() => import('./products/Products')),
     },
     {
       path: ROUTES.product,
-      component: ProductPage,
+      component: lazy(() => import('./product/Product')),
     },
   ],
 }

@@ -9,8 +9,6 @@ import RegisterConfig from 'app/main/register/RegisterConfig'
 import LogoutConfig from 'app/main/logout/LogoutConfig'
 import { ROUTES } from 'app/constants'
 
-console.log('pagesConfigs', pagesConfigs)
-
 const routeConfigs = [
   ...pagesConfigs,
   DashboardConfig,
