@@ -1,5 +1,5 @@
 import FuseAnimate from '@fuse/core/FuseAnimate'
-import { Icon, Input, Paper, Typography } from '@material-ui/core'
+import { Icon, Input, Paper, Typography, Box } from '@material-ui/core'
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -17,8 +17,8 @@ const OrdersHeader = () => {
   )
 
   return (
-    <div className="flex flex-1 w-full items-center justify-between">
-      <div className="flex items-center">
+    <Box className="flex flex-1 w-full items-center justify-between">
+      <Box className="flex items-center">
         <FuseAnimate animation="transition.expandIn" delay={300}>
           <Icon className="text-32">add_shopping_cart</Icon>
         </FuseAnimate>
@@ -28,9 +28,9 @@ const OrdersHeader = () => {
             Orders
           </Typography>
         </FuseAnimate>
-      </div>
+      </Box>
 
-      <div className="flex flex-1 items-center justify-center px-12">
+      <Box className="flex flex-1 items-center justify-center px-12">
         <FuseAnimate animation="transition.slideDownIn" delay={300}>
           <Paper
             className="flex items-center w-full max-w-512 px-8 py-4 rounded-8"
@@ -51,8 +51,8 @@ const OrdersHeader = () => {
             />
           </Paper>
         </FuseAnimate>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

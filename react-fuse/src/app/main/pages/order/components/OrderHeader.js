@@ -1,7 +1,7 @@
 import FuseAnimate from '@fuse/core/FuseAnimate'
 import { Icon, Typography } from '@material-ui/core'
 import { ROUTES } from 'app/constants'
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 const OrderHeader = ({ order }) => (
@@ -35,4 +35,4 @@ const OrderHeader = ({ order }) => (
   </div>
 )
 
-export default OrderHeader
+export default memo(OrderHeader)

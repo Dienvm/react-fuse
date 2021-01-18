@@ -2,6 +2,7 @@ import FuseAnimate from '@fuse/core/FuseAnimate'
 import { useForm } from '@fuse/hooks'
 import {
   Button,
+  Box,
   Card,
   CardContent,
   TextField,
@@ -49,19 +50,19 @@ const ForgotPasswordPage = () => {
   }
 
   return (
-    <div
+    <Box
       className={clsx(
         classes.root,
         'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32'
       )}
     >
-      <div className="flex flex-col items-center justify-center w-full">
+      <Box className="flex flex-col items-center justify-center w-full">
         <FuseAnimate animation="transition.expandIn">
           <Card className="w-full max-w-384">
             <CardContent className="flex flex-col items-center justify-center p-32">
-              <div className="w-128 m-32">
+              <Box className="w-128 m-32">
                 <img src="assets/images/logos/fuse.svg" alt="logo" />
-              </div>
+              </Box>
 
               <Typography variant="h6" className="mt-16 mb-32">
                 RECOVER YOUR PASSWORD
@@ -98,16 +99,16 @@ const ForgotPasswordPage = () => {
                 </Button>
               </form>
 
-              <div className="flex flex-col items-center justify-center pt-32 pb-24">
+              <Box className="flex flex-col items-center justify-center pt-32 pb-24">
                 <Link className="font-medium" to={ROUTES.login}>
                   Go back to login
                 </Link>
-              </div>
+              </Box>
             </CardContent>
           </Card>
         </FuseAnimate>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

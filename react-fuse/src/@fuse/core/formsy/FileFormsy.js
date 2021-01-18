@@ -3,6 +3,7 @@ import { withFormsy } from 'formsy-react'
 import React, { useState } from 'react'
 
 import FirebaseService from 'app/services/firebaseService'
+import { Box } from '@material-ui/core'
 import FuseLoading from '../FuseLoading'
 
 const FileFormsy = (props) => {
@@ -41,8 +42,8 @@ const FileFormsy = (props) => {
   }
 
   return (
-    <div>
-      <div className="flex justify-center sm:justify-start flex-wrap -mx-8">
+    <Box>
+      <Box className="flex justify-center sm:justify-start flex-wrap -mx-8">
         <label
           htmlFor="button-file"
           className="flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5"
@@ -59,21 +60,21 @@ const FileFormsy = (props) => {
           </Icon>
         </label>
         {value && (
-          <div className="flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5">
+          <Box className="flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5">
             <img
               className="max-w-none w-auto h-full"
               src={value}
               alt="product"
             />
-          </div>
+          </Box>
         )}
         {loadingImage && (
-          <div className="flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5">
+          <Box className="flex items-center justify-center relative w-128 h-128 rounded-4 mx-8 mb-16 overflow-hidden cursor-pointer shadow-1 hover:shadow-5">
             <FuseLoading />
-          </div>
+          </Box>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

@@ -1,4 +1,3 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars'
 import _ from '@lodash'
 import {
   Checkbox,
@@ -6,52 +5,23 @@ import {
   Table,
   TableBody,
   TableCell,
-  TablePagination,
   TableRow,
 } from '@material-ui/core'
 import clsx from 'clsx'
-import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import React, { useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { withRouter } from 'react-router'
 import * as ProductActions from 'app/store/actions/product'
 import { handleSelectRow } from 'app/helpers'
 import ProductsTableHead from './ProductsTableHead'
 
-const ProductsTable = (props) => {
+const ProductsTable = ({ data, page, rowsPerPage, history }) => {
   const dispatch = useDispatch()
-  const products = useSelector(({ product }) => product.products)
-  const searchText = useSelector(({ product }) => product.products.searchText)
-
   const [selected, setSelected] = useState([])
-  const [data, setData] = useState(products.data)
-  const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
   const [order, setOrder] = useState({
     direction: 'asc',
     id: null,
   })
-
-  useEffect(() => {
-    dispatch(ProductActions.getProducts())
-  }, [dispatch])
-
-  useEffect(() => {
-    if (searchText.length !== 0) {
-      setData(
-        products.data.filter((item) =>
-          item.name.toLowerCase().includes(searchText.toLowerCase())
-        )
-      )
-      setPage(0)
-    } else {
-      setData(products.data)
-    }
-  }, [products, searchText])
-
-  useEffect(() => {
-    if (products.type === ProductActions.REMOVE_PRODUCTS)
-      dispatch(ProductActions.getProducts())
-  }, [products, dispatch])
 
   const handleRequestSort = (event, property) => {
     const id = property
@@ -76,7 +46,7 @@ const ProductsTable = (props) => {
   }
 
   const showProductDetail = (item) => {
-    props.history.push(`/product/${item.id}/${item.handle}`)
+    history.push(`/product/${item.id}/${item.handle}`)
   }
 
   const handleCheck = useCallback(
@@ -88,150 +58,121 @@ const ProductsTable = (props) => {
     [setSelected, selected]
   )
 
-  const handleChangePage = (event, value) => {
-    setPage(value)
-  }
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(event.target.value)
-  }
-
   const handleRemoveProducts = () => {
     dispatch(ProductActions.removeProducts(selected))
   }
 
   return (
-    <div className="w-full flex flex-col">
-      <FuseScrollbars className="flex-grow overflow-x-auto">
-        <Table className="min-w-xl" aria-labelledby="tableTitle">
-          <ProductsTableHead
-            numSelected={selected.length}
-            order={order}
-            onSelectAllClick={handleSelectAllClick}
-            onRequestSort={handleRequestSort}
-            rowCount={data.length}
-            handleRemoveProducts={handleRemoveProducts}
-          />
-
-          <TableBody>
-            {_.orderBy(
-              data,
-              [
-                (o) => {
-                  switch (order.id) {
-                    case 'categories': {
-                      return o.categories[0]
-                    }
-                    default: {
-                      return o[order.id]
-                    }
-                  }
-                },
-              ],
-              [order.direction]
-            )
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((n) => {
-                const isSelected = selected.indexOf(n.id) !== -1
-                return (
-                  <TableRow
-                    className="h-64 cursor-pointer"
-                    hover
-                    role="checkbox"
-                    aria-checked={isSelected}
-                    tabIndex={-1}
-                    key={n.id}
-                    selected={isSelected}
-                    onClick={(event) => showProductDetail(n)}
-                  >
-                    <TableCell className="w-64 text-center" padding="none">
-                      <Checkbox
-                        checked={isSelected}
-                        onClick={(event) => event.stopPropagation()}
-                        onChange={() => handleCheck(n.id)}
-                      />
-                    </TableCell>
-
-                    <TableCell
-                      className="w-52"
-                      component="th"
-                      scope="row"
-                      padding="none"
-                    >
-                      {n.images.length > 0 && n.featuredImageId ? (
-                        <img
-                          className="w-full block rounded"
-                          src={
-                            n.images.find(
-                              (image) => image.id === n.featuredImageId
-                            ).url
-                          }
-                          alt={n.name}
-                        />
-                      ) : (
-                        <img
-                          className="w-full block rounded"
-                          src="assets/images/ecommerce/product-image-placeholder.png"
-                          alt={n.name}
-                        />
-                      )}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row">
-                      {n.name}
-                    </TableCell>
-
-                    <TableCell className="truncate" component="th" scope="row">
-                      {n.categories.join(', ')}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row" align="right">
-                      <span>$</span>
-                      {n.priceTaxIncl}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row" align="right">
-                      {n.quantity}
-                      <i
-                        className={clsx(
-                          'inline-block w-8 h-8 rounded mx-8',
-                          n.quantity <= 5 && 'bg-red',
-                          n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
-                          n.quantity > 25 && 'bg-green'
-                        )}
-                      />
-                    </TableCell>
-
-                    <TableCell component="th" scope="row" align="right">
-                      {n.active ? (
-                        <Icon className="text-green text-20">check_circle</Icon>
-                      ) : (
-                        <Icon className="text-red text-20">remove_circle</Icon>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-          </TableBody>
-        </Table>
-      </FuseScrollbars>
-
-      <TablePagination
-        className="overflow-hidden"
-        component="div"
-        count={data.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        backIconButtonProps={{
-          'aria-label': 'Previous Page',
-        }}
-        nextIconButtonProps={{
-          'aria-label': 'Next Page',
-        }}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
+    <Table className="min-w-xl" aria-labelledby="tableTitle">
+      <ProductsTableHead
+        numSelected={selected.length}
+        order={order}
+        onSelectAllClick={handleSelectAllClick}
+        onRequestSort={handleRequestSort}
+        rowCount={data.length}
+        handleRemoveProducts={handleRemoveProducts}
       />
-    </div>
+
+      <TableBody>
+        {_.orderBy(
+          data,
+          [
+            (o) => {
+              switch (order.id) {
+                case 'categories': {
+                  return o.categories[0]
+                }
+                default: {
+                  return o[order.id]
+                }
+              }
+            },
+          ],
+          [order.direction]
+        )
+          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((n) => {
+            const isSelected = selected.indexOf(n.id) !== -1
+            return (
+              <TableRow
+                className="h-64 cursor-pointer"
+                hover
+                role="checkbox"
+                aria-checked={isSelected}
+                tabIndex={-1}
+                key={n.id}
+                selected={isSelected}
+                onClick={(event) => showProductDetail(n)}
+              >
+                <TableCell className="w-64 text-center" padding="none">
+                  <Checkbox
+                    checked={isSelected}
+                    onClick={(event) => event.stopPropagation()}
+                    onChange={() => handleCheck(n.id)}
+                  />
+                </TableCell>
+
+                <TableCell
+                  className="w-52"
+                  component="th"
+                  scope="row"
+                  padding="none"
+                >
+                  {n.images.length > 0 && n.featuredImageId ? (
+                    <img
+                      className="w-full block rounded"
+                      src={
+                        n.images.find((image) => image.id === n.featuredImageId)
+                          .url
+                      }
+                      alt={n.name}
+                    />
+                  ) : (
+                    <img
+                      className="w-full block rounded"
+                      src="assets/images/product-placeholder.png"
+                      alt={n.name}
+                    />
+                  )}
+                </TableCell>
+
+                <TableCell component="th" scope="row">
+                  {n.name}
+                </TableCell>
+
+                <TableCell className="truncate" component="th" scope="row">
+                  {n.categories.join(', ')}
+                </TableCell>
+
+                <TableCell component="th" scope="row" align="right">
+                  <span>$</span>
+                  {n.priceTaxIncl}
+                </TableCell>
+
+                <TableCell component="th" scope="row" align="right">
+                  {n.quantity}
+                  <i
+                    className={clsx(
+                      'inline-block w-8 h-8 rounded mx-8',
+                      n.quantity <= 5 && 'bg-red',
+                      n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
+                      n.quantity > 25 && 'bg-green'
+                    )}
+                  />
+                </TableCell>
+
+                <TableCell component="th" scope="row" align="right">
+                  {n.active ? (
+                    <Icon className="text-green text-20">check_circle</Icon>
+                  ) : (
+                    <Icon className="text-red text-20">remove_circle</Icon>
+                  )}
+                </TableCell>
+              </TableRow>
+            )
+          })}
+      </TableBody>
+    </Table>
   )
 }
 
