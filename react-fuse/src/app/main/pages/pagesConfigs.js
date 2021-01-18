@@ -3,11 +3,7 @@ import ResetPasswordPageConfig from './auth/reset-password/ResetPasswordPageConf
 import Error404PageConfig from './errors/404/Error404PageConfig'
 import Error500PageConfig from './errors/500/Error500PageConfig'
 import ProfilePageConfig from './profile/ProfilePageConfig'
-import OrdersConfig from './orders/OrdersConfig'
-import OrderConfig from './order/OrderConfig'
-import UsersConfig from './users/UsersConfig'
-import ProductsConfig from './products/ProductsConfig'
-import ProductConfig from './product/ProductConfig'
+import ShopConfig from './shop-management/shopConfig'
 
 const pagesConfigs = [
   ResetPasswordPageConfig,
@@ -15,11 +11,7 @@ const pagesConfigs = [
   Error404PageConfig,
   Error500PageConfig,
   ProfilePageConfig,
-  ProductsConfig,
-  ProductConfig,
-  OrdersConfig,
-  OrderConfig,
-  UsersConfig,
+  ShopConfig,
 ]
 
 export default pagesConfigs

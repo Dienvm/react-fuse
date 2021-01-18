@@ -9,7 +9,7 @@ import withReducer from 'app/store/withReducer'
 import OrderHeader from './components/OrderHeader'
 import OrderContent from './components/OrderContent'
 
-const Order = (props) => {
+const OrderPage = (props) => {
   const dispatch = useDispatch()
   const orderData = useSelector(({ order }) => order.order)
   const { orderId } = props.match.params || {}
@@ -31,4 +31,4 @@ const Order = (props) => {
   )
 }
 
-export default withReducer('OrderDetail', reducer)(Order)
+export default withReducer('OrderDetail', reducer)(OrderPage)

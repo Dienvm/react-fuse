@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Product = (props) => {
+const ProductPage = (props) => {
   const dispatch = useDispatch()
   const productData = useSelector(({ product }) => product.product)
 
@@ -185,4 +185,4 @@ const Product = (props) => {
   )
 }
 
-export default withReducer('ProductForm', reducer)(Product)
+export default withReducer('ProductForm', reducer)(ProductPage)
