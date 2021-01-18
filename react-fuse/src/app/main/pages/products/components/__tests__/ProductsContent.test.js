@@ -5,8 +5,8 @@ import { Router } from 'react-router-dom'
 import * as reactRedux from 'react-redux'
 
 import history from '@history'
-import PRODUCTS from 'app/constants'
-import ProductsTable from '../ProductsTable'
+import { PRODUCTS } from 'app/constants'
+import ProductsContent from '../ProductsContent'
 
 const mockStore = configureStore()
 const store = mockStore({})
@@ -40,7 +40,7 @@ describe('Products', () => {
       .create(
         <Provider store={store}>
           <Router history={history}>
-            <ProductsTable />
+            <ProductsContent />
           </Router>
         </Provider>
       )

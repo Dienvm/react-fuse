@@ -12,9 +12,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import withReducer from 'app/store/withReducer'
 
 import firebaseService from 'app/services/firebaseService'
+import { ROUTES } from 'app/constants'
 import TableForm from './components/TableForm'
 import Header from './components/Header'
-import { ROUTES } from 'app/constants'
 
 const useStyles = makeStyles((theme) => ({
   productImageFeaturedStar: {
