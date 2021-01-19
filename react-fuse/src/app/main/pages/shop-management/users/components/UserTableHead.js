@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 
-import { makeStyles } from '@material-ui/core/styles'
 import {
   Checkbox,
   Icon,
