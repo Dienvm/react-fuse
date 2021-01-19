@@ -6,12 +6,12 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
-import { makeStyles } from '@material-ui/core/styles'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Tooltip from '@material-ui/core/Tooltip'
+import { useStyles } from 'app/helpers'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 
@@ -59,12 +59,6 @@ const rows = [
     sort: true,
   },
 ]
-
-const useStyles = makeStyles((theme) => ({
-  actionsButtonWrapper: {
-    background: theme.palette.background.paper,
-  },
-}))
 
 const OrdersTableHead = (props) => {
   const classes = useStyles(props)

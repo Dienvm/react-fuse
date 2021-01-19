@@ -17,6 +17,7 @@ import {
   TableSortLabel,
   Tooltip,
 } from '@material-ui/core'
+import { useStyles } from 'app/helpers/useStyles'
 
 const rows = [
   {
@@ -62,12 +63,6 @@ const rows = [
     sort: true,
   },
 ]
-
-const useStyles = makeStyles((theme) => ({
-  actionsButtonWrapper: {
-    background: theme.palette.background.paper,
-  },
-}))
 
 const UsersTableHead = ({
   numSelected,

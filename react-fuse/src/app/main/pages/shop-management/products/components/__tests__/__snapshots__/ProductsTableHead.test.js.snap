@@ -14,7 +14,7 @@ exports[`Products should render correctly 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-2 MuiCheckbox-root MuiCheckbox-colorSecondary MuiCheckbox-indeterminate MuiIconButton-colorSecondary"
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiCheckbox-root MuiCheckbox-colorSecondary MuiCheckbox-indeterminate MuiIconButton-colorSecondary"
         onBlur={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
@@ -33,7 +33,7 @@ exports[`Products should render correctly 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input-5"
+            className="PrivateSwitchBase-input-9"
             data-indeterminate={true}
             onChange={[Function]}
             type="checkbox"
@@ -55,7 +55,7 @@ exports[`Products should render correctly 1`] = `
         />
       </span>
       <div
-        className="flex items-center justify-center absolute w-64 top-0 ltr:left-0 rtl:right-0 mx-56 h-64 z-10 makeStyles-actionsButtonWrapper-1"
+        className="flex items-center justify-center absolute w-64 top-0 ltr:left-0 rtl:right-0 mx-56 h-64 z-10 makeStyles-actionsButtonWrapper-2"
       >
         <button
           aria-haspopup="true"

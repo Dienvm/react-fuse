@@ -8,8 +8,6 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { darken } from '@material-ui/core/styles/colorManipulator'
 import clsx from 'clsx'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -17,16 +15,7 @@ import { useDispatch } from 'react-redux'
 import * as authActions from 'app/auth/store/actions'
 import history from '@history'
 import { RE_EMAIL, ROUTES } from 'app/constants'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    background: `radial-gradient(${darken(
-      theme.palette.primary.dark,
-      0.5
-    )} 0%, ${theme.palette.primary.dark} 80%)`,
-    color: theme.palette.primary.contrastText,
-  },
-}))
+import { useStyles } from 'app/helpers'
 
 const ForgotPasswordPage = () => {
   const classes = useStyles()

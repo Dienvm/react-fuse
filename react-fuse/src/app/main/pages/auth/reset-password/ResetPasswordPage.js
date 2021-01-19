@@ -7,21 +7,11 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { darken } from '@material-ui/core/styles/colorManipulator'
 import { RE_EMAIL } from 'app/constants'
+import { useStyles } from 'app/helpers'
 import clsx from 'clsx'
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    background: `linear-gradient(to right, ${
-      theme.palette.primary.dark
-    } 0%, ${darken(theme.palette.primary.dark, 0.5)} 100%)`,
-    color: theme.palette.primary.contrastText,
-  },
-}))
 
 const ResetPasswordPage = () => {
   const classes = useStyles()
