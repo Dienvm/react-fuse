@@ -10,7 +10,6 @@ globalCustom.renderer = renderer
 globalCustom.shallow = shallow
 globalCustom.mount = mount
 
-jest.mock('i18next')
 jest.mock('perfect-scrollbar/css/perfect-scrollbar.css', () => 'mockStyle')
 jest.mock('@fuse/core/FuseScrollbars', () => 'FuseScrollbars')
 

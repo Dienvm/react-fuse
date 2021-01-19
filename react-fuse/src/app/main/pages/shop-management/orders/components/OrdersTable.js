@@ -66,7 +66,7 @@ const OrdersTable = (props) => {
   }
 
   const showOrderDetail = (item) => {
-    props.history.push(`/order/${item.id}`)
+    props.history.push(`/orders/${item.id}`)
   }
 
   const handleCheck = useCallback(

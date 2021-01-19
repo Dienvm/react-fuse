@@ -8,7 +8,6 @@ import * as Actions from 'app/store/actions'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import FuseNavBadge from '../FuseNavBadge'
@@ -42,7 +41,6 @@ function FuseNavHorizontalItem(props) {
 
   const classes = useStyles(props)
   const { item } = props
-  const { t } = useTranslation('navigation')
 
   if (!FuseUtils.hasPermission(item.auth, userRole)) {
     return null
@@ -66,7 +64,7 @@ function FuseNavHorizontalItem(props) {
 
       <ListItemText
         className="list-item-text"
-        primary={item.translate ? t(item.translate) : item.title}
+        primary={item.title}
         classes={{ primary: 'text-14 list-item-text-primary' }}
       />
 

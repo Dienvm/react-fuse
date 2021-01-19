@@ -46,7 +46,7 @@ const ProductsTable = ({ data, page, rowsPerPage, history }) => {
   }
 
   const showProductDetail = (item) => {
-    history.push(`/product/${item.id}/${item.handle}`)
+    history.push(`/products/${item.id}/${item.handle}`)
   }
 
   const handleCheck = useCallback(

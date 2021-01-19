@@ -27,7 +27,7 @@ const OrderStatus = ({ orderStatus }) => {
           <TableHead>
             <TableRow>
               {TABLE_HEAD.ORDER_STATUS.map((title, index) => (
-                <th key={index.toString()}>{title}</th>
+                <TableCell key={index.toString()}>{title}</TableCell>
               ))}
             </TableRow>
           </TableHead>

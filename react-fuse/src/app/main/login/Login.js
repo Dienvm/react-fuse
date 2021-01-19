@@ -21,7 +21,7 @@ import {
   InputAdornment,
   Icon,
 } from '@material-ui/core'
-import { ROUTES } from 'app/constants'
+import { ERROR_MESSAGES, ROUTES } from 'app/constants'
 import { useStyles } from 'app/helpers'
 
 const LoginPage = () => {
@@ -103,7 +103,7 @@ const LoginPage = () => {
                     minLength: 4,
                   }}
                   validationErrors={{
-                    minLength: 'Min character length is 4',
+                    minLength: ERROR_MESSAGES.minLength,
                   }}
                   InputProps={{
                     endAdornment: (
@@ -127,7 +127,7 @@ const LoginPage = () => {
                     minLength: 4,
                   }}
                   validationErrors={{
-                    minLength: 'Min character length is 4',
+                    minLength: ERROR_MESSAGES.minLength,
                   }}
                   InputProps={{
                     endAdornment: (

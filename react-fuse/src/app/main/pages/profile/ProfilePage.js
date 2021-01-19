@@ -15,12 +15,15 @@ import reducer from 'app/auth/store/reducers'
 import withReducer from 'app/store/withReducer'
 import { useHistory } from 'react-router'
 import { ROUTES } from 'app/constants'
+import { ERROR_MESSAGES } from 'app/constants/errorMessage'
 
 const ProfilePage = () => {
   const dispatch = useDispatch()
-  const userType = useSelector(({ user }) => user.user.type)
+  const currentUser = useSelector(({ user }) => user.user)
+  const userType = currentUser.type
   const { userId } = useParams()
   const history = useHistory()
+  const isNewProduct = userId === 'new'
 
   useEffect(() => {
     dispatch(Actions.getUser(userId))
@@ -29,8 +32,6 @@ const ProfilePage = () => {
   useEffect(() => {
     if (Actions.SAVE_USER === userType) history.push(ROUTES.users)
   }, [userType, history])
-
-  const currentUser = useSelector(({ user }) => user.user)
 
   const {
     photoURL,
@@ -57,7 +58,7 @@ const ProfilePage = () => {
     const cloneUser = { ...currentUser }
     cloneUser.data = { ...cloneUser.data, ...model }
 
-    if (userId === 'new') {
+    if (isNewProduct) {
       dispatch(Actions.saveUser(cloneUser))
     } else {
       dispatch(userActions.updateUserInfo(cloneUser))
@@ -70,7 +71,7 @@ const ProfilePage = () => {
         <FuseAnimate animation="transition.expandIn">
           <div className="p-16 sm:p-24">
             <h2 className="mb-32 text-center">
-              {userId === 'new' ? 'Create new user' : 'Update profile'}
+              {isNewProduct ? 'Create new user' : 'Update profile'}
             </h2>
             <Formsy
               onValidSubmit={handleSubmit}
@@ -93,7 +94,7 @@ const ProfilePage = () => {
                   minLength: 4,
                 }}
                 validationErrors={{
-                  minLength: 'Min character length is 4',
+                  minLength: ERROR_MESSAGES.minLength,
                 }}
                 variant="outlined"
                 value={displayName || ''}
@@ -109,8 +110,8 @@ const ProfilePage = () => {
                   maxLength: 50,
                 }}
                 validationErrors={{
-                  isEmail: 'You have to type valid email',
-                  maxLength: 'You can not type in more than 50 characters',
+                  isEmail: ERROR_MESSAGES.isEmail,
+                  maxLength: ERROR_MESSAGES.maxLength,
                 }}
                 variant="outlined"
                 value={email || ''}
@@ -126,8 +127,8 @@ const ProfilePage = () => {
                   maxLength: 10,
                 }}
                 validationErrors={{
-                  isNumeric: 'You have to type valid phone number',
-                  maxLength: 'You can not type in more than 10 numbers',
+                  isNumeric: ERROR_MESSAGES.isNumeric,
+                  maxLength: ERROR_MESSAGES.maxLength,
                 }}
                 variant="outlined"
                 value={phoneNumber || ''}
@@ -142,7 +143,7 @@ const ProfilePage = () => {
                   minLength: 4,
                 }}
                 validationErrors={{
-                  minLength: 'Min character length is 4',
+                  minLength: ERROR_MESSAGES.minLength,
                 }}
                 variant="outlined"
                 value={state || ''}
@@ -157,7 +158,7 @@ const ProfilePage = () => {
                   minLength: 4,
                 }}
                 validationErrors={{
-                  minLength: 'Min character length is 4',
+                  minLength: ERROR_MESSAGES.minLength,
                 }}
                 variant="outlined"
                 value={city || ''}
@@ -172,7 +173,7 @@ const ProfilePage = () => {
                   minLength: 4,
                 }}
                 validationErrors={{
-                  minLength: 'Min character length is 4',
+                  minLength: ERROR_MESSAGES.minLength,
                 }}
                 variant="outlined"
                 value={country || ''}
@@ -188,8 +189,8 @@ const ProfilePage = () => {
                   maxLength: 5,
                 }}
                 validationErrors={{
-                  isNumeric: 'You have to type valid phone number',
-                  maxLength: 'You can not type in more than 5 numbers',
+                  isNumeric: ERROR_MESSAGES.isNumeric,
+                  maxLength: ERROR_MESSAGES.minLength.maxLength,
                 }}
                 variant="outlined"
                 value={postcode || ''}
@@ -204,7 +205,7 @@ const ProfilePage = () => {
                 aria-label="Update"
                 disabled={!isFormValid}
               >
-                {userId === 'new' ? 'Add' : 'Update'}
+                {isNewProduct ? 'Add' : 'Update'}
               </Button>
             </Formsy>
           </div>
