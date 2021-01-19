@@ -1,3 +1,4 @@
+import { ERROR_CODES } from 'app/constants/errorCodes'
 import firebaseService from 'app/services/firebaseService'
 import * as Actions from 'app/store/actions'
 import * as UserActions from './user.actions'
@@ -29,22 +30,13 @@ export function registerWithFirebase(model) {
         })
       })
       .catch((error) => {
-        const usernameErrorCodes = [
-          'auth/operation-not-allowed',
-          'auth/user-not-found',
-          'auth/user-disabled',
-        ]
-
-        const emailErrorCodes = [
-          'auth/email-already-in-use',
-          'auth/invalid-email',
-        ]
-
         const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password']
 
         const response = {
-          email: emailErrorCodes.includes(error.code) ? error.message : null,
-          displayName: usernameErrorCodes.includes(error.code)
+          email: ERROR_CODES.emailErrorCodes.includes(error.code)
+            ? error.message
+            : null,
+          displayName: ERROR_CODES.usernameErrorCodes.includes(error.code)
             ? error.message
             : null,
           password: passwordErrorCodes.includes(error.code)
