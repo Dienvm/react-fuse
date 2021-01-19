@@ -9,9 +9,7 @@ class FirebaseService {
   init(success) {
     if (Object.entries(config).length === 0 && config.constructor === Object) {
       if (process.env.NODE_ENV === 'development') {
-        console.warn(
-          'Missing Firebase Configuration at src/app/services/firebaseService/firebaseServiceConfig.js'
-        )
+        // Missing Firebase Configuration at src/app/services/firebaseService/firebaseServiceConfig.js
       }
       success(false)
       return

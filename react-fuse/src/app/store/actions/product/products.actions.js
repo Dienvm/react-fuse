@@ -41,9 +41,7 @@ export const removeProducts = (productIds) => {
   }
 }
 
-export const setProductsSearchText = (value) => {
-  return {
-    type: SET_PRODUCTS_SEARCH_TEXT,
-    searchText: value,
-  }
-}
+export const setProductsSearchText = (value) => ({
+  type: SET_PRODUCTS_SEARCH_TEXT,
+  searchText: value,
+})

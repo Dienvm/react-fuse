@@ -25,18 +25,21 @@ const usersReducer = (state = initialState, action) => {
         data: result,
       }
     }
+
     case UserActions.REMOVE_USERS: {
       return {
         ...state,
         type: action.type,
       }
     }
+
     case UserActions.SET_USERS_SEARCH_TEXT: {
       return {
         ...state,
         searchText: action.searchText,
       }
     }
+
     default: {
       return state
     }

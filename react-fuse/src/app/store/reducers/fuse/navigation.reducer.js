@@ -8,9 +8,11 @@ const navigation = (state = initialState, action) => {
     case Actions.GET_NAVIGATION: {
       return [...state]
     }
+
     case Actions.SET_NAVIGATION: {
       return [...action.navigation]
     }
+
     case Actions.RESET_NAVIGATION: {
       return [...initialState]
     }

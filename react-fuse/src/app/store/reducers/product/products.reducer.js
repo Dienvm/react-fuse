@@ -13,18 +13,21 @@ const productsReducer = (state = initialState, action) => {
         data: action.payload,
       }
     }
+
     case ProductActions.REMOVE_PRODUCTS: {
       return {
         ...state,
         type: action.type,
       }
     }
+
     case ProductActions.SET_PRODUCTS_SEARCH_TEXT: {
       return {
         ...state,
         searchText: action.searchText,
       }
     }
+
     default: {
       return state
     }

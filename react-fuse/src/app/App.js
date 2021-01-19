@@ -28,30 +28,27 @@ const jss = create({
 
 const generateClassName = createGenerateClassName()
 
-const App = () => {
-  return (
-    <AppContext.Provider
-      value={{
-        routes,
-      }}
-    >
-      <StylesProvider jss={jss} generateClassName={generateClassName}>
-        <Provider store={store}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <Auth>
-              <Router history={history}>
-                <FuseAuthorization>
-                  <FuseTheme>
-                    <FuseLayout />
-                  </FuseTheme>
-                </FuseAuthorization>
-              </Router>
-            </Auth>
-          </MuiPickersUtilsProvider>
-        </Provider>
-      </StylesProvider>
-    </AppContext.Provider>
-  )
-}
-
+const App = () => (
+  <AppContext.Provider
+    value={{
+      routes,
+    }}
+  >
+    <StylesProvider jss={jss} generateClassName={generateClassName}>
+      <Provider store={store}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <Auth>
+            <Router history={history}>
+              <FuseAuthorization>
+                <FuseTheme>
+                  <FuseLayout />
+                </FuseTheme>
+              </FuseAuthorization>
+            </Router>
+          </Auth>
+        </MuiPickersUtilsProvider>
+      </Provider>
+    </StylesProvider>
+  </AppContext.Provider>
+)
 export default App

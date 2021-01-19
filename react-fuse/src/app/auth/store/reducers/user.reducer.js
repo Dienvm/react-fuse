@@ -19,14 +19,17 @@ const user = (state = initialState, action) => {
         type: action.type,
       }
     }
+
     case Actions.REMOVE_USER_DATA: {
       return {
         ...initialState,
       }
     }
+
     case Actions.USER_LOGGED_OUT: {
       return initialState
     }
+
     default: {
       return state
     }

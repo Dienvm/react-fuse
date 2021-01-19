@@ -45,9 +45,11 @@ const settings = (state = initialState, action) => {
         ...getThemeOptions(themes, current),
       }
     }
+
     case Actions.SET_INITIAL_SETTINGS: {
       return _.merge({}, initialState)
     }
+
     case Actions.SET_DEFAULT_SETTINGS: {
       const defaults = generateSettings(state.defaults, action.value)
       let themes =
@@ -69,6 +71,7 @@ const settings = (state = initialState, action) => {
         ...getThemeOptions(themes, defaults),
       }
     }
+
     case Actions.RESET_DEFAULT_SETTINGS: {
       const themes = {
         ...state.themes,

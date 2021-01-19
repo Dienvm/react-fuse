@@ -9,11 +9,13 @@ const orderReducer = (state = initialState, action) => {
         ...action.payload,
       }
     }
+
     case OrderActions.SAVE_ORDER: {
       return {
         ...action.payload,
       }
     }
+
     default: {
       return state
     }

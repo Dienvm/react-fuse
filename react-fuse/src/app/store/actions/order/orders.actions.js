@@ -41,9 +41,7 @@ export const removeOrders = (orderIds) => {
   }
 }
 
-export const setOrdersSearchText = (event) => {
-  return {
-    type: SET_ORDERS_SEARCH_TEXT,
-    searchText: event.target.value,
-  }
-}
+export const setOrdersSearchText = (event) => ({
+  type: SET_ORDERS_SEARCH_TEXT,
+  searchText: event.target.value,
+})

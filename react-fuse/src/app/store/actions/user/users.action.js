@@ -52,12 +52,10 @@ export const removeUsers = (userIds) => {
   }
 }
 
-export const setUsersSearchText = (value) => {
-  return {
-    type: SET_USERS_SEARCH_TEXT,
-    searchText: value,
-  }
-}
+export const setUsersSearchText = (value) => ({
+  type: SET_USERS_SEARCH_TEXT,
+  searchText: value,
+})
 
 export const saveUser = (data) => {
   const userKey = firebaseService.db.ref().push().key

@@ -7,19 +7,18 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
 export const submitLoginWithFireBase = ({ username, password }) => {
   if (!firebaseService.auth) {
-    console.warn("Firebase Service didn't initialize, check your configuration")
-
+    // Firebase Service didn't initialize, check your configuration
     return () => false
   }
 
   return (dispatch) =>
     firebaseService.auth
       .signInWithEmailAndPassword(username, password)
-      .then(() => {
-        return dispatch({
+      .then(() =>
+        dispatch({
           type: LOGIN_SUCCESS,
         })
-      })
+      )
       .catch((error) => {
         const usernameErrorCodes = [
           'auth/email-already-in-use',
@@ -52,8 +51,7 @@ export const submitLoginWithFireBase = ({ username, password }) => {
 
 export const submitLoginWithGoogle = () => {
   if (!firebaseService.auth) {
-    console.warn("Firebase Service didn't initialize, check your configuration")
-
+    // Firebase Service didn't initialize, check your configuration
     return () => false
   }
   const provider = new firebase.auth.GoogleAuthProvider()
@@ -61,15 +59,15 @@ export const submitLoginWithGoogle = () => {
   return (dispatch) =>
     firebaseService.auth
       .signInWithPopup(provider)
-      .then(() => {
-        return dispatch({
+      .then(() =>
+        dispatch({
           type: LOGIN_SUCCESS,
         })
-      })
-      .catch((error) => {
-        return dispatch({
+      )
+      .catch((error) =>
+        dispatch({
           type: LOGIN_ERROR,
           payload: error.message,
         })
-      })
+      )
 }

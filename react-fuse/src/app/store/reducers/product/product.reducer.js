@@ -12,6 +12,7 @@ const productReducer = (state = initialState, action) => {
         data: action.payload,
       }
     }
+
     case ProductActions.SAVE_PRODUCT: {
       return {
         ...state,
@@ -19,6 +20,7 @@ const productReducer = (state = initialState, action) => {
         type: action.type,
       }
     }
+
     case ProductActions.UPDATE_PRODUCT: {
       return {
         ...state,
@@ -26,6 +28,7 @@ const productReducer = (state = initialState, action) => {
         type: action.type,
       }
     }
+
     default: {
       return state
     }

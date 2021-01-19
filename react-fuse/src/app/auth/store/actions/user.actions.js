@@ -33,134 +33,109 @@ export const setUserDataFirebase = (user, authUser) => {
 /**
  * Create User Settings with Firebase data
  */
-export const createUserSettingsFirebase = (authUser) => {
-  return (dispatch, getState) => {
-    const guestUser = getState().auth.user
-    const { currentUser } = firebase.auth()
+export const createUserSettingsFirebase = (authUser) => (
+  dispatch,
+  getState
+) => {
+  const guestUser = getState().auth.user
+  const { currentUser } = firebase.auth()
 
-    /**
-     * Merge with current Settings
-     */
-    const user = _.merge({}, guestUser, {
-      uid: authUser.uid,
-      from: 'firebase',
-      role: ['admin'],
-      data: {
-        displayName: authUser.displayName,
-        email: authUser.email,
-      },
-    })
-    currentUser.updateProfile(user.data)
+  /**
+   * Merge with current Settings
+   */
+  const user = _.merge({}, guestUser, {
+    uid: authUser.uid,
+    from: 'firebase',
+    role: ['admin'],
+    data: {
+      displayName: authUser.displayName,
+      email: authUser.email,
+    },
+  })
+  currentUser.updateProfile(user.data)
 
-    updateUserData(user, dispatch)
-    return dispatch(setUserData(user))
-  }
+  updateUserData(user, dispatch)
+  return dispatch(setUserData(user))
 }
 
 /**
  * Set User Data
  */
-export const setUserData = (user) => {
-  return (dispatch) => {
-    /*
-			You can redirect the logged-in user to a specific route depending on his role
-		*/
-
-    // history.location.state = {
-    //	redirectUrl: user.redirectUrl // for example 'apps/academy'
-    // }
-
-    /* Set User Settings */
-    // dispatch(FuseActions.setDefaultSettings(user.data.settings));
-
-    /*
-			Set User Data
-		*/
-    dispatch({
-      type: SET_USER_DATA,
-      payload: user,
-    })
-  }
+export const setUserData = (user) => (dispatch) => {
+  dispatch({
+    type: SET_USER_DATA,
+    payload: user,
+  })
 }
 
-export const updateUserInfo = (data) => {
-  return (dispatch, getState) => {
-    const oldUser = getState().auth.user
-    const user = { ...oldUser, ...data }
+export const updateUserInfo = (data) => (dispatch, getState) => {
+  const oldUser = getState().auth.user
+  const user = { ...oldUser, ...data }
 
-    updateUserData(user, dispatch)
+  updateUserData(user, dispatch)
 
-    return dispatch(setUserData(user))
-  }
+  return dispatch(setUserData(user))
 }
 
 /**
  * Update User Settings
  */
-export const updateUserSettings = (settings) => {
-  return (dispatch, getState) => {
-    const oldUser = getState().auth.user
-    const user = _.merge({}, oldUser, { data: { settings } })
+export const updateUserSettings = (settings) => (dispatch, getState) => {
+  const oldUser = getState().auth.user
+  const user = _.merge({}, oldUser, { data: { settings } })
 
-    updateUserData(user, dispatch)
+  updateUserData(user, dispatch)
 
-    return dispatch(setUserData(user))
-  }
+  return dispatch(setUserData(user))
 }
 
 /**
  * Update User Shortcuts
  */
-export const updateUserShortcuts = (shortcuts) => {
-  return (dispatch, getState) => {
-    const { user } = getState().auth
-    const newUser = {
-      ...user,
-      data: {
-        ...user.data,
-        shortcuts,
-      },
-    }
-
-    updateUserData(newUser, dispatch)
-
-    return dispatch(setUserData(newUser))
+export const updateUserShortcuts = (shortcuts) => (dispatch, getState) => {
+  const { user } = getState().auth
+  const newUser = {
+    ...user,
+    data: {
+      ...user.data,
+      shortcuts,
+    },
   }
+
+  updateUserData(newUser, dispatch)
+
+  return dispatch(setUserData(newUser))
 }
 
 /**
  * Remove User Data
  */
-export const removeUserData = () => {
-  return {
-    type: REMOVE_USER_DATA,
-  }
-}
+export const removeUserData = () => ({
+  type: REMOVE_USER_DATA,
+})
 
 /**
  * Logout
  */
-export const logoutUser = () => {
-  return (dispatch, getState) => {
-    const { user } = getState().auth
+export const logoutUser = () => (dispatch, getState) => {
+  const { user } = getState().auth
 
-    if (!user.role || user.role.length === 0) {
-      // is guest
-      return null
-    }
-
-    history.push({
-      pathname: ROUTES.login,
-    })
-
-    if (user.from === 'firebase') firebaseService.signOut()
-
-    dispatch(FuseActions.setInitialSettings())
-
-    return dispatch({
-      type: USER_LOGGED_OUT,
-    })
+  if (!user.role || user.role.length === 0) {
+    // is guest
+    return null
   }
+
+  history.push({
+    pathname: ROUTES.login,
+  })
+
+  if (user.from === 'firebase') firebaseService.signOut()
+
+  dispatch(FuseActions.setInitialSettings())
+
+  return dispatch({
+    type: USER_LOGGED_OUT,
+  })
 }
 
 /**

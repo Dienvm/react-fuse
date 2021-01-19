@@ -16,12 +16,14 @@ const login = (state = initialState, action) => {
         success: true,
       }
     }
+
     case Actions.RESET_PASSWORD_ERROR: {
       return {
         success: false,
         error: action.payload,
       }
     }
+
     default: {
       return state
     }

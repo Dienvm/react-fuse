@@ -7,8 +7,7 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 
 export function registerWithFirebase(model) {
   if (!firebaseService.auth) {
-    console.warn("Firebase Service didn't initialize, check your configuration")
-
+    // Firebase Service didn't initialize, check your configuration
     return () => false
   }
 
