@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { ROUTES } from '../../../../constants/routes'
 
 const Error404Page = () => {
   return (
@@ -42,7 +43,7 @@ const Error404Page = () => {
           />
         </Paper>
 
-        <Link className="font-medium" to="/dashboards">
+        <Link className="font-medium" to={ROUTES.dashboard}>
           Go back to dashboard
         </Link>
       </div>

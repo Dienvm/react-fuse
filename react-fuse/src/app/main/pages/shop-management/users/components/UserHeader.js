@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 import * as userActions from 'app/store/actions'
+import { ROUTES } from 'app/constants'
 
 const UserHeader = () => {
   const dispatch = useDispatch()
@@ -57,7 +58,7 @@ const UserHeader = () => {
       <FuseAnimate animation="transition.slideRightIn" delay={300}>
         <Button
           component={Link}
-          to="/profile/new"
+          to={ROUTES.user}
           className="whitespace-no-wrap normal-case"
           variant="contained"
           color="secondary"

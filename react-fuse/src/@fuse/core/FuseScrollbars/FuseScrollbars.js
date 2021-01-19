@@ -46,7 +46,7 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
       }
     })
     // eslint-disable-next-line
-	}, [ref]);
+  }, [ref])
 
   const unHookUpEvents = useCallback(() => {
     handlerByEvent.current.forEach((value, key) => {
@@ -58,8 +58,6 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
   }, [ref])
 
   const destroyPs = useCallback(() => {
-    // console.info("destroy::ps");
-
     unHookUpEvents()
 
     if (!ps.current) {
@@ -70,8 +68,6 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
   }, [unHookUpEvents])
 
   const createPs = useCallback(() => {
-    // console.info("create::ps");
-
     if (isMobile || !ref || ps.current) {
       return
     }
@@ -129,7 +125,6 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
     [destroyPs]
   )
 
-  // console.info('render::ps');
   return (
     <div
       id={props.id}

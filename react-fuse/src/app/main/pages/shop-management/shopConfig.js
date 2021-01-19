@@ -15,7 +15,7 @@ const ShopConfig = {
       component: lazy(() => import('./order/Order')),
     },
     {
-      path: ROUTES.user,
+      path: ROUTES.users,
       component: lazy(() => import('./users/Users')),
     },
     {

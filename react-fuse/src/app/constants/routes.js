@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
 export const ROUTES = {
+  main: '/',
   login: '/login',
+  logout: '/logout',
   register: '/register',
   dashboard: '/dashboard',
   forgotPassword: '/forgot-password',
@@ -12,5 +14,6 @@ export const ROUTES = {
   product: '/product/:productId',
   products: '/products',
   profile: '/profile/:userId',
-  user: '/users',
+  users: '/users',
+  user: '/profile/new',
 }

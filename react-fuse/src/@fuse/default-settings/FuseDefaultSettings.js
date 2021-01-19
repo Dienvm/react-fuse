@@ -28,12 +28,6 @@ export function getParsedQuerySettings() {
     return JSON.parse(parsedQueryString.defaultSettings)
   }
   return {}
-
-  // Generating route params from settings
-  /* const settings = qs.stringify({
-        defaultSettings: JSON.stringify(defaultSettings, {strictNullHandling: true})
-    });
-    console.info(settings); */
 }
 
 /**

@@ -86,8 +86,6 @@ function Layout1(props) {
   const classes = useStyles(props)
   const { routes } = appContext
 
-  // console.warn('FuseLayout:: rendered');
-
   switch (config.scroll) {
     case 'body': {
       return (

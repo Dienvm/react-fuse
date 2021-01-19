@@ -21,7 +21,6 @@ export const submitLoginWithFireBase = ({ username, password }) => {
         })
       })
       .catch((error) => {
-        console.info('error')
         const usernameErrorCodes = [
           'auth/email-already-in-use',
           'auth/invalid-email',

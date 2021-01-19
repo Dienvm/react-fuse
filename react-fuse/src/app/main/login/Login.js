@@ -156,7 +156,7 @@ const LoginPage = () => {
                     />
                   </FormControl>
 
-                  <Link className="font-medium" to="/forgot-password">
+                  <Link className="font-medium" to={ROUTES.forgotPassword}>
                     Forgot Password?
                   </Link>
                 </div>

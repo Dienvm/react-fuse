@@ -27,7 +27,7 @@ const ProfilePage = () => {
   }, [dispatch, userId])
 
   useEffect(() => {
-    if (Actions.SAVE_USER === userType) history.push(ROUTES.user)
+    if (Actions.SAVE_USER === userType) history.push(ROUTES.users)
   }, [userType, history])
 
   const currentUser = useSelector(({ user }) => user.user)

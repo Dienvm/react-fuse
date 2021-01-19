@@ -72,7 +72,6 @@ class FuseAuthorization extends Component {
   }
 
   render() {
-    // console.info('Fuse Authorization rendered', accessGranted);
     return this.state.accessGranted ? <>{this.props.children}</> : null
   }
 }

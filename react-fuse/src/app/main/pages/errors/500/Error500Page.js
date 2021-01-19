@@ -1,5 +1,6 @@
 import FuseAnimate from '@fuse/core/FuseAnimate'
 import Typography from '@material-ui/core/Typography'
+import { ROUTES } from 'app/constants'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -34,7 +35,7 @@ const Error500Page = () => {
           </Typography>
         </FuseAnimate>
 
-        <Link className="font-medium" to="/dashboards">
+        <Link className="font-medium" to={ROUTES.dashboard}>
           Report this problem
         </Link>
       </div>

@@ -13,7 +13,6 @@ function FuseTheme(props) {
     document.body.dir = direction
   }, [direction])
 
-  // console.warn('FuseTheme:: rendered',mainTheme);
   return <ThemeProvider theme={mainTheme}>{props.children}</ThemeProvider>
 }
 

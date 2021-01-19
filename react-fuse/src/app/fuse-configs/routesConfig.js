@@ -20,7 +20,7 @@ const routeConfigs = [
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs),
   {
-    path: '/',
+    path: ROUTES.main,
     exact: true,
     component: () => <Redirect to={ROUTES.dashboard} />,
   },

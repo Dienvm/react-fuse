@@ -141,7 +141,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const FusePageSimple = React.forwardRef((props, ref) => {
-  // console.info("render::FusePageSimple");
   const leftSidebarRef = useRef(null)
   const rightSidebarRef = useRef(null)
   const rootRef = useRef(null)
