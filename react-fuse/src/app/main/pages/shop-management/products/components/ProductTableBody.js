@@ -17,9 +17,12 @@ const ProductTableBody = ({
   data,
   dataOrdered,
 }) => {
-  const showProductDetail = useCallback((id) => {
-    history.push(`/products/${id}`)
-  }, [])
+  const showProductDetail = useCallback(
+    (id) => {
+      history.push(`/products/${id}`)
+    },
+    [history]
+  )
 
   const handleCheck = useCallback(
     (id) => {

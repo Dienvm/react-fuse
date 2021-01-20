@@ -1,16 +1,7 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { TABLE_HEAD } from 'app/constants'
-import {
-  Box,
-  Typography,
-  Icon,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-} from '@material-ui/core'
+import { Box, Typography, Icon, Grid } from '@material-ui/core'
 
 const ProductsTable = ({ order }) => (
   <Box className="pb-48">
@@ -22,48 +13,49 @@ const ProductsTable = ({ order }) => (
     </Box>
 
     <Box className="table-responsive">
-      <Table className="simple">
-        <TableHead>
-          <TableRow>
-            {TABLE_HEAD.ORDER_PRODUCTS.map((title, index) => (
-              <TableCell key={index.toString()}>{title}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {order.products.map((product) => (
-            <TableRow key={product.id}>
-              <TableCell className="w-64">{product.id}</TableCell>
-              <TableCell className="w-180">
-                <img
-                  className="product-image"
-                  src={product.image}
-                  alt="product"
-                />
-              </TableCell>
-              <TableCell>
-                <Typography
-                  component={Link}
-                  to={`/product/${product.id}`}
-                  className="truncate"
-                  style={{
-                    color: 'inherit',
-                    textDecoration: 'underline',
-                  }}
-                >
-                  {product.name}
-                </Typography>
-              </TableCell>
-              <TableCell className="w-64 text-right">
-                <span className="truncate">${product.price}</span>
-              </TableCell>
-              <TableCell className="w-64 text-right">
-                <span className="truncate">{product.quantity}</span>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <Grid container spacing={3}>
+        {TABLE_HEAD.ORDER_PRODUCTS.map((title, index) => (
+          <Grid item xs={2} key={index.toString()}>
+            <Box>{title}</Box>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Grid container spacing={3}>
+        {order.products.map((product) => (
+          <React.Fragment key={product.id}>
+            <Grid item xs={2}>
+              <Typography>{product.id}</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <img
+                className="product-image"
+                src={product.image}
+                alt="product"
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                component={Link}
+                to={`/product/${product.id}`}
+                className="truncate"
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'underline',
+                }}
+              >
+                {product.name}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <span className="truncate">${product.price}</span>
+            </Grid>
+            <Grid item xs={2}>
+              <span className="truncate">{product.quantity}</span>
+            </Grid>
+          </React.Fragment>
+        ))}
+      </Grid>
     </Box>
   </Box>
 )

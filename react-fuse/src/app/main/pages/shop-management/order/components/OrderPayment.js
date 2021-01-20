@@ -1,14 +1,5 @@
 import React, { memo } from 'react'
-import {
-  Box,
-  Icon,
-  Typography,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-} from '@material-ui/core'
+import { Box, Icon, Typography, Grid } from '@material-ui/core'
 import { TABLE_HEAD } from 'app/constants'
 
 const OrderPayment = ({ orderPayment }) => {
@@ -22,33 +13,28 @@ const OrderPayment = ({ orderPayment }) => {
         </Typography>
       </Box>
 
-      <Box className="table-responsive">
-        <Table className="simple">
-          <TableHead>
-            <TableRow>
-              {TABLE_HEAD.ORDER_PAYMENT.map((title, index) => (
-                <TableCell key={index.toString()}>{title}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>
-                <span className="truncate">{transactionId}</span>
-              </TableCell>
-              <TableCell>
-                <span className="truncate">{method}</span>
-              </TableCell>
-              <TableCell>
-                <span className="truncate">{amount}</span>
-              </TableCell>
-              <TableCell>
-                <span className="truncate">{date}</span>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </Box>
+      <Grid container spacing={3}>
+        {TABLE_HEAD.ORDER_PAYMENT.map((title, index) => (
+          <Grid item xs={3} key={index.toString()}>
+            <Box>{title}</Box>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Grid container spacing={3}>
+        <Grid item xs={3}>
+          <span className="truncate">{transactionId}</span>
+        </Grid>
+        <Grid item xs={3}>
+          <span className="truncate">{method}</span>
+        </Grid>
+        <Grid item xs={3}>
+          <span className="truncate">{amount}</span>
+        </Grid>
+        <Grid item xs={3}>
+          <span className="truncate">{date}</span>
+        </Grid>
+      </Grid>
     </Box>
   )
 }

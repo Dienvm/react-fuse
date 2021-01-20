@@ -1,14 +1,5 @@
 import React, { memo } from 'react'
-import {
-  Icon,
-  Typography,
-  Box,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-} from '@material-ui/core'
+import { Icon, Typography, Box, Grid } from '@material-ui/core'
 import { TABLE_HEAD } from 'app/constants'
 
 const OrderStatus = ({ orderStatus }) => {
@@ -22,29 +13,22 @@ const OrderStatus = ({ orderStatus }) => {
         </Typography>
       </Box>
 
-      <Box className="table-responsive">
-        <Table className="simple">
-          <TableHead>
-            <TableRow>
-              {TABLE_HEAD.ORDER_STATUS.map((title, index) => (
-                <TableCell key={index.toString()}>{title}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>
-                <Box
-                  className={`inline text-12 p-4 rounded truncate', ${color}`}
-                >
-                  {name}
-                </Box>
-              </TableCell>
-              <TableCell>{date}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </Box>
+      <Grid container spacing={3}>
+        {TABLE_HEAD.ORDER_STATUS.map((title, index) => (
+          <Grid item xs={6} key={index.toString()}>
+            <Box>{title}</Box>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <Box className={`inline p-4 rounded truncate', ${color}`}>{name}</Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box>{date}</Box>
+        </Grid>
+      </Grid>
     </Box>
   )
 }
