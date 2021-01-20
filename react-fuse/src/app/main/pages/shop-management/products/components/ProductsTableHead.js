@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Tooltip from '@material-ui/core/Tooltip'
-import { useStyles } from 'app/helpers'
+import { useStyles } from 'app/themes'
 import isEqual from 'react-fast-compare'
 
 const rows = [

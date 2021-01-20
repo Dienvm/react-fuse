@@ -1,6 +1,5 @@
 export * from './stubDb'
 export * from './tableHead'
-export * from './colors'
 export * from './routes'
 export * from './regex'
 export * from './errorMessage'

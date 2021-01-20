@@ -11,7 +11,7 @@ import withReducer from 'app/store/withReducer'
 
 import firebaseService from 'app/services/firebaseService'
 import { ROUTES } from 'app/constants'
-import { useStyles } from 'app/helpers'
+import { useStyles } from 'app/themes'
 import TableForm from './components/TableForm'
 import Header from './components/Header'
 

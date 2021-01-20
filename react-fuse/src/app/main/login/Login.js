@@ -22,7 +22,7 @@ import {
   Icon,
 } from '@material-ui/core'
 import { ERROR_MESSAGES, ROUTES } from 'app/constants'
-import { useStyles } from 'app/helpers'
+import { useStyles } from 'app/themes'
 
 const LoginPage = () => {
   const classes = useStyles()

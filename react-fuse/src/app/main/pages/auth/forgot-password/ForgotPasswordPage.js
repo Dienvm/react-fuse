@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux'
 import * as authActions from 'app/auth/store/actions'
 import history from '@history'
 import { RE_EMAIL, ROUTES } from 'app/constants'
-import { useStyles } from 'app/helpers'
+import { useStyles } from 'app/themes'
 
 const ForgotPasswordPage = () => {
   const classes = useStyles()

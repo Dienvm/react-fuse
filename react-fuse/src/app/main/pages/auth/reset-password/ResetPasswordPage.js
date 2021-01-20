@@ -7,8 +7,8 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core'
-import { RE_EMAIL } from 'app/constants'
-import { useStyles } from 'app/helpers'
+import { isFormRestPasswordValid } from 'app/helpers'
+import { useStyles } from 'app/themes'
 import clsx from 'clsx'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -22,16 +22,6 @@ const ResetPasswordPage = () => {
     password: '',
     passwordConfirm: '',
   })
-
-  const isFormValid = () => {
-    return (
-      form.email.length > 0 &&
-      RE_EMAIL.test(form.email) &&
-      form.password.length > 0 &&
-      form.password.length > 3 &&
-      form.password === form.passwordConfirm
-    )
-  }
 
   const handleSubmit = (ev) => {
     ev.preventDefault()
@@ -128,7 +118,7 @@ const ResetPasswordPage = () => {
                 color="primary"
                 className="w-224 mx-auto mt-16"
                 aria-label="Reset"
-                disabled={!isFormValid()}
+                disabled={!isFormRestPasswordValid()}
                 type="submit"
               >
                 RESET MY PASSWORD

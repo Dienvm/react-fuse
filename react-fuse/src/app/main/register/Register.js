@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as authActions from 'app/auth/store/actions'
 import { RE_EMAIL, ROUTES } from 'app/constants'
-import { useStyles } from 'app/helpers'
+import { useStyles } from 'app/themes'
 
 const RegisterPage = () => {
   const classes = useStyles()

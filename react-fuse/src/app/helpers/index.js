@@ -1,3 +1,3 @@
 export * from './convertObjectToArray'
 export * from './handleCheck'
-export * from './useStyles'
+export * from './validations'

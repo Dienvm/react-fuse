@@ -16,7 +16,7 @@ import {
   TableSortLabel,
   Tooltip,
 } from '@material-ui/core'
-import { useStyles } from 'app/helpers/useStyles'
+import { useStyles } from 'app/themes'
 
 const rows = [
   {
