@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { TABLE_HEAD } from 'app/constants'
 import { Box, Typography, Icon, Grid } from '@material-ui/core'
+import isEqual from 'react-fast-compare'
 
 const ProductsTable = ({ order }) => (
   <Box className="pb-48">
@@ -60,4 +61,4 @@ const ProductsTable = ({ order }) => (
   </Box>
 )
 
-export default memo(ProductsTable)
+export default memo(ProductsTable, isEqual)

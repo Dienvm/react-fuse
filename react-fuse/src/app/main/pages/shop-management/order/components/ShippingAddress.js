@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { Avatar, Box, Typography, Icon, Grid } from '@material-ui/core'
 import { TABLE_HEAD } from 'app/constants'
+import isEqual from 'react-fast-compare'
 
 const ShippingAddress = ({ customer }) => {
   const { avatar, firstName, lastName, email, phone, company } = customer
@@ -47,4 +48,4 @@ const ShippingAddress = ({ customer }) => {
   )
 }
 
-export default memo(ShippingAddress)
+export default memo(ShippingAddress, isEqual)

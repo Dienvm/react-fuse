@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { Icon, Typography, Box, Grid } from '@material-ui/core'
 import { TABLE_HEAD } from 'app/constants'
+import isEqual from 'react-fast-compare'
 
 const OrderStatus = ({ orderStatus }) => {
   const { color, name, date } = orderStatus
@@ -33,4 +34,4 @@ const OrderStatus = ({ orderStatus }) => {
   )
 }
 
-export default memo(OrderStatus)
+export default memo(OrderStatus, isEqual)

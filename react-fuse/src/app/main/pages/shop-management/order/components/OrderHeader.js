@@ -3,6 +3,7 @@ import { Icon, Typography } from '@material-ui/core'
 import { ROUTES } from 'app/constants'
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
+import isEqual from 'react-fast-compare'
 
 const OrderHeader = ({ order }) => {
   const { customer, orderId } = order
@@ -39,4 +40,4 @@ const OrderHeader = ({ order }) => {
   )
 }
 
-export default memo(OrderHeader)
+export default memo(OrderHeader, isEqual)

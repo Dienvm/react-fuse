@@ -1,5 +1,7 @@
 import { Box } from '@material-ui/core'
 import React, { memo } from 'react'
+import isEqual from 'react-fast-compare'
+
 import OrderStatus from './OrderStatus'
 import ProductsTable from './ProductsTable'
 import ShippingAddress from './ShippingAddress'
@@ -24,4 +26,4 @@ const OrderContent = ({ order }) => {
   )
 }
 
-export default memo(OrderContent)
+export default memo(OrderContent, isEqual)

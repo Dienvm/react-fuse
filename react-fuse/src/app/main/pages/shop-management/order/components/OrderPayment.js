@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { Box, Icon, Typography, Grid } from '@material-ui/core'
 import { TABLE_HEAD } from 'app/constants'
+import isEqual from 'react-fast-compare'
 
 const OrderPayment = ({ orderPayment }) => {
   const { transactionId, method, amount, date } = orderPayment
@@ -39,4 +40,4 @@ const OrderPayment = ({ orderPayment }) => {
   )
 }
 
-export default memo(OrderPayment)
+export default memo(OrderPayment, isEqual)

@@ -1,8 +1,8 @@
 import FuseAnimate from '@fuse/core/FuseAnimate'
 import { Icon, Input, Paper, Typography, Box } from '@material-ui/core'
-import React, { useCallback } from 'react'
+import React, { memo, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import isEqual from 'react-fast-compare'
 import * as orderActions from 'app/store/actions'
 
 const OrdersHeader = () => {
@@ -56,4 +56,4 @@ const OrdersHeader = () => {
   )
 }
 
-export default OrdersHeader
+export default memo(OrdersHeader, isEqual)
