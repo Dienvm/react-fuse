@@ -11,6 +11,7 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+        type: action.type,
       }
     }
 
@@ -25,6 +26,7 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         searchText: action.searchText,
+        type: action.type,
       }
     }
 

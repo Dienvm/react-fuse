@@ -10,6 +10,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+        type: action.type,
       }
     }
 

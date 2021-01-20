@@ -15,7 +15,7 @@ const Header = ({ form, productData, productId }) => {
   const dispatch = useDispatch()
 
   const canBeSubmitted = () => {
-    return form && form.name.length > 0 && _.isEqual(productData.data, form)
+    return form.name.length > 0 && !_.isEqual(productData.data, form)
   }
 
   const handleSaveProduct = () => {

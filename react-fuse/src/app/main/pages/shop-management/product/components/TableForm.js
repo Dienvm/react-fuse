@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { memo } from 'react'
+import isEqual from 'react-fast-compare'
 
 import FuseChipSelect from '@fuse/core/FuseChipSelect'
 import Icon from '@material-ui/core/Icon'
@@ -291,4 +292,4 @@ const TableForm = ({
   </div>
 )
 
-export default TableForm
+export default memo(TableForm, isEqual)

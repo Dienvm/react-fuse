@@ -70,8 +70,8 @@ exports[`Products should render correctly 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary Mui-disabled Mui-disabled"
-    disabled={true}
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
+    disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
     onDragLeave={[Function]}
@@ -89,7 +89,7 @@ exports[`Products should render correctly 1`] = `
         "visibility": "hidden",
       }
     }
-    tabIndex={-1}
+    tabIndex={0}
     type="button"
   >
     <span
@@ -110,8 +110,8 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
-        data-shrink={true}
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+        data-shrink={false}
         htmlFor="name"
         id="name-label"
       >
@@ -147,7 +147,7 @@ exports[`Products should render correctly 2`] = `
           className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+            className="PrivateNotchedOutline-legendLabelled-3"
           >
             <span>
               Name
@@ -161,8 +161,8 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-        data-shrink={true}
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
         htmlFor="description"
         id="description-label"
       >
@@ -192,7 +192,7 @@ exports[`Products should render correctly 2`] = `
           className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+            className="PrivateNotchedOutline-legendLabelled-3"
           >
             <span>
               Description
@@ -604,7 +604,7 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
         data-shrink={true}
         htmlFor="priceTaxExcl"
         id="priceTaxExcl-label"
@@ -657,7 +657,7 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
         data-shrink={true}
         htmlFor="priceTaxIncl"
         id="priceTaxIncl-label"
@@ -710,7 +710,7 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
         data-shrink={true}
         htmlFor="taxRate"
         id="taxRate-label"
@@ -763,7 +763,7 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
         data-shrink={true}
         htmlFor="comparedPrice"
         id="comparedPrice-label"
@@ -813,7 +813,7 @@ exports[`Products should render correctly 2`] = `
         </fieldset>
       </div>
       <p
-        className="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled"
+        className="MuiFormHelperText-root MuiFormHelperText-contained"
         id="comparedPrice-helper-text"
       >
         Add a compare price to show next to the real price
@@ -825,8 +825,8 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
-        data-shrink={true}
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+        data-shrink={false}
         htmlFor="sku"
         id="sku-label"
       >
@@ -862,7 +862,7 @@ exports[`Products should render correctly 2`] = `
           className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+            className="PrivateNotchedOutline-legendLabelled-3"
           >
             <span>
               SKU
@@ -876,8 +876,8 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-        data-shrink={true}
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
         htmlFor="quantity"
         id="quantity-label"
       >
@@ -907,7 +907,7 @@ exports[`Products should render correctly 2`] = `
           className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+            className="PrivateNotchedOutline-legendLabelled-3"
           >
             <span>
               Quantity
@@ -925,8 +925,8 @@ exports[`Products should render correctly 2`] = `
         className="MuiFormControl-root MuiTextField-root mt-8 mb-16 mx-4 MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-          data-shrink={true}
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink={false}
           htmlFor="width"
           id="width-label"
         >
@@ -956,7 +956,7 @@ exports[`Products should render correctly 2`] = `
             className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
           >
             <legend
-              className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+              className="PrivateNotchedOutline-legendLabelled-3"
             >
               <span>
                 Width
@@ -969,8 +969,8 @@ exports[`Products should render correctly 2`] = `
         className="MuiFormControl-root MuiTextField-root mt-8 mb-16 mx-4 MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-          data-shrink={true}
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink={false}
           htmlFor="height"
           id="height-label"
         >
@@ -1000,7 +1000,7 @@ exports[`Products should render correctly 2`] = `
             className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
           >
             <legend
-              className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+              className="PrivateNotchedOutline-legendLabelled-3"
             >
               <span>
                 Height
@@ -1013,8 +1013,8 @@ exports[`Products should render correctly 2`] = `
         className="MuiFormControl-root MuiTextField-root mt-8 mb-16 mx-4 MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-          data-shrink={true}
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink={false}
           htmlFor="depth"
           id="depth-label"
         >
@@ -1044,7 +1044,7 @@ exports[`Products should render correctly 2`] = `
             className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
           >
             <legend
-              className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+              className="PrivateNotchedOutline-legendLabelled-3"
             >
               <span>
                 Depth
@@ -1058,8 +1058,8 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-        data-shrink={true}
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
         htmlFor="weight"
         id="weight-label"
       >
@@ -1089,7 +1089,7 @@ exports[`Products should render correctly 2`] = `
           className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+            className="PrivateNotchedOutline-legendLabelled-3"
           >
             <span>
               Weight
@@ -1102,7 +1102,7 @@ exports[`Products should render correctly 2`] = `
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
         data-shrink={true}
         htmlFor="extraShippingFee"
         id="extraShippingFee-label"

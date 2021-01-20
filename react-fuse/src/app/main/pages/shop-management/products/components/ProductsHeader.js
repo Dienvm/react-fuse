@@ -53,7 +53,7 @@ const ProductsHeader = () => {
       <FuseAnimate animation="transition.slideRightIn" delay={300}>
         <Button
           component={Link}
-          to="product/new"
+          to="products/new"
           className="whitespace-no-wrap normal-case"
           variant="contained"
           color="secondary"

@@ -70,8 +70,8 @@ exports[`Products should render correctly 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary Mui-disabled Mui-disabled"
-    disabled={true}
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
+    disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
     onDragLeave={[Function]}
@@ -89,7 +89,7 @@ exports[`Products should render correctly 1`] = `
         "visibility": "hidden",
       }
     }
-    tabIndex={-1}
+    tabIndex={0}
     type="button"
   >
     <span
