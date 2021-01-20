@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import clsx from 'clsx'
 
 import Checkbox from '@material-ui/core/Checkbox'
@@ -15,6 +15,7 @@ import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Tooltip from '@material-ui/core/Tooltip'
 import { useStyles } from 'app/helpers'
+import isEqual from 'react-fast-compare'
 
 const rows = [
   {
@@ -164,4 +165,4 @@ const ProductsTableHead = ({
   )
 }
 
-export default ProductsTableHead
+export default memo(ProductsTableHead, isEqual)
