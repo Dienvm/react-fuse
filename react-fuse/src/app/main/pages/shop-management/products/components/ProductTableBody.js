@@ -19,6 +19,7 @@ const ProductTableBody = ({
 }) => {
   const showProductDetail = useCallback((id) => {
     history.push(`/products/${id}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleCheck = useCallback(
@@ -27,6 +28,7 @@ const ProductTableBody = ({
 
       setSelected(newSelected)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [selected]
   )
 

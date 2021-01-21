@@ -25,6 +25,7 @@ const OrdersTable = (props) => {
 
   useEffect(() => {
     dispatch(ordersActions.getOrders())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

@@ -2,7 +2,6 @@ import React, { memo, useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import isEqual from 'react-fast-compare'
 
-import reducer from 'app/store/reducers'
 import * as ProductActions from 'app/store/actions'
 import FuseLoading from '@fuse/core/FuseLoading'
 import FusePageCarded from '@fuse/core/FusePageCarded'
@@ -34,7 +33,8 @@ const ProductPage = (props) => {
     }
 
     updateProductState()
-  }, [dispatch, productId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId])
 
   useEffect(() => {
     if (
@@ -43,7 +43,7 @@ const ProductPage = (props) => {
     ) {
       setForm(productData.data)
     }
-  }, [form, productData.data])
+  }, [form, productData.data, setForm])
 
   useEffect(() => {
     if (
@@ -54,20 +54,21 @@ const ProductPage = (props) => {
         pathname: ROUTES.products,
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productData])
 
   const handleChipChange = useCallback(
     (value, name) => {
       setForm({ ...form, [name]: value.map((item) => item.value) })
     },
-    [form]
+    [form, setForm]
   )
 
   const setFeaturedImage = useCallback(
     (id) => {
       setForm({ ...form, featuredImageId: id })
     },
-    [form]
+    [form, setForm]
   )
 
   const handleUploadChange = (e) => {

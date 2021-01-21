@@ -6,7 +6,7 @@
   },
   "parser": "babel-eslint",
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react", "react-hooks"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -42,6 +42,7 @@
     "react/forbid-prop-types": "off",
     "react/require-default-props": "off",
     "react/default-props-match-prop-types": "off",
-    "react/no-unused-prop-types": "off"
+    "react/no-unused-prop-types": "off",
+    "react-hooks/exhaustive-deps": 0
   }
 }

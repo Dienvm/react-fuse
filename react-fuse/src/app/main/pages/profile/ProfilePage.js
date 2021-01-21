@@ -11,7 +11,6 @@ import * as userActions from 'app/auth/store/actions'
 import * as Actions from 'app/store/actions'
 import { useParams } from 'react-router-dom'
 
-import reducer from 'app/auth/store/reducers'
 import { useHistory } from 'react-router'
 import { ROUTES } from 'app/constants'
 import { ERROR_MESSAGES } from 'app/constants/errorMessage'
@@ -27,10 +26,12 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(Actions.getUser(userId))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
 
   useEffect(() => {
     if (Actions.SAVE_USER === userType) history.push(ROUTES.users)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userType])
 
   const {

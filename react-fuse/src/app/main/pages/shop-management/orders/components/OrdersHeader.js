@@ -11,6 +11,7 @@ const OrdersHeader = () => {
 
   const handleSearchOrder = useCallback((event) => {
     dispatch(orderActions.setOrdersSearchText(event))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

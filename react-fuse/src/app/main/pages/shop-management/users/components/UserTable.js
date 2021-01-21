@@ -36,6 +36,7 @@ const UsersTable = (props) => {
 
   useEffect(() => {
     dispatch(UserActions.getUsers())
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
@@ -54,6 +55,7 @@ const UsersTable = (props) => {
   useEffect(() => {
     if (users.type === UserActions.REMOVE_USERS)
       dispatch(UserActions.getUsers())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [users])
 
   const handleRequestSort = (event, property) => {

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import isEqual from 'react-fast-compare'
 
 import * as Actions from 'app/store/actions'
-import reducer from 'app/store/reducers'
 
 import FusePageCarded from '@fuse/core/FusePageCarded'
 
@@ -17,6 +16,7 @@ const OrderPage = (props) => {
 
   useEffect(() => {
     dispatch(Actions.getOrder(orderId))
+    // eslint-disable-next-line react-hooks/exhaustive-deps,
   }, [orderId])
 
   return (

@@ -16,6 +16,7 @@ const ProductsContent = () => {
 
   useEffect(() => {
     dispatch(ProductActions.getProducts())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const ProductsContent = () => {
   useEffect(() => {
     if (products.type === ProductActions.REMOVE_PRODUCTS)
       dispatch(ProductActions.getProducts())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products])
 
   const handleChangePage = (event, value) => {

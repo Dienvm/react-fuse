@@ -6,6 +6,7 @@ import isEqual from 'react-fast-compare'
 const OrdersTableBody = ({ dataOrdered, selected, setSelected, history }) => {
   const showOrderDetail = useCallback((id) => {
     history.push(`/orders/${id}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleCheck = useCallback(
@@ -14,6 +15,7 @@ const OrdersTableBody = ({ dataOrdered, selected, setSelected, history }) => {
 
       setSelected(newSelected)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [selected]
   )
 
