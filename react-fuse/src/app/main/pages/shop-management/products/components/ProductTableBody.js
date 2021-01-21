@@ -126,4 +126,12 @@ const ProductTableBody = ({
   )
 }
 
-export default memo(ProductTableBody, isEqual)
+const areEqual = (prevProps, nextProps) => {
+  return (
+    isEqual(prevProps.dataOrdered, nextProps.dataOrdered) &&
+    isEqual(prevProps.data, nextProps.data) &&
+    isEqual(prevProps.selected, nextProps.selected)
+  )
+}
+
+export default memo(ProductTableBody, areEqual)

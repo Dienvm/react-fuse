@@ -4,7 +4,7 @@ import { TABLE_HEAD } from 'app/constants'
 import { Box, Typography, Icon, Grid } from '@material-ui/core'
 import isEqual from 'react-fast-compare'
 
-const ProductsTable = ({ order }) => (
+const ProductsTable = ({ products }) => (
   <Box className="pb-48">
     <Box className="pb-16 flex items-center">
       <Icon color="action">burst_mode</Icon>
@@ -23,7 +23,7 @@ const ProductsTable = ({ order }) => (
       </Grid>
 
       <Grid container spacing={3}>
-        {order.products.map((product) => (
+        {products.map((product) => (
           <React.Fragment key={product.id}>
             <Grid item xs={2}>
               <Typography>{product.id}</Typography>

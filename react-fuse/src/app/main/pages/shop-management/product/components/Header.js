@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import _ from 'lodash'
+import isEqual from 'react-fast-compare'
 
 import FuseAnimate from '@fuse/core/FuseAnimate'
 import Button from '@material-ui/core/Button'
@@ -8,8 +10,8 @@ import Icon from '@material-ui/core/Icon'
 import Typography from '@material-ui/core/Typography'
 import * as ProductActions from 'app/store/actions'
 
-import _ from 'lodash'
 import { ROUTES } from 'app/constants'
+import { removeProperties } from 'app/helpers'
 
 const Header = ({ form, productData, productId }) => {
   const dispatch = useDispatch()
@@ -88,4 +90,11 @@ const Header = ({ form, productData, productId }) => {
   )
 }
 
-export default Header
+const areEqual = (prevProps, nextProps) => {
+  const prevData = removeProperties(prevProps, 'productId')
+  const nextData = removeProperties(nextProps, 'productId')
+
+  return isEqual(prevData, nextData)
+}
+
+export default memo(Header, areEqual)

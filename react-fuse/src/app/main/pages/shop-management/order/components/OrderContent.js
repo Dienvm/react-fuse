@@ -8,20 +8,35 @@ import ShippingAddress from './ShippingAddress'
 import OrderPayment from './OrderPayment'
 
 const OrderContent = ({ order }) => {
-  const { customer, status, payment } = order
+  const { customer, status, payment, products } = order
+  const { avatar, firstName, lastName, email, phone, company } = customer
+  const { color, name, date } = status
+  const { transactionId, method, amount } = payment
   return (
     <Box className="p-16 sm:p-24 max-w-2xl w-full">
       {/* Order Details */}
       <Box>
-        <ShippingAddress customer={customer} />
+        <ShippingAddress
+          avatar={avatar}
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          phone={phone}
+          company={company}
+        />
 
-        <OrderStatus orderStatus={status} />
+        <OrderStatus color={color} name={name} date={date} />
 
-        <OrderPayment orderPayment={payment} />
+        <OrderPayment
+          transactionId={transactionId}
+          method={method}
+          amount={amount}
+          date={date}
+        />
       </Box>
 
       {/* Products */}
-      <ProductsTable order={order} />
+      <ProductsTable products={products} />
     </Box>
   )
 }

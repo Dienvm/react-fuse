@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import clsx from 'clsx'
+import isEqual from 'react-fast-compare'
 
 import {
   Checkbox,
@@ -166,4 +167,9 @@ const UsersTableHead = ({
   )
 }
 
-export default UsersTableHead
+const areEqual = (prevProps, nextProps) =>
+  isEqual(prevProps.numSelected, nextProps.numSelected) &&
+  isEqual(prevProps.order, nextProps.order) &&
+  isEqual(prevProps.rowCount, nextProps.rowCount)
+
+export default memo(UsersTableHead, areEqual)

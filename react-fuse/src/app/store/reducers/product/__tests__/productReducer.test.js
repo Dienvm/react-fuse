@@ -19,7 +19,7 @@ describe('Product reducer', () => {
         payload: PRODUCTS[0],
         type: ProductActions.GET_PRODUCT,
       })
-    ).toEqual({ data: PRODUCTS[0] })
+    ).toEqual({ data: PRODUCTS[0], type: ProductActions.GET_PRODUCT })
   })
 })
 

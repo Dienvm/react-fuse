@@ -75,7 +75,7 @@ exports[`Products should render correctly 1`] = `
   <a
     aria-disabled={false}
     className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
-    href="/product/new"
+    href="/products/new"
     onBlur={[Function]}
     onClick={[Function]}
     onDragLeave={[Function]}

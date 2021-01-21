@@ -292,4 +292,7 @@ const TableForm = ({
   </div>
 )
 
-export default memo(TableForm, isEqual)
+const areEqual = (prevProps, nextProps) =>
+  isEqual(prevProps.form, nextProps.form)
+
+export default memo(TableForm, areEqual)
