@@ -36,7 +36,7 @@ const UsersTable = (props) => {
 
   useEffect(() => {
     dispatch(UserActions.getUsers())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (searchText.length !== 0) {
@@ -54,7 +54,7 @@ const UsersTable = (props) => {
   useEffect(() => {
     if (users.type === UserActions.REMOVE_USERS)
       dispatch(UserActions.getUsers())
-  }, [users, dispatch])
+  }, [users])
 
   const handleRequestSort = (event, property) => {
     const id = property
@@ -88,7 +88,7 @@ const UsersTable = (props) => {
 
       setSelected(newSelected)
     },
-    [setSelected, selected]
+    [selected]
   )
 
   const handleChangePage = (event, value) => {
@@ -151,7 +151,7 @@ const UsersTable = (props) => {
                       <Checkbox
                         checked={isSelected}
                         onClick={(event) => event.stopPropagation()}
-                        onChange={(event) => handleCheck(event, userInfo.id)}
+                        onChange={() => handleCheck(userInfo.id)}
                       />
                     </TableCell>
 

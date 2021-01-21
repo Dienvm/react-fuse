@@ -4,12 +4,9 @@ import { handleSelectRow } from 'app/helpers'
 import isEqual from 'react-fast-compare'
 
 const OrdersTableBody = ({ dataOrdered, selected, setSelected, history }) => {
-  const showOrderDetail = useCallback(
-    (id) => {
-      history.push(`/orders/${id}`)
-    },
-    [history]
-  )
+  const showOrderDetail = useCallback((id) => {
+    history.push(`/orders/${id}`)
+  }, [])
 
   const handleCheck = useCallback(
     (id) => {
@@ -17,7 +14,7 @@ const OrdersTableBody = ({ dataOrdered, selected, setSelected, history }) => {
 
       setSelected(newSelected)
     },
-    [setSelected, selected]
+    [selected]
   )
 
   return (

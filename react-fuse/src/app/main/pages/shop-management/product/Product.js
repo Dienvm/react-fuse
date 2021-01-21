@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import * as ProductActions from 'app/store/actions'
-import reducer from 'app/store/reducers'
+import isEqual from 'react-fast-compare'
 
+import reducer from 'app/store/reducers'
+import * as ProductActions from 'app/store/actions'
 import FuseLoading from '@fuse/core/FuseLoading'
 import FusePageCarded from '@fuse/core/FusePageCarded'
 import { useForm } from '@fuse/hooks'
 import FuseUtils from '@fuse/utils'
-import withReducer from 'app/store/withReducer'
 
 import firebaseService from 'app/services/firebaseService'
 import { ROUTES } from 'app/constants'
@@ -43,7 +43,7 @@ const ProductPage = (props) => {
     ) {
       setForm(productData.data)
     }
-  }, [form, productData.data, setForm])
+  }, [form, productData.data])
 
   useEffect(() => {
     if (
@@ -54,20 +54,20 @@ const ProductPage = (props) => {
         pathname: ROUTES.products,
       })
     }
-  }, [productData, props.history])
+  }, [productData])
 
   const handleChipChange = useCallback(
     (value, name) => {
       setForm({ ...form, [name]: value.map((item) => item.value) })
     },
-    [setForm, form]
+    [form]
   )
 
   const setFeaturedImage = useCallback(
     (id) => {
       setForm({ ...form, featuredImageId: id })
     },
-    [setForm, form]
+    [form]
   )
 
   const handleUploadChange = (e) => {
@@ -149,4 +149,4 @@ const ProductPage = (props) => {
   )
 }
 
-export default withReducer('ProductForm', reducer)(ProductPage)
+export default memo(ProductPage, isEqual)

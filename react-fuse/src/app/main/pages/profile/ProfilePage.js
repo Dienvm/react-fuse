@@ -2,7 +2,7 @@ import FuseAnimate from '@fuse/core/FuseAnimate'
 import FusePageCarded from '@fuse/core/FusePageCarded'
 import Button from '@material-ui/core/Button'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, memo } from 'react'
 import Formsy from 'formsy-react'
 import { FileFormsy, TextFieldFormsy } from '@fuse/core/formsy'
 
@@ -12,10 +12,10 @@ import * as Actions from 'app/store/actions'
 import { useParams } from 'react-router-dom'
 
 import reducer from 'app/auth/store/reducers'
-import withReducer from 'app/store/withReducer'
 import { useHistory } from 'react-router'
 import { ROUTES } from 'app/constants'
 import { ERROR_MESSAGES } from 'app/constants/errorMessage'
+import isEqual from 'react-fast-compare'
 
 const ProfilePage = () => {
   const dispatch = useDispatch()
@@ -27,11 +27,11 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(Actions.getUser(userId))
-  }, [dispatch, userId])
+  }, [userId])
 
   useEffect(() => {
     if (Actions.SAVE_USER === userType) history.push(ROUTES.users)
-  }, [userType, history])
+  }, [userType])
 
   const {
     photoURL,
@@ -215,4 +215,4 @@ const ProfilePage = () => {
   )
 }
 
-export default withReducer('Profile', reducer)(ProfilePage)
+export default memo(ProfilePage, isEqual)

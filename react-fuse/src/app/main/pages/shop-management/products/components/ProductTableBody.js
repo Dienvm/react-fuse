@@ -17,12 +17,9 @@ const ProductTableBody = ({
   data,
   dataOrdered,
 }) => {
-  const showProductDetail = useCallback(
-    (id) => {
-      history.push(`/products/${id}`)
-    },
-    [history]
-  )
+  const showProductDetail = useCallback((id) => {
+    history.push(`/products/${id}`)
+  }, [])
 
   const handleCheck = useCallback(
     (id) => {
@@ -30,7 +27,7 @@ const ProductTableBody = ({
 
       setSelected(newSelected)
     },
-    [setSelected, selected]
+    [selected]
   )
 
   return (

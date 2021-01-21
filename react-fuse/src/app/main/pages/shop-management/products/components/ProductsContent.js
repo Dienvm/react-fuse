@@ -16,7 +16,7 @@ const ProductsContent = () => {
 
   useEffect(() => {
     dispatch(ProductActions.getProducts())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (searchText.length !== 0) {
@@ -34,7 +34,7 @@ const ProductsContent = () => {
   useEffect(() => {
     if (products.type === ProductActions.REMOVE_PRODUCTS)
       dispatch(ProductActions.getProducts())
-  }, [products, dispatch])
+  }, [products])
 
   const handleChangePage = (event, value) => {
     setPage(value)

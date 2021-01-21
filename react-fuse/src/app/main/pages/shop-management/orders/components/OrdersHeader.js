@@ -9,12 +9,9 @@ const OrdersHeader = () => {
   const dispatch = useDispatch()
   const searchText = useSelector(({ order }) => order.orders.searchText)
 
-  const handleSearchOrder = useCallback(
-    (event) => {
-      dispatch(orderActions.setOrdersSearchText(event))
-    },
-    [dispatch]
-  )
+  const handleSearchOrder = useCallback((event) => {
+    dispatch(orderActions.setOrdersSearchText(event))
+  }, [])
 
   return (
     <Box className="flex flex-1 w-full items-center justify-between">

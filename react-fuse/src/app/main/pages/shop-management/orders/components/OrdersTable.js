@@ -25,7 +25,7 @@ const OrdersTable = (props) => {
 
   useEffect(() => {
     dispatch(ordersActions.getOrders())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (searchText.length !== 0) {

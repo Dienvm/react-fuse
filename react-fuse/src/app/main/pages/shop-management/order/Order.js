@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import isEqual from 'react-fast-compare'
+
 import * as Actions from 'app/store/actions'
 import reducer from 'app/store/reducers'
 
 import FusePageCarded from '@fuse/core/FusePageCarded'
-import withReducer from 'app/store/withReducer'
 
 import OrderHeader from './components/OrderHeader'
 import OrderContent from './components/OrderContent'
@@ -16,7 +17,7 @@ const OrderPage = (props) => {
 
   useEffect(() => {
     dispatch(Actions.getOrder(orderId))
-  }, [dispatch, orderId])
+  }, [orderId])
 
   return (
     <FusePageCarded
@@ -31,4 +32,4 @@ const OrderPage = (props) => {
   )
 }
 
-export default withReducer('OrderDetail', reducer)(OrderPage)
+export default memo(OrderPage, isEqual)
