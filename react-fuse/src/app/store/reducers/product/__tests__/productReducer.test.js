@@ -21,9 +21,7 @@ describe('Product reducer', () => {
       })
     ).toEqual({ data: PRODUCTS[0], type: ProductActions.GET_PRODUCT })
   })
-})
 
-describe('Product reducer', () => {
   it('should update product info correctly', () => {
     const updateProduct = { ...PRODUCTS[0], name: 'test' }
     expect(

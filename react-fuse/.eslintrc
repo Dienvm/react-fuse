@@ -2,17 +2,41 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest/globals": true,
+    "cypress/globals": true
   },
   "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
-  "plugins": ["prettier", "react", "react-hooks"],
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "plugin:cypress/recommended"
+  ],
+  "plugins": ["prettier", "react", "react-hooks", "jest", "cypress"],
   "settings": {
+    "jest": {
+      "version": 26
+    },
     "import/resolver": {
       "node": {
         "paths": ["src"]
       }
     }
+  },
+  "globals": {
+    "renderer": false,
+    "__DEV__": false,
+    "jasmine": false,
+    "beforeAll": false,
+    "afterAll": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "test": false,
+    "expect": false,
+    "describe": false,
+    "jest": false,
+    "it": false
   },
   "rules": {
     "prettier/prettier": ["error"],
@@ -44,6 +68,16 @@
     "react/default-props-match-prop-types": "off",
     "react/no-unused-prop-types": "off",
     "react-hooks/exhaustive-deps": 0,
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    "cypress/no-async-tests": "error"
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import renderer from 'react-test-renderer'
 import { configure, shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
