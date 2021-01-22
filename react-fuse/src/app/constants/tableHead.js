@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const TABLE_HEAD = {
   CUSTOMER_ORDER: ['Name', 'Email', 'Phone', 'Company'],
   ORDER_STATUS: ['Status', 'Updated On'],

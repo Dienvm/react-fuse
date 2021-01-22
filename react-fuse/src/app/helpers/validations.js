@@ -1,6 +1,5 @@
 import { RE_EMAIL } from 'app/constants'
 
-// eslint-disable-next-line import/prefer-default-export
 export const isFormRestPasswordValid = ({ form }) => {
   return (
     form.email.length > 0 &&

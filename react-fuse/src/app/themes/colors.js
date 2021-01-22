@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const COLORS = {
   white: '#fff',
   alabaster: '#f7f7f7',

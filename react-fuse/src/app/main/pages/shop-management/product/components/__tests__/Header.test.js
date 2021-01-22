@@ -10,7 +10,6 @@ import Header from '../Header'
 const mockStore = configureStore()
 const store = mockStore({})
 
-// eslint-disable-next-line import/prefer-default-export
 export const formProps = {
   active: true,
   categories: ['test'],

@@ -5,12 +5,10 @@
  * @param {*} selected
  */
 export const handleSelectRow = (id, selected) => {
-  let newSelected = [...selected]
-  const isSelected = selected.some((select) => select === id)
+  const newSelected = [...selected]
 
-  isSelected
-    ? (newSelected = selected.filter((select) => select !== id))
-    : newSelected.push(id)
+  const index = newSelected.indexOf(id)
+  index > -1 ? newSelected.splice(index, 1) : newSelected.push(id)
 
   return newSelected
 }
