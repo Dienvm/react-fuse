@@ -13,7 +13,6 @@ const ProductsContent = () => {
   const [data, setData] = useState(products.data)
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  console.log('products.type', products.type)
 
   useEffect(() => {
     dispatch(ProductActions.getProducts())
@@ -35,7 +34,6 @@ const ProductsContent = () => {
 
   useEffect(() => {
     if (products.type === ProductActions.REMOVE_PRODUCTS) {
-      console.log('run here ===>')
       dispatch(ProductActions.getProducts())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

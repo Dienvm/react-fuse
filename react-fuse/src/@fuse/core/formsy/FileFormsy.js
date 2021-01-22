@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import FirebaseService from 'app/services/firebaseService'
 import { Box } from '@material-ui/core'
+import { COLLECTIONS } from 'app/helpers'
 import FuseLoading from '../FuseLoading'
 
 const FileFormsy = (props) => {
@@ -18,7 +19,7 @@ const FileFormsy = (props) => {
     }
 
     const uploadTask = FirebaseService.storage
-      .ref(`users/${file.name}`)
+      .ref(`${COLLECTIONS.USERS}/${file.name}`)
       .put(file)
     uploadTask.on(
       'state_changed',
@@ -30,7 +31,7 @@ const FileFormsy = (props) => {
       },
       () => {
         FirebaseService.storage
-          .ref('users')
+          .ref(COLLECTIONS.USERS)
           .child(file.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {

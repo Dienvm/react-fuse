@@ -1,3 +1,4 @@
+import { COLLECTIONS } from 'app/helpers'
 import firebaseService from 'app/services/firebaseService'
 
 export const GET_ORDERS = 'GET ORDERS'
@@ -5,7 +6,7 @@ export const REMOVE_ORDERS = 'REMOVE ORDERS'
 export const SET_ORDERS_SEARCH_TEXT = 'SET ORDERS SEARCH TEXT'
 
 export const getOrders = () => {
-  const request = firebaseService.firestore.collection('orders').get()
+  const request = firebaseService.firestore.collection(COLLECTIONS.ORDERS).get()
 
   return (dispatch) =>
     request.then((docs) => {
@@ -31,7 +32,9 @@ export const removeOrders = (orderIds) => {
   // eslint-disable-next-line no-plusplus
   for (let index = 0; index < orderIds.length; index++) {
     const element = orderIds[index]
-    const ref = firebaseService.firestore.collection('orders').doc(element)
+    const ref = firebaseService.firestore
+      .collection(COLLECTIONS.ORDERS)
+      .doc(element)
     batch.delete(ref)
   }
 

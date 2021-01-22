@@ -86,13 +86,8 @@ const OrdersTableBody = ({ dataOrdered, selected, setSelected, history }) => {
   )
 }
 
-const areEqual = (prevProps, nextProps) => {
-  console.log('test ==>', isEqual(prevProps, nextProps))
-  // console.log('test ==>', isEqual(prevProps.selected, nextProps.selected))
-  return (
-    isEqual(prevProps.dataOrdered, nextProps.dataOrdered) &&
-    isEqual(prevProps.selected, nextProps.selected)
-  )
-}
+const areEqual = (prevProps, nextProps) =>
+  isEqual(prevProps.dataOrdered, nextProps.dataOrdered) &&
+  isEqual(prevProps.selected, nextProps.selected)
 
 export default memo(OrdersTableBody, areEqual)

@@ -1,3 +1,4 @@
+import { COLLECTIONS } from 'app/helpers'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
@@ -32,7 +33,7 @@ class FirebaseService {
     }
     return new Promise((resolve, reject) => {
       this.db
-        .ref(`users/${userId}`)
+        .ref(`${COLLECTIONS.USERS}/${userId}`)
         .once('value')
         .then((snapshot) => {
           const user = snapshot.val()
@@ -45,7 +46,7 @@ class FirebaseService {
     if (!firebase.apps.length) {
       return false
     }
-    return this.db.ref(`users/${user.uid}`).set(user)
+    return this.db.ref(`${COLLECTIONS.USERS}/${user.uid}`).set(user)
   }
 
   onAuthStateChanged = (callback) => {

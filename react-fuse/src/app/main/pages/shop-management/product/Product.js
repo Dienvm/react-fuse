@@ -11,6 +11,7 @@ import FuseUtils from '@fuse/utils'
 import firebaseService from 'app/services/firebaseService'
 import { ROUTES } from 'app/constants'
 import { useStyles } from 'app/themes'
+import { COLLECTIONS } from 'app/helpers'
 import TableForm from './components/TableForm'
 import Header from './components/Header'
 
@@ -79,7 +80,7 @@ const ProductPage = (props) => {
     }
 
     const uploadTask = firebaseService.storage
-      .ref(`products/${file.name}`)
+      .ref(`${COLLECTIONS.PRODUCTS}/${file.name}`)
       .put(file)
     uploadTask.on(
       'state_changed',
@@ -91,7 +92,7 @@ const ProductPage = (props) => {
       },
       () => {
         firebaseService.storage
-          .ref('products')
+          .ref(COLLECTIONS.PRODUCTS)
           .child(file.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {

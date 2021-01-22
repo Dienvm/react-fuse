@@ -1,4 +1,4 @@
-import { convertObjectToArray } from 'app/helpers'
+import { COLLECTIONS, convertObjectToArray } from 'app/helpers'
 import firebaseService from 'app/services/firebaseService'
 import { showMessage } from 'app/store/actions/fuse'
 
@@ -9,7 +9,7 @@ export const REMOVE_USERS = 'REMOVE USERS'
 export const SAVE_USER = 'SAVE USER'
 
 export const getUsers = () => {
-  const request = firebaseService.db.ref('users').once('value')
+  const request = firebaseService.db.ref(COLLECTIONS.USERS).once('value')
 
   return (dispatch) =>
     request.then((snapshot) => {
@@ -23,7 +23,9 @@ export const getUsers = () => {
 }
 
 export const getUser = (userId) => {
-  const request = firebaseService.db.ref(`/users/${userId}`).once('value')
+  const request = firebaseService.db
+    .ref(`/${COLLECTIONS.USERS}/${userId}`)
+    .once('value')
 
   return (dispatch) =>
     request.then((snapshot) => {
@@ -59,12 +61,14 @@ export const setUsersSearchText = (value) => ({
 
 export const saveUser = (data) => {
   const userKey = firebaseService.db.ref().push().key
-  const request = firebaseService.db.ref(`users/${userKey}`).set({
-    ...data,
-    from: 'firebase',
-    role: ['guess'],
-    uid: userKey,
-  })
+  const request = firebaseService.db
+    .ref(`${COLLECTIONS.USERS}/${userKey}`)
+    .set({
+      ...data,
+      from: 'firebase',
+      role: ['guess'],
+      uid: userKey,
+    })
 
   return (dispatch) =>
     request.then(() => {

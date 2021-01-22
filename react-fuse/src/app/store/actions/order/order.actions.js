@@ -1,3 +1,4 @@
+import { COLLECTIONS } from 'app/helpers'
 import firebaseService from 'app/services/firebaseService'
 import { showMessage } from 'app/store/actions/fuse'
 
@@ -7,7 +8,7 @@ export const UPDATE_ORDER = 'UPDATE ORDER'
 
 export const getOrder = (orderId) => {
   const request = firebaseService.firestore
-    .collection('orders')
+    .collection(COLLECTIONS.ORDERS)
     .doc(orderId)
     .get()
 
@@ -21,7 +22,9 @@ export const getOrder = (orderId) => {
 }
 
 export const saveOrder = (data) => {
-  const request = firebaseService.firestore.collection('orders').add(data)
+  const request = firebaseService.firestore
+    .collection(COLLECTIONS.ORDERS)
+    .add(data)
 
   return (dispatch) =>
     request.then((response) => {
@@ -36,7 +39,7 @@ export const saveOrder = (data) => {
 
 export const updateOrder = (orderId, data) => {
   const docRef = firebaseService.firestore
-    .collection('orders')
+    .collection(COLLECTIONS.ORDERS)
     .doc(orderId)
     .update(data)
 
