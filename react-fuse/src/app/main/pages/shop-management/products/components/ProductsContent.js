@@ -1,5 +1,5 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import React, { useEffect, useState, memo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as ProductActions from 'app/store/actions/product'
 import { TablePagination } from '@material-ui/core'
@@ -13,6 +13,7 @@ const ProductsContent = () => {
   const [data, setData] = useState(products.data)
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  console.log('products.type', products.type)
 
   useEffect(() => {
     dispatch(ProductActions.getProducts())
@@ -33,10 +34,12 @@ const ProductsContent = () => {
   }, [products, searchText])
 
   useEffect(() => {
-    if (products.type === ProductActions.REMOVE_PRODUCTS)
+    if (products.type === ProductActions.REMOVE_PRODUCTS) {
+      console.log('run here ===>')
       dispatch(ProductActions.getProducts())
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products])
+  }, [products.type])
 
   const handleChangePage = (event, value) => {
     setPage(value)
@@ -71,4 +74,4 @@ const ProductsContent = () => {
   )
 }
 
-export default memo(ProductsContent)
+export default ProductsContent

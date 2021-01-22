@@ -25,10 +25,10 @@ const rows = [
     align: 'left',
     disablePadding: true,
     label: 'Avatar',
-    sort: true,
+    sort: false,
   },
   {
-    id: 'name',
+    id: 'displayName',
     align: 'left',
     disablePadding: false,
     label: 'User name',
@@ -53,13 +53,6 @@ const rows = [
     align: 'left',
     disablePadding: false,
     label: 'Phone number',
-    sort: true,
-  },
-  {
-    id: 'active',
-    align: 'left',
-    disablePadding: false,
-    label: 'Active',
     sort: true,
   },
 ]

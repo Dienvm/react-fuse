@@ -1,20 +1,13 @@
+import React, { useEffect, useState } from 'react'
 import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import _ from '@lodash'
-import {
-  Checkbox,
-  Icon,
-  Table,
-  TableBody,
-  TableCell,
-  TablePagination,
-  TableRow,
-} from '@material-ui/core'
-import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import _ from '@lodash'
+
 import * as UserActions from 'app/store/actions'
-import { handleSelectRow } from 'app/helpers'
+import { Table, TablePagination } from '@material-ui/core'
 import UserTableHead from './UserTableHead'
+import UserTableBody from './UserTableBody'
 
 const UsersTable = (props) => {
   const dispatch = useDispatch()
@@ -80,19 +73,6 @@ const UsersTable = (props) => {
     setSelected([])
   }
 
-  const showUserDetail = (item) => {
-    props.history.push(`/profile/${item.id}`)
-  }
-
-  const handleCheck = useCallback(
-    (id) => {
-      const newSelected = handleSelectRow(id, selected)
-
-      setSelected(newSelected)
-    },
-    [selected]
-  )
-
   const handleChangePage = (event, value) => {
     setPage(value)
   }
@@ -104,6 +84,23 @@ const UsersTable = (props) => {
   const handleRemoveUsers = () => {
     dispatch(UserActions.removeUsers(selected))
   }
+
+  const dataOrdered = _.orderBy(
+    data,
+    [
+      (o) => {
+        switch (order.id) {
+          case 'displayName': {
+            return o.displayName
+          }
+          default: {
+            return o[order.id]
+          }
+        }
+      },
+    ],
+    [order.direction]
+  ).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 
   return (
     <div className="w-full flex flex-col">
@@ -118,93 +115,12 @@ const UsersTable = (props) => {
             handleRemoveUsers={handleRemoveUsers}
           />
 
-          <TableBody>
-            {_.orderBy(
-              data,
-              [
-                (o) => {
-                  switch (order.id) {
-                    case 'displayName': {
-                      return o.displayName
-                    }
-                    default: {
-                      return o[order.id]
-                    }
-                  }
-                },
-              ],
-              [order.direction]
-            )
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((userInfo) => {
-                const isSelected = selected.indexOf(userInfo.id) !== -1
-                return (
-                  <TableRow
-                    className="h-64 cursor-pointer"
-                    hover
-                    role="checkbox"
-                    aria-checked={isSelected}
-                    tabIndex={-1}
-                    key={userInfo.id}
-                    selected={isSelected}
-                    onClick={(event) => showUserDetail(userInfo)}
-                  >
-                    <TableCell className="w-64 text-center" padding="none">
-                      <Checkbox
-                        checked={isSelected}
-                        onClick={(event) => event.stopPropagation()}
-                        onChange={() => handleCheck(userInfo.id)}
-                      />
-                    </TableCell>
-
-                    <TableCell
-                      className="w-52"
-                      component="th"
-                      scope="row"
-                      padding="none"
-                    >
-                      {userInfo.photoURL ? (
-                        <img
-                          className="w-full block rounded"
-                          src={userInfo.photoURL}
-                          alt={userInfo.displayName}
-                        />
-                      ) : (
-                        <img
-                          className="w-full block rounded circle"
-                          src="assets/images/avatars/profile.jpg"
-                          alt={userInfo.displayName}
-                        />
-                      )}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row">
-                      {userInfo.displayName}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row">
-                      {userInfo.role.join(',')}
-                    </TableCell>
-
-                    <TableCell className="truncate" component="th" scope="row">
-                      {userInfo.email}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row">
-                      {userInfo.phoneNumber}
-                    </TableCell>
-
-                    <TableCell component="th" scope="row">
-                      {userInfo.active ? (
-                        <Icon className="text-green text-20">check_circle</Icon>
-                      ) : (
-                        <Icon className="text-red text-20">remove_circle</Icon>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-          </TableBody>
+          <UserTableBody
+            dataOrdered={dataOrdered}
+            selected={selected}
+            setSelected={setSelected}
+            history={props.history}
+          />
         </Table>
       </FuseScrollbars>
 
