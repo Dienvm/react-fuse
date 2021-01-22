@@ -64,6 +64,7 @@
     "@yarnpkg/pnpify": "^2.0.0-rc.17",
     "babel-eslint": "10.0.3",
     "cross-env": "7.0.0",
+    "cypress": "^6.3.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",
