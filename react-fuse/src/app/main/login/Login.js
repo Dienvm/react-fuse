@@ -140,6 +140,7 @@ const LoginPage = () => {
                   }}
                   variant="outlined"
                   required
+                  data-cy="cy-login-password"
                 />
 
                 <div className="flex items-center justify-between">
@@ -168,6 +169,7 @@ const LoginPage = () => {
                   className="w-full mx-auto normal-case mt-16"
                   aria-label="LOG IN"
                   disabled={!isFormValid}
+                  data-cy="cy-login-submit"
                 >
                   Log in
                 </Button>

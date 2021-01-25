@@ -7,12 +7,12 @@ const DashboardPage = (props) => (
   <FusePageCarded
     header={
       <Box className="p-24">
-        <h4>TITLE</h4>
+        <h4 data-cy="dashboard-header">Dashboard page</h4>
       </Box>
     }
     content={
       <Box className="p-24">
-        <h4>Content</h4>
+        <h4>Dashboard Content</h4>
         <br />
         <DashboardComponent />
       </Box>
