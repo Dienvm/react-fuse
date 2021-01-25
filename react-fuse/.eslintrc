@@ -15,9 +15,6 @@
   ],
   "plugins": ["prettier", "react", "react-hooks", "jest", "cypress"],
   "settings": {
-    "jest": {
-      "version": 26
-    },
     "import/resolver": {
       "node": {
         "paths": ["src"]
@@ -79,5 +76,14 @@
     "cypress/assertion-before-screenshot": "warn",
     "cypress/no-force": "warn",
     "cypress/no-async-tests": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.e2e.js"],
+      "rules": {
+        "no-unused-expressions": 0,
+        "jest/valid-expect": 0
+      }
+    }
+  ]
 }
