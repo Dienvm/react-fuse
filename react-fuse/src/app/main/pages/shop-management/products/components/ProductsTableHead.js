@@ -139,6 +139,7 @@ const ProductsTableHead = ({
               align={row.align}
               padding={row.disablePadding ? 'none' : 'default'}
               sortDirection={order.id === row.id ? order.direction : false}
+              data-cy={`cy-head-${row.id}`}
             >
               {row.sort && (
                 <Tooltip

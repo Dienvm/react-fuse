@@ -62,6 +62,7 @@ const ProductsHeader = () => {
           className="whitespace-no-wrap normal-case"
           variant="contained"
           color="secondary"
+          data-cy="cy-add-product"
         >
           <span className="hidden sm:flex">Add New Product</span>
           <span className="flex sm:hidden">New</span>
