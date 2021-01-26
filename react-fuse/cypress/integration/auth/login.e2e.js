@@ -11,9 +11,10 @@ describe('E2E test: Login success case', () => {
       cy.login(validUser.email, validUser.password)
     })
 
-    cy.location().should((loc) => {
-      expect(loc.href).to.eq('http://localhost:3000/dashboard')
-    })
+    // cy.location().should((loc) => {
+    //   expect(loc.href).to.eq('http://localhost:3000/dashboard')
+    // })
+    cy.url().should('include', '/dashboard')
     cy.get('[data-cy=dashboard-header]').should('contain', 'Dashboard page')
   })
 

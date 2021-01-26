@@ -22,7 +22,11 @@ const ProductsHeader = () => {
           <Icon className="text-32">burst_mode</Icon>
         </FuseAnimate>
         <FuseAnimate animation="transition.slideLeftIn" delay={300}>
-          <Typography className="hidden sm:flex mx-0 sm:mx-12" variant="h6">
+          <Typography
+            className="hidden sm:flex mx-0 sm:mx-12"
+            variant="h6"
+            data-cy="cy-products-header"
+          >
             Products
           </Typography>
         </FuseAnimate>
@@ -44,6 +48,7 @@ const ProductsHeader = () => {
               value={searchText}
               inputProps={{
                 'aria-label': 'Search',
+                'data-cy': 'cy-search-product',
               }}
               onChange={handleSearchProduct}
             />

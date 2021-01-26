@@ -33,7 +33,7 @@ const ProductTableBody = ({
   )
 
   return (
-    <TableBody>
+    <TableBody data-cy="cy-product-table">
       {dataOrdered.map((productItem) => {
         const {
           id,
@@ -56,6 +56,7 @@ const ProductTableBody = ({
             key={id}
             selected={isSelected}
             onClick={() => showProductDetail(id)}
+            data-cy="cy-product-row"
           >
             <TableCell className="w-64 text-center" padding="none">
               <Checkbox
