@@ -3,5 +3,6 @@
   "env": {
     "login_url": "/login",
     "products_url": "/products"
-  }
+  },
+  "projectId": "ejnzrc"
 }

@@ -32,6 +32,9 @@ const TableForm = ({
         onChange={handleChange}
         variant="outlined"
         fullWidth
+        inputProps={{
+          'data-cy': 'cy-product-input-name',
+        }}
       />
 
       <TextField

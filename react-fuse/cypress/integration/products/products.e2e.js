@@ -35,11 +35,14 @@ describe('Search products:', () => {
   })
 })
 
-describe('Sort products', () => {
-  cy.get('[data-cy=cy-head-name]').click()
-})
-
-// describe('Create new product', () => {
-//   cy.get('[data-cy=cy-add-product]').click()
-//   cy.url().should('include', '/product')
+// describe('Sort products', () => {
+//   it('should sort product by ASC', () => {
+//     cy.get('[data-cy=cy-head-name]').then(($element) => {
+//       console.log('$element', $element.find('svg').should('be.visible'))
+//     })
+//     cy.get('[data-cy=cy-head-name]').trigger('mouseover')
+//     cy.get('[data-cy=cy-head-name]').click()
+//     cy.log('**sort by price**').wait(1000)
+//     cy.get('[aria-sort=descending]').should('be.visible')
+//   })
 // })

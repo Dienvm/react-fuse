@@ -40,7 +40,9 @@ const Header = ({ form, productData, productId }) => {
             color="inherit"
           >
             <Icon className="text-20">arrow_back</Icon>
-            <span className="mx-4">Products</span>
+            <span className="mx-4" data-cy="cy-product-back-button">
+              Products
+            </span>
           </Typography>
         </FuseAnimate>
 
@@ -65,7 +67,10 @@ const Header = ({ form, productData, productId }) => {
           </FuseAnimate>
           <div className="flex flex-col min-w-0 mx-8 sm:mc-16">
             <FuseAnimate animation="transition.slideLeftIn" delay={300}>
-              <Typography className="text-16 sm:text-20 truncate">
+              <Typography
+                className="text-16 sm:text-20 truncate"
+                data-cy="cy-product-title"
+              >
                 {form && form.name ? form.name : 'New Product'}
               </Typography>
             </FuseAnimate>
@@ -82,6 +87,7 @@ const Header = ({ form, productData, productId }) => {
           color="secondary"
           disabled={!canBeSubmitted()}
           onClick={handleSaveProduct}
+          data-cy="cy-product-save"
         >
           Save
         </Button>

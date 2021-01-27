@@ -2,6 +2,7 @@ import * as ProductActions from '../../actions'
 
 const initialState = {
   data: null,
+  isLoading: false,
 }
 
 const productReducer = (state = initialState, action) => {
