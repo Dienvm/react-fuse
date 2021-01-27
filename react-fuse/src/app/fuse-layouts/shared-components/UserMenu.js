@@ -37,7 +37,10 @@ function UserMenu(props) {
           </Avatar>
         )}
 
-        <div className="hidden md:flex flex-col mx-12 items-start">
+        <div
+          className="hidden md:flex flex-col mx-12 items-start"
+          data-cy="cy-user-menu-dropdown"
+        >
           <Typography component="span" className="normal-case font-600 flex">
             {user.data.displayName}
           </Typography>

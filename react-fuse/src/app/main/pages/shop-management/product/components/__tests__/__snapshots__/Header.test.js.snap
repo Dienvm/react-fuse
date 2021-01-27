@@ -26,6 +26,7 @@ exports[`Products should render correctly 1`] = `
       </span>
       <span
         className="mx-4"
+        data-cy="cy-product-back-button"
       >
         Products
       </span>
@@ -48,6 +49,7 @@ exports[`Products should render correctly 1`] = `
       >
         <p
           className="MuiTypography-root text-16 sm:text-20 truncate MuiTypography-body1"
+          data-cy="cy-product-title"
           style={
             Object {
               "visibility": "hidden",
@@ -71,6 +73,7 @@ exports[`Products should render correctly 1`] = `
   </div>
   <button
     className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
+    data-cy="cy-product-save"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}

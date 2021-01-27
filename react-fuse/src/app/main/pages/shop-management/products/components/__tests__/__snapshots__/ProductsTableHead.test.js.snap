@@ -96,11 +96,13 @@ exports[`Products should render correctly 1`] = `
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-paddingNone"
+      data-cy="cy-head-image"
       scope="col"
     />
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      data-cy="cy-head-name"
       scope="col"
     >
       <span
@@ -141,6 +143,7 @@ exports[`Products should render correctly 1`] = `
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      data-cy="cy-head-categories"
       scope="col"
     >
       <span
@@ -181,6 +184,7 @@ exports[`Products should render correctly 1`] = `
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      data-cy="cy-head-priceTaxIncl"
       scope="col"
     >
       <span
@@ -221,6 +225,7 @@ exports[`Products should render correctly 1`] = `
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      data-cy="cy-head-quantity"
       scope="col"
     >
       <span
@@ -261,6 +266,7 @@ exports[`Products should render correctly 1`] = `
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      data-cy="cy-head-active"
       scope="col"
     >
       <span

@@ -20,6 +20,7 @@ exports[`Products should render correctly 1`] = `
     </span>
     <h6
       className="MuiTypography-root hidden sm:flex mx-0 sm:mx-12 MuiTypography-h6"
+      data-cy="cy-products-header"
       style={
         Object {
           "visibility": "hidden",
@@ -53,6 +54,7 @@ exports[`Products should render correctly 1`] = `
         <input
           aria-label="Search"
           className="MuiInputBase-input MuiInput-input"
+          data-cy="cy-search-product"
           onAnimationStart={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
@@ -75,6 +77,7 @@ exports[`Products should render correctly 1`] = `
   <a
     aria-disabled={false}
     className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
+    data-cy="cy-add-product"
     href="/products/new"
     onBlur={[Function]}
     onClick={[Function]}
