@@ -9,29 +9,20 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('button[type="submit"]').click()
 })
 
-// Cypress.Commands.add('loginWithFirebase', (email, password) => {
-//   const dispatch = useDispatch()
-//   dispatch(authActions.submitLoginWithFireBase({ email, password }))
-// })
-
-// Cypress.Commands.add('removeAllFacilityResult', (query) => {
-//   cy.visit('/product')
-//   cy.get('[data-cy=cy-product-back-button]').type('Create new parent chain')
-//   cy.get('[data-cy=submit-facility]').click()
-
-//   cy.get('[data-cy=wrap-search-result]').then(($element) => {
-//     if ($element.find('h2').length > 0) {
-//       expect($element).to.contain('No result found')
-//     } else {
-//       cy.getIds('[data-cy=facility-item]').then((ids) => {
-//         ids.forEach((id) => {
-//           cy.get(`[data-id=${id}]`).click()
-//           cy.url().should('include', '/facilities/')
-
-//           cy.get('[data-cy=remove-facility]').click()
-//           cy.get('[data-testid=btn-submit-modal]').click()
-//         })
-//       })
-//     }
-//   })
-// })
+Cypress.Commands.add('updateProductFormData', (form) => {
+  const { title, description, price, quantity, shipping } = form
+  cy.get('[data-cy=cy-product-save]')
+    .should('contain', 'Save')
+    .should('be.disabled')
+  cy.get('[data-cy=cy-product-input-name]').clear().type(title)
+  cy.get('[data-cy=cy-product-input-description]').type(description)
+  // cy.get('[data-cy=cy-product-input-categories]')
+  //   .type('mobile')
+  //   .type('{enter}')
+  // cy.get('[data-cy=cy-product-input-tags]').type('trend').type('{enter}')
+  cy.get('[data-cy=cy-product-input-price]').clear().type(price)
+  cy.get('[data-cy=cy-product-input-quantity]').clear().type(quantity)
+  cy.get('[data-cy=cy-product-input-shipping]').clear().type(shipping)
+  cy.get('[data-cy=cy-product-save]').should('not.be.disabled').click()
+  cy.get('[data-cy=cy-product-save]').should('not.be.disabled')
+})

@@ -49,6 +49,9 @@ const TableForm = ({
         rows={5}
         variant="outlined"
         fullWidth
+        inputProps={{
+          'data-cy': 'cy-product-input-description',
+        }}
       />
 
       <FuseChipSelect
@@ -67,6 +70,7 @@ const TableForm = ({
           variant: 'outlined',
         }}
         isMulti
+        dataCy="cy-product-input-categories"
       />
 
       <FuseChipSelect
@@ -81,9 +85,11 @@ const TableForm = ({
           label: 'Tags',
           InputLabelProps: {
             shrink: true,
+            'data-cy': 'cy-product-input-tags',
           },
           variant: 'outlined',
         }}
+        dataCy="cy-product-input-tags"
         isMulti
       />
     </div>
@@ -139,159 +145,57 @@ const TableForm = ({
     </div>
 
     {/* pricing */}
-    <div>
-      <TextField
-        className="mt-8 mb-16"
-        label="Tax Excluded Price"
-        id="priceTaxExcl"
-        name="priceTaxExcl"
-        value={form.priceTaxExcl}
-        onChange={handleChange}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
-        type="number"
-        variant="outlined"
-        autoFocus
-        fullWidth
-      />
-
-      <TextField
-        className="mt-8 mb-16"
-        label="Tax Included Price"
-        id="priceTaxIncl"
-        name="priceTaxIncl"
-        value={form.priceTaxIncl}
-        onChange={handleChange}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
-        type="number"
-        variant="outlined"
-        fullWidth
-      />
-
-      <TextField
-        className="mt-8 mb-16"
-        label="Tax Rate"
-        id="taxRate"
-        name="taxRate"
-        value={form.taxRate}
-        onChange={handleChange}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
-        type="number"
-        variant="outlined"
-        fullWidth
-      />
-
-      <TextField
-        className="mt-8 mb-16"
-        label="Compared Price"
-        id="comparedPrice"
-        name="comparedPrice"
-        value={form.comparedPrice}
-        onChange={handleChange}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
-        type="number"
-        variant="outlined"
-        fullWidth
-        helperText="Add a compare price to show next to the real price"
-      />
-    </div>
+    <TextField
+      className="mt-8 mb-16"
+      label="Price"
+      id="price"
+      name="price"
+      value={form.price}
+      onChange={handleChange}
+      // InputProps={{
+      //   startAdornment: <InputAdornment position="start">$</InputAdornment>,
+      // }}
+      inputProps={{
+        'data-cy': 'cy-product-input-price',
+      }}
+      type="number"
+      variant="outlined"
+      autoFocus
+      fullWidth
+    />
     {/* inventory */}
-    <div>
-      <TextField
-        className="mt-8 mb-16"
-        required
-        label="SKU"
-        autoFocus
-        id="sku"
-        name="sku"
-        value={form.sku}
-        onChange={handleChange}
-        variant="outlined"
-        fullWidth
-      />
+    <TextField
+      className="mt-8 mb-16"
+      label="Quantity"
+      id="quantity"
+      name="quantity"
+      value={form.quantity}
+      onChange={handleChange}
+      variant="outlined"
+      type="number"
+      fullWidth
+      inputProps={{
+        'data-cy': 'cy-product-input-quantity',
+      }}
+    />
 
-      <TextField
-        className="mt-8 mb-16"
-        label="Quantity"
-        id="quantity"
-        name="quantity"
-        value={form.quantity}
-        onChange={handleChange}
-        variant="outlined"
-        type="number"
-        fullWidth
-      />
-    </div>
     {/* Shipping */}
-    <div>
-      <div className="flex -mx-4">
-        <TextField
-          className="mt-8 mb-16 mx-4"
-          label="Width"
-          autoFocus
-          id="width"
-          name="width"
-          value={form.width}
-          onChange={handleChange}
-          variant="outlined"
-          fullWidth
-        />
-
-        <TextField
-          className="mt-8 mb-16 mx-4"
-          label="Height"
-          id="height"
-          name="height"
-          value={form.height}
-          onChange={handleChange}
-          variant="outlined"
-          fullWidth
-        />
-
-        <TextField
-          className="mt-8 mb-16 mx-4"
-          label="Depth"
-          id="depth"
-          name="depth"
-          value={form.depth}
-          onChange={handleChange}
-          variant="outlined"
-          fullWidth
-        />
-      </div>
-
-      <TextField
-        className="mt-8 mb-16"
-        label="Weight"
-        id="weight"
-        name="weight"
-        value={form.weight}
-        onChange={handleChange}
-        variant="outlined"
-        fullWidth
-      />
-
-      <TextField
-        className="mt-8 mb-16"
-        label="Extra Shipping Fee"
-        id="extraShippingFee"
-        name="extraShippingFee"
-        value={form.extraShippingFee}
-        onChange={handleChange}
-        variant="outlined"
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
-        fullWidth
-      />
-    </div>
+    <TextField
+      className="mt-8 mb-16"
+      label="Shipping Fee"
+      id="extraShippingFee"
+      name="extraShippingFee"
+      value={form.extraShippingFee}
+      onChange={handleChange}
+      variant="outlined"
+      // InputProps={{
+      //   startAdornment: <InputAdornment position="start">$</InputAdornment>,
+      // }}
+      inputProps={{
+        'data-cy': 'cy-product-input-shipping',
+      }}
+      fullWidth
+    />
   </div>
 )
 

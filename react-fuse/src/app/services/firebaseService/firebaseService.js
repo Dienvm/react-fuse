@@ -24,6 +24,16 @@ class FirebaseService {
     this.auth = firebase.auth()
     this.firestore = firebase.firestore()
     this.storage = firebase.storage()
+
+    // eslint-disable-next-line no-restricted-globals
+    // if (window.location.hostname === 'localhost') {
+    //   firebase.firestore().settings({
+    //     host: 'localhost:4000',
+    //     ssl: false,
+    //   })
+    //   // firebase.database().useEmulator('localhost', 9000)
+    //   // this.auth.useEmulator('http://localhost:9099/', { disableWarnings: true })
+    // }
     success(true)
   }
 

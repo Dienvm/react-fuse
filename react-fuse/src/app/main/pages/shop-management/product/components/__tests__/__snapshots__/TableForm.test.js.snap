@@ -111,7 +111,6 @@ exports[`Products should render correctly 2`] = `
   <div>
     <div
       className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
-      data-cy="cy-product-input-name"
     >
       <label
         className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
@@ -135,6 +134,7 @@ exports[`Products should render correctly 2`] = `
           aria-invalid={false}
           autoFocus={true}
           className="MuiInputBase-input MuiOutlinedInput-input"
+          data-cy="cy-product-input-name"
           disabled={false}
           id="name"
           name="name"
@@ -180,6 +180,7 @@ exports[`Products should render correctly 2`] = `
           aria-invalid={false}
           autoFocus={false}
           className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+          data-cy="cy-product-input-description"
           disabled={false}
           id="description"
           name="description"
@@ -211,6 +212,7 @@ exports[`Products should render correctly 2`] = `
     >
       <div
         className="MuiFormControl-root MuiTextField-root makeStyles-root-5 outlined MuiFormControl-fullWidth"
+        data-cy="cy-product-input-categories"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
@@ -220,12 +222,14 @@ exports[`Products should render correctly 2`] = `
         </label>
         <div
           className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+          data-cy="cy-product-input-categories"
           onClick={[Function]}
         >
           <div
             aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-6"
+            data-cy="cy-product-input-categories"
             disabled={false}
             onAnimationStart={[Function]}
             onBlur={[Function]}
@@ -388,21 +392,25 @@ exports[`Products should render correctly 2`] = `
     >
       <div
         className="MuiFormControl-root MuiTextField-root makeStyles-root-5 outlined MuiFormControl-fullWidth"
+        data-cy="cy-product-input-tags"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+          data-cy="cy-product-input-tags"
           data-shrink={true}
         >
           Tags
         </label>
         <div
           className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+          data-cy="cy-product-input-tags"
           onClick={[Function]}
         >
           <div
             aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-6"
+            data-cy="cy-product-input-tags"
             disabled={false}
             onAnimationStart={[Function]}
             onBlur={[Function]}
@@ -603,557 +611,138 @@ exports[`Products should render correctly 2`] = `
       </div>
     </div>
   </div>
-  <div>
-    <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+  <div
+    className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+  >
+    <label
+      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+      data-shrink={false}
+      htmlFor="price"
+      id="price-label"
     >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-        data-shrink={true}
-        htmlFor="priceTaxExcl"
-        id="priceTaxExcl-label"
-      >
-        Tax Excluded Price
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputAdornment-root MuiInputAdornment-positionStart"
-        >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-          >
-            $
-          </p>
-        </div>
-        <input
-          aria-invalid={false}
-          autoFocus={true}
-          className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-          disabled={false}
-          id="priceTaxExcl"
-          name="priceTaxExcl"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="number"
-          value="11"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
-          >
-            <span>
-              Tax Excluded Price
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
+      Price
+    </label>
     <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+      onClick={[Function]}
     >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-        data-shrink={true}
-        htmlFor="priceTaxIncl"
-        id="priceTaxIncl-label"
+      <input
+        aria-invalid={false}
+        autoFocus={true}
+        className="MuiInputBase-input MuiOutlinedInput-input"
+        data-cy="cy-product-input-price"
+        disabled={false}
+        id="price"
+        name="price"
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="number"
+      />
+      <fieldset
+        aria-hidden={true}
+        className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
       >
-        Tax Included Price
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        <legend
+          className="PrivateNotchedOutline-legendLabelled-3"
         >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-          >
-            $
-          </p>
-        </div>
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-          disabled={false}
-          id="priceTaxIncl"
-          name="priceTaxIncl"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="number"
-          value="11"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
-          >
-            <span>
-              Tax Included Price
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
-    >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-        data-shrink={true}
-        htmlFor="taxRate"
-        id="taxRate-label"
-      >
-        Tax Rate
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputAdornment-root MuiInputAdornment-positionStart"
-        >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-          >
-            $
-          </p>
-        </div>
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-          disabled={false}
-          id="taxRate"
-          name="taxRate"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="number"
-          value="11"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
-          >
-            <span>
-              Tax Rate
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
-    >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-        data-shrink={true}
-        htmlFor="comparedPrice"
-        id="comparedPrice-label"
-      >
-        Compared Price
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputAdornment-root MuiInputAdornment-positionStart"
-        >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-          >
-            $
-          </p>
-        </div>
-        <input
-          aria-describedby="comparedPrice-helper-text"
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-          disabled={false}
-          id="comparedPrice"
-          name="comparedPrice"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="number"
-          value="11"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
-          >
-            <span>
-              Compared Price
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        className="MuiFormHelperText-root MuiFormHelperText-contained"
-        id="comparedPrice-helper-text"
-      >
-        Add a compare price to show next to the real price
-      </p>
+          <span>
+            Price
+          </span>
+        </legend>
+      </fieldset>
     </div>
   </div>
-  <div>
-    <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+  <div
+    className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+  >
+    <label
+      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+      data-shrink={false}
+      htmlFor="quantity"
+      id="quantity-label"
     >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
-        data-shrink={false}
-        htmlFor="sku"
-        id="sku-label"
-      >
-        SKU
-        <span
-          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-        >
-           
-          *
-        </span>
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-        onClick={[Function]}
-      >
-        <input
-          aria-invalid={false}
-          autoFocus={true}
-          className="MuiInputBase-input MuiOutlinedInput-input"
-          disabled={false}
-          id="sku"
-          name="sku"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          type="text"
-          value="132123"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3"
-          >
-            <span>
-              SKU
-               *
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
+      Quantity
+    </label>
     <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+      onClick={[Function]}
     >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-        data-shrink={false}
-        htmlFor="quantity"
-        id="quantity-label"
+      <input
+        aria-invalid={false}
+        autoFocus={false}
+        className="MuiInputBase-input MuiOutlinedInput-input"
+        data-cy="cy-product-input-quantity"
+        disabled={false}
+        id="quantity"
+        name="quantity"
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="number"
+        value="1"
+      />
+      <fieldset
+        aria-hidden={true}
+        className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
       >
-        Quantity
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-        onClick={[Function]}
-      >
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiOutlinedInput-input"
-          disabled={false}
-          id="quantity"
-          name="quantity"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="number"
-          value="1"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        <legend
+          className="PrivateNotchedOutline-legendLabelled-3"
         >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3"
-          >
-            <span>
-              Quantity
-            </span>
-          </legend>
-        </fieldset>
-      </div>
+          <span>
+            Quantity
+          </span>
+        </legend>
+      </fieldset>
     </div>
   </div>
-  <div>
-    <div
-      className="flex -mx-4"
+  <div
+    className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+  >
+    <label
+      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+      data-shrink={false}
+      htmlFor="extraShippingFee"
+      id="extraShippingFee-label"
     >
-      <div
-        className="MuiFormControl-root MuiTextField-root mt-8 mb-16 mx-4 MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink={false}
-          htmlFor="width"
-          id="width-label"
-        >
-          Width
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={true}
-            className="MuiInputBase-input MuiOutlinedInput-input"
-            disabled={false}
-            id="width"
-            name="width"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-            value="1"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-3"
-            >
-              <span>
-                Width
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        className="MuiFormControl-root MuiTextField-root mt-8 mb-16 mx-4 MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink={false}
-          htmlFor="height"
-          id="height-label"
-        >
-          Height
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input MuiOutlinedInput-input"
-            disabled={false}
-            id="height"
-            name="height"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-            value="1"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-3"
-            >
-              <span>
-                Height
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        className="MuiFormControl-root MuiTextField-root mt-8 mb-16 mx-4 MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink={false}
-          htmlFor="depth"
-          id="depth-label"
-        >
-          Depth
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input MuiOutlinedInput-input"
-            disabled={false}
-            id="depth"
-            name="depth"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-            value="1"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-3"
-            >
-              <span>
-                Depth
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-    </div>
+      Shipping Fee
+    </label>
     <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+      onClick={[Function]}
     >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-        data-shrink={false}
-        htmlFor="weight"
-        id="weight-label"
+      <input
+        aria-invalid={false}
+        autoFocus={false}
+        className="MuiInputBase-input MuiOutlinedInput-input"
+        data-cy="cy-product-input-shipping"
+        disabled={false}
+        id="extraShippingFee"
+        name="extraShippingFee"
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+        value="1"
+      />
+      <fieldset
+        aria-hidden={true}
+        className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
       >
-        Weight
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-        onClick={[Function]}
-      >
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiOutlinedInput-input"
-          disabled={false}
-          id="weight"
-          name="weight"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="text"
-          value="1"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        <legend
+          className="PrivateNotchedOutline-legendLabelled-3"
         >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3"
-          >
-            <span>
-              Weight
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      className="MuiFormControl-root MuiTextField-root mt-8 mb-16 MuiFormControl-fullWidth"
-    >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-        data-shrink={true}
-        htmlFor="extraShippingFee"
-        id="extraShippingFee-label"
-      >
-        Extra Shipping Fee
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputAdornment-root MuiInputAdornment-positionStart"
-        >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-          >
-            $
-          </p>
-        </div>
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-          disabled={false}
-          id="extraShippingFee"
-          name="extraShippingFee"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="text"
-          value="1"
-        />
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            className="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
-          >
-            <span>
-              Extra Shipping Fee
-            </span>
-          </legend>
-        </fieldset>
-      </div>
+          <span>
+            Shipping Fee
+          </span>
+        </legend>
+      </fieldset>
     </div>
   </div>
 </div>

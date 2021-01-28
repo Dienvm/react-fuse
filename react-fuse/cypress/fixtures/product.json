@@ -1,0 +1,16 @@
+{
+  "newProduct": {
+    "title": "title",
+    "description": "description",
+    "price": 100,
+    "quantity": 10,
+    "shipping": 2
+  },
+  "updateProduct": {
+    "title": "title updated",
+    "description": "description updated",
+    "price": 110,
+    "quantity": 9,
+    "shipping": 2
+  }
+}

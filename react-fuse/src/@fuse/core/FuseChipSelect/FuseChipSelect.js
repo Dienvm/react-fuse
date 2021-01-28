@@ -111,6 +111,7 @@ function inputComponent({ inputRef, ...props }) {
 }
 
 function Control(props) {
+  console.log('props', props, props.selectProps.dataCy)
   const classes = useStyles()
 
   return (
@@ -120,14 +121,17 @@ function Control(props) {
       required={props.selectProps.required}
       InputProps={{
         inputComponent,
+        'data-cy': props.selectProps.dataCy,
         inputProps: {
           className: classes.input,
           inputRef: props.innerRef,
           children: props.children,
+          'data-cy': props.selectProps.dataCy,
           ...props.innerProps,
         },
       }}
       {...props.selectProps.textFieldProps}
+      data-cy={props.selectProps.dataCy}
     />
   )
 }
