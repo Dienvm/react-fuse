@@ -11,7 +11,7 @@ describe('Products page', () => {
     })
     cy.visit('/products/new')
     cy.url().should('include', '/products/new')
-    cy.get('[data-cy=cy-product-back-button]').should('contain', 'Products')
+    cy.get('[data-cy=cy-product-back-button]').should('contain', 'Back')
     cy.get('[data-cy=cy-product-title]').should('contain', 'New Product')
     cy.get('[data-cy=cy-product-save]')
       .should('contain', 'Save')
