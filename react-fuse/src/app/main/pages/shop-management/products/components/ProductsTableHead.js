@@ -110,6 +110,7 @@ const ProductsTableHead = ({
                 aria-owns={selectedProductsMenu ? 'selectedProductsMenu' : null}
                 aria-haspopup="true"
                 onClick={openSelectedProductsMenu}
+                data-cy="cy-products-select-menu"
               >
                 <Icon>more_horiz</Icon>
               </IconButton>
@@ -121,7 +122,10 @@ const ProductsTableHead = ({
               >
                 <MenuList>
                   <MenuItem onClick={onRemoveProducts}>
-                    <ListItemIcon className="min-w-40">
+                    <ListItemIcon
+                      className="min-w-40"
+                      data-cy="cy-products-remote"
+                    >
                       <Icon>delete</Icon>
                     </ListItemIcon>
                     <ListItemText primary="Remove" />

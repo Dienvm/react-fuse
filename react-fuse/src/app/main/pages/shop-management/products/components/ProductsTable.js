@@ -1,9 +1,10 @@
 import _ from '@lodash'
 import { Table } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import { useDispatch } from 'react-redux'
 import { withRouter } from 'react-router'
 import * as ProductActions from 'app/store/actions/product'
+import isEqual from 'react-fast-compare'
 import ProductsTableHead from './ProductsTableHead'
 import ProductTableBody from './ProductTableBody'
 
@@ -14,6 +15,7 @@ const ProductsTable = ({ data, page, rowsPerPage, history }) => {
     direction: 'asc',
     id: null,
   })
+  console.log('RE-RENDER products table')
 
   const handleRequestSort = (event, property) => {
     const id = property
@@ -78,4 +80,7 @@ const ProductsTable = ({ data, page, rowsPerPage, history }) => {
   )
 }
 
-export default withRouter(ProductsTable)
+const areEqual = (prevProps, nextProps) =>
+  isEqual(prevProps.data, nextProps.data)
+
+export default withRouter(memo(ProductsTable, areEqual))

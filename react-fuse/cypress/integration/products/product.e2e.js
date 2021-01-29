@@ -2,13 +2,13 @@ describe('Products page', () => {
   beforeEach(() => {
     cy.fixture('auth.json').as('auth')
     cy.fixture('product.json').as('product')
+  })
+
+  it('should check exists produts in table', () => {
     cy.get('@auth').then((authData) => {
       const { validUser } = authData
       cy.login(validUser.email, validUser.password)
     })
-  })
-
-  it('should check exists produts in table', () => {
     cy.visit('/products/new')
     cy.url().should('include', '/products/new')
     cy.get('[data-cy=cy-product-back-button]').should('contain', 'Products')
@@ -23,19 +23,33 @@ describe('Products page', () => {
     cy.get('@product').then((productData) => {
       cy.updateProductFormData(productData.newProduct)
     })
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    // cy.wait(2000)
     cy.url().should('include', '/products')
-    cy.get('[data-cy=cy-product-row]').should('have.length', 4)
+    cy.get('[data-cy=cy-product-row]').should('have.length', 1)
   })
 
   it('should update new product', () => {
     cy.visit('/products')
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000)
-    cy.contains('Add new product').click()
+    // cy.wait(2000)
+    cy.contains('title').click()
     cy.get('@product').then((productData) => {
       cy.updateProductFormData(productData.updateProduct)
     })
     cy.url().should('include', '/products')
-    cy.get('[data-cy=cy-product-row]').should('have.length', 3)
+    cy.get('[data-cy=cy-product-row]').should('have.length', 1)
+  })
+
+  it('should delete product', () => {
+    cy.visit('/products')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    // cy.wait(2000)
+    cy.get('[data-cy=cy-product-row]').within(() => {
+      cy.get('[type=checkbox]').check()
+    })
+    cy.get('[data-cy=cy-products-select-menu]').click()
+    cy.get('[data-cy=cy-products-remote]').click()
+    cy.get('[data-cy=cy-product-row]').should('have.length', 0)
   })
 })

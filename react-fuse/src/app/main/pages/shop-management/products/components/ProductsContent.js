@@ -1,16 +1,18 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as ProductActions from 'app/store/actions/product'
 import { TablePagination } from '@material-ui/core'
+import isEqual from 'react-fast-compare'
 import ProductsTable from './ProductsTable'
 
 const ProductsContent = () => {
   const dispatch = useDispatch()
-  const products = useSelector(({ product }) => product.products)
+  const products = useSelector(({ product }) => product.products.data)
+  const type = useSelector(({ product }) => product.products.type)
   const searchText = useSelector(({ product }) => product.products.searchText)
 
-  const [data, setData] = useState(products.data)
+  const [data, setData] = useState(products)
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
@@ -22,22 +24,22 @@ const ProductsContent = () => {
   useEffect(() => {
     if (searchText.length !== 0) {
       setData(
-        products.data.filter((item) =>
+        products.filter((item) =>
           item.name.toLowerCase().includes(searchText.toLowerCase())
         )
       )
       setPage(0)
     } else {
-      setData(products.data)
+      setData(products)
     }
   }, [products, searchText])
 
   useEffect(() => {
-    if (products.type === ProductActions.REMOVE_PRODUCTS) {
+    if (type === ProductActions.REMOVE_PRODUCTS) {
       dispatch(ProductActions.getProducts())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products.type])
+  }, [type])
 
   const handleChangePage = (event, value) => {
     setPage(value)
@@ -46,6 +48,7 @@ const ProductsContent = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(event.target.value)
   }
+  console.log('RE-RENDER products table content')
 
   return (
     <div className="w-full flex flex-col">
@@ -72,4 +75,4 @@ const ProductsContent = () => {
   )
 }
 
-export default ProductsContent
+export default memo(ProductsContent, isEqual)

@@ -11,27 +11,44 @@ describe('Products page', () => {
   it('should check exists produts in table', () => {
     cy.url().should('include', '/products')
     cy.get('[data-cy=cy-products-header]').should('contain', 'Products')
-    cy.get('[data-cy=cy-product-row]').should('have.length', 3)
+    cy.get('[data-cy=cy-product-row]').should('have.length', 0)
   })
 })
 
 describe('Search products:', () => {
+  beforeEach(() => {
+    cy.fixture('product.json').as('product')
+  })
   it('should search products', () => {
+    cy.visit('products/new')
+    cy.get('@product').then((productData) => {
+      cy.updateProductFormData(productData.newProduct)
+    })
+    cy.url().should('include', '/products')
+
+    // cy.wait(2000)
     cy.get('[data-cy=cy-search-product]')
-      .type('Note 10')
-      .should('have.value', 'Note 10')
+      .type('title')
+      .should('have.value', 'title')
     cy.get('[data-cy=cy-product-row]').should('have.length', 1)
   })
 
   it('should search products with no result', () => {
     cy.get('[data-cy=cy-search-product]')
+      .clear()
       .type('test')
       .should('have.value', 'test')
     cy.get('[data-cy=cy-product-row]').should('have.length', 0)
   })
 
-  afterEach(() => {
+  after(() => {
     cy.get('[data-cy=cy-search-product]').clear()
+    cy.get('[data-cy=cy-product-row]').within(() => {
+      cy.get('[type=checkbox]').check()
+    })
+    cy.get('[data-cy=cy-products-select-menu]').click()
+    cy.get('[data-cy=cy-products-remote]').click()
+    cy.get('[data-cy=cy-product-row]').should('have.length', 0)
   })
 })
 

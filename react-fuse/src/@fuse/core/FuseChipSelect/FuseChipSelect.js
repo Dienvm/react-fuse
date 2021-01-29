@@ -111,7 +111,6 @@ function inputComponent({ inputRef, ...props }) {
 }
 
 function Control(props) {
-  console.log('props', props, props.selectProps.dataCy)
   const classes = useStyles()
 
   return (

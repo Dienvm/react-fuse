@@ -5,76 +5,26 @@ exports[`Products should render correctly 1`] = `
   className="flex flex-1 w-full items-center justify-between"
 >
   <div
-    className="flex flex-col items-start max-w-full"
+    className="flex items-center"
   >
-    <a
-      className="MuiTypography-root normal-case flex items-center sm:mb-12 MuiTypography-body1 MuiTypography-colorInherit"
-      href="/products"
-      onClick={[Function]}
-      role="button"
+    <h6
+      className="MuiTypography-root hidden sm:flex mx-0 sm:mx-12 MuiTypography-h6"
+      data-cy="cy-products-header"
       style={
         Object {
           "visibility": "hidden",
         }
       }
     >
-      <span
-        aria-hidden={true}
-        className="material-icons MuiIcon-root text-20"
-      >
-        arrow_back
-      </span>
-      <span
-        className="mx-4"
-        data-cy="cy-product-back-button"
-      >
-        Products
-      </span>
-    </a>
-    <div
-      className="flex items-center max-w-full"
-    >
-      <img
-        alt="Orion An"
-        className="w-32 sm:w-48 rounded"
-        src="https://test.png"
-        style={
-          Object {
-            "visibility": "hidden",
-          }
-        }
-      />
-      <div
-        className="flex flex-col min-w-0 mx-8 sm:mc-16"
-      >
-        <p
-          className="MuiTypography-root text-16 sm:text-20 truncate MuiTypography-body1"
-          data-cy="cy-product-title"
-          style={
-            Object {
-              "visibility": "hidden",
-            }
-          }
-        >
-          Orion An
-        </p>
-        <span
-          className="MuiTypography-root MuiTypography-caption"
-          style={
-            Object {
-              "visibility": "hidden",
-            }
-          }
-        >
-          Product Detail
-        </span>
-      </div>
-    </div>
+      Update
+       Product
+    </h6>
   </div>
-  <button
+  <a
+    aria-disabled={false}
     className="MuiButtonBase-root MuiButton-root MuiButton-contained whitespace-no-wrap normal-case MuiButton-containedSecondary"
-    data-cy="cy-product-save"
-    disabled={false}
+    data-cy="cy-product-back-button"
+    href="/products"
     onBlur={[Function]}
     onClick={[Function]}
     onDragLeave={[Function]}
@@ -87,19 +37,23 @@ exports[`Products should render correctly 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    role="button"
     style={
       Object {
         "visibility": "hidden",
       }
     }
     tabIndex={0}
-    type="button"
   >
     <span
       className="MuiButton-label"
     >
-      Save
+      <span
+        className="flex"
+      >
+        Back
+      </span>
     </span>
-  </button>
+  </a>
 </div>
 `;

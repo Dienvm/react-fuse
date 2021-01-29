@@ -61,6 +61,7 @@ exports[`Products should render correctly 1`] = `
           aria-haspopup="true"
           aria-owns={null}
           className="MuiButtonBase-root MuiIconButton-root"
+          data-cy="cy-products-select-menu"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
