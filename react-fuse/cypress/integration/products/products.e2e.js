@@ -26,7 +26,7 @@ describe('Search products:', () => {
     })
     cy.url().should('include', '/products')
 
-    // cy.wait(2000)
+    cy.wait(2000)
     cy.get('[data-cy=cy-search-product]')
       .type('title')
       .should('have.value', 'title')

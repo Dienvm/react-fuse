@@ -23,7 +23,7 @@ describe('Products page', () => {
       cy.updateProductFormData(productData.newProduct)
     })
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    // cy.wait(2000)
+    cy.wait(2000)
     cy.url().should('include', '/products')
     cy.get('[data-cy=cy-product-row]').should('have.length', 1)
   })
@@ -43,7 +43,7 @@ describe('Products page', () => {
   it('should delete product', () => {
     cy.visit('/products')
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    // cy.wait(2000)
+    cy.wait(2000)
     cy.get('[data-cy=cy-product-row]').within(() => {
       cy.get('[type=checkbox]').check()
     })
