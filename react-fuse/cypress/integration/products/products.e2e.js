@@ -26,6 +26,7 @@ describe('Search products:', () => {
     })
     cy.url().should('include', '/products')
 
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(2000)
     cy.get('[data-cy=cy-search-product]')
       .type('title')
@@ -55,7 +56,6 @@ describe('Search products:', () => {
 // describe('Sort products', () => {
 //   it('should sort product by ASC', () => {
 //     cy.get('[data-cy=cy-head-name]').then(($element) => {
-//       console.log('$element', $element.find('svg').should('be.visible'))
 //     })
 //     cy.get('[data-cy=cy-head-name]').trigger('mouseover')
 //     cy.get('[data-cy=cy-head-name]').click()

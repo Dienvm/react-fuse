@@ -136,7 +136,6 @@ const TableForm = (props) => {
     return <FuseLoading />
   }
 
-  console.log('RE-RENDER Table Form')
   return (
     form && (
       <div className="p-16 sm:p-24 max-w-2xl">

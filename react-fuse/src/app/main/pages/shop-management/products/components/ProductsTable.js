@@ -15,7 +15,6 @@ const ProductsTable = ({ data, page, rowsPerPage, history }) => {
     direction: 'asc',
     id: null,
   })
-  console.log('RE-RENDER products table')
 
   const handleRequestSort = (event, property) => {
     const id = property

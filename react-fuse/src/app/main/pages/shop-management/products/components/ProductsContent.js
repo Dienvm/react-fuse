@@ -48,7 +48,6 @@ const ProductsContent = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(event.target.value)
   }
-  console.log('RE-RENDER products table content')
 
   return (
     <div className="w-full flex flex-col">
