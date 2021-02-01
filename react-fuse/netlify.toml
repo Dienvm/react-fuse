@@ -22,19 +22,6 @@ CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 # set TERM variable for terminal output
 TERM = "xterm"
 
-[[plugins]]
-  package = "netlify-plugin-cypress"
-  [plugins.inputs]
-    record = true
-    group = "built site"
-    tag = "nightly,production"
-  # let's run tests against development server
-  # before building it (and testing the built site)
-  [plugins.inputs.preBuild]
-    start = 'npm start'
-    wait-on = 'https://fuse-shop-management.netlify.app'
-    wait-on-timeout = '30' # seconds
-
 ## This rule redirects to an external API, signing requests with a secret
 [[redirects]]
   from = "/login"
