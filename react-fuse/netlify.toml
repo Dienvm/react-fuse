@@ -1,5 +1,16 @@
+[build.environment]
+    # cache Cypress binary in local "node_modules" folder
+    # so Netlify caches it
+    CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
+    # set TERM variable for terminal output
+    TERM = "xterm"
+
 [[plugins]]
   package = "netlify-plugin-cypress"
+  [plugins.inputs]
+    record = true
+    group = "built site"
+    tag = "nightly,production"
 
 ## This rule redirects to an external API, signing requests with a secret
 [[redirects]]
