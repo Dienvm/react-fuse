@@ -9,7 +9,7 @@ exports[`Products should render correctly 1`] = `
   >
     <h6
       className="MuiTypography-root hidden sm:flex mx-0 sm:mx-12 MuiTypography-h6"
-      data-cy="cy-products-header"
+      data-cy="cy-product-title"
       style={
         Object {
           "visibility": "hidden",

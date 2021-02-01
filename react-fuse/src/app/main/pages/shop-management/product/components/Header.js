@@ -18,9 +18,9 @@ const Header = () => {
           <Typography
             className="hidden sm:flex mx-0 sm:mx-12"
             variant="h6"
-            data-cy="cy-products-header"
+            data-cy="cy-product-title"
           >
-            {productId === 'new' ? 'Add' : 'Update'} Product
+            {productId === 'new' ? 'New' : 'Update'} Product
           </Typography>
         </FuseAnimate>
       </div>

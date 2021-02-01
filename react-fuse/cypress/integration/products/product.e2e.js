@@ -11,7 +11,6 @@ describe('Products page', () => {
     })
     cy.visit('/products/new')
     cy.url().should('include', '/products/new')
-    cy.get('[data-cy=cy-product-back-button]').should('contain', 'Back')
     cy.get('[data-cy=cy-product-title]').should('contain', 'New Product')
     cy.get('[data-cy=cy-product-save]')
       .should('contain', 'Save')
@@ -32,7 +31,7 @@ describe('Products page', () => {
   it('should update new product', () => {
     cy.visit('/products')
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    // cy.wait(2000)
+    cy.wait(2000)
     cy.contains('title').click()
     cy.get('@product').then((productData) => {
       cy.updateProductFormData(productData.updateProduct)
