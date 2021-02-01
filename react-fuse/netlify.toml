@@ -8,11 +8,11 @@
 [[redirects]]
   from = "/products"
   to = "https://fuse-shop-management.netlify.app"
-  status = 301
-  force = false
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/products/new"
   to = "https://fuse-shop-management.netlify.app"
-  status = 301
-  force = false
+  status = 200
+  force = true
