@@ -82,6 +82,7 @@
     "husky": "^4.2.5",
     "js-beautify": "1.10.3",
     "lint-staged": "^8.1.7",
+    "netlify-plugin-cypress": "^1.4.1",
     "prettier": "^2.2.1",
     "promise": "8.0.3",
     "purgecss": "1.4.2",
