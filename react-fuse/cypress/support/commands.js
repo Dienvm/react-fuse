@@ -2,7 +2,7 @@
 // import * as authActions from '../../src/app/auth/store/actions'
 
 Cypress.Commands.add('login', (email, password) => {
-  cy.visit('/login')
+  cy.visit('https://fuse-shop-management.netlify.app/login')
 
   cy.get('input[name="username"]').type(email).should('have.value', email)
   cy.get('input[name="password"]').type(password).should('have.value', password)

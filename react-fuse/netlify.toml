@@ -1,7 +1,10 @@
 [dev]
   command = "yarn start"
   port = 3000
-  targetPort = 3000
+  targetPort = 8000
+  publish = "dist" 
+  autoLaunch = true
+  framework = "#custom"
 
 [build.environment]
     # cache Cypress binary in local "node_modules" folder
