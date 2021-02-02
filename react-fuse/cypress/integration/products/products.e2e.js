@@ -39,6 +39,8 @@ describe('Search products:', () => {
       .clear()
       .type('test')
       .should('have.value', 'test')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(2000)
     cy.get('[data-cy=cy-product-row]').should('have.length', 0)
   })
 
@@ -49,6 +51,8 @@ describe('Search products:', () => {
     })
     cy.get('[data-cy=cy-products-select-menu]').click()
     cy.get('[data-cy=cy-products-remote]').click()
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(2000)
     cy.get('[data-cy=cy-product-row]').should('have.length', 0)
   })
 })
